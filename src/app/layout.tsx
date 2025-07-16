@@ -1,6 +1,12 @@
+//components
 import { Providers } from "@/components/Providers";
+import { Header } from "@/components/Header/Header";
+import { Footer } from "@/components/Footer/Footer";
+//types
 import type { Metadata } from "next";
+//fonts
 import { Roboto, Inter } from "next/font/google";
+//styles
 import "./globals.css";
 
 const roboto = Roboto({
@@ -30,10 +36,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${inter.variable}`}
+        className={`${roboto.variable} ${inter.variable} min-h-[100vh] flex flex-col `}
       >
         <Providers>
-          {children}
+          <Header/>
+          <main className="grow">
+            {children}
+          </main>
+          <Footer/>
         </Providers>
       </body>
     </html>

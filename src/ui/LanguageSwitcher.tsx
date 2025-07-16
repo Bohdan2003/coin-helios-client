@@ -1,0 +1,38 @@
+'use client'
+//hooks
+import { useState } from 'react';
+//ui
+import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
+//icons
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+//utils
+import { v4 as uuid } from 'uuid';
+
+const LANGS = ['UA', 'EN', 'RU'] as const;
+
+export const LanguageSwitcher: React.FC = () => {
+  const [selectedLanguage, setLanguage] = useState('UA');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setLanguage(event.target.value);
+  };
+
+  return (
+    <Select
+      value={selectedLanguage}
+      onChange={handleChange}
+      IconComponent={ExpandMoreIcon}
+      variant="standard"
+      disableUnderline
+    >
+      {
+        LANGS.map(language => (
+          <MenuItem
+            value={language}
+            key={uuid()}
+          >{language}</MenuItem>
+        ))
+      }
+    </Select>
+  );
+}

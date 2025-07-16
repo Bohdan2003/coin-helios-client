@@ -1,0 +1,24 @@
+//ui
+import { Logo } from "@/ui/Logo";
+import { LanguageSwitcher } from "@/ui/LanguageSwitcher";
+import { ThemeSwitcher } from "@/ui/ThemeSwitcher";
+//components
+import { Menu } from "@/components/Header/Menu";
+import { Auth } from "@/components/Header/Auth";
+
+export const DesktopHeader: React.FC = () => {
+  return (
+    <header>
+      <div className="container py-[16px] grid grid-cols-[auto_1fr_auto_1fr_auto] gap-4 items-center">
+        <Logo/>
+        <div></div>
+        <Menu className="flex items-center gap-[32px]"/>
+        <div className="flex items-center justify-center md:gap-[20px] xl:gap-[60px]">
+          <LanguageSwitcher/>
+          <ThemeSwitcher/>
+        </div>
+        <Auth/>
+      </div>
+    </header>
+  )
+}

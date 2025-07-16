@@ -7,10 +7,12 @@ import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 //utils
 import { v4 as uuid } from 'uuid';
+//types
+import type { SelectProps } from '@mui/material/Select';
 
 const LANGS = ['UA', 'EN', 'RU'] as const;
 
-export const LanguageSwitcher: React.FC = () => {
+export const LanguageSwitcher: React.FC<{sx?: SelectProps["sx"]}> = ({sx}) => {
   const [selectedLanguage, setLanguage] = useState('UA');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -24,6 +26,7 @@ export const LanguageSwitcher: React.FC = () => {
       IconComponent={ExpandMoreIcon}
       variant="standard"
       disableUnderline
+      sx={sx}
     >
       {
         LANGS.map(language => (

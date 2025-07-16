@@ -63,6 +63,9 @@ export const darkTheme = createTheme({
       default: 'var(--dark-bg)',
       paper: 'var(--second-dark-bg)'
     },
+    text: {
+      primary: '#FFFFFF',
+    },
     primary: {
       main: '#1E74FE'
     }

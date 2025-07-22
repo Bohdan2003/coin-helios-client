@@ -5,8 +5,6 @@ import { useState } from 'react';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 //icons
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-//utils
-import { v4 as uuid } from 'uuid';
 //types
 import type { SelectProps } from '@mui/material/Select';
 
@@ -29,10 +27,10 @@ export const LanguageSwitcher: React.FC<{sx?: SelectProps["sx"]}> = ({sx}) => {
       sx={sx}
     >
       {
-        LANGS.map(language => (
+        LANGS.map((language, index) => (
           <MenuItem
             value={language}
-            key={uuid()}
+            key={index}
           >{language}</MenuItem>
         ))
       }

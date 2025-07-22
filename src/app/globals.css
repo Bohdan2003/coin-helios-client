@@ -3,7 +3,7 @@
 :root {
   --blue: #1E74FE;
   --purple: #4E5897;
-  --green: #28932C;
+  --green: #65C668;
   --orange: #FD6D51;
   --black: #14151A;
   --white: #FFFFFF;
@@ -41,4 +41,18 @@
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.smooth-scroll{
+  scroll-behavior: smooth;
+}
+
+.keen-slider {
+  display: flex;
+  overflow: hidden;
+}
+
+.keen-slider__slide {
+  min-width: 100%;
+  flex-shrink: 0;
 }

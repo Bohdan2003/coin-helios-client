@@ -1,3 +1,8 @@
+//utils
+import { apiGetRequest } from "@/utils/apiInstance";
+//types
+import { ResponseWithPagination } from "@/utils/types/api";
+
 export type TCoin = {
   id: string,
   name: string,
@@ -17,3 +22,7 @@ export type TCoin = {
   liked: boolean,
   saved: boolean
 }
+
+
+export const getCoins = async () =>
+  apiGetRequest<ResponseWithPagination<TCoin[]>>('/crypto/coins');

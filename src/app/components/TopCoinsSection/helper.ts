@@ -88,7 +88,7 @@ export const getTopCoinsData = () => ([
     "percent_change_1h": -0.23,
     "percent_change_24h": 2.61,
     "percent_change_7d": 0,
-    "price": 694.31,
+  "price": 694.31,
     "popular_24h_filters_volume": 0,
     "chain": {
       name: "SolanaSolana",

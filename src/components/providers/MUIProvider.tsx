@@ -8,7 +8,7 @@ import { lightTheme, darkTheme } from "@/lib/theme";
 import { ReactNode, FC } from 'react';
 import { cookies } from 'next/headers'
 
-export const Providers: FC<{ children: ReactNode }> = async ({children}) => {
+export const MUIProvider: FC<{ children: ReactNode }> = async ({children}) => {
   const cookieStore = await cookies();
   const theme = cookieStore.get('theme')?.value;
 

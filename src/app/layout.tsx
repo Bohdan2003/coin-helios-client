@@ -1,5 +1,5 @@
 //components
-import { Providers } from "@/components/Providers";
+import Providers from "@/components/providers";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 //types

@@ -1,5 +1,4 @@
 //ui
-import Image from "next/image"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,9 +11,11 @@ import { FormattedPercent } from "@/ui/FormattedPercent";
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 //types
-import type { TCoin } from "@/utils/types/coin";
+import type { TCoin} from "@/modules/coins/CoinsApi";
 //helper
 import { getTopCoinsData } from "@/app/components/TopCoinsSection/helper";
+import {ChainCell} from "@/ui/table/cells/ChainCell";
+import {CoinCell} from "@/ui/table/cells/CoinCell";
 
 type TTopCoin = TCoin;
 
@@ -52,36 +53,18 @@ export const TopCoinsSection: React.FC = () => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell>{i + 1}</TableCell>
-                <TableCell>
-                  <div className="flex gap-[6px] items-center">
-                    <Image
-                      className="rounded-full size-[32px] object-cover object-center"
-                      src={row.icon}
-                      alt={row.name}
-                      width={32}
-                      height={32}
-                    />
-                    <div className="grid">
-                      <span>{row.name}</span>
-                      <span className="opacity-60">{row.symbol}</span>
-                    </div>
-                  </div>
-                </TableCell>
+                <CoinCell
+                  icon={row.icon}
+                  name={row.name}
+                  symbol={row.symbol}
+                />
                 <TableCell>
                   <FormattedPercent value={row.percent_change_24h}/>
                 </TableCell>
-                <TableCell>
-                  <div className="flex gap-[6px] items-center">
-                    <Image
-                      className="rounded-full size-[20px] object-cover object-center"
-                      src={row.icon}
-                      alt={row.chain.name}
-                      width={20}
-                      height={20}
-                    />
-                    <span>{row.chain.name}</span>
-                  </div>
-                </TableCell>
+                <ChainCell
+                  icon={row.icon}
+                  name={row.chain.name}
+                />
                 <TableCell className="opacity-80">${row.price}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-[6px]">

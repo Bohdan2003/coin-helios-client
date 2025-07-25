@@ -46,7 +46,7 @@ const baseComponents = {
           : `1px solid ${theme.palette.divider}`,
         backgroundColor: theme.palette.mode === 'dark'
           ? theme.palette.background.paper
-          : `1px solid ${theme.palette.background.default}`,
+          : theme.palette.background.default,
         boxShadow: 'none',
         borderRadius: '24px',
         overflow: 'hidden',

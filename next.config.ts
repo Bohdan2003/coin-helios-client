@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.un.org',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8010',
+        pathname: '/crypto-logos/**',
+      },
     ],
   },
 };

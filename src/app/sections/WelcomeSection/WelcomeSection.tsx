@@ -1,5 +1,5 @@
 //components
-import { PartnerSlider } from "@/app/components/WelcomeSection/PartnerSlider";
+import { PartnerSlider } from "@/app/sections/WelcomeSection/PartnerSlider";
 //ui
 import { Button } from "@mui/material";
 

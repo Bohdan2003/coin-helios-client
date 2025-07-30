@@ -14,7 +14,7 @@ export const getTopCoinsData = () => ([
       name: "SolanaSolana",
       icon: "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg"
     },
-    "categories": [],
+    "categories": "Other",
     "icon": "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg",
     "liked": false,
     "saved": false
@@ -34,7 +34,7 @@ export const getTopCoinsData = () => ([
       name: "SolanaSolana",
       icon: "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg"
     },
-    "categories": [],
+    "categories": "Other",
     "icon": "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg",
     "liked": false,
     "saved": false
@@ -54,7 +54,7 @@ export const getTopCoinsData = () => ([
       name: "SolanaSolana",
       icon: "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg"
     },
-    "categories": [],
+    "categories": "Other",
     "icon": "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg",
     "liked": false,
     "saved": false
@@ -74,7 +74,7 @@ export const getTopCoinsData = () => ([
       name: "SolanaSolana",
       icon: "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg"
     },
-    "categories": [],
+    "categories": "Other",
     "icon": "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg",
     "liked": false,
     "saved": false
@@ -94,7 +94,7 @@ export const getTopCoinsData = () => ([
       name: "SolanaSolana",
       icon: "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg"
     },
-    "categories": [],
+    "categories": "Other",
     "icon": "https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg",
     "liked": false,
     "saved": false

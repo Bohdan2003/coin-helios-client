@@ -8,7 +8,7 @@ const listCls = 'grid gap-[8px] sm:gap-[16px]';
 
 export const Footer = () => {
   return (
-    <footer className="bg-purple py-[20px] text-white">
+    <footer className="mt-[400vh] bg-purple py-[20px] text-white">
       <div className="container">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-[1fr_auto_auto_auto_auto] items-start gap-[38px] sm:gap-[48px] lg:gap-[76px]">
           <div className="grid gap-[16px] col-span-2 lg:col-span-1">

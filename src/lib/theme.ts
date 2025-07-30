@@ -1,6 +1,7 @@
 'use client'
 import { createTheme, Theme } from '@mui/material/styles';
 import type { Components } from "@mui/material/styles";
+import { alpha } from '@mui/material/styles';
 
 const baseTypography = {
   allVariants: {
@@ -16,11 +17,12 @@ const baseComponents = {
         fontWeight: 400,
         textTransform: 'none' as const,
         borderRadius: 12,
+        boxShadow: 'none',
       },
       outlined:({ theme }) => ({
         color: theme.palette.text.primary,
         '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-          color: 'var(--blue)',
+          color: theme.palette.primary.main,
         },
         '& .MuiTouchRipple-root .MuiTouchRipple-child': {
           backgroundColor: theme.palette.primary.main,
@@ -29,6 +31,15 @@ const baseComponents = {
       sizeSmall: { padding: '6px 10px' },
       sizeMedium: { padding: '10px 16px' },
     },
+    variants: [
+      {
+        props: { variant: 'contained', color: 'secondary' },
+        style: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          backgroundColor: alpha(theme.palette.primary.main, 0.3),
+        }),
+      },
+    ],
   },
   MuiMenu: {
     styleOverrides: {
@@ -38,19 +49,12 @@ const baseComponents = {
       }),
     },
   },
+
   MuiTableContainer: {
     styleOverrides: {
-      root: ({ theme }) => ({
-        border: theme.palette.mode === 'dark'
-          ? 'none'
-          : `1px solid ${theme.palette.divider}`,
-        backgroundColor: theme.palette.mode === 'dark'
-          ? theme.palette.background.paper
-          : theme.palette.background.default,
+      root: {
         boxShadow: 'none',
-        borderRadius: '24px',
-        overflow: 'hidden',
-      }),
+      },
     },
   },
   MuiTableBody: {
@@ -86,9 +90,9 @@ const baseComponents = {
       head: {
         fontSize: 14,
         borderBottom: 'none',
-        opacity: '60%',
+        opacity: 0.6,
         fontWeight: 700,
-
+        backgroundColor: 'transparent',
       },
     },
   },
@@ -99,16 +103,18 @@ export const lightTheme = createTheme({
   cssVariables: true,
   palette: {
     mode: 'light',
+    divider: 'var(--dark-gray)',
     background: {
       default: 'var(--light-bg)',
       paper: 'var(--second-light-bg)'
     },
     text: {
       primary: 'var(--black)',
+      secondary: 'var(--black)',
     },
     primary: {
       main: '#1E74FE'
-    }
+    },
   },
   typography: baseTypography,
   components: baseComponents,
@@ -125,6 +131,7 @@ export const darkTheme = createTheme({
     },
     text: {
       primary: '#FFFFFF',
+      secondary: '#FFFFFF',
     },
     primary: {
       main: '#1E74FE'

@@ -9,6 +9,8 @@ import { Roboto, Inter } from "next/font/google";
 //styles
 import "./globals.css";
 
+//TODO: import local fonts
+
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin', 'cyrillic'],
@@ -43,7 +45,9 @@ export default function RootLayout({
           <main className="grow">
             {children}
           </main>
-          <Footer/>
+          <div className="mt-[32px]">
+            <Footer/>
+          </div>
         </Providers>
       </body>
     </html>

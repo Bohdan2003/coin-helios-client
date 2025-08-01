@@ -13,7 +13,7 @@ import type {
 //styles
 import 'keen-slider/keen-slider.min.css';
 //helpers
-import { getSlidesData } from "@/app/components/WelcomeSection/helper";
+import { getSlidesData } from "@/app/sections/WelcomeSection/helper";
 
 type TSlide = {
   id: string;
@@ -90,7 +90,7 @@ export const PartnerSlider: React.FC = () => {
         ))}
       </div>
 
-      <div className="absolute -left-[20px] top-1/2 -translate-1/2 grid gap-[8px]">
+      <div className="absolute z-10 -left-[20px] top-1/2 -translate-1/2 grid gap-[8px]">
         {
           slides.map((_, i) => (
             <button

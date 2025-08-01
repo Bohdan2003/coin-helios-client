@@ -3,5 +3,7 @@ export type ResponseWithPagination<T> = {
   limit: number,
   total_pages: number,
   total_items: number,
-  data: T;
+  //TODO: make data key
+  coins: T,
+  // data: T;
 }

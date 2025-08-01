@@ -30,7 +30,7 @@ export default async function Home() {
         <div className="absolute top-0 bottom-0 left-[10px] xl:left-0 right-[10px] xl:right-0 rounded-[16px]">
           <Image
             className="size-full"
-            src={theme === "light" ? lightBgUrl : darkBgUrl}
+            src={theme === 'light' ? lightBgUrl : darkBgUrl}
             alt="bg"
             height="894"
             width="1648"

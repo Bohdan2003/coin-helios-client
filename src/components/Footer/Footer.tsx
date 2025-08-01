@@ -15,7 +15,7 @@ export const Footer = () => {
             <Logo/>
             <p className="max-w-[520px] md:max-w-[740px] lg:max-w-[520px]">
               Content on our website, related platforms, forums,
-              apps, social media, and blogs (&quot;Site&quot;) is sourced
+              apps, social media, and blogs (&#34;Site&#34;) is sourced
               from third parties and provided for informational
               purposes only. We do not guarantee its relevance.
               This information is not financial or legal advice.

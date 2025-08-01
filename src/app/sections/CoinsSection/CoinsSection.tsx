@@ -7,8 +7,8 @@ import { getCoins } from "@/modules/coins/CoinsApi";
 //ui
 import Pagination from '@mui/material/Pagination';
 import { StickyHeadCoinsTable } from "@/ui/tables/StickyHeadCoinsTable";
-import { SearchField } from "@/ui/filters/SearchField";
-import { CustomTabs } from "@/ui/filters/CustomTabs";
+import { SearchField } from "@/ui/fields/SearchField";
+import { CustomTabs } from "@/ui/CustomTabs";
 //helper
 import { getCategories } from "@/app/sections/CoinsSection/helper";
 
@@ -35,13 +35,18 @@ export const CoinsSection: React.FC = () => {
     placeholderData: previous => previous,
   });
 
-  if(isPending) return <div className="text-center mt-[76px]">Loading...</div>
-  if(isError) return <div className="text-center mt-[76px]">Error...</div>
+  const onSearchChange = (search: string) => {
+    setSearch(search);
+    setPage(1);
+  }
 
-  return (<section className="mt-[76px]">
+  if(isPending) return <div className="text-center opacity-50">Loading...</div>
+  if(isError) return <div className="text-center opacity-50">Error...</div>
+
+  return (<section>
     <div className="container">
       <h3 className="hidden">Coins</h3>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-end">
         <CustomTabs
           tabs={categories}
           tab={category}
@@ -51,16 +56,19 @@ export const CoinsSection: React.FC = () => {
           }}
         />
         <SearchField
-          label="Search crypto"
-          setSearch={setSearch}
+          className="w-[250px]"
+          placeholder="Search crypto"
+          onChange={onSearchChange}
         />
       </div>
-      <StickyHeadCoinsTable
-        className="mt-[16px]"
-        sort={sort}
-        setSort={setSort}
-        rows={data?.coins}
-      />
+      <div className="mt-[16px]">
+        <StickyHeadCoinsTable
+          sort={sort}
+          setSort={setSort}
+          setPage={setPage}
+          rows={data?.coins}
+        />
+      </div>
       {
         data.total_pages > 1 &&
         <Pagination

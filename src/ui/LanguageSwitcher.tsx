@@ -3,7 +3,7 @@
 import { useState } from 'react';
 //ui
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import { SvgIcon } from '@mui/material'
+// import { SvgIcon } from '@mui/material'
 //icons
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 //types
@@ -23,7 +23,7 @@ const LANGS = ['UA', 'EN', 'RU'] as const;
 //   </SvgIcon>
 // )
 
-export const LanguageSwitcher: React.FC = () => {
+export const LanguageSwitcher: React.FC<{ sx: SelectProps['sx'] }> = ({sx}) => {
   const [selectedLanguage, setLanguage] = useState('UA');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -37,6 +37,7 @@ export const LanguageSwitcher: React.FC = () => {
       IconComponent={ExpandMoreIcon}
       variant="standard"
       disableUnderline
+      sx={sx}
     >
       {
         LANGS.map((language, index) => (

@@ -1,14 +1,12 @@
 'use client'
 import { useTheme } from '@mui/material/styles'
 import Table from "@mui/material/Table";
-import { cn } from "@/utils/cn";
 
-export const StickyHeedTable: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => {
+export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme()
 
   return (
     <Table
-      className={cn(className)}
       aria-label="simple table"
       sx={{
         '& .MuiTableHead-root': {

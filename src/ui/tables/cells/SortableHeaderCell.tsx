@@ -4,10 +4,10 @@ import { ArrowIcon } from '@/ui/icons/ArrowIcon';
 import type { TSortDir, TSort} from "@/modules/coins/CoinsApi";
 
 type TSortableHeaderCellProps = {
-  children: React.ReactNode
+  text: string;
   columnKey: string
   sort: TSort
-  onSortChange: (key : TSort['key'], dir: TSort['dir']) => void
+  onChange: (key : TSort['key'], dir: TSort['dir']) => void
 }
 
 const ArrowButton = ({
@@ -28,16 +28,16 @@ const ArrowButton = ({
 )
 
 export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
-  children,
+  text,
   columnKey,
   sort,
-  onSortChange,
+  onChange,
 }) => {
   const isActive = (dir: TSortDir) => sort.key === columnKey && sort.dir === dir
 
   const handleClick = (dir: TSortDir) => {
-    if (isActive(dir)) onSortChange(null, null)
-    else onSortChange(columnKey, dir)
+    if (isActive(dir)) onChange(null, null)
+    else onChange(columnKey, dir)
   }
 
   return (
@@ -55,8 +55,7 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
             onClick={() => handleClick('desc')}
           />
         </div>
-
-        <span>{children}</span>
+        <span>{text}</span>
       </div>
     </TableCell>
   )

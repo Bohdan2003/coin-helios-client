@@ -2,13 +2,16 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import type { TSort } from "@/modules/coins/CoinsApi";
 
+export type TSetPage = (page: number) => void;
+export type TSetSort = (key : TSort['key'], dir: TSort['dir']) => void;
+
 type Store = {
   page: number;
   sort: TSort;
   search: string;
   category: string;
-  setPage: (page: number) => void;
-  setSort: (key : TSort['key'], dir: TSort['dir']) => void;
+  setPage: TSetPage
+  setSort: TSetSort
   setSearch: (search: string) => void;
   setCategory: (category: string) => void;
 };

@@ -14,68 +14,68 @@ import { SortableHeaderCell } from "@/ui/tables/cells/SortableHeaderCell";
 import { BuyCell } from "@/ui/tables/cells/BuyCell";
 //utils
 import { NumberFormatter } from "@/utils/NumberFormatter";
-import { cn } from "@/utils/cn";
 //types
 import { TCoin, TSort } from "@/modules/coins/CoinsApi";
+import { TSetPage, TSetSort } from "@/app/sections/CoinsSection/store";
 
 type TStickyHeadCoinsTableProps = {
-  className?: string;
   sort: TSort;
-  setSort: (key : TSort['key'], dir: TSort['dir']) => void;
-  rows: TCoin[]
+  setPage: TSetPage;
+  setSort: TSetSort;
+  rows: TCoin[];
 }
 
 export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
-  className,
   sort,
   setSort,
+  setPage,
   rows,
 }) => {
-  if(!rows || rows.length === 0) return <p className={cn(className, 'text-center')}>No matched</p>
+  if(!rows || rows.length === 0) return <p className="text-center opacity-50">No matched</p>
+
+  const onSortChange = (key: TSort['key'], dir: TSort['dir']) => {
+    setSort(key, dir);
+    setPage(1);
+  }
 
   return (
-    <StickyHeedTable className={className}>
+    <StickyHeedTable>
       <TableHead>
         <TableRow>
           <TableCell>Coin</TableCell>
           <TableCell>Category</TableCell>
           <TableCell>Chain</TableCell>
           <SortableHeaderCell
+            text="1H"
             columnKey="percent_change_1h"
             sort={sort}
-            onSortChange={setSort}
-          >
-            1H
-          </SortableHeaderCell>
+            onChange={onSortChange}
+          />
           <SortableHeaderCell
+            text="24H"
             columnKey="percent_change_24h"
             sort={sort}
-            onSortChange={setSort}
-          >
-            24H
-          </SortableHeaderCell>
+            onChange={onSortChange}
+          />
           <TableCell>7Days</TableCell>
           <SortableHeaderCell
+            text="Price"
             columnKey="price"
             sort={sort}
-            onSortChange={setSort}
-          >
-            Price
-          </SortableHeaderCell>
+            onChange={onSortChange}
+          />
           <SortableHeaderCell
+            text="Marketcap"
             columnKey="market_cap"
             sort={sort}
-            onSortChange={setSort}
-          >
-            Marketcap
-          </SortableHeaderCell>
+            onChange={onSortChange}
+          />
           <SortableHeaderCell
+            text="Votes"
             columnKey="votes"
             sort={sort}
-            onSortChange={setSort}
-          >
-            Votes
-          </SortableHeaderCell>
+            onChange={onSortChange}
+          />
           <TableCell><span className="hidden">Buy</span></TableCell>
           <TableCell><span className="hidden">Favorite</span></TableCell>
         </TableRow>

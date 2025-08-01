@@ -5,6 +5,7 @@ import Image from "next/image"
 import { WelcomeSection } from "@/app/sections/WelcomeSection/WelcomeSection";
 import { TopCoinsSection } from "@/app/sections/TopCoinsSection/TopCoinsSection";
 import { CoinsSection } from "@/app/sections/CoinsSection/CoinsSection";
+import { PartnerSection } from "@/app/sections/PartnerSection/PartnerSection";
 //img url
 import lightBgUrl from "@/assets/images/home/light-bg.png"
 import darkBgUrl from "@/assets/images/home/dark-bg.png"
@@ -36,7 +37,12 @@ export default async function Home() {
           />
         </div>
       </div>
-      <CoinsSection/>
+      <div className="mt-[76px]">
+        <CoinsSection/>
+      </div>
+      <div className="mt-[140px]">
+        <PartnerSection/>
+      </div>
     </>
   );
 }

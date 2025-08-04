@@ -1,16 +1,17 @@
-'use server'
+'use server';
 //ui
-import Image from "next/image"
+import Image from 'next/image';
 //sections
-import { WelcomeSection } from "@/app/sections/WelcomeSection/WelcomeSection";
-import { TopCoinsSection } from "@/app/sections/TopCoinsSection/TopCoinsSection";
-import { CoinsSection } from "@/app/sections/CoinsSection/CoinsSection";
-import { PartnerSection } from "@/app/sections/PartnerSection/PartnerSection";
+import { WelcomeSection } from '@/app/sections/WelcomeSection/WelcomeSection';
+import { TopCoinsSection } from '@/app/sections/TopCoinsSection/TopCoinsSection';
+import { CoinsSection } from '@/app/sections/CoinsSection/CoinsSection';
+import { PartnerSection } from '@/app/sections/PartnerSection/PartnerSection';
+import { QuestionsSection } from '@/app/sections/QuestionsSection/QuestionsSection';
 //img url
-import lightBgUrl from "@/assets/images/home/light-bg.png"
-import darkBgUrl from "@/assets/images/home/dark-bg.png"
+import lightBgUrl from '@/assets/images/home/light-bg.png';
+import darkBgUrl from '@/assets/images/home/dark-bg.png';
 //utils
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
 //TODO: need to add loading
 export default async function Home() {
@@ -42,6 +43,9 @@ export default async function Home() {
       </div>
       <div className="mt-[140px]">
         <PartnerSection/>
+      </div>
+      <div className="mt-[140px]">
+        <QuestionsSection/>
       </div>
     </>
   );

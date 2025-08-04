@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 export type TBaseTextareaProps = {
   error?: string | null;
@@ -12,10 +12,10 @@ export type TBaseTextareaProps = {
 const textareaCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none'
 
 export const BaseTextarea: React.FC<TBaseTextareaProps> = ({
-   error,
-   fullWidth,
-   className,
-   ...otherProps
+  error,
+  fullWidth,
+  className,
+  ...otherProps
 }) => {
   return (
     <div className={cn( className, 'font-inter', fullWidth && 'w-full' )}>

@@ -1,6 +1,9 @@
-import { cn } from "@/utils/cn";
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+//ui
 import Button from '@mui/material/Button';
+//icons
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+//utils
+import { cn } from '@/utils/cn';
 
 export const Auth: React.FC<{ className?: string }> = ({ className }) => {
   return (
@@ -9,5 +12,5 @@ export const Auth: React.FC<{ className?: string }> = ({ className }) => {
       variant="outlined"
       startIcon={<PersonOutlineOutlinedIcon/>}
     >Join</Button>
-  )
-}
+  );
+};

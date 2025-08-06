@@ -1,4 +1,6 @@
-'use server';
+'use client';
+//hooks
+import { useColorScheme } from '@mui/material/styles';
 //ui
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -7,22 +9,23 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 //utils
 import { cn } from '@/utils/cn';
-import { cookies } from 'next/headers';
+
 
 export const Question: React.FC<{
   question: string;
   answer: string;
-}> = async ({
+}> = ({
   question,
   answer,
 }) => {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get('theme')?.value;
+  const { mode } = useColorScheme();
 
   return (
     <div className={cn(
-      'rounded-[12px]',
-      theme === 'light' ? 'border border-[var(--dark-gray)]' : 'bg-[var(--second-dark-bg)]'
+      'rounded-[12px] border',
+      mode === 'light'
+        ? 'border-[var(--darkGray)]'
+        : 'border-transparent bg-[var(--darkBg2)]'
     )}>
       <Accordion
         elevation={0}

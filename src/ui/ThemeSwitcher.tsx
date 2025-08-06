@@ -1,44 +1,41 @@
+'use client';
+//hooks
+import { useColorScheme } from '@mui/material';
+//ui
+import { IconButton } from '@mui/material';
 //icons
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
-//utils
-import { cookies } from 'next/headers';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 //types
-import { TTheme } from "@/utils/types/theme";
+import type { IconProps } from '@mui/material';
 
-export const ThemeSwitcher: React.FC = async () => {
-  const cookieStore = await cookies();
-  const currentTheme: TTheme = cookieStore.get('theme')?.value === 'dark' ? 'dark' : 'light';
+export const ThemeSwitcher: React.FC<{ sx?: IconProps['sx'] }> = ({ sx }) => {
+  const { mode, setMode } = useColorScheme();
 
-  async function switchTheme() {
-    'use server';
-    const cookieStore = await cookies();
-    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    cookieStore.set('theme', nextTheme, {
-      path: '/',
-      httpOnly: false,
-      maxAge: 60 * 60 * 24 * 365, // 1 год
-    });
-
-    revalidatePath('/');
-    redirect('/');
-  }
+  const handleClick = () => {
+    setMode(mode === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <form action={switchTheme}>
-      <button
-        className="cursor-pointer"
-        type="submit"
-      >
-        {
-          currentTheme === 'dark'
-            ? <LightModeOutlinedIcon/>
-            : <NightlightOutlinedIcon/>
-        }
-      </button>
-    </form>
+    <IconButton onClick={handleClick}>
+      <LightModeOutlinedIcon
+        sx={{
+          display: 'block',
+          '[data-dark] &': {
+            display: 'none',
+          },
+          ...sx
+        }}
+      />
+      <NightlightOutlinedIcon
+        sx={{
+          display: 'none',
+          '[data-dark] &': {
+            display: 'block',
+          },
+          ...sx
+        }}
+      />
+    </IconButton>
   );
-}
+};

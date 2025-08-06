@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-dark], [data-dark] *));
+
 :root {
   --blue: #1E74FE;
   --purple: #4E5897;
@@ -7,15 +9,15 @@
   --orange: #FD6D51;
   --black: #14151A;
   --white: #FFFFFF;
-  --dark-gray: #D1D6DD;
+  --darkGray: #D1D6DD;
 
   /*light theme*/
-  --light-bg: #FFFFFF;
-  --second-light-bg: #F6F6F6;
+  --lightBg: #FFFFFF;
+  --lightBg2: #F6F6F6;
 
   /*dark theme*/
-  --dark-bg: #1F1D2B;
-  --second-dark-bg: #252734;
+  --darkBg: #1F1D2B;
+  --darkBg2: #252734;
 }
 
 @theme inline {

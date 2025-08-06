@@ -1,7 +1,7 @@
-'use client'
+'use client';
 import TableCell from '@mui/material/TableCell';
 import { ArrowIcon } from '@/ui/icons/ArrowIcon';
-import type { TSortDir, TSort} from "@/modules/coins/CoinsApi";
+import type { TSortDir, TSort } from '@/modules/coins/CoinsApi';
 
 type TSortableHeaderCellProps = {
   text: string;
@@ -11,9 +11,9 @@ type TSortableHeaderCellProps = {
 }
 
 const ArrowButton = ({
-   dir,
-   active,
-   onClick,
+  dir,
+  active,
+  onClick,
 }: {
   dir: TSortDir
   active: boolean
@@ -25,7 +25,7 @@ const ArrowButton = ({
   >
     <ArrowIcon active={active} />
   </button>
-)
+);
 
 export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   text,
@@ -36,9 +36,9 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   const isActive = (dir: TSortDir) => sort.key === columnKey && sort.dir === dir
 
   const handleClick = (dir: TSortDir) => {
-    if (isActive(dir)) onChange(null, null)
-    else onChange(columnKey, dir)
-  }
+    if (isActive(dir)) onChange(null, null);
+    else onChange(columnKey, dir);
+  };
 
   return (
     <TableCell>
@@ -58,5 +58,5 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
         <span>{text}</span>
       </div>
     </TableCell>
-  )
-}
+  );
+};

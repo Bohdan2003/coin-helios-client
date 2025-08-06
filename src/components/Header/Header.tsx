@@ -1,5 +1,5 @@
-import { DesktopHeader } from "@/components/Header/DesktopHeader";
-import { MobileHeader } from "@/components/Header/MobileHeader";
+import { DesktopHeader } from '@/components/Header/DesktopHeader';
+import { MobileHeader } from '@/components/Header/MobileHeader';
 
 export const Header: React.FC = () => {
 

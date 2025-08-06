@@ -47,11 +47,11 @@ export const Footer = () => {
           <div className="row-start-1 lg:row-start-auto sm:col-start-3 lg:col-start-auto flex items-center lg:justify-center gap-[20px] xl:gap-[60px]">
             <LanguageSwitcher
               sx={{
-                color: '#fff',
-                '& .MuiSelect-icon': {color: '#fff'},
+                color: 'var(--white)',
+                '& .MuiSelect-icon': { color: 'var(--white)' },
               }}
             />
-            <ThemeSwitcher/>
+            <ThemeSwitcher sx={{ color: 'var(--white)' }}/>
           </div>
           <p className="row-start-6 sm:row-start-auto -mt-[24px] sm:mt-0">© 2024 All rights reserved</p>
           <a className="row-start-5 sm:row-start-auto" href="#">Terms of Use</a>

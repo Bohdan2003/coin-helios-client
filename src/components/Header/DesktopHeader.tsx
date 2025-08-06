@@ -20,5 +20,5 @@ export const DesktopHeader: React.FC = () => {
         <Auth/>
       </div>
     </header>
-  )
-}
+  );
+};

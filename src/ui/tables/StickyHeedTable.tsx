@@ -1,9 +1,9 @@
-'use client'
-import { useTheme } from '@mui/material/styles'
-import Table from "@mui/material/Table";
+'use client';
+import { useColorScheme } from '@mui/material/styles';
+import Table from '@mui/material/Table';
 
 export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const theme = useTheme()
+  const { mode } = useColorScheme();
 
   return (
     <Table
@@ -12,8 +12,10 @@ export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ child
         '& .MuiTableHead-root': {
           position: 'sticky',
           top: 0,
-          zIndex: theme.zIndex.appBar,
-          backgroundColor: theme.palette.background.paper,
+          zIndex: 10,
+          backgroundColor: mode === 'dark'
+            ? 'var(--darkBg2)'
+            : 'var(--lightBg2)',
         },
 
         '& .MuiTableHead-root .MuiTableCell-root:first-of-type': {

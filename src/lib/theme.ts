@@ -1,149 +1,165 @@
-'use client'
-import { createTheme, Theme } from '@mui/material/styles';
-import type { Components } from "@mui/material/styles";
-import { alpha } from '@mui/material/styles';
+'use client';
+import { createTheme } from '@mui/material/styles';
 
-const baseTypography = {
-  allVariants: {
-    lineHeight: 1.2,
+export const theme = createTheme({
+  cssVariables: {
+    colorSchemeSelector: 'data',
+    cssVarPrefix: '',
+    nativeColor: true,
   },
-};
-
-const baseComponents = {
-  MuiButton: {
-    styleOverrides: {
-      root: {
-        fontSize: 16,
-        fontWeight: 400,
-        textTransform: 'none' as const,
-        borderRadius: 12,
-        boxShadow: 'none',
-      },
-      outlined:({ theme }) => ({
-        color: theme.palette.text.primary,
-        '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-          color: theme.palette.primary.main,
+  colorSchemes: {
+    light: {
+      palette: {
+        mode: 'light',
+        primary: {
+          main: 'var(--blue)',
         },
-        '& .MuiTouchRipple-root .MuiTouchRipple-child': {
-          backgroundColor: theme.palette.primary.main,
+        secondary: {
+          main: 'var(--blue)',
         },
-      }),
-      sizeSmall: { padding: '6px 10px' },
-      sizeMedium: { padding: '10px 16px' },
-    },
-    variants: [
-      {
-        props: { variant: 'contained', color: 'secondary' },
-        style: ({ theme }) => ({
-          color: theme.palette.primary.main,
-          backgroundColor: alpha(theme.palette.primary.main, 0.3),
-        }),
-      },
-    ],
-  },
-  MuiMenu: {
-    styleOverrides: {
-      paper: ({ theme }) => ({
-        borderRadius: 8,
-        backgroundColor: theme.palette.background.default,
-      }),
-    },
-  },
-
-  MuiTableContainer: {
-    styleOverrides: {
-      root: {
-        boxShadow: 'none',
-      },
-    },
-  },
-  MuiTableBody: {
-    styleOverrides: {
-      root: {
-        '& .MuiTableCell-root': {
-          borderBottom: 'none',
+        action: {
+          active: 'var(--black)',
+        },
+        success: {
+          main: 'var(--green)',
+        },
+        error: {
+          main: 'var(--orange)',
+        },
+        background: {
+          default: 'var(--lightBg)',
+          paper: 'var(--lightBg2)',
+        },
+        divider: 'var(--darkGray)',
+        text: {
+          primary: 'var(--black)',
+          secondary: 'var(--black)',
         },
       },
     },
+    dark: {
+      palette: {
+        mode: 'dark',
+        primary: {
+          main: 'var(--blue)',
+        },
+        secondary: {
+          main: 'var(--blue)',
+        },
+        action: {
+          active: 'var(--white)',
+        },
+        success: {
+          main: 'var(--green)',
+        },
+        error: {
+          main: 'var(--orange)',
+        },
+        background: {
+          default: 'var(--darkBg)',
+          paper: 'var(--darkBg2)',
+        },
+        divider: 'var(--darkGray)',
+        text: {
+          primary: 'var(--white)',
+          secondary: 'var(--white)',
+        },
+      },
+    },
   },
-  MuiTableRow: {
-    styleOverrides: {
-      root: ({ theme }) => ({
-        '&:not(:last-child)': {
-          position: 'relative',
-          '&:after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 0,
-            left: '6px',
-            right: '16px',
-            height: 1,
-            backgroundColor: theme.palette.divider,
-            borderRadius: 0.5,
+  typography: {
+    allVariants: { lineHeight: 1.2 },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: 16,
+          fontWeight: 400,
+          textTransform: 'none',
+          borderRadius: 12,
+          boxShadow: 'none',
+        },
+        outlined: {
+          color: 'var(--palette-text-primary)',
+          '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+            color: 'var(--palette-primary-main)',
+          },
+          '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+            backgroundColor: 'var(--palette-primary-main)',
           },
         },
-      }),
+        sizeSmall: { padding: '6px 10px' },
+        sizeMedium: { padding: '10px 16px' },
+      },
+      variants: [
+        {
+          props: { variant: 'contained', color: 'secondary' },
+          style: {
+            color: 'var(--palette-primary-main)',
+            backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 30%, transparent)',
+          },
+        },
+      ],
     },
-  },
-  MuiTableCell: {
-    styleOverrides: {
-      head: {
-        fontSize: 14,
-        borderBottom: 'none',
-        opacity: 0.6,
-        fontWeight: 700,
-        backgroundColor: 'transparent',
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          borderRadius: 8,
+          backgroundColor: 'var(--palette-background-default)',
+        },
+      },
+    },
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
+      },
+    },
+    MuiTableBody: {
+      styleOverrides: {
+        root: {
+          '& .MuiTableCell-root': {
+            borderBottom: 'none',
+          },
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          '&:not(:last-child)': {
+            position: 'relative',
+            '&:after': {
+              content: '""',
+              position: 'absolute',
+              bottom: 0,
+              left: '6px',
+              right: '16px',
+              height: 1,
+              backgroundColor: 'var(--palette-divider)',
+              borderRadius: 0.5,
+            },
+            '[data-dark] &': {
+              '&:after': {
+                opacity: 0.2,
+              },
+            },
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        head: {
+          fontSize: 14,
+          borderBottom: 'none',
+          opacity: 0.6,
+          fontWeight: 700,
+          backgroundColor: 'transparent',
+        },
       },
     },
   },
-} satisfies Components<Theme>;
-
-
-export const lightTheme = createTheme({
-  cssVariables: true,
-  palette: {
-    mode: 'light',
-    divider: 'var(--dark-gray)',
-    background: {
-      default: 'var(--light-bg)',
-      paper: 'var(--second-light-bg)'
-    },
-    text: {
-      primary: 'var(--black)',
-      secondary: 'var(--black)',
-    },
-    primary: {
-      main: '#1E74FE'
-    },
-  },
-  typography: baseTypography,
-  components: baseComponents,
 });
-
-
-export const darkTheme = createTheme({
-  cssVariables: true,
-  palette: {
-    mode: 'dark',
-    background: {
-      default: 'var(--dark-bg)',
-      paper: 'var(--second-dark-bg)'
-    },
-    text: {
-      primary: '#FFFFFF',
-      secondary: '#FFFFFF',
-    },
-    primary: {
-      main: '#1E74FE'
-    }
-  },
-  typography: baseTypography,
-  components: baseComponents,
-});
-
-
-
-
-
-
-

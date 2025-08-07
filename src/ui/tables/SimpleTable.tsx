@@ -14,7 +14,6 @@ export const SimpleTable: React.FC<{ children: React.ReactNode }> = ({ children 
         '& .MuiTableHead-root .MuiTableCell-root': {
           paddingBottom: '6px',
         },
-
         '[data-dark] &': {
           border: '1px solid transparent',
           backgroundColor: 'var(--darkBg2)',

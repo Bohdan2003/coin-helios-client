@@ -14,4 +14,4 @@ export const getCategories = () => [
   { key: 'new',     label: 'New',     icon: <SouthIcon sx={{ rotate: '180deg' }} /> },
   { key: 'gainers', label: 'Gainers', icon: <BarChartIcon /> },
   { key: 'saved',   label: 'Saved',   icon: <StarBorderIcon /> },
-]
+];

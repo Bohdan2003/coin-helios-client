@@ -1,13 +1,19 @@
 'use client';
+//ui
 import TableCell from '@mui/material/TableCell';
+//icons
 import { ArrowIcon } from '@/ui/icons/ArrowIcon';
+//types
 import type { TSortDir, TSort } from '@/modules/coins/CoinsApi';
+//utils
+import { cn } from '@/utils/cn';
 
 type TSortableHeaderCellProps = {
   text: string;
-  columnKey: string
-  sort: TSort
-  onChange: (key : TSort['key'], dir: TSort['dir']) => void
+  loading: boolean;
+  columnKey: string;
+  sort: TSort;
+  onChange: (key : TSort['key'], dir: TSort['dir']) => void;
 }
 
 const ArrowButton = ({
@@ -31,9 +37,10 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   text,
   columnKey,
   sort,
+  loading,
   onChange,
 }) => {
-  const isActive = (dir: TSortDir) => sort.key === columnKey && sort.dir === dir
+  const isActive = (dir: TSortDir) => sort.key === columnKey && sort.dir === dir;
 
   const handleClick = (dir: TSortDir) => {
     if (isActive(dir)) onChange(null, null);
@@ -42,7 +49,10 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
 
   return (
     <TableCell>
-      <div className="flex items-center gap-1.5">
+      <div className={cn(
+        loading && 'pointer-events-none opacity-50',
+        'flex items-center gap-1.5'
+      )}>
         <div className="grid gap-1.5">
           <ArrowButton
             dir="asc"

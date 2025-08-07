@@ -1,9 +1,28 @@
 'use client';
-import { useColorScheme } from '@mui/material/styles';
 import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import { Skeleton } from '@mui/material';
 
-export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { mode } = useColorScheme();
+export const StickyHeedTable: React.FC<{
+  headRow: React.ReactNode,
+  bodyRows: React.ReactNode,
+  rowsAmount: number,
+  colsAmount: number,
+  pending: boolean;
+  error: boolean;
+}> = ({
+  headRow,
+  bodyRows,
+  rowsAmount,
+  colsAmount,
+  pending,
+  error,
+}) => {
+  const skeletonRows = Array.from({ length: rowsAmount });
+  const skeletonCols = Array.from({ length: colsAmount });
 
   return (
     <Table
@@ -13,9 +32,10 @@ export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ child
           position: 'sticky',
           top: 0,
           zIndex: 10,
-          backgroundColor: mode === 'dark'
-            ? 'var(--darkBg2)'
-            : 'var(--lightBg2)',
+          backgroundColor: 'var(--lightBg2)',
+          '[data-dark] &': {
+            backgroundColor: 'var(--darkBg2)',
+          }
         },
 
         '& .MuiTableHead-root .MuiTableCell-root:first-of-type': {
@@ -29,7 +49,37 @@ export const StickyHeedTable: React.FC<{ children: React.ReactNode }> = ({ child
         }
       }}
     >
-      { children }
+      <TableHead>
+        { headRow }
+      </TableHead>
+      <TableBody>
+        {
+          error
+            ?
+            <TableRow>
+              <TableCell
+                colSpan={colsAmount}
+                sx={{
+                  textAlign: 'center',
+                  py: 4,
+                  opacity: 0.5
+                }}
+              >
+                Error...
+              </TableCell>
+            </TableRow>
+            : pending
+              ?
+              skeletonRows.map((_, i) => (
+                <TableRow key={i}>
+                  { skeletonCols.map((_, j) => (
+                    <TableCell key={`${i}${j}`}><Skeleton height={34}/></TableCell>
+                  )) }
+                </TableRow>
+              ))
+              : bodyRows
+        }
+      </TableBody>
     </Table>
-  )
-}
+  );
+};

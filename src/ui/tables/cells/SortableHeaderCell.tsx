@@ -10,7 +10,7 @@ import { cn } from '@/utils/cn';
 
 type TSortableHeaderCellProps = {
   text: string;
-  loading: boolean;
+  isLoading: boolean;
   columnKey: string;
   sort: TSort;
   onChange: (key : TSort['key'], dir: TSort['dir']) => void;
@@ -37,7 +37,7 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   text,
   columnKey,
   sort,
-  loading,
+  isLoading,
   onChange,
 }) => {
   const isActive = (dir: TSortDir) => sort.key === columnKey && sort.dir === dir;
@@ -50,7 +50,7 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   return (
     <TableCell>
       <div className={cn(
-        loading && 'pointer-events-none opacity-50',
+        isLoading && 'pointer-events-none opacity-50',
         'flex items-center gap-1.5'
       )}>
         <div className="grid gap-1.5">

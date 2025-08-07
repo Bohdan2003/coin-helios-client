@@ -10,6 +10,7 @@ import { VotesCell } from '@/ui/tables/cells/VotesCell';
 import { FavoriteCell } from '@/ui/tables/cells/FavoriteCell';
 import { SortableHeaderCell } from '@/ui/tables/cells/SortableHeaderCell';
 import { BuyCell } from '@/ui/tables/cells/BuyCell';
+import { StatusCell } from '@/ui/tables/cells/StatusCell';
 //utils
 import { NumberFormatter } from '@/utils/NumberFormatter';
 //types
@@ -18,9 +19,9 @@ import { TSetPage, TSetSort } from '@/app/sections/CoinsSection/store';
 
 type TStickyHeadCoinsTableProps = {
   sort: TSort;
-  loading: boolean;
-  pending: boolean;
-  error: boolean;
+  isLoading: boolean;
+  isPending: boolean;
+  isError: boolean;
   setPage: TSetPage;
   setSort: TSetSort;
   rows?: TCoin[];
@@ -28,9 +29,9 @@ type TStickyHeadCoinsTableProps = {
 
 export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   sort,
-  loading,
-  pending,
-  error,
+  isLoading,
+  isPending,
+  isError,
   setSort,
   setPage,
   rows,
@@ -44,8 +45,8 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
     <StickyHeedTable
       rowsAmount={50}
       colsAmount={11}
-      pending={pending}
-      error={error}
+      isPending={isPending}
+      isError={isError}
       headRow={
         <TableRow>
           <TableCell>Coin</TableCell>
@@ -56,14 +57,14 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
             columnKey="percent_change_1h"
             sort={sort}
             onChange={onSortChange}
-            loading={loading}
+            isLoading={isLoading}
           />
           <SortableHeaderCell
             text="24H"
             columnKey="percent_change_24h"
             sort={sort}
             onChange={onSortChange}
-            loading={loading}
+            isLoading={isLoading}
           />
           <TableCell>7Days</TableCell>
           <SortableHeaderCell
@@ -71,21 +72,21 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
             columnKey="price"
             sort={sort}
             onChange={onSortChange}
-            loading={loading}
+            isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Marketcap"
             columnKey="market_cap"
             sort={sort}
             onChange={onSortChange}
-            loading={loading}
+            isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Votes"
             columnKey="votes"
             sort={sort}
             onChange={onSortChange}
-            loading={loading}
+            isLoading={isLoading}
           />
           <TableCell><span className="hidden">Buy</span></TableCell>
           <TableCell><span className="hidden">Favorite</span></TableCell>
@@ -97,16 +98,10 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
             !rows || rows?.length < 1
               ?
               <TableRow>
-                <TableCell
-                  colSpan={11}
-                  sx={{
-                    textAlign: 'center',
-                    py: 4,
-                    opacity: 0.5
-                  }}
-                >
-                  No matched
-                </TableCell>
+                <StatusCell
+                  text="No matched"
+                  colsAmount={11}
+                />
               </TableRow>
               :
               rows?.map(row => (

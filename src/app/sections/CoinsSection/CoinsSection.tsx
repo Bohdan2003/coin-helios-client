@@ -72,9 +72,9 @@ export const CoinsSection: React.FC = () => {
         <div className="mt-[16px]">
           <StickyHeadCoinsTable
             sort={sort}
-            loading={isLoading}
-            pending={isPending}
-            error={isError}
+            isLoading={isLoading}
+            isPending={isPending}
+            isError={isError}
             setSort={setSort}
             setPage={setPage}
             rows={data?.coins}

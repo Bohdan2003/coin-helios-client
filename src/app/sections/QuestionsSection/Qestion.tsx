@@ -1,6 +1,4 @@
 'use client';
-//hooks
-import { useColorScheme } from '@mui/material/styles';
 //ui
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -18,14 +16,12 @@ export const Question: React.FC<{
   question,
   answer,
 }) => {
-  const { mode } = useColorScheme();
 
   return (
     <div className={cn(
       'rounded-[12px] border',
-      mode === 'light'
-        ? 'border-[var(--darkGray)]'
-        : 'border-transparent bg-[var(--darkBg2)]'
+      'border-[var(--darkGray)]',
+      'dark:border-transparent dark:bg-[var(--darkBg2)]',
     )}>
       <Accordion
         elevation={0}

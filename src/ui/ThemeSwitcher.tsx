@@ -17,25 +17,17 @@ export const ThemeSwitcher: React.FC<{ sx?: IconProps['sx'] }> = ({ sx }) => {
   };
 
   return (
-    <IconButton onClick={handleClick}>
-      <LightModeOutlinedIcon
-        sx={{
-          display: 'block',
-          '[data-dark] &': {
-            display: 'none',
-          },
-          ...sx
-        }}
-      />
-      <NightlightOutlinedIcon
-        sx={{
-          display: 'none',
-          '[data-dark] &': {
-            display: 'block',
-          },
-          ...sx
-        }}
-      />
-    </IconButton>
+    <>
+      <div className="block dark:hidden">
+        <IconButton onClick={handleClick}>
+          <LightModeOutlinedIcon sx={sx}/>
+        </IconButton>
+      </div>
+      <div className="hidden dark:block">
+        <IconButton onClick={handleClick}>
+          <NightlightOutlinedIcon sx={sx}/>
+        </IconButton>
+      </div>
+    </>
   );
 };

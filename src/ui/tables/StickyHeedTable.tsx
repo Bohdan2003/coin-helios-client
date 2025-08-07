@@ -1,25 +1,29 @@
 'use client';
+//ui
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import { Skeleton } from '@mui/material';
+import { StatusCell } from '@/ui/tables/cells/StatusCell';
 
-export const StickyHeedTable: React.FC<{
-  headRow: React.ReactNode,
-  bodyRows: React.ReactNode,
-  rowsAmount: number,
-  colsAmount: number,
-  pending: boolean;
-  error: boolean;
-}> = ({
+type TStickyHeedTableProps = {
+  headRow: React.ReactNode;
+  bodyRows: React.ReactNode;
+  rowsAmount: number;
+  colsAmount: number;
+  isPending: boolean;
+  isError: boolean;
+}
+
+export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
   headRow,
   bodyRows,
   rowsAmount,
   colsAmount,
-  pending,
-  error,
+  isPending,
+  isError,
 }) => {
   const skeletonRows = Array.from({ length: rowsAmount });
   const skeletonCols = Array.from({ length: colsAmount });
@@ -32,9 +36,9 @@ export const StickyHeedTable: React.FC<{
           position: 'sticky',
           top: 0,
           zIndex: 10,
-          backgroundColor: 'var(--lightBg2)',
+          backgroundColor: 'var(--palette-background-paper)',
           '[data-dark] &': {
-            backgroundColor: 'var(--darkBg2)',
+            backgroundColor: 'var(--palette-background-paper)',
           }
         },
 
@@ -54,26 +58,20 @@ export const StickyHeedTable: React.FC<{
       </TableHead>
       <TableBody>
         {
-          error
+          isError
             ?
             <TableRow>
-              <TableCell
-                colSpan={colsAmount}
-                sx={{
-                  textAlign: 'center',
-                  py: 4,
-                  opacity: 0.5
-                }}
-              >
-                Error...
-              </TableCell>
+              <StatusCell
+                text="Something went wrong"
+                colsAmount={11}
+              />
             </TableRow>
-            : pending
+            : isPending
               ?
               skeletonRows.map((_, i) => (
                 <TableRow key={i}>
                   { skeletonCols.map((_, j) => (
-                    <TableCell key={`${i}${j}`}><Skeleton height={34}/></TableCell>
+                    <TableCell key={`${i}${j}`}><Skeleton height={40}/></TableCell>
                   )) }
                 </TableRow>
               ))

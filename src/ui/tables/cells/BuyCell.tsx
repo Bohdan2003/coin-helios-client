@@ -1,23 +1,25 @@
-'use client'
-import { useTheme } from "@mui/material/styles";
+'use client';
+//hooks
+import { useColorScheme } from '@mui/material';
+//ui
 import TableCell from '@mui/material/TableCell';
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
 export const BuyCell: React.FC<{ id: string }> = ({
   id,
 }) => {
-  const theme = useTheme();
+  const { mode } = useColorScheme();
 
   return (
     <TableCell>
       <Button
         variant="contained"
-        color={theme.palette.mode === 'light' ? 'secondary' : 'primary'}
+        color={mode === 'light' ? 'secondary' : 'primary'}
         size="small"
-        onClick={() => {console.log(id)}}
+        onClick={() => { console.log(id); }}
       >
         Buy
       </Button>
     </TableCell>
-  )
-}
+  );
+};

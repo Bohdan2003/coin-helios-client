@@ -8,15 +8,15 @@ export const SimpleTable: React.FC<{ children: React.ReactNode }> = ({ children 
     <TableContainer
       className="mt-[16px]"
       sx={{
-        border: '1px solid var(--darkGray)',
-        backgroundColor: 'var(--lightBg)',
+        border: '1px solid var(--palette-divider)',
+        backgroundColor: 'var(--palette-background-default)',
         borderRadius: '24px',
         '& .MuiTableHead-root .MuiTableCell-root': {
           paddingBottom: '6px',
         },
         '[data-dark] &': {
           border: '1px solid transparent',
-          backgroundColor: 'var(--darkBg2)',
+          backgroundColor: 'var(--palette-background-paper)',
         },
       }}
     >
@@ -25,4 +25,4 @@ export const SimpleTable: React.FC<{ children: React.ReactNode }> = ({ children 
       </Table>
     </TableContainer>
   );
-}
+};

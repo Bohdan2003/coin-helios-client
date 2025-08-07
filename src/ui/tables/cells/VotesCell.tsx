@@ -1,5 +1,8 @@
 'use client';
+//ui
+import { IconButton } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
+//icons
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 
 type TVotesCellProps = {
@@ -14,10 +17,11 @@ export const VotesCell: React.FC<TVotesCellProps> = ({
   return (
     <TableCell>
       <div className="flex items-center gap-[6px]">
-        <button
-          className="cursor-pointer"
+        <IconButton
           onClick={() => { console.log(id); }}
-        ><ThumbUpOutlinedIcon/></button>
+        >
+          <ThumbUpOutlinedIcon/>
+        </IconButton>
         <span>{votes}</span>
       </div>
     </TableCell>

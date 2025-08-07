@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
-import type { TSort } from "@/modules/coins/CoinsApi";
+import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
+import type { TSort } from '@/modules/coins/CoinsApi';
 
 export type TSetPage = (page: number) => void;
 export type TSetSort = (key : TSort['key'], dir: TSort['dir']) => void;

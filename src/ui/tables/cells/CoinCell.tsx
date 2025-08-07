@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from 'next/image';
 import TableCell from '@mui/material/TableCell';
 
 type TCoinCellProps = {
@@ -30,5 +30,5 @@ export const CoinCell: React.FC<TCoinCellProps> = ({
         </div>
       </div>
     </TableCell>
-  )
-}
+  );
+};

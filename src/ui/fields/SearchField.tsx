@@ -1,13 +1,13 @@
 //hooks
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 //ui
-import { BaseTextField } from "@/ui/fields/BaseTextField";
+import { BaseTextField } from '@/ui/fields/BaseTextField';
 //icons
 import SearchIcon from '@mui/icons-material/Search';
 //utils
-import { debounce } from "@/utils/debounce";
+import { debounce } from '@/utils/debounce';
 //types
-import { TBaseTextFieldProps } from "@/ui/fields/BaseTextField";
+import { TBaseTextFieldProps } from '@/ui/fields/BaseTextField';
 
 type TSearchFieldProps = {
   className?: string;
@@ -21,10 +21,10 @@ export const SearchField: React.FC<TSearchFieldProps> = ({
   const [value, setValue] = useState<string>('');
   const debouncedSetSearch = useMemo(
     () => debounce((value: string) => {
-      onChange(value)
+      onChange(value);
     }, 400),
     [onChange]
-  )
+  );
 
   return (
     <BaseTextField
@@ -36,5 +36,5 @@ export const SearchField: React.FC<TSearchFieldProps> = ({
       }}
       {...otherProps}
     />
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import { cn } from "@/utils/cn";
-import { Checkbox } from "@mui/material";
+import { cn } from '@/utils/cn';
+import { Checkbox } from '@mui/material';
 
 export type TBaseCheckboxProps = {
   label?: React.ReactNode;
@@ -21,18 +21,18 @@ export const BaseCheckbox: React.FC<TBaseCheckboxProps> = ({
       {
         label
           ?
-            <label className="flex items-center gap-[2px] font-inter">
-              <Checkbox checked={value} {...otherProps} />
-              <div>
-                {label}
-              </div>
-            </label>
-          :
+          <label className="flex items-center gap-[2px] font-inter">
             <Checkbox checked={value} {...otherProps} />
+            <div>
+              {label}
+            </div>
+          </label>
+          :
+          <Checkbox checked={value} {...otherProps} />
       }
       {
         error && <p className="text-[14px] text-orange ml-[4px] mt-[4px]">{error}</p>
       }
     </div>
-  )
-}
+  );
+};

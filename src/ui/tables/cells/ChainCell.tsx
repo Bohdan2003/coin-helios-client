@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 import TableCell from '@mui/material/TableCell';
 
 type TChainCellProps = {
@@ -23,5 +23,5 @@ export const ChainCell: React.FC<TChainCellProps> = ({
         <span>{name}</span>
       </div>
     </TableCell>
-  )
-}
+  );
+};

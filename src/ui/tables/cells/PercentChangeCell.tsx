@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 import TableCell from '@mui/material/TableCell';
 
 export const PercentChangeCell: React.FC<{percent: number}> = ({ percent }) => {

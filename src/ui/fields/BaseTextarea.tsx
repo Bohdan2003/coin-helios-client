@@ -9,7 +9,7 @@ export type TBaseTextareaProps = {
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const textareaCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none'
+const textareaCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none';
 
 export const BaseTextarea: React.FC<TBaseTextareaProps> = ({
   error,
@@ -38,5 +38,5 @@ export const BaseTextarea: React.FC<TBaseTextareaProps> = ({
         error && <p className="text-[14px] text-orange ml-[4px] mt-[4px]">{error}</p>
       }
     </div>
-  )
-}
+  );
+};

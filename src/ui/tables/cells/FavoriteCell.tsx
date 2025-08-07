@@ -10,10 +10,10 @@ export const FavoriteCell: React.FC<{id: string}> = ({
   return (
     <TableCell>
       <IconButton
-        onClick={() => {console.log(id)}}
+        onClick={() => { console.log(id); }}
       >
         <StarBorderOutlinedIcon/>
       </IconButton>
     </TableCell>
-  )
-}
+  );
+};

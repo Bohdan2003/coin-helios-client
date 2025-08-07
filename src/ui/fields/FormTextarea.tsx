@@ -1,7 +1,7 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { BaseTextarea } from "@/ui/fields/BaseTextarea";
+import { BaseTextarea } from '@/ui/fields/BaseTextarea';
 //types
-import type { TBaseTextareaProps} from "@/ui/fields/BaseTextarea";
+import type { TBaseTextareaProps } from '@/ui/fields/BaseTextarea';
 
 type TFormTextareaProps = {
   name: string;

@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { BaseCheckbox, TBaseCheckboxProps } from "@/ui/fields/BaseCheckbox";
+import { BaseCheckbox, TBaseCheckboxProps } from '@/ui/fields/BaseCheckbox';
 
 type TFormCheckboxProps = {
   name: string;

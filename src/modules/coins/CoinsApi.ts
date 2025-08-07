@@ -1,7 +1,7 @@
 //utils
-import { apiGetRequest } from "@/utils/apiInstance";
+import { apiGetRequest } from '@/utils/apiInstance';
 //types
-import { ResponseWithPagination } from "@/utils/types/api";
+import { ResponseWithPagination } from '@/utils/types/api';
 
 export type TSortDir = 'asc' | 'desc'
 

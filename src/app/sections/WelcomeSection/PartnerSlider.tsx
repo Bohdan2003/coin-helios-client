@@ -4,16 +4,16 @@ import { useState } from 'react';
 //components
 import { useKeenSlider } from 'keen-slider/react';
 //utils
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 //types
 import type {
   KeenSliderInstance,
   KeenSliderOptions
 } from 'keen-slider';
+//helpers
+import { getSlidesData } from '@/app/sections/WelcomeSection/helper';
 //styles
 import 'keen-slider/keen-slider.min.css';
-//helpers
-import { getSlidesData } from "@/app/sections/WelcomeSection/helper";
 
 type TSlide = {
   id: string;
@@ -59,7 +59,7 @@ export const PartnerSlider: React.FC = () => {
       loop: true,
       drag: true,
       slides: {
-        origin: "center",
+        origin: 'center',
         perView: 1,
         spacing: 10,
       },
@@ -74,7 +74,7 @@ export const PartnerSlider: React.FC = () => {
   return (
     <div className="relative">
       <div
-        className="keen-slider max-w-[790px] h-[338px] rounded-[24px]"
+        className="keen-slider md:max-w-[790px] h-[280px] sm:h-[338px] rounded-[24px]"
         ref={sliderRef}
       >
         {slides.map((slide) => (
@@ -83,14 +83,18 @@ export const PartnerSlider: React.FC = () => {
             style={{ backgroundImage: `url(${slide.img})` }}
             key={slide.id}
           >
-            <p className="max-w-[428px] text-[24px] text-black">
+            <p className="max-w-[428px] text-[20px] md:text-[24px] text-black">
               {slide.title}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="absolute z-10 -left-[20px] top-1/2 -translate-1/2 grid gap-[8px]">
+      <div className={cn(
+        'sm:absolute z-10 -left-[10px] md:-left-[20px] top-1/2 sm:-translate-1/2',
+        'flex justify-center sm:grid gap-[8px]',
+        'mt-[14px] sm:mt-0'
+      )}>
         {
           slides.map((_, i) => (
             <button

@@ -1,7 +1,7 @@
-'use client'
+'use client';
 //ui
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 type TTab = {
   key: string;
@@ -30,13 +30,13 @@ export const CustomTabs: React.FC<TTabsProps> = ({
       sx={{
         minHeight: 0,
         '.MuiTabs-flexContainer': {
-          gap: "34px",
+          gap: '34px',
         },
         '.MuiTab-root': {
           textTransform: 'none',
           minHeight: 0,
-          px: "8px",
-          paddingBottom: "8px",
+          px: '8px',
+          paddingBottom: '8px',
           '&.Mui-selected': {
             color: 'text.primary',
           },
@@ -57,5 +57,5 @@ export const CustomTabs: React.FC<TTabsProps> = ({
         />
       ))}
     </Tabs>
-  )
-}
+  );
+};

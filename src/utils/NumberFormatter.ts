@@ -1,5 +1,5 @@
 export class NumberFormatter {
-    static getReadableDate(num: string) {
+  static getReadableDate(num: string) {
     const date = new Date(num);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
@@ -23,17 +23,17 @@ export class NumberFormatter {
       { treshold: 1e9,  label: 'B' },        // Billion
       { treshold: 1e6,  label: 'M' },        // Million
       { treshold: 1e3,  label: 'K' },        // Thousand
-    ]
+    ];
 
     for (const { treshold, label } of UNITS) {
       if (value >= treshold) {
-        const num = (value / treshold).toFixed(fractionDigits)
-        const trimmed = num.replace(/\.0+$/, '')
-        return `${trimmed} ${label}`
+        const num = (value / treshold).toFixed(fractionDigits);
+        const trimmed = num.replace(/\.0+$/, '');
+        return `${trimmed} ${label}`;
       }
     }
 
-    return value
+    return value;
   }
 
   static getReadableCompactedPrice(num: number = 0) {

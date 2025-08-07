@@ -22,6 +22,7 @@ type TStickyHeadCoinsTableProps = {
   isLoading: boolean;
   isPending: boolean;
   isError: boolean;
+  rowsAmount: number;
   setPage: TSetPage;
   setSort: TSetSort;
   rows?: TCoin[];
@@ -32,6 +33,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   isLoading,
   isPending,
   isError,
+  rowsAmount,
   setSort,
   setPage,
   rows,
@@ -43,7 +45,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
 
   return (
     <StickyHeedTable
-      rowsAmount={50}
+      rowsAmount={rowsAmount}
       colsAmount={11}
       isPending={isPending}
       isError={isError}

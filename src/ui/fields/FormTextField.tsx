@@ -1,7 +1,7 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { BaseTextField } from "@/ui/fields/BaseTextField";
+import { BaseTextField } from '@/ui/fields/BaseTextField';
 //types
-import { TBaseTextFieldProps } from "@/ui/fields/BaseTextField";
+import { TBaseTextFieldProps } from '@/ui/fields/BaseTextField';
 
 type TFormTextFieldProps = {
   name: string;

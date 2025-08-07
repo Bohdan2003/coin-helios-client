@@ -1,19 +1,19 @@
-'use client'
+'use client';
 //hooks
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 //ui
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@mui/material";
-import { FormProvider, Resolver} from "react-hook-form";
-import { FormTextField } from "@/ui/fields/FormTextField";
-import { FormTextarea } from "@/ui/fields/FormTextarea";
-import { FormCheckbox } from "@/ui/fields/FormCheckbox";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@mui/material';
+import { FormProvider, Resolver } from 'react-hook-form';
+import { FormTextField } from '@/ui/fields/FormTextField';
+import { FormTextarea } from '@/ui/fields/FormTextarea';
+import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 //utils
 import * as yup from 'yup';
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 //img
-import imgUrl from "@/assets/images/home/partner.jpg"
+import imgUrl from '@/assets/images/home/partner.jpg';
 
 //TODO: move TYPE to API
 type TPartner = {
@@ -47,8 +47,8 @@ export const PartnerSection: React.FC = () => {
   });
 
   const onSubmit = (data: TPartner) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   return (<section>
     <div className="container grid grid-cols-2 gap-[20px]">
@@ -121,5 +121,5 @@ export const PartnerSection: React.FC = () => {
         </FormProvider>
       </div>
     </div>
-  </section>)
-}
+  </section>);
+};

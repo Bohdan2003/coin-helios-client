@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 export type TBaseTextFieldProps = {
   icon?: React.ReactNode;
@@ -10,7 +10,7 @@ export type TBaseTextFieldProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const inputCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none'
+const inputCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none';
 
 export const BaseTextField: React.FC<TBaseTextFieldProps> = ({
   icon,
@@ -30,7 +30,8 @@ export const BaseTextField: React.FC<TBaseTextFieldProps> = ({
       >
         {
           icon
-          ? <label>
+            ?
+            <label>
               <div className="absolute left-[8px] top-[11px]">
                 {icon}
               </div>
@@ -43,7 +44,8 @@ export const BaseTextField: React.FC<TBaseTextFieldProps> = ({
                 {...otherProps}
               />
             </label>
-          : <input
+            :
+            <input
               className={cn(
                 inputCls,
                 'py-[12px] px-[10px]',
@@ -57,5 +59,5 @@ export const BaseTextField: React.FC<TBaseTextFieldProps> = ({
         error && <p className="text-[14px] text-orange ml-[4px] mt-[4px]">{error}</p>
       }
     </div>
-  )
-}
+  );
+};

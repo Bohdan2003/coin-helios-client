@@ -1,8 +1,8 @@
 //ui
-import { Logo } from "@/ui/Logo";
-import { LanguageSwitcher } from "@/ui/LanguageSwitcher";
-import { ThemeSwitcher } from "@/ui/ThemeSwitcher";
-import { Socials } from "@/ui/Socials";
+import { Logo } from '@/ui/Logo';
+import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
+import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
+import { Socials } from '@/ui/Socials';
 
 const listCls = 'grid gap-[8px] sm:gap-[16px]';
 
@@ -59,5 +59,5 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

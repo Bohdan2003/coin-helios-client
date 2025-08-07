@@ -1,9 +1,9 @@
 //ui
-import { Logo } from "@/ui/Logo";
-import { LanguageSwitcher } from "@/ui/LanguageSwitcher";
-import { ThemeSwitcher } from "@/ui/ThemeSwitcher";
+import { Logo } from '@/ui/Logo';
+import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
+import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
 //components
-import { BurgerMenu } from "@/components/Header/BurgerMenu";
+import { BurgerMenu } from '@/components/Header/BurgerMenu';
 
 export const MobileHeader: React.FC = () => {
   return (
@@ -19,5 +19,5 @@ export const MobileHeader: React.FC = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};

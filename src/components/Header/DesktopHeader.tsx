@@ -1,10 +1,10 @@
 //ui
-import { Logo } from "@/ui/Logo";
-import { LanguageSwitcher } from "@/ui/LanguageSwitcher";
-import { ThemeSwitcher } from "@/ui/ThemeSwitcher";
+import { Logo } from '@/ui/Logo';
+import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
+import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
 //components
-import { Menu } from "@/components/Header/Menu";
-import { Auth } from "@/components/Header/Auth";
+import { Menu } from '@/components/Header/Menu';
+import { Auth } from '@/components/Header/Auth';
 
 export const DesktopHeader: React.FC = () => {
   return (

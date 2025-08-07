@@ -75,6 +75,7 @@ export const CoinsSection: React.FC = () => {
             isLoading={isLoading}
             isPending={isPending}
             isError={isError}
+            rowsAmount={50}
             setSort={setSort}
             setPage={setPage}
             rows={data?.coins}

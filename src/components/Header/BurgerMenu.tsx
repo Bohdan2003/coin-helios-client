@@ -10,7 +10,7 @@ import {
   ListItem,
 } from '@mui/material';
 // components
-import { Auth } from "@/components/Header/Auth";
+import { Auth } from '@/components/Header/Auth';
 //icons
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import MenuIcon from '@mui/icons-material/Menu';

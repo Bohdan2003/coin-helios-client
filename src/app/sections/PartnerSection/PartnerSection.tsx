@@ -76,13 +76,13 @@ export const PartnerSection: React.FC = () => {
       <div className="flex justify-end">
         <FormProvider {...methods}>
           <form
-            className="max-w-[655px] w-full"
+            className="md:max-w-[655px] w-full"
             onSubmit={methods.handleSubmit(onSubmit)}
           >
             <p className="text-[24px] max-w-[540px]">
               Leave a request, and our manager will contact you shortly to answer all your questions
             </p>
-            <div className="mt-[24px] flex gap-[16px]">
+            <div className="mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
               <FormTextField
                 fullWidth
                 name="name"

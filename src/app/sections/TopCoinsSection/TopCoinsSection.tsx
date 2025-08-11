@@ -42,7 +42,7 @@ export const TopCoinsSection: React.FC = () => {
         sx={{
           overflowX: {
             xs: 'scroll',
-            sm: 'visible',
+            sm: 'hidden',
           },
           '& .col-chain': { display: { xs: 'table-cell', sm: 'none', lg: 'table-cell' } },
           '& .col-votes': { display: { xs: 'table-cell', sm: 'none', md: 'table-cell' } },

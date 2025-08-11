@@ -22,15 +22,21 @@ export const TopCoinsSection: React.FC = () => {
   return (
     <section>
       <h3 className="font-medium text-[20px] pl-[16px]">Top Coins</h3>
-      <SimpleTable>
+      <SimpleTable
+        className="mt-[16px]"
+        sx={{
+          '& .col-chain': { display: { xs: 'table-cell', sm: 'none', lg: 'table-cell' } },
+          '& .col-votes': { display: { xs: 'table-cell', sm: 'none', md: 'table-cell' } },
+        }}
+      >
         <TableHead>
           <TableRow>
             <TableCell>#</TableCell>
             <TableCell>Coin</TableCell>
             <TableCell>24H</TableCell>
-            <TableCell>Chain</TableCell>
+            <TableCell className="col-chain">Chain</TableCell>
             <TableCell>Price</TableCell>
-            <TableCell>Votes</TableCell>
+            <TableCell className="col-votes">Votes</TableCell>
             <TableCell hidden>Favorite</TableCell>
           </TableRow>
         </TableHead>
@@ -50,11 +56,13 @@ export const TopCoinsSection: React.FC = () => {
                 percent={row.percent_change_24h}
               />
               <ChainCell
+                className="col-chain"
                 icon={row.icon}
                 name={row.chain.name}
               />
               <TableCell className="opacity-80">${row.price}</TableCell>
               <VotesCell
+                className="col-votes"
                 votes={row.votes}
                 id={row.id}
               />

@@ -30,7 +30,10 @@ export const CustomTabs: React.FC<TTabsProps> = ({
       sx={{
         minHeight: 0,
         '.MuiTabs-flexContainer': {
-          gap: '34px',
+          gap: {
+            xs: '8px',
+            lg: '34px'
+          },
         },
         '.MuiTab-root': {
           textTransform: 'none',

@@ -1,14 +1,17 @@
 'use client';
 //hooks
 import { useStore } from '@/app/sections/CoinsSection/store';
+import { useDebounceCallback } from 'usehooks-ts';
 import { useQuery } from '@tanstack/react-query';
 //api
 import { getCoins } from '@/modules/coins/CoinsApi';
 //ui
 import Pagination from '@mui/material/Pagination';
 import { StickyHeadCoinsTable } from '@/ui/tables/StickyHeadCoinsTable';
-import { SearchField } from '@/ui/fields/SearchField';
 import { CustomTabs } from '@/ui/CustomTabs';
+import { BaseTextField } from '@/ui/fields/BaseTextField';
+//icons
+import SearchIcon from '@mui/icons-material/Search';
 //helper
 import { getCategories } from '@/app/sections/CoinsSection/helper';
 //utils
@@ -42,10 +45,10 @@ export const CoinsSection: React.FC = () => {
     placeholderData: previous => previous,
   });
 
-  const onSearchChange = (search: string) => {
+  const debouncedSearchCoins = useDebounceCallback((search: string) => {
     setSearch(search);
     setPage(1);
-  };
+  }, 400);
 
   return (
     <section>
@@ -55,21 +58,25 @@ export const CoinsSection: React.FC = () => {
           isLoading && 'opacity-50 position-relative',
           'flex justify-between items-end'
         )}>
-          <CustomTabs
-            tabs={categories}
-            tab={category}
-            setTab={(category) => {
-              setCategory(category);
-              setPage(1);
+          <div className="hidden md:block">
+            <CustomTabs
+              tabs={categories}
+              tab={category}
+              setTab={(category) => {
+                setCategory(category);
+                setPage(1);
+              }}
+            />
+          </div>
+          <BaseTextField
+            icon={<SearchIcon color="primary"/>}
+            placeholder="Search crypto"
+            onChange={(e) => {
+              debouncedSearchCoins(e.target.value);
             }}
           />
-          <SearchField
-            className="w-[250px]"
-            placeholder="Search crypto"
-            onChange={onSearchChange}
-          />
         </div>
-        <div className="mt-[16px]">
+        <div className="mt-[16px] overflow-x-scroll md:overflow-x-visible">
           <StickyHeadCoinsTable
             sort={sort}
             isLoading={isLoading}

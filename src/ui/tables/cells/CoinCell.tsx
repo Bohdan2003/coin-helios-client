@@ -1,10 +1,13 @@
 // import Image from 'next/image';
 import TableCell from '@mui/material/TableCell';
+//types
+import type { SxProps, Theme } from '@mui/material/styles';
 
 type TCoinCellProps = {
   icon: string;
   name: string;
   symbol: string;
+  sx?: SxProps<Theme>;
 }
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -12,10 +15,11 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export const CoinCell: React.FC<TCoinCellProps> = ({
   icon,
   name,
-  symbol
+  symbol,
+  sx
 }) => {
   return (
-    <TableCell>
+    <TableCell sx={sx}>
       <div className="flex gap-[6px] items-center">
         {/*<Image*/}
         {/*  className="rounded-full size-[32px] object-cover object-center"*/}

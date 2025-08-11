@@ -51,7 +51,16 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
       isError={isError}
       headRow={
         <TableRow>
-          <TableCell>Coin</TableCell>
+          <TableCell
+            sx={{
+              position: 'sticky',
+              zIndex: 20,
+              left: 0,
+              top: 0,
+              opacity: 1,
+              backgroundColor: 'var(--palette-background-paper)'
+            }}
+          >Coin</TableCell>
           <TableCell>Category</TableCell>
           <TableCell>Chain</TableCell>
           <SortableHeaderCell
@@ -109,9 +118,18 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
               rows?.map(row => (
                 <TableRow
                   key={row.id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  sx={{
+                    '&:last-child td, &:last-child th': { border: 0 },
+
+                  }}
                 >
                   <CoinCell
+                    sx={{
+                      position: 'sticky',
+                      left: 0,
+                      top: 0,
+                      backgroundColor: 'var(--palette-background-default)'
+                    }}
                     icon={row.icon}
                     name={row.name}
                     symbol={row.symbol}
@@ -129,7 +147,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
                     percent={row.percent_change_24h}
                   />
                   <TableCell className="opacity-80">
-                    ---
+
                   </TableCell>
                   <TableCell className="opacity-80">
                     {NumberFormatter.getReadablePrice(row.price)}

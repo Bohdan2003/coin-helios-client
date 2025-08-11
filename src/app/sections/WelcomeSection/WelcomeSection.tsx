@@ -7,7 +7,7 @@ export const WelcomeSection: React.FC = () => {
   return (
     <section>
       <div className="grid sm:grid-cols-2 gap-[20px]">
-        <div className="mt-[20px] sm:mt-0 flex xl:block flex-col justify-center gap-[20px] sm:gap-[40px]">
+        <div className="mt-[20px] sm:mt-0 flex xl:block flex-col justify-center gap-[20px] sm:gap-[30px]">
           <h1 className="max-w-[568px] font-inter font-medium text-[26px] sm:text-[32px] md:text-[36px] lg:text-[48px] xl:text-[55px] leading-[110%]">
             Ratings and analytics of cryptocurrencies in real&#8209;time
           </h1>

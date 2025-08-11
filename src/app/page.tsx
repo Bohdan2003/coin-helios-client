@@ -1,9 +1,9 @@
 //sections
 import { WelcomeSection } from '@/app/sections/WelcomeSection/WelcomeSection';
 import { TopCoinsSection } from '@/app/sections/TopCoinsSection/TopCoinsSection';
-// import { CoinsSection } from '@/app/sections/CoinsSection/CoinsSection';
-// import { PartnerSection } from '@/app/sections/PartnerSection/PartnerSection';
-// import { QuestionsSection } from '@/app/sections/QuestionsSection/QuestionsSection';
+import { CoinsSection } from '@/app/sections/CoinsSection/CoinsSection';
+import { PartnerSection } from '@/app/sections/PartnerSection/PartnerSection';
+import { QuestionsSection } from '@/app/sections/QuestionsSection/QuestionsSection';
 //ui
 import { WelcomeImage } from '@/app/components/WelcomeImage';
 
@@ -14,7 +14,7 @@ export default async function Home() {
       <div className="container mt-[20px] xl:mt-[38px] sm:pt-[14px] sm:pb-[14px] xl:pb-[24px] relative">
         <div className="relative z-10">
           <WelcomeSection/>
-          <div className="mt-[40px] hidden xl:grid grid-cols-2 gap-[20px]">
+          <div className="mt-[40px] grid sm:grid-cols-2 gap-[20px]">
             <TopCoinsSection/>
             <TopCoinsSection/>
           </div>
@@ -23,15 +23,15 @@ export default async function Home() {
           <WelcomeImage/>
         </div>
       </div>
-      {/*<div className="mt-[80px]">*/}
-      {/*  <CoinsSection/>*/}
-      {/*</div>*/}
-      {/*<div className="mt-[80px]">*/}
-      {/*  <PartnerSection/>*/}
-      {/*</div>*/}
-      {/*<div className="mt-[140px]">*/}
-      {/*  <QuestionsSection/>*/}
-      {/*</div>*/}
+      <div className="mt-[80px]">
+        <CoinsSection/>
+      </div>
+      <div className="mt-[80px]">
+        <PartnerSection/>
+      </div>
+      <div className="mt-[140px]">
+        <QuestionsSection/>
+      </div>
     </>
   );
 }

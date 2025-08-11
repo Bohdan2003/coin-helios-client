@@ -2,11 +2,25 @@
 //ui
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
+//types
+import type { SxProps, Theme } from '@mui/material/styles';
+//utils
+import { cn } from '@/utils/cn';
 
-export const SimpleTable: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+type TSimpleTableProps = {
+  children: React.ReactNode;
+  className?: string;
+  sx?: SxProps<Theme>;
+}
+
+export const SimpleTable: React.FC<TSimpleTableProps> = ({
+  children,
+  className,
+  sx,
+}) => {
   return (
     <TableContainer
-      className="mt-[16px]"
+      className={cn(className)}
       sx={{
         border: '1px solid var(--palette-divider)',
         backgroundColor: 'var(--palette-background-default)',
@@ -14,10 +28,17 @@ export const SimpleTable: React.FC<{ children: React.ReactNode }> = ({ children 
         '& .MuiTableHead-root .MuiTableCell-root': {
           paddingBottom: '6px',
         },
+        '& .MuiTableCell-root': {
+          p: {
+            xs: '10px',
+            lg: '16px'
+          },
+        },
         '[data-dark] &': {
           border: '1px solid transparent',
           backgroundColor: 'var(--palette-background-paper)',
         },
+        ...sx
       }}
     >
       <Table aria-label="simple table">

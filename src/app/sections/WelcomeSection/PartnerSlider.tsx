@@ -20,7 +20,7 @@ type TSlide = {
   img: string;
   title: string;
 }
-
+//TODO: fix bag with pagination(flickering after manual drag)
 const autoPlayInterval = 3000;
 
 export const PartnerSlider: React.FC = () => {
@@ -74,12 +74,12 @@ export const PartnerSlider: React.FC = () => {
   return (
     <div className="relative">
       <div
-        className="keen-slider md:max-w-[790px] h-[280px] sm:h-[338px] rounded-[24px]"
+        className="keen-slider md:max-w-[790px] h-[280px] md:h-[338px] rounded-[24px]"
         ref={sliderRef}
       >
         {slides.map((slide) => (
           <div
-            className="keen-slider__slide rounded-[24px] p-[32px] size-full bg-cover bg-center"
+            className="keen-slider__slide rounded-[24px] p-[14px] sm:p-[32px] size-full bg-cover bg-center"
             style={{ backgroundImage: `url(${slide.img})` }}
             key={slide.id}
           >

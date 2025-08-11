@@ -7,6 +7,9 @@ export const theme = createTheme({
     cssVarPrefix: '',
     nativeColor: true,
   },
+  breakpoints: {
+    values: { xs: 0, sm: 768, md: 1024, lg: 1400, xl: 1600 },
+  },
   colorSchemes: {
     light: {
       palette: {

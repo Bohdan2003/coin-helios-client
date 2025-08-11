@@ -41,12 +41,16 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
             backgroundColor: 'var(--palette-background-paper)',
           }
         },
-
+        '& .MuiTableCell-root': {
+          p: {
+            xs: '10px',
+            lg: '16px'
+          },
+        },
         '& .MuiTableHead-root .MuiTableCell-root:first-of-type': {
           borderTopLeftRadius: 12,
           borderBottomLeftRadius: 12,
         },
-
         '& .MuiTableHead-root .MuiTableCell-root:last-of-type': {
           borderTopRightRadius: 12,
           borderBottomRightRadius: 12,

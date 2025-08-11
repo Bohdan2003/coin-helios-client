@@ -35,7 +35,7 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
         '& .MuiTableHead-root': {
           position: 'sticky',
           top: 0,
-          zIndex: 10,
+          zIndex: 30,
           backgroundColor: 'var(--palette-background-paper)',
           '[data-dark] &': {
             backgroundColor: 'var(--palette-background-paper)',

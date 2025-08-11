@@ -9,6 +9,7 @@ import { CoinCell } from '@/ui/tables/cells/CoinCell';
 import { PercentChangeCell } from '@/ui/tables/cells/PercentChangeCell';
 import { VotesCell } from '@/ui/tables/cells/VotesCell';
 import { FavoriteCell } from '@/ui/tables/cells/FavoriteCell';
+import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //types
 import type { TCoin } from '@/modules/coins/CoinsApi';
 //helper
@@ -19,35 +20,60 @@ type TTopCoin = TCoin;
 export const TopCoinsSection: React.FC = () => {
   const rows: TTopCoin[] = getTopCoinsData();
 
+  const firstColSx = {
+    position: 'sticky',
+    zIndex: 10,
+    left: 0,
+    backgroundColor: 'var(--palette-background-paper)'
+  };
+
+  const secondColSx = {
+    position: 'sticky',
+    zIndex: 10,
+    left: '28px',
+    backgroundColor: 'var(--palette-background-paper)'
+  };
+
   return (
     <section>
       <h3 className="font-medium text-[20px] pl-[16px]">Top Coins</h3>
       <SimpleTable
         className="mt-[16px]"
         sx={{
+          overflowX: {
+            xs: 'scroll',
+            sm: 'visible',
+          },
           '& .col-chain': { display: { xs: 'table-cell', sm: 'none', lg: 'table-cell' } },
           '& .col-votes': { display: { xs: 'table-cell', sm: 'none', md: 'table-cell' } },
         }}
       >
         <TableHead>
           <TableRow>
-            <TableCell>#</TableCell>
-            <TableCell>Coin</TableCell>
-            <TableCell>24H</TableCell>
-            <TableCell className="col-chain">Chain</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell className="col-votes">Votes</TableCell>
-            <TableCell hidden>Favorite</TableCell>
+            <HeaderCell text="#" sx={firstColSx}/>
+            <HeaderCell text="#Coin" sx={secondColSx}/>
+            <HeaderCell text="24H"/>
+            <HeaderCell
+              text="Chain"
+              className="col-chain"
+            />
+            <HeaderCell text="Price"/>
+            <HeaderCell
+              text="Chain"
+              className="col-votes"
+            />
+            <HeaderCell
+              text="Favorite"
+              hidden
+            />
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row, i) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>{i + 1}</TableCell>
+            <TableRow key={row.id}>
+              <TableCell sx={firstColSx}>{i + 1}</TableCell>
               <CoinCell
+                sx={secondColSx}
                 icon={row.icon}
                 name={row.name}
                 symbol={row.symbol}

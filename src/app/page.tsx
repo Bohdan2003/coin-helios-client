@@ -14,7 +14,7 @@ export default async function Home() {
       <div className="container mt-[20px] xl:mt-[38px] sm:pt-[14px] sm:pb-[14px] xl:pb-[24px] relative">
         <div className="relative z-10">
           <WelcomeSection/>
-          <div className="mt-[40px] grid sm:grid-cols-2 gap-[20px]">
+          <div className="mt-[80px] sm:mt-[40px] flex flex-col sm:grid grid-cols-2 gap-[80px] sm:gap-[20px]">
             <TopCoinsSection/>
             <TopCoinsSection/>
           </div>

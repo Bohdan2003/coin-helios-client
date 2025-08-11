@@ -1,0 +1,33 @@
+'use client';
+//ui
+import TableCell from '@mui/material/TableCell';
+//utils
+import { cn } from '@/utils/cn';
+//types
+import type { SxProps, Theme } from '@mui/material/styles';
+
+type THeaderCellProps = {
+  className?: string;
+  textClassName?: string;
+  hidden?: boolean;
+  text: string;
+  sx?: SxProps<Theme>;
+}
+
+export const HeaderCell: React.FC<THeaderCellProps> = ({
+  className,
+  textClassName,
+  hidden,
+  text,
+  sx
+}) => {
+  return (
+    <TableCell className={cn(className)} sx={sx}>
+      <span className={cn(
+        textClassName,
+        'opacity-60',
+        hidden && 'hidden'
+      )}>{ text }</span>
+    </TableCell>
+  );
+};

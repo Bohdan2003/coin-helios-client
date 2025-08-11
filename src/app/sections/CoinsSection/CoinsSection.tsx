@@ -76,7 +76,7 @@ export const CoinsSection: React.FC = () => {
             }}
           />
         </div>
-        <div className="mt-[16px] overflow-x-scroll md:overflow-x-visible">
+        <div className="mt-[16px] max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
           <StickyHeadCoinsTable
             sort={sort}
             isLoading={isLoading}

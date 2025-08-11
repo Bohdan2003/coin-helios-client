@@ -11,6 +11,7 @@ import { FavoriteCell } from '@/ui/tables/cells/FavoriteCell';
 import { SortableHeaderCell } from '@/ui/tables/cells/SortableHeaderCell';
 import { BuyCell } from '@/ui/tables/cells/BuyCell';
 import { StatusCell } from '@/ui/tables/cells/StatusCell';
+import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //utils
 import { NumberFormatter } from '@/utils/NumberFormatter';
 //types
@@ -38,9 +39,15 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   setPage,
   rows,
 }) => {
-  const onSortChange = (key: TSort['key'], dir: TSort['dir']) => {
+  const SortCoins = (key: TSort['key'], dir: TSort['dir']) => {
     setSort(key, dir);
     setPage(1);
+  };
+
+  const firstColSx = {
+    position: 'sticky',
+    zIndex: 10,
+    left: 0,
   };
 
   return (
@@ -51,56 +58,56 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
       isError={isError}
       headRow={
         <TableRow>
-          <TableCell
-            sx={{
-              position: 'sticky',
-              zIndex: 20,
-              left: 0,
-              top: 0,
-              opacity: 1,
-              backgroundColor: 'var(--palette-background-paper)'
-            }}
-          >Coin</TableCell>
-          <TableCell>Category</TableCell>
-          <TableCell>Chain</TableCell>
+          <HeaderCell
+            text="Coin"
+            sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
+          />
+          <HeaderCell text="Category"/>
+          <HeaderCell text="Chain"/>
           <SortableHeaderCell
             text="1H"
             columnKey="percent_change_1h"
             sort={sort}
-            onChange={onSortChange}
+            onChange={SortCoins}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="24H"
             columnKey="percent_change_24h"
             sort={sort}
-            onChange={onSortChange}
+            onChange={SortCoins}
             isLoading={isLoading}
           />
-          <TableCell>7Days</TableCell>
+          <HeaderCell text="7Days"/>
           <SortableHeaderCell
             text="Price"
             columnKey="price"
             sort={sort}
-            onChange={onSortChange}
+            onChange={SortCoins}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Marketcap"
             columnKey="market_cap"
             sort={sort}
-            onChange={onSortChange}
+            onChange={SortCoins}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Votes"
             columnKey="votes"
             sort={sort}
-            onChange={onSortChange}
+            onChange={SortCoins}
             isLoading={isLoading}
           />
-          <TableCell><span className="hidden">Buy</span></TableCell>
-          <TableCell><span className="hidden">Favorite</span></TableCell>
+          <HeaderCell
+            text="Category"
+            hidden
+          />
+          <HeaderCell
+            text="Favorite"
+            hidden
+          />
         </TableRow>
       }
       bodyRows={
@@ -116,20 +123,9 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
               </TableRow>
               :
               rows?.map(row => (
-                <TableRow
-                  key={row.id}
-                  sx={{
-                    '&:last-child td, &:last-child th': { border: 0 },
-
-                  }}
-                >
+                <TableRow key={row.id}>
                   <CoinCell
-                    sx={{
-                      position: 'sticky',
-                      left: 0,
-                      top: 0,
-                      backgroundColor: 'var(--palette-background-default)'
-                    }}
+                    sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
                     icon={row.icon}
                     name={row.name}
                     symbol={row.symbol}
@@ -140,14 +136,10 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
                   {/*  icon={row.icon}*/}
                   {/*  name={row.chain.name}*/}
                   {/*/>*/}
-                  <PercentChangeCell
-                    percent={row.percent_change_1h}
-                  />
-                  <PercentChangeCell
-                    percent={row.percent_change_24h}
-                  />
+                  <PercentChangeCell percent={row.percent_change_1h}/>
+                  <PercentChangeCell percent={row.percent_change_24h}/>
                   <TableCell className="opacity-80">
-
+                    ---
                   </TableCell>
                   <TableCell className="opacity-80">
                     {NumberFormatter.getReadablePrice(row.price)}

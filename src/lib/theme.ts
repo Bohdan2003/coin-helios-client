@@ -137,6 +137,7 @@ export const theme = createTheme({
             '&:after': {
               content: '""',
               position: 'absolute',
+              zIndex: 20,
               bottom: 0,
               left: '6px',
               right: '16px',
@@ -158,7 +159,6 @@ export const theme = createTheme({
         head: {
           fontSize: 14,
           borderBottom: 'none',
-          opacity: 0.6,
           fontWeight: 700,
           backgroundColor: 'transparent',
         },

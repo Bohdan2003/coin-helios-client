@@ -51,9 +51,9 @@ export const PartnerSection: React.FC = () => {
   };
 
   return (<section>
-    <div className="container grid grid-cols-2 gap-[20px]">
-      <div className="grid grid-cols-2 gap-x-[20px] gap-y-[50px]">
-        <div className="relative col-span-2">
+    <div className="container grid sm:grid-cols-2 gap-[20px]">
+      <div className="grid md:grid-cols-2 gap-x-[20px] gap-y-[20px] md:gap-y-[50px]">
+        <div className="relative md:col-span-2">
           <Image
             className="w-full rounded-[32px]"
             src={imgUrl}

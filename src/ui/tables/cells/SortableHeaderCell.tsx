@@ -50,7 +50,8 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
   return (
     <TableCell>
       <div className={cn(
-        isLoading && 'pointer-events-none opacity-50',
+        'opacity-60',
+        isLoading && 'pointer-events-none opacity-40',
         'flex items-center gap-1.5'
       )}>
         <div className="grid gap-1.5">

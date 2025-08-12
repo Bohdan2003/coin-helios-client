@@ -23,9 +23,9 @@ export default async function Home() {
           <WelcomeImage/>
         </div>
       </div>
-      <div className="mt-[80px]">
-        <CoinsSection/>
-      </div>
+      {/*<div className="mt-[80px]">*/}
+      {/*  <CoinsSection/>*/}
+      {/*</div>*/}
       <div className="mt-[80px]">
         <PartnerSection/>
       </div>

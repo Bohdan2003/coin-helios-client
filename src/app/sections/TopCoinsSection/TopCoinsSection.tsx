@@ -20,18 +20,13 @@ type TTopCoin = TCoin;
 export const TopCoinsSection: React.FC = () => {
   const rows: TTopCoin[] = getTopCoinsData();
 
-  const firstColSx = {
+  const stickyColSx = {
     position: 'sticky',
     zIndex: 10,
-    left: 0,
-    backgroundColor: 'var(--palette-background-paper)'
-  };
-
-  const secondColSx = {
-    position: 'sticky',
-    zIndex: 10,
-    left: '28px',
-    backgroundColor: 'var(--palette-background-paper)'
+    backgroundColor: 'var(--palette-background-default)',
+    '[data-dark] &': {
+      backgroundColor: 'var(--palette-background-paper)',
+    }
   };
 
   return (
@@ -50,8 +45,14 @@ export const TopCoinsSection: React.FC = () => {
       >
         <TableHead>
           <TableRow>
-            <HeaderCell text="#" sx={firstColSx}/>
-            <HeaderCell text="#Coin" sx={secondColSx}/>
+            <HeaderCell text="#" sx={{
+              left: 0,
+              ...stickyColSx
+            }}/>
+            <HeaderCell text="#Coin" sx={{
+              left: '28px',
+              ...stickyColSx
+            }}/>
             <HeaderCell text="24H"/>
             <HeaderCell
               text="Chain"
@@ -71,9 +72,17 @@ export const TopCoinsSection: React.FC = () => {
         <TableBody>
           {rows.map((row, i) => (
             <TableRow key={row.id}>
-              <TableCell sx={firstColSx}>{i + 1}</TableCell>
+              <TableCell 
+                sx={{
+                  left: 0,
+                  ...stickyColSx
+                }}
+              >{i + 1}</TableCell>
               <CoinCell
-                sx={secondColSx}
+                sx={{
+                  left: '28px',
+                  ...stickyColSx
+                }}
                 icon={row.icon}
                 name={row.name}
                 symbol={row.symbol}

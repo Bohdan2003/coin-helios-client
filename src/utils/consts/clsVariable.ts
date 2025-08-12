@@ -1,0 +1,1 @@
+export const titleCls = 'text-[26px] sm:text-[32px] font-medium leading-[1]';

@@ -12,6 +12,8 @@ import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 //utils
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { titleCls } from '@/utils/consts/clsVariable';
+import { cn } from '@/utils/cn';
 //img
 import imgUrl from '@/assets/images/home/partner.jpg';
 
@@ -51,24 +53,29 @@ export const PartnerSection: React.FC = () => {
   };
 
   return (<section>
-    <div className="container grid sm:grid-cols-2 gap-[20px]">
+    <div className="container grid sm:grid-cols-2 gap-[60px] sm:gap-[20px]">
       <div className="grid md:grid-cols-2 gap-x-[20px] gap-y-[20px] md:gap-y-[50px]">
         <div className="relative md:col-span-2">
           <Image
-            className="w-full rounded-[32px]"
+            className="w-full h-[320px] object-cover rounded-[32px]"
             src={imgUrl}
             alt="become a partner"
           />
-          <h3 className="absolute top-[42px] left-[24px] text-[32px] font-medium leading-[1] text-white">
+          <h3
+            className={cn(
+              titleCls,
+              'absolute top-[60px] md:top-[42px] left-[24px] text-white'
+            )}
+          >
             Become<br/>
             a partner
           </h3>
         </div>
-        <p className="opacity-80 max-w-[275px]">
+        <p className="opacity-80 md:max-w-[275px]">
           List your project on CoinHelios —
           a global platform for investors, traders, and crypto enthusiasts
         </p>
-        <p className="opacity-80 max-w-[314px]">
+        <p className="opacity-80 md:max-w-[314px]">
           We’ll help you not only showcase your coin to a wide audience,
           but also promote it with our tools and marketing support
         </p>
@@ -79,7 +86,7 @@ export const PartnerSection: React.FC = () => {
             className="md:max-w-[655px] w-full"
             onSubmit={methods.handleSubmit(onSubmit)}
           >
-            <p className="text-[24px] max-w-[540px]">
+            <p className="text-[20px] lg:text-[24px] max-w-[540px]">
               Leave a request, and our manager will contact you shortly to answer all your questions
             </p>
             <div className="mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
@@ -111,7 +118,7 @@ export const PartnerSection: React.FC = () => {
                 >Privacy policy</Link>
               </>}
             />
-            <div className="mt-[54px]">
+            <div className="mt-[40px] sm:mt-[54px]">
               <Button
                 variant="contained"
                 type="submit"

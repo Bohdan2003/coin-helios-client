@@ -1,5 +1,7 @@
 //ui
 import { Question } from '@/app/sections/QuestionsSection/Qestion';
+//utils
+import { titleCls } from '@/utils/consts/clsVariable';
 //helpers
 import { getQuestionsData } from '@/app/sections/QuestionsSection/helper';
 
@@ -9,8 +11,8 @@ export const QuestionsSection = () => {
   return (
     <section>
       <div className="container">
-        <h3 className="text-[32px] font-medium">Frequently Asked Questions</h3>
-        <div className="mt-[32px] grid grid-cols-2 gap-[20px]">
+        <h3 className={titleCls}>Frequently Asked Questions</h3>
+        <div className="mt-[32px] grid sm:grid-cols-2 gap-[20px]">
           <div className="flex flex-col gap-[16px]">
             {questions.slice(0, Math.round(questions.length / 2)).map(({ question, answer, id }) => (
               <Question

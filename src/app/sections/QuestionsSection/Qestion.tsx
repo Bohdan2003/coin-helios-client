@@ -7,6 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 //utils
 import { cn } from '@/utils/cn';
+import { smallTitleCls } from '@/utils/consts/clsVariable';
 
 
 export const Question: React.FC<{
@@ -31,17 +32,24 @@ export const Question: React.FC<{
           '&.Mui-expanded': { margin: 0 },
           '&:before': { display: 'none' },
           '& .MuiAccordionSummary-root': {
-            px: '24px',
-            py: '12px'
+            px: {
+              xs:'12px',
+              md:'24px',
+            },
+            py: {
+              xs:'6px',
+              md:'12px',
+            },
           },
         }}
       >
         <AccordionSummary
+          sx={{ gap: '10px', }}
           expandIcon={<ArrowBackIosNewIcon className="-rotate-90" color="primary"/>}
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <div className="text-[24px]">{question}</div>
+          <div className={smallTitleCls}>{question}</div>
         </AccordionSummary>
         <AccordionDetails>
           <div className={cn(

@@ -23,13 +23,13 @@ export default async function Home() {
           <WelcomeImage/>
         </div>
       </div>
-      {/*<div className="mt-[80px]">*/}
-      {/*  <CoinsSection/>*/}
-      {/*</div>*/}
+      <div className="mt-[80px]">
+        <CoinsSection/>
+      </div>
       <div className="mt-[80px]">
         <PartnerSection/>
       </div>
-      <div className="mt-[140px]">
+      <div className="mt-[80px] sm:mt-[140px]">
         <QuestionsSection/>
       </div>
     </>

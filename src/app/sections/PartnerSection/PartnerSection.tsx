@@ -12,7 +12,7 @@ import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 //utils
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { titleCls } from '@/utils/consts/clsVariable';
+import {smallTitleCls, titleCls} from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 //img
 import imgUrl from '@/assets/images/home/partner.jpg';
@@ -64,7 +64,7 @@ export const PartnerSection: React.FC = () => {
           <h3
             className={cn(
               titleCls,
-              'absolute top-[60px] md:top-[42px] left-[24px] text-white'
+              'absolute top-[60px] lg:top-[42px] left-[24px] text-white'
             )}
           >
             Become<br/>
@@ -86,10 +86,10 @@ export const PartnerSection: React.FC = () => {
             className="md:max-w-[655px] w-full"
             onSubmit={methods.handleSubmit(onSubmit)}
           >
-            <p className="text-[20px] lg:text-[24px] max-w-[540px]">
+            <p className={cn(smallTitleCls, 'max-w-[540px]')}>
               Leave a request, and our manager will contact you shortly to answer all your questions
             </p>
-            <div className="mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
+            <div className="mt-[20px] sm:mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
               <FormTextField
                 fullWidth
                 name="name"
@@ -102,13 +102,13 @@ export const PartnerSection: React.FC = () => {
               />
             </div>
             <FormTextarea
-              className="mt-[24px] h-[120px]"
+              className="mt-[20px] sm:mt-[24px] h-[120px]"
               fullWidth
               name="text"
               placeholder="Text"
             />
             <FormCheckbox
-              className="mt-[24px]"
+              className="mt-[20px] sm:mt-[24px]"
               name="terms"
               label={<>
                 Confirm with&nbsp;
@@ -118,7 +118,7 @@ export const PartnerSection: React.FC = () => {
                 >Privacy policy</Link>
               </>}
             />
-            <div className="mt-[40px] sm:mt-[54px]">
+            <div className="mt-[20px] sm:mt-[54px]">
               <Button
                 variant="contained"
                 type="submit"

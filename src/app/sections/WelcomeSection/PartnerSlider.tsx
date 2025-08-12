@@ -14,6 +14,7 @@ import type {
 import { getSlidesData } from '@/app/sections/WelcomeSection/helper';
 //styles
 import 'keen-slider/keen-slider.min.css';
+import {smallTitleCls} from "@/utils/consts/clsVariable";
 
 type TSlide = {
   id: string;
@@ -83,7 +84,7 @@ export const PartnerSlider: React.FC = () => {
             style={{ backgroundImage: `url(${slide.img})` }}
             key={slide.id}
           >
-            <p className="max-w-[428px] text-[20px] md:text-[24px] text-black">
+            <p className={cn(smallTitleCls, 'max-w-[428px] text-black')}>
               {slide.title}
             </p>
           </div>
@@ -91,7 +92,7 @@ export const PartnerSlider: React.FC = () => {
       </div>
 
       <div className={cn(
-        'sm:absolute z-10 -left-[10px] md:-left-[20px] top-1/2 sm:-translate-1/2',
+        'sm:absolute z-10 -left-[14px] md:-left-[20px] top-1/2 sm:-translate-1/2',
         'flex justify-center sm:grid gap-[8px]',
         'mt-[14px] sm:mt-0'
       )}>

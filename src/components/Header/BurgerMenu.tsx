@@ -12,10 +12,13 @@ import {
 // components
 import { Auth } from '@/components/Header/Auth';
 //icons
-import StarBorderIcon from '@mui/icons-material/StarBorder';
 import MenuIcon from '@mui/icons-material/Menu';
+//helpers
+import { getMenuItems } from '@/components/Header/helper';
+import Link from 'next/link';
 
 export function BurgerMenu() {
+  const menuItems = getMenuItems();
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,48 +35,20 @@ export function BurgerMenu() {
         open={open}
         onClose={() => setOpen(false)}
       >
-        {/*<List sx={{ width: 260 }}>*/}
-        {/*  {NAV.map(({ label, href }) => (*/}
-        {/*    <ListItemButton*/}
-        {/*      key={href}*/}
-        {/*      component={Link}*/}
-        {/*      href={href}*/}
-        {/*      onClick={() => setOpen(false)}*/}
-        {/*    >*/}
-        {/*      <ListItemText primary={label} />*/}
-        {/*    </ListItemButton>*/}
-        {/*  ))}*/}
-        {/*</List>*/}
-
-
         <List sx={{ width: 260 }}>
-          <ListItem>
+          <ListItem onClick={() => setOpen(false)}>
             <Auth className="w-full"/>
           </ListItem>
-          <ListItemButton
-            onClick={() => setOpen(false)}
-          >
-            Coins
-          </ListItemButton>
-          <ListItemButton
-            onClick={() => setOpen(false)}
-          >
-            Become a Partner
-          </ListItemButton>
-          <ListItemButton
-            onClick={() => setOpen(false)}
-          >
-            News
-          </ListItemButton>
-          <ListItemButton
-            onClick={() => setOpen(false)}
-          >
-            FAQ
-          </ListItemButton><ListItemButton
-            onClick={() => setOpen(false)}
-          >
-            <StarBorderIcon/>
-          </ListItemButton>
+          {
+            menuItems.map(({ text, href }, i) => (
+              <ListItem
+                key={i}
+                onClick={() => setOpen(false)}
+              >
+                <Link href={href}>{text}</Link>
+              </ListItem>
+            ))
+          }
         </List>
       </Drawer>
     </>

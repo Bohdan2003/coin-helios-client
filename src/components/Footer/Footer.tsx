@@ -1,12 +1,17 @@
 //ui
+import Link from 'next/link';
 import { Logo } from '@/ui/Logo';
 import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
 import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
 import { Socials } from '@/ui/Socials';
+//helpers
+import { getNavItems } from '@/components/Footer/helper';
 
 const listCls = 'grid gap-[8px] sm:gap-[16px]';
 
 export const Footer = () => {
+  const navItems = getNavItems();
+
   return (
     <footer className="bg-purple py-[20px] text-white">
       <div className="container">
@@ -23,17 +28,20 @@ export const Footer = () => {
           </div>
           <nav>
             <ul className={listCls}>
-              <li>Coins</li>
-              <li>News</li>
-              <li>Become a Partner</li>
-              <li>FAQ</li>
+              {
+                navItems.slice(0, Math.round(navItems.length / 2)).map(({ text, href }, i) => (
+                  <li key={i}><Link href={href}>{text}</Link></li>
+                ))
+              }
             </ul>
           </nav>
           <nav>
             <ul className={listCls}>
-              <li>Profile</li>
-              <li>Saved</li>
-              <li>Add currency</li>
+              {
+                navItems.slice(Math.round(navItems.length / 2), navItems.length).map(({ text, href }, i) => (
+                  <li key={i}><Link href={href}>{text}</Link></li>
+                ))
+              }
             </ul>
           </nav>
           <div>

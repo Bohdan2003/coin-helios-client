@@ -14,11 +14,11 @@ import { Auth } from '@/components/Header/Auth';
 //icons
 import MenuIcon from '@mui/icons-material/Menu';
 //helpers
-import { getMenuItems } from '@/components/Header/helper';
+import { getNavItems } from '@/components/Header/helper';
 import Link from 'next/link';
 
 export function BurgerMenu() {
-  const menuItems = getMenuItems();
+  const navItems = getNavItems();
   const [open, setOpen] = useState(false);
 
   return (
@@ -40,7 +40,7 @@ export function BurgerMenu() {
             <Auth className="w-full"/>
           </ListItem>
           {
-            menuItems.map(({ text, href }, i) => (
+            navItems.map(({ text, href }, i) => (
               <ListItem
                 key={i}
                 onClick={() => setOpen(false)}

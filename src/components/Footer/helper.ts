@@ -21,5 +21,13 @@ export function getNavItems(): TMenuItem[] {
       text: 'FAQ',
       href: '/#faq',
     },
+    {
+      text: 'Profile',
+      href: '/profile',
+    },
+    {
+      text: 'Add coin',
+      href: '/profile#coin',
+    },
   ]);
 }

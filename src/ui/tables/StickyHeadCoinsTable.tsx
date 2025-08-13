@@ -15,34 +15,30 @@ import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //utils
 import { NumberFormatter } from '@/utils/NumberFormatter';
 //types
-import { TCoin, TSort } from '@/modules/coins/CoinsApi';
-import { TSetPage, TSetSort } from '@/app/sections/CoinsSection/store';
+import { TCoin, TSortDir, TSortKey } from '@/modules/coins/CoinsApi';
 
 type TStickyHeadCoinsTableProps = {
-  sort: TSort;
+  sortKey: TSortKey;
+  sortDir: TSortDir;
   isLoading: boolean;
   isPending: boolean;
   isError: boolean;
   rowsAmount: number;
-  setPage: TSetPage;
-  setSort: TSetSort;
+  onSortChange: (key: TSortKey, dir: TSortDir) => void;
   rows?: TCoin[];
 }
 
 export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
-  sort,
+  sortKey,
+  sortDir,
   isLoading,
   isPending,
   isError,
   rowsAmount,
-  setSort,
-  setPage,
+  onSortChange,
   rows,
 }) => {
-  const SortCoins = (key: TSort['key'], dir: TSort['dir']) => {
-    setSort(key, dir);
-    setPage(1);
-  };
+
 
   const firstColSx = {
     position: 'sticky',
@@ -67,37 +63,42 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
           <SortableHeaderCell
             text="1H"
             columnKey="percent_change_1h"
-            sort={sort}
-            onChange={SortCoins}
+            sortKey={sortKey}
+            sortDir={sortDir}
+            onChange={onSortChange}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="24H"
             columnKey="percent_change_24h"
-            sort={sort}
-            onChange={SortCoins}
+            sortKey={sortKey}
+            sortDir={sortDir}
+            onChange={onSortChange}
             isLoading={isLoading}
           />
           <HeaderCell text="7Days"/>
           <SortableHeaderCell
             text="Price"
             columnKey="price"
-            sort={sort}
-            onChange={SortCoins}
+            sortKey={sortKey}
+            sortDir={sortDir}
+            onChange={onSortChange}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Marketcap"
             columnKey="market_cap"
-            sort={sort}
-            onChange={SortCoins}
+            sortKey={sortKey}
+            sortDir={sortDir}
+            onChange={onSortChange}
             isLoading={isLoading}
           />
           <SortableHeaderCell
             text="Votes"
             columnKey="votes"
-            sort={sort}
-            onChange={SortCoins}
+            sortKey={sortKey}
+            sortDir={sortDir}
+            onChange={onSortChange}
             isLoading={isLoading}
           />
           <HeaderCell

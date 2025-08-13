@@ -12,18 +12,18 @@ type TTab = {
 type TTabsProps = {
   tabs: TTab[];
   tab: string;
-  setTab: (tab: string) => void;
+  onTabChange: (tab: string) => void;
 }
 
 export const CustomTabs: React.FC<TTabsProps> = ({
   tabs,
   tab,
-  setTab,
+  onTabChange,
 }) => {
   return (
     <Tabs
       value={tab}
-      onChange={(_: React.SyntheticEvent, value: string) => setTab(value)}
+      onChange={(_: React.SyntheticEvent, value: string) => onTabChange(value)}
       slotProps={{
         indicator: { sx: { borderRadius: 4 } },
       }}

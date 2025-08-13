@@ -1,6 +1,6 @@
 'use client';
 //hooks
-import { useStore } from '@/app/sections/CoinsSection/store';
+import { useState } from 'react';
 import { useDebounceCallback } from 'usehooks-ts';
 import { useQuery } from '@tanstack/react-query';
 //api
@@ -16,34 +16,41 @@ import SearchIcon from '@mui/icons-material/Search';
 import { getCategories } from '@/app/sections/CoinsSection/helper';
 //utils
 import { cn } from '@/utils/cn';
+//types
+import type { TSortDir, TSortKey } from '@/modules/coins/CoinsApi';
 
 export const CoinsSection: React.FC = () => {
   const categories = getCategories();
-  const {
-    page,
-    sort,
-    search,
-    category,
-    setPage,
-    setSort,
-    setSearch,
-    setCategory
-  } = useStore();
+
+  const [ page, setPage ] = useState(1);
+  const [ category, setCategory ] = useState('all');
+  const [ search, setSearch ] = useState('');
+  const [ sortKey, setSortKey ] = useState<TSortKey>(null);
+  const [ sortDir, setSortDir ] = useState<TSortDir>(null);
+
   const {
     data,
     isPending,
     isLoading,
     isError
   } = useQuery({
-    queryKey: [ 'coins', page, sort, search, category ],
+    queryKey: [ 'coins', page, sortKey, sortDir, search, category ],
     queryFn: () => getCoins({
       page,
-      sort_by: sort.key,
-      order: sort.dir, search,
+      sort_by: sortKey,
+      order: sortDir,
+      search,
       filter: category
     }),
     placeholderData: previous => previous,
   });
+
+  const sortCoins = (key: TSortKey, dir: TSortDir) => {
+    console.log(key, dir)
+    setSortKey(key);
+    setSortDir(dir);
+    setPage(1);
+  };
 
   const debouncedSearchCoins = useDebounceCallback((search: string) => {
     setSearch(search);
@@ -62,7 +69,7 @@ export const CoinsSection: React.FC = () => {
             <CustomTabs
               tabs={categories}
               tab={category}
-              setTab={(category) => {
+              onTabChange={(category) => {
                 setCategory(category);
                 setPage(1);
               }}
@@ -78,14 +85,14 @@ export const CoinsSection: React.FC = () => {
         </div>
         <div className="mt-[16px] max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
           <StickyHeadCoinsTable
-            sort={sort}
+            rows={data?.coins}
+            rowsAmount={50}
+            sortKey={sortKey}
+            sortDir={sortDir}
             isLoading={isLoading}
             isPending={isPending}
             isError={isError}
-            rowsAmount={50}
-            setSort={setSort}
-            setPage={setPage}
-            rows={data?.coins}
+            onSortChange={sortCoins}
           />
         </div>
         {

@@ -3,12 +3,8 @@ import { apiGetRequest } from '@/utils/apiInstance';
 //types
 import { ResponseWithPagination } from '@/utils/types/api';
 
-export type TSortDir = 'asc' | 'desc'
-
-export type TSort = {
-  key: string | null;
-  dir: TSortDir | null;
-}
+export type TSortDir = 'asc' | 'desc' | null;
+export type TSortKey = string | null;
 
 export type TCoin = {
   id: string,
@@ -34,8 +30,8 @@ export type TCoin = {
 
 export const getCoins = async ( params: {
   page: number,
-  sort_by: TSort['key'],
-  order?: TSort['dir'],
+  sort_by: TSortKey,
+  order?: TSortDir,
   search: string,
   filter: string,
 } ) =>

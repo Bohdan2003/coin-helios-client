@@ -1,9 +1,9 @@
-type TMenuItem = {
+export type TNavItem = {
   text: string;
   href: string;
 }
 
-export function getNavItems(): TMenuItem[] {
+export function getNavItems(): TNavItem[] {
   return ([
     {
       text: 'Coins',

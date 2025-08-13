@@ -1,3 +1,5 @@
+import { ROUTES } from '@/utils/router';
+
 type TMenuItem = {
   text: string;
   href: string;
@@ -7,27 +9,27 @@ export function getNavItems(): TMenuItem[] {
   return ([
     {
       text: 'Coins',
-      href: '/#coins',
+      href: ROUTES.HOME + '#coins',
     },
     {
       text: 'Become a Partner',
-      href: '/#partner',
+      href: ROUTES.HOME + '#partner',
     },
     {
       text: 'News',
-      href: '/news',
+      href: ROUTES.NEWS,
     },
     {
       text: 'FAQ',
-      href: '/#faq',
+      href: ROUTES.HOME + '#faq',
     },
     {
       text: 'Profile',
-      href: '/profile',
+      href: ROUTES.PROFILE,
     },
     {
       text: 'Add coin',
-      href: '/profile#coin',
+      href: ROUTES.PROFILE + '#addCoin',
     },
   ]);
 }

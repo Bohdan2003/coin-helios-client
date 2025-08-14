@@ -1,7 +1,7 @@
 //ui
 import { Logo } from '@/ui/Logo';
-import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
-import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
+import { LanguageSwitcher } from '@/ui/switchers/LanguageSwitcher';
+import { ThemeSwitcher } from '@/ui/switchers/ThemeSwitcher';
 //components
 import { DesktopMenu } from '@/components/Header/DesktopMenu';
 import { Auth } from '@/components/Header/Auth';

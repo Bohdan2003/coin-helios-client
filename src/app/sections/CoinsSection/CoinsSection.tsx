@@ -8,7 +8,7 @@ import { getCoins } from '@/modules/coins/CoinsApi';
 //ui
 import Pagination from '@mui/material/Pagination';
 import { StickyHeadCoinsTable } from '@/ui/tables/StickyHeadCoinsTable';
-import { CustomTabs } from '@/ui/CustomTabs';
+import { BaseTabs } from '@/ui/tabs/BaseTabs';
 import { BaseTextField } from '@/ui/fields/BaseTextField';
 //icons
 import SearchIcon from '@mui/icons-material/Search';
@@ -46,7 +46,6 @@ export const CoinsSection: React.FC = () => {
   });
 
   const sortCoins = (key: TSortKey, dir: TSortDir) => {
-    console.log(key, dir)
     setSortKey(key);
     setSortDir(dir);
     setPage(1);
@@ -66,9 +65,9 @@ export const CoinsSection: React.FC = () => {
           'flex justify-between items-end'
         )}>
           <div className="hidden md:block">
-            <CustomTabs
+            <BaseTabs
+              activeTab={category}
               tabs={categories}
-              tab={category}
               onTabChange={(category) => {
                 setCategory(category);
                 setPage(1);

@@ -83,6 +83,7 @@ export const TopCoinsSection: React.FC = () => {
                   left: '28px',
                   ...stickyColSx
                 }}
+                id={row.id}
                 icon={row.icon}
                 name={row.name}
                 symbol={row.symbol}

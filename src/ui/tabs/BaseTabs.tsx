@@ -4,25 +4,25 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 type TTab = {
-  key: string;
+  value: string;
   label: string;
   icon: React.ReactElement;
 }
 
 type TTabsProps = {
+  activeTab: string;
   tabs: TTab[];
-  tab: string;
   onTabChange: (tab: string) => void;
 }
 
-export const CustomTabs: React.FC<TTabsProps> = ({
+export const BaseTabs: React.FC<TTabsProps> = ({
+  activeTab,
   tabs,
-  tab,
   onTabChange,
 }) => {
   return (
     <Tabs
-      value={tab}
+      value={activeTab}
       onChange={(_: React.SyntheticEvent, value: string) => onTabChange(value)}
       slotProps={{
         indicator: { sx: { borderRadius: 4 } },
@@ -51,10 +51,10 @@ export const CustomTabs: React.FC<TTabsProps> = ({
     >
       {tabs.map((tab) => (
         <Tab
-          key={tab.key}
+          key={tab.value}
           icon={tab.icon}
           iconPosition="start"
-          value={tab.key}
+          value={tab.value}
           label={tab.label}
           disableRipple
         />

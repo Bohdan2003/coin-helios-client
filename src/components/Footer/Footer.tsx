@@ -1,8 +1,8 @@
 //ui
 import Link from 'next/link';
 import { Logo } from '@/ui/Logo';
-import { LanguageSwitcher } from '@/ui/LanguageSwitcher';
-import { ThemeSwitcher } from '@/ui/ThemeSwitcher';
+import { LanguageSwitcher } from '@/ui/switchers/LanguageSwitcher';
+import { ThemeSwitcher } from '@/ui/switchers/ThemeSwitcher';
 import { Socials } from '@/ui/Socials';
 //helpers
 import { getNavItems } from '@/components/Footer/helper';

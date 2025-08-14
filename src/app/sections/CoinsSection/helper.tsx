@@ -8,10 +8,10 @@ import BarChartIcon from '@mui/icons-material/BarChartOutlined';
 import StarBorderIcon from '@mui/icons-material/StarBorderOutlined';
 
 export const getCategories = () => [
-  { key: 'all',     label: 'All',     icon: <CrownIcon /> },
-  { key: 'top',     label: 'Top',     icon: <EmojiEventsOutlined /> },
-  { key: 'popular', label: 'Popular', icon: <WhatshotIcon /> },
-  { key: 'new',     label: 'New',     icon: <SouthIcon sx={{ rotate: '180deg' }} /> },
-  { key: 'gainers', label: 'Gainers', icon: <BarChartIcon /> },
-  { key: 'saved',   label: 'Saved',   icon: <StarBorderIcon /> },
+  { value: 'all',     label: 'All',     icon: <CrownIcon /> },
+  { value: 'top',     label: 'Top',     icon: <EmojiEventsOutlined /> },
+  { value: 'popular', label: 'Popular', icon: <WhatshotIcon /> },
+  { value: 'new',     label: 'New',     icon: <SouthIcon sx={{ rotate: '180deg' }} /> },
+  { value: 'gainers', label: 'Gainers', icon: <BarChartIcon /> },
+  { value: 'saved',   label: 'Saved',   icon: <StarBorderIcon /> },
 ];

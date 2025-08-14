@@ -39,7 +39,6 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   rows,
 }) => {
 
-
   const firstColSx = {
     position: 'sticky',
     zIndex: 10,
@@ -127,6 +126,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
                 <TableRow key={row.id}>
                   <CoinCell
                     sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
+                    id={row.id}
                     icon={row.icon}
                     name={row.name}
                     symbol={row.symbol}

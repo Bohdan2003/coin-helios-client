@@ -5,7 +5,7 @@ import { CoinsSection } from '@/app/sections/CoinsSection/CoinsSection';
 import { PartnerSection } from '@/app/sections/PartnerSection/PartnerSection';
 import { QuestionsSection } from '@/app/sections/QuestionsSection/QuestionsSection';
 //ui
-import { WelcomeImage } from '@/app/components/WelcomeImage';
+import { WelcomeImage } from '@/app/ui/WelcomeImage';
 
 //TODO: need to add loading
 export default async function Home() {

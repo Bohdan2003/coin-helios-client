@@ -28,6 +28,12 @@ type TStickyHeadCoinsTableProps = {
   rows?: TCoin[];
 }
 
+const firstColSx = {
+  position: 'sticky',
+  zIndex: 10,
+  left: 0,
+};
+
 export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   sortKey,
   sortDir,
@@ -38,20 +44,13 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
   onSortChange,
   rows,
 }) => {
-
-  const firstColSx = {
-    position: 'sticky',
-    zIndex: 10,
-    left: 0,
-  };
-
   return (
     <StickyHeedTable
       rowsAmount={rowsAmount}
       colsAmount={11}
       isPending={isPending}
       isError={isError}
-      headRow={
+      head={
         <TableRow>
           <HeaderCell
             text="Coin"
@@ -110,7 +109,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
           />
         </TableRow>
       }
-      bodyRows={
+      body={
         <>
           {
             !rows || rows?.length < 1

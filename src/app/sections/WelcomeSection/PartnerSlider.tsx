@@ -14,7 +14,7 @@ import type {
 import { getSlidesData } from '@/app/sections/WelcomeSection/helper';
 //styles
 import 'keen-slider/keen-slider.min.css';
-import {smallTitleCls} from "@/utils/consts/clsVariable";
+import { smallTitleCls } from '@/utils/consts/clsVariable';
 
 type TSlide = {
   id: string;

@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 //types
 import type { SelectProps } from '@mui/material/Select';
 
-const LANGS = ['UA', 'EN', 'RU'] as const;
+const languages = ['UA', 'EN', 'RU'];
 
 export const LanguageSwitcher: React.FC<{ sx?: SelectProps['sx'] }> = ({ sx }) => {
   const [selectedLanguage, setLanguage] = useState('UA');
@@ -27,7 +27,7 @@ export const LanguageSwitcher: React.FC<{ sx?: SelectProps['sx'] }> = ({ sx }) =
       sx={sx}
     >
       {
-        LANGS.map((language, index) => (
+        languages.map((language, index) => (
           <MenuItem
             value={language}
             key={index}

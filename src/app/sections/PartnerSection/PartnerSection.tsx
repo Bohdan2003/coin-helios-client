@@ -12,7 +12,7 @@ import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 //utils
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {smallTitleCls, titleCls} from '@/utils/consts/clsVariable';
+import { smallTitleCls, titleCls } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 //img
 import imgUrl from '@/assets/images/home/partner.jpg';

@@ -7,23 +7,27 @@ import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import { Skeleton } from '@mui/material';
 import { StatusCell } from '@/ui/tables/cells/StatusCell';
+//types
+import type { SxProps, Theme } from '@mui/material/styles';
 
 type TStickyHeedTableProps = {
-  headRow: React.ReactNode;
-  bodyRows: React.ReactNode;
+  head: React.ReactNode;
+  body: React.ReactNode;
   rowsAmount: number;
   colsAmount: number;
   isPending: boolean;
   isError: boolean;
+  sx?: SxProps<Theme>;
 }
 
 export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
-  headRow,
-  bodyRows,
+  head,
+  body,
   rowsAmount,
   colsAmount,
   isPending,
   isError,
+  sx
 }) => {
   const skeletonRows = Array.from({ length: rowsAmount });
   const skeletonCols = Array.from({ length: colsAmount });
@@ -54,11 +58,12 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
         '& .MuiTableHead-root .MuiTableCell-root:last-of-type': {
           borderTopRightRadius: 12,
           borderBottomRightRadius: 12,
-        }
+        },
+        ...sx
       }}
     >
       <TableHead>
-        { headRow }
+        { head }
       </TableHead>
       <TableBody>
         {
@@ -79,7 +84,7 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
                   )) }
                 </TableRow>
               ))
-              : bodyRows
+              : body
         }
       </TableBody>
     </Table>

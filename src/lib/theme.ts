@@ -74,6 +74,14 @@ export const theme = createTheme({
     allVariants: { lineHeight: 1.2 },
   },
   components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'var(--palette-background-paper)',
+          backgroundImage: 'none',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -82,6 +90,15 @@ export const theme = createTheme({
           textTransform: 'none',
           borderRadius: 12,
           boxShadow: 'none',
+          '&:hover': {
+            boxShadow: 'none',
+          },
+        },
+        text: {
+          color: 'var(--palette-text-primary)',
+          '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+            backgroundColor: 'var(--palette-primary-main)',
+          },
         },
         outlined: {
           color: 'var(--palette-text-primary)',
@@ -161,6 +178,16 @@ export const theme = createTheme({
           borderBottom: 'none',
           fontWeight: 700,
           backgroundColor: 'transparent',
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          boxShadow: 'none',
+          borderRadius: '16px',
+          backgroundColor: 'var(--palette-background-default)',
+          backgroundImage: 'none',
         },
       },
     },

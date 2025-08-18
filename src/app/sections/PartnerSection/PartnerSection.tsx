@@ -5,15 +5,27 @@ import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@mui/material';
-import { FormProvider, Resolver } from 'react-hook-form';
+import {
+  FormProvider,
+  Resolver
+} from 'react-hook-form';
 import { FormTextField } from '@/ui/fields/FormTextField';
 import { FormTextarea } from '@/ui/fields/FormTextarea';
 import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 //utils
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { smallTitleCls, titleCls } from '@/utils/consts/clsVariable';
+import {
+  smallTitleCls,
+  titleCls
+} from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
+import {
+  nameSchema,
+  emailSchema,
+  textSchema,
+  termsSchema
+} from '@/utils/validationSchemas';
 //img
 import imgUrl from '@/assets/images/home/partner.jpg';
 
@@ -26,18 +38,10 @@ type TPartner = {
 };
 
 const schema = yup.object().shape({
-  name: yup.string()
-    .required('Name is required')
-    .min(3, '3 characters minimum'),
-  email: yup.string()
-    .required('Email is required')
-    .email('Invalid email address'),
-  text: yup.string()
-    .required('Text is required')
-    .min(30, '30 characters minimum'),
-  terms: yup.boolean()
-    .oneOf([true], 'You must accept the privacy policy')
-    .required(),
+  name: nameSchema,
+  email: emailSchema,
+  text: textSchema,
+  terms: termsSchema,
 });
 
 export const PartnerSection: React.FC = () => {

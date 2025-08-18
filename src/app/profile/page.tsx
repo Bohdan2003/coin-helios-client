@@ -2,20 +2,19 @@
 //hooks
 import { useSearchParams } from 'next/navigation';
 //ui
-import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import { LinkTabs } from '@/ui/tabs/LinkTabs';
 import { AlertsList } from '@/app/profile/ui/AlertsList';
-import { PromotionsTable } from '@/app/profile/ui/PromotionsTable';
+import { PromotionsTable } from '@/app/profile/ui/tables/PromotionsTable';
+import { ExitButton } from '@/ui/buttons/ExtiButton';
 //icons
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddIcon from '@mui/icons-material/Add';
 //utils
 import { titleCls } from '@/utils/consts/clsVariable';
 import { ROUTES } from '@/utils/router';
 //helpers
 import { getProfileTabs } from '@/app/profile/helper';
-import { MyCoinsTable } from '@/app/profile/ui/MyCoinsTable';
+import { MyCoinsTable } from '@/app/profile/ui/tables/MyCoinsTable';
 
 export default function Profile() {
   const searchParams = useSearchParams();
@@ -37,11 +36,7 @@ export default function Profile() {
         <div className="flex justify-between items-center gap-[40px]">
           <div className="flex items-center gap-[16px]">
             <span className={titleCls}>Hi Yaroslav</span>
-            <IconButton
-              onClick={() => { console.log('exit'); }}
-            >
-              <ExitToAppIcon color="primary"/>
-            </IconButton>
+            <ExitButton/>
           </div>
 
           <Button

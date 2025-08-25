@@ -1,5 +1,8 @@
-import { cn } from '@/utils/cn';
+//ui
 import { Checkbox } from '@mui/material';
+//utils
+import { cn } from '@/utils/cn';
+import { fieldErrorCls } from '@/utils/consts/clsVariable';
 
 export type TBaseCheckboxProps = {
   label?: React.ReactNode;
@@ -31,7 +34,8 @@ export const BaseCheckbox: React.FC<TBaseCheckboxProps> = ({
           <Checkbox checked={value} {...otherProps} />
       }
       {
-        error && <p className="text-[14px] text-orange ml-[4px] mt-[4px]">{error}</p>
+        error &&
+        <p className={fieldErrorCls}>{error}</p>
       }
     </div>
   );

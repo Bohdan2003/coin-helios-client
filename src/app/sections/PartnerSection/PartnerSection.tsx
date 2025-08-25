@@ -21,9 +21,8 @@ import {
 } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 import {
-  nameSchema,
+  getStrSchemaWithMinWidth,
   emailSchema,
-  textSchema,
   termsSchema
 } from '@/utils/validationSchemas';
 //img
@@ -33,14 +32,14 @@ import imgUrl from '@/assets/images/home/partner.jpg';
 type TPartner = {
   name: string;
   email: string;
-  text: string;
+  description: string;
   terms: boolean;
 };
 
 const schema = yup.object().shape({
-  name: nameSchema,
-  email: emailSchema,
-  text: textSchema,
+  name: getStrSchemaWithMinWidth(3).required('Required'),
+  email: emailSchema.required('Required'),
+  description: getStrSchemaWithMinWidth(30).required('Required'),
   terms: termsSchema,
 });
 
@@ -49,7 +48,7 @@ export const PartnerSection: React.FC = () => {
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema) as Resolver<TPartner>,
-    defaultValues: { name:'', email: '', text:'', terms: true, },
+    defaultValues: { name:'', email: '', description:'', terms: true, },
   });
 
   const onSubmit = (data: TPartner) => {
@@ -106,9 +105,10 @@ export const PartnerSection: React.FC = () => {
               />
             </div>
             <FormTextarea
-              className="mt-[20px] sm:mt-[24px] h-[120px]"
+              className="mt-[20px] sm:mt-[24px]"
+              textareaClassName="h-[120px]"
               fullWidth
-              name="text"
+              name="description"
               placeholder="Text"
             />
             <FormCheckbox

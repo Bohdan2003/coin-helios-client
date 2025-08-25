@@ -21,13 +21,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { smallTitleCls } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 import {
-  nameSchema,
+  getStrSchemaWithMinWidth,
   emailSchema,
-  textSchema,
   termsSchema
 } from '@/utils/validationSchemas';
 
-type TConfirmationDialogProps = {
+type TPromotionFormDialogProps = {
   id: string;
   isOpen: boolean;
   onClose: () => void;
@@ -36,18 +35,18 @@ type TConfirmationDialogProps = {
 type TPromotion = {
   name: string;
   email: string;
-  text: string;
+  description: string;
   terms: boolean;
 };
 
 const schema = yup.object().shape({
-  name: nameSchema,
-  email: emailSchema,
-  text: textSchema,
+  name: getStrSchemaWithMinWidth(3).required('Required'),
+  email: emailSchema.required('Required'),
+  description: getStrSchemaWithMinWidth(30).required('Required'),
   terms: termsSchema,
 });
 
-export const PromotionFormDialog: React.FC<TConfirmationDialogProps> = ({
+export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
   isOpen,
   onClose,
 }) => {
@@ -55,7 +54,7 @@ export const PromotionFormDialog: React.FC<TConfirmationDialogProps> = ({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema) as Resolver<TPromotion>,
-    defaultValues: { name:'', email: '', text:'', terms: true, },
+    defaultValues: { name:'', email: '', description:'', terms: true, },
   });
 
   const onSubmit = (data: TPromotion) => {
@@ -67,68 +66,64 @@ export const PromotionFormDialog: React.FC<TConfirmationDialogProps> = ({
       open={isOpen}
       onClose={onClose}
     >
-      <div className="py-[24px] px-[32px] w-[650px]">
-        <FormProvider {...methods}>
-          <form
-            className="md:max-w-[655px] w-full"
-            onSubmit={methods.handleSubmit(onSubmit)}
-          >
+      <FormProvider {...methods}>
+        <form
+          className="py-[24px] px-[32px] w-[650px]"
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          <div className="flex justify-between items-start">
             <p className={cn(smallTitleCls, 'max-w-[366px]')}>
               Leave a request, and our manager will contact you shortly
             </p>
             <IconButton
               aria-label="close"
               onClick={onClose}
-              sx={{
-                position: 'absolute',
-                right: 24,
-                top: 24,
-              }}
             >
               <CloseIcon />
             </IconButton>
-            <div className="mt-[20px] sm:mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
-              <FormTextField
-                fullWidth
-                name="name"
-                placeholder="Name"
-              />
-              <FormTextField
-                fullWidth
-                name="email"
-                placeholder="Email"
-              />
-            </div>
-            <FormTextarea
-              className="mt-[20px] sm:mt-[24px] h-[120px]"
+          </div>
+          <div className="mt-[20px] sm:mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
+            <FormTextField
               fullWidth
-              name="text"
-              placeholder="Text"
+              name="name"
+              placeholder="Name"
             />
-            <div className="sm:mt-[54px] flex justify-between items-center gap-[20px]">
-              <FormCheckbox
-                name="terms"
-                label={<>
-                  Confirm with&nbsp;
-                  <Link
-                    className="text-blue"
-                    href="#"
-                  >Privacy policy</Link>
-                </>}
-              />
-              <div className="flex gap-[20px]">
-                <Button onClick={onClose}>
-                  Cancel
-                </Button>
-                <Button
-                  variant="contained"
-                  type="submit"
-                >Send</Button>
-              </div>
+            <FormTextField
+              fullWidth
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <FormTextarea
+            className="mt-[20px] sm:mt-[24px]"
+            textareaClassName="h-[120px]"
+            name="description"
+            placeholder="Text"
+            fullWidth
+          />
+          <div className="sm:mt-[54px] flex justify-between items-center gap-[20px]">
+            <FormCheckbox
+              name="terms"
+              label={<>
+                Confirm with&nbsp;
+                <Link
+                  className="text-blue"
+                  href="#"
+                >Privacy policy</Link>
+              </>}
+            />
+            <div className="flex gap-[20px]">
+              <Button onClick={onClose}>
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                type="submit"
+              >Send</Button>
             </div>
-          </form>
-        </FormProvider>
-      </div>
+          </div>
+        </form>
+      </FormProvider>
     </Dialog>
   );
 };

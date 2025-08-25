@@ -1,12 +1,16 @@
 'use client';
 //hooks
-import { useSearchParams } from 'next/navigation';
+import {
+  useRouter,
+  useSearchParams
+} from 'next/navigation';
 //ui
 import Button from '@mui/material/Button';
 import { LinkTabs } from '@/ui/tabs/LinkTabs';
 import { AlertsList } from '@/app/profile/ui/AlertsList';
 import { PromotionsTable } from '@/app/profile/ui/tables/PromotionsTable';
 import { ExitButton } from '@/ui/buttons/ExtiButton';
+import { AddCoinFormDialog } from '@/app/profile/ui/dialogs/AddCoinFormDialog';
 //icons
 import AddIcon from '@mui/icons-material/Add';
 //utils
@@ -17,6 +21,7 @@ import { getProfileTabs } from '@/app/profile/helper';
 import { MyCoinsTable } from '@/app/profile/ui/tables/MyCoinsTable';
 
 export default function Profile() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const tabs = getProfileTabs();
 
@@ -25,6 +30,15 @@ export default function Profile() {
       if(searchParams.get('tab') === tab.value) return tab.value;
     }
     return tabs[0].value;
+  };
+
+  const handleAddCoinToggle = () => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if(params.get('add-coin') === 'visible') params.set('add-coin', 'hidden');
+    else params.set('add-coin', 'visible');
+
+    router.push(`?${params.toString()}`);
   };
 
   const currentTab = getCurrentTab();
@@ -38,13 +52,16 @@ export default function Profile() {
             <span className={titleCls}>Hi Yaroslav</span>
             <ExitButton/>
           </div>
-
           <Button
             variant="outlined"
             startIcon={<AddIcon/>}
+            onClick={handleAddCoinToggle}
           >Add coin</Button>
+          <AddCoinFormDialog
+            isOpen={searchParams.get('add-coin') === 'visible'}
+            onClose={handleAddCoinToggle}
+          />
         </div>
-
         <div className="mt-[32px]">
           <LinkTabs
             activeTab={currentTab}

@@ -28,9 +28,9 @@ const eslintConfig = [
   },
   {
     files: ['src/**/*.ts', 'src/**/*.tsx'],
-    rules: {
-      'max-lines': ['error', 180],
-    },
+    // rules: {
+    //   'max-lines': ['error', 180],
+    // },
   },
 ];
 

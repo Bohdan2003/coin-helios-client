@@ -185,6 +185,8 @@ export const theme = createTheme({
       styleOverrides: {
         paper: {
           boxShadow: 'none',
+          width: 'auto',
+          maxWidth: 'none',
           borderRadius: '16px',
           backgroundColor: 'var(--palette-background-default)',
           backgroundImage: 'none',

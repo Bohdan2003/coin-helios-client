@@ -1,41 +1,70 @@
+//utils
 import { cn } from '@/utils/cn';
+import {
+  fieldLabelCls,
+  fieldBottomBorderCls,
+  fieldErrorCls,
+} from '@/utils/consts/clsVariable';
 
 export type TBaseTextareaProps = {
+  className?: string;
+  textareaClassName?: string;
+  label?: string;
   error?: string | null;
   value?: string;
   placeholder?: string;
   fullWidth?: boolean;
-  className?: string;
+  required?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const textareaCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.7] placeholder:font-medium outline-none';
+const textareaCls = 'w-full placeholder:[color:inherit] placeholder:opacity-[0.5] placeholder:font-medium outline-none';
 
 export const BaseTextarea: React.FC<TBaseTextareaProps> = ({
+  label,
   error,
   fullWidth,
+  required,
   className,
+  textareaClassName,
   ...otherProps
 }) => {
   return (
     <div className={cn( className, 'font-inter', fullWidth && 'w-full' )}>
       <div className={cn(
         'relative h-full',
-        'after:absolute after:left-0 after:right-0 after:bottom-[1px] after:h-[1px] after:bg-blue after:opacity-50',
-        'hover:after:opacity-100 after:duration-200 focus-within:after:opacity-100',
+        fieldBottomBorderCls,
         error && 'after:bg-orange'
-      )}
-      >
-        <textarea
-          className={cn(
-            textareaCls,
-            'resize-none py-[12px] px-[10px] h-full',
-          )}
-          {...otherProps}
-        />
+      )}>
+        {
+          label
+            ?
+            <label>
+              <p className={fieldLabelCls}>
+                {label}{required && <span className="text-orange">*</span>}
+              </p>
+              <textarea
+                className={cn(
+                  textareaClassName,
+                  textareaCls,
+                  'resize-none py-[12px] px-[10px]',
+                )}
+                {...otherProps}
+              />
+            </label>
+            :
+            <textarea
+              className={cn(
+                textareaCls,
+                textareaClassName,
+                'resize-none py-[12px] px-[10px]',
+              )}
+              {...otherProps}
+            />
+        }
       </div>
       {
-        error && <p className="text-[14px] text-orange ml-[4px] mt-[4px]">{error}</p>
+        error && <p className={fieldErrorCls}>{error}</p>
       }
     </div>
   );

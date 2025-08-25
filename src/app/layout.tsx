@@ -5,25 +5,10 @@ import { Footer } from '@/components/Footer/Footer';
 //types
 import type { Metadata } from 'next';
 //fonts
-import { Roboto, Inter } from 'next/font/google';
+import { roboto } from '@/assets/fonts/roboto';
+import { inter } from '@/assets/fonts/inter';
 //styles
 import './globals.css';
-
-//TODO: import local fonts
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-roboto'
-});
-
-const inter = Inter({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-inter'
-});
 
 export const metadata: Metadata = {
   title: 'Create Next App',

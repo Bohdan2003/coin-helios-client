@@ -29,7 +29,7 @@ export function getNavItems(): TMenuItem[] {
     },
     {
       text: 'Add coin',
-      href: ROUTES.PROFILE + '#addCoin',
+      href: ROUTES.PROFILE + '?add-coin=visible',
     },
   ]);
 }

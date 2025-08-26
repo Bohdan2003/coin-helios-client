@@ -11,7 +11,7 @@ import type {
   KeenSliderOptions
 } from 'keen-slider';
 //helpers
-import { getSlidesData } from '@/app/sections/WelcomeSection/helper';
+import { getSlidesData } from '@/app/components/WelcomeSection/helper';
 //styles
 import 'keen-slider/keen-slider.min.css';
 import { smallTitleCls } from '@/utils/consts/clsVariable';

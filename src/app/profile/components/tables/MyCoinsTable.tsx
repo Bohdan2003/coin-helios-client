@@ -5,8 +5,9 @@ import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 import { StatusCell } from '@/ui/tables/cells/StatusCell';
 import { CoinCell } from '@/ui/tables/cells/CoinCell';
 import TableCell from '@mui/material/TableCell';
+import { PromotionCell } from '@/app/profile/components/tables/cells/PromotionCell';
 //helpers
-import { getPromotionsData } from '@/app/profile/ui/helper';
+import { getMyCoinsData } from '@/app/profile/components/helper';
 
 const tableColsAmount = 8;
 const firstColSx = {
@@ -15,8 +16,8 @@ const firstColSx = {
   left: 0,
 };
 
-export const PromotionsTable = () => {
-  const rows = getPromotionsData();
+export const MyCoinsTable = () => {
+  const rows = getMyCoinsData();
 
   return (
     <StickyHeedTable
@@ -24,17 +25,24 @@ export const PromotionsTable = () => {
       colsAmount={tableColsAmount}
       isPending={false}
       isError={false}
+      sx={{
+        '& thead th:last-child, & tbody td:last-child': {
+          maxWidth: 70,
+        },
+      }}
       head={
         <TableRow>
-          <HeaderCell text="Type"/>
           <HeaderCell
             text="Coin"
             sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
           />
+          <HeaderCell text="Views (all time)"/>
+          <HeaderCell text="Views (7days)"/>
+          <HeaderCell text="Likes"/>
+          <HeaderCell text="Promotion"/>
           <HeaderCell text="Start"/>
           <HeaderCell text="Finish"/>
-          <HeaderCell text="Link usage"/>
-          <HeaderCell text="Status"/>
+          <HeaderCell text="Promote" hidden/>
         </TableRow>
       }
       body={
@@ -49,7 +57,6 @@ export const PromotionsTable = () => {
           :
           rows?.map(row => (
             <TableRow key={row.id}>
-              <TableCell>{row.type}</TableCell>
               <CoinCell
                 sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
                 id={row.id}
@@ -57,10 +64,13 @@ export const PromotionsTable = () => {
                 name={row.name}
                 symbol={row.symbol}
               />
+              <TableCell>{row.views_all}</TableCell>
+              <TableCell>{row.views_7d}</TableCell>
+              <TableCell>{row.likes}</TableCell>
+              <TableCell>{row.promotion}</TableCell>
               <TableCell>---</TableCell>
               <TableCell>---</TableCell>
-              <TableCell>{row.link_usage}</TableCell>
-              <TableCell>{row.status}</TableCell>
+              <PromotionCell id={row.id}/>
             </TableRow>
           ))
       }

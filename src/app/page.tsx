@@ -1,9 +1,9 @@
 //sections
-import { WelcomeSection } from '@/app/sections/WelcomeSection/WelcomeSection';
-import { TopCoinsSection } from '@/app/sections/TopCoinsSection/TopCoinsSection';
-import { CoinsSection } from '@/app/sections/CoinsSection/CoinsSection';
-import { PartnerSection } from '@/app/sections/PartnerSection/PartnerSection';
-import { QuestionsSection } from '@/app/sections/QuestionsSection/QuestionsSection';
+import { WelcomeSection } from '@/app/components/WelcomeSection/WelcomeSection';
+import { TopCoinsSection } from '@/app/components/TopCoinsSection/TopCoinsSection';
+import { CoinsSection } from '@/app/components/CoinsSection/CoinsSection';
+import { PartnerSection } from '@/app/components/PartnerSection/PartnerSection';
+import { QuestionsSection } from '@/app/components/QuestionsSection/QuestionsSection';
 //ui
 import { WelcomeImage } from '@/app/ui/WelcomeImage';
 

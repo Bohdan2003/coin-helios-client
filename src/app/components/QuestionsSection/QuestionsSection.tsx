@@ -1,9 +1,9 @@
 //ui
-import { Question } from '@/app/sections/QuestionsSection/Qestion';
+import { Question } from '@/app/components/QuestionsSection/Qestion';
 //utils
 import { titleCls } from '@/utils/consts/clsVariable';
 //helpers
-import { getQuestionsData } from '@/app/sections/QuestionsSection/helper';
+import { getQuestionsData } from '@/app/components/QuestionsSection/helper';
 
 export const QuestionsSection = () => {
   const questions = getQuestionsData();

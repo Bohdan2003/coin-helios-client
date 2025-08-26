@@ -1,5 +1,5 @@
 //helpers
-import { getAlertsData } from '@/app/profile/ui/helper';
+import { getAlertsData } from '@/app/profile/components/helper';
 
 export const AlertsList = () => {
   const items = getAlertsData();

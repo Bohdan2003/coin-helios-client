@@ -13,7 +13,7 @@ import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //types
 import type { TCoin } from '@/modules/coins/CoinsApi';
 //helper
-import { getTopCoinsData } from '@/app/sections/TopCoinsSection/helper';
+import { getTopCoinsData } from '@/app/components/TopCoinsSection/helper';
 
 type TTopCoin = TCoin;
 

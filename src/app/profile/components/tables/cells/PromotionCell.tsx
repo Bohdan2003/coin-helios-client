@@ -4,7 +4,7 @@ import { useState } from 'react';
 //ui
 import { Button } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
-import { PromotionFormDialog } from '@/app/profile/ui/dialogs/PromotionFormDialog';
+import { PromotionFormDialog } from '@/app/profile/components/dialogs/PromotionFormDialog';
 
 export const PromotionCell: React.FC<{id: string}> = ({ id }) => {
   const { mode } = useColorScheme();

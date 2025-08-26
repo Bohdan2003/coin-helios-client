@@ -2,7 +2,11 @@ import * as yup from 'yup';
 
 export const getStrSchemaWithMinWidth = (minWidth: number) => yup
   .string()
-  .min(minWidth, `${minWidth} characters minimum`);
+  .test(
+    'min-if-filled',
+    `${minWidth} characters minimum`,
+    (val) => !val || val.trim().length >= minWidth
+  );
 
 export const urlSchema = yup
   .string()
@@ -75,7 +79,7 @@ export const coinSchema = yup.object().shape({
     })
   ),
 
-  description: getStrSchemaWithMinWidth(30).required('Required'),
+  description: getStrSchemaWithMinWidth(30),
   telegram: urlSchema,
   telegramUsername: yup
     .string()

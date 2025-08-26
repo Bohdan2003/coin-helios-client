@@ -13,7 +13,7 @@ import { BaseTextField } from '@/ui/fields/BaseTextField';
 //icons
 import SearchIcon from '@mui/icons-material/Search';
 //helper
-import { getCategories } from '@/app/sections/CoinsSection/helper';
+import { getCategories } from '@/app/components/CoinsSection/helper';
 //utils
 import { cn } from '@/utils/cn';
 //types

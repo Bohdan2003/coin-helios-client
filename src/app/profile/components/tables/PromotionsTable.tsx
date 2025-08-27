@@ -19,51 +19,59 @@ export const PromotionsTable = () => {
   const rows = getPromotionsData();
 
   return (
-    <StickyHeedTable
-      rowsAmount={20}
-      colsAmount={tableColsAmount}
-      isPending={false}
-      isError={false}
-      head={
-        <TableRow>
-          <HeaderCell text="Type"/>
-          <HeaderCell
-            text="Coin"
-            sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
-          />
-          <HeaderCell text="Start"/>
-          <HeaderCell text="Finish"/>
-          <HeaderCell text="Link usage"/>
-          <HeaderCell text="Status"/>
-        </TableRow>
-      }
-      body={
-        !rows || rows?.length < 1
-          ?
+    <div className="max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
+      <StickyHeedTable
+        rowsAmount={20}
+        colsAmount={tableColsAmount}
+        isPending={false}
+        isError={false}
+        head={
           <TableRow>
-            <StatusCell
-              text="No matched"
-              colsAmount={tableColsAmount}
+            <HeaderCell text="Type"/>
+            <HeaderCell
+              text="Coin"
+              sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
+            />
+            <HeaderCell text="Start"/>
+            <HeaderCell text="Finish"/>
+            <HeaderCell
+              text="Link usage"
+              align="center"
+            />
+            <HeaderCell
+              text="Status"
+              align="center"
             />
           </TableRow>
-          :
-          rows?.map(row => (
-            <TableRow key={row.id}>
-              <TableCell>{row.type}</TableCell>
-              <CoinCell
-                sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
-                id={row.id}
-                icon={row.icon}
-                name={row.name}
-                symbol={row.symbol}
+        }
+        body={
+          !rows || rows?.length < 1
+            ?
+            <TableRow>
+              <StatusCell
+                text="No matched"
+                colsAmount={tableColsAmount}
               />
-              <TableCell>---</TableCell>
-              <TableCell>---</TableCell>
-              <TableCell>{row.link_usage}</TableCell>
-              <TableCell>{row.status}</TableCell>
             </TableRow>
-          ))
-      }
-    />
+            :
+            rows?.map(row => (
+              <TableRow key={row.id}>
+                <TableCell>{row.type}</TableCell>
+                <CoinCell
+                  sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
+                  id={row.id}
+                  icon={row.icon}
+                  name={row.name}
+                  symbol={row.symbol}
+                />
+                <TableCell>---</TableCell>
+                <TableCell>---</TableCell>
+                <TableCell align="center">{row.link_usage}</TableCell>
+                <TableCell align="center">{row.status}</TableCell>
+              </TableRow>
+            ))
+        }
+      />
+    </div>
   );
 };

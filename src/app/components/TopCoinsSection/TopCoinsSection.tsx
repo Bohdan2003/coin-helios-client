@@ -35,10 +35,6 @@ export const TopCoinsSection: React.FC = () => {
       <SimpleTable
         className="mt-[16px]"
         sx={{
-          overflowX: {
-            xs: 'scroll',
-            sm: 'hidden',
-          },
           '& .col-chain': { display: { xs: 'table-cell', sm: 'none', lg: 'table-cell' } },
           '& .col-votes': { display: { xs: 'table-cell', sm: 'none', md: 'table-cell' } },
         }}
@@ -49,10 +45,13 @@ export const TopCoinsSection: React.FC = () => {
               left: 0,
               ...stickyColSx
             }}/>
-            <HeaderCell text="#Coin" sx={{
-              left: '28px',
-              ...stickyColSx
-            }}/>
+            <HeaderCell
+              text="#Coin"
+              sx={{
+                left: '28px',
+                ...stickyColSx
+              }}
+            />
             <HeaderCell text="24H"/>
             <HeaderCell
               text="Chain"

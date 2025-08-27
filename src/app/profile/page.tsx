@@ -47,8 +47,8 @@ export default function Profile() {
     <section className="mt-[60px]">
       <h2 className="hidden">Profile</h2>
       <div className="px-[20px] mx-auto max-w-[1200px]">
-        <div className="flex justify-between items-center gap-[40px]">
-          <div className="flex items-center gap-[16px]">
+        <div className="flex flex-wrap justify-between sm:items-center gap-[20px] sm:gap-[40px]">
+          <div className="flex items-center gap-[4px] sm:gap-[16px]">
             <span className={titleCls}>Hi Yaroslav</span>
             <ExitButton/>
           </div>

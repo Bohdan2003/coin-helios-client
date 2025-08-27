@@ -22,6 +22,9 @@ export const BaseTabs: React.FC<TTabsProps> = ({
 }) => {
   return (
     <Tabs
+      variant="scrollable"
+      scrollButtons="auto"
+      allowScrollButtonsMobile
       value={activeTab}
       onChange={(_: React.SyntheticEvent, value: string) => onTabChange(value)}
       slotProps={{

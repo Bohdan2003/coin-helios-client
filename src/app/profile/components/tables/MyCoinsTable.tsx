@@ -20,60 +20,77 @@ export const MyCoinsTable = () => {
   const rows = getMyCoinsData();
 
   return (
-    <StickyHeedTable
-      rowsAmount={20}
-      colsAmount={tableColsAmount}
-      isPending={false}
-      isError={false}
-      sx={{
-        '& thead th:last-child, & tbody td:last-child': {
-          maxWidth: 70,
-        },
-      }}
-      head={
-        <TableRow>
-          <HeaderCell
-            text="Coin"
-            sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
-          />
-          <HeaderCell text="Views (all time)"/>
-          <HeaderCell text="Views (7days)"/>
-          <HeaderCell text="Likes"/>
-          <HeaderCell text="Promotion"/>
-          <HeaderCell text="Start"/>
-          <HeaderCell text="Finish"/>
-          <HeaderCell text="Promote" hidden/>
-        </TableRow>
-      }
-      body={
-        !rows || rows?.length < 1
-          ?
+    <div className="max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
+      <StickyHeedTable
+        rowsAmount={20}
+        colsAmount={tableColsAmount}
+        isPending={false}
+        isError={false}
+        sx={{
+          '& thead th:last-child, & tbody td:last-child': {
+            maxWidth: {
+              xs: 'auto',
+              md: 70
+            },
+          },
+        }}
+        head={
           <TableRow>
-            <StatusCell
-              text="No matched"
-              colsAmount={tableColsAmount}
+            <HeaderCell
+              text="Coin"
+              sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-paper)' }}
             />
+            <HeaderCell
+              text="Views (all time)"
+              align="center"
+            />
+            <HeaderCell
+              text="Views (7days)"
+              align="center"
+            />
+            <HeaderCell
+              text="Likes"
+              align="center"
+            />
+            <HeaderCell
+              text="Promotion"
+              align="center"
+            />
+            <HeaderCell text="Start"/>
+            <HeaderCell text="Finish"/>
+            <HeaderCell text="Promote" hidden/>
           </TableRow>
-          :
-          rows?.map(row => (
-            <TableRow key={row.id}>
-              <CoinCell
-                sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
-                id={row.id}
-                icon={row.icon}
-                name={row.name}
-                symbol={row.symbol}
+        }
+        body={
+          !rows || rows?.length < 1
+            ?
+            <TableRow>
+              <StatusCell
+                text="No matched"
+                colsAmount={tableColsAmount}
               />
-              <TableCell>{row.views_all}</TableCell>
-              <TableCell>{row.views_7d}</TableCell>
-              <TableCell>{row.likes}</TableCell>
-              <TableCell>{row.promotion}</TableCell>
-              <TableCell>---</TableCell>
-              <TableCell>---</TableCell>
-              <PromotionCell id={row.id}/>
             </TableRow>
-          ))
-      }
-    />
+            :
+            rows?.map(row => (
+              <TableRow key={row.id}>
+                <CoinCell
+                  sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
+                  id={row.id}
+                  icon={row.icon}
+                  name={row.name}
+                  symbol={row.symbol}
+                />
+                <TableCell align="center">{row.views_all}</TableCell>
+                <TableCell align="center">{row.views_7d}</TableCell>
+                <TableCell align="center">{row.likes}</TableCell>
+                <TableCell align="center">{row.promotion}</TableCell>
+                <TableCell>---</TableCell>
+                <TableCell>---</TableCell>
+                <PromotionCell id={row.id}/>
+              </TableRow>
+            ))
+        }
+      />
+    </div>
   );
 };

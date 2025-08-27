@@ -23,6 +23,9 @@ export const LinkTabs: React.FC<TTabsProps> = ({
 }) => {
   return (
     <Tabs
+      variant="scrollable"
+      scrollButtons="auto"
+      allowScrollButtonsMobile
       value={activeTab}
       slotProps={{
         indicator: { sx: { borderRadius: 4 } },

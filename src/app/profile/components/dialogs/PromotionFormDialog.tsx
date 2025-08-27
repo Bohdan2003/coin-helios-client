@@ -65,10 +65,16 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
     <Dialog
       open={isOpen}
       onClose={onClose}
+      sx={{
+        '& .MuiDialog-paper': {
+          m: '10px',
+          width: '100%',
+        }
+      }}
     >
       <FormProvider {...methods}>
         <form
-          className="py-[24px] px-[32px] w-[650px]"
+          className="p-[18px] sm:py-[24px] sm:px-[32px]"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           <div className="flex justify-between items-start">
@@ -101,7 +107,7 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
             placeholder="Text"
             fullWidth
           />
-          <div className="sm:mt-[54px] flex justify-between items-center gap-[20px]">
+          <div className="mt-[20px] sm:mt-[54px] sm:flex justify-between items-center gap-[20px]">
             <FormCheckbox
               name="terms"
               label={<>
@@ -112,11 +118,15 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
                 >Privacy policy</Link>
               </>}
             />
-            <div className="flex gap-[20px]">
-              <Button onClick={onClose}>
+            <div className="mt-[54px] sm:mt-0 flex gap-[20px]">
+              <Button
+                className="w-full sm:w-auto"
+                onClick={onClose}
+              >
                 Cancel
               </Button>
               <Button
+                className="w-full sm:w-auto"
                 variant="contained"
                 type="submit"
               >Send</Button>

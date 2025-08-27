@@ -1,4 +1,6 @@
+'use client';
 //hooks
+import { useMediaQuery, useTheme } from '@mui/material';
 import { useForm } from 'react-hook-form';
 //ui
 import {
@@ -33,6 +35,8 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
   isOpen,
   onClose,
 }) => {
+  const isLgDown = useMediaQuery(useTheme().breakpoints.down('lg'));
+
   const methods = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
@@ -64,16 +68,27 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
 
   return (
     <Dialog
+      fullWidth
+      maxWidth="lg"
       open={isOpen}
       onClose={onClose}
+      fullScreen={isLgDown}
+      sx={{
+        '& .MuiDialog-paper': {
+          borderRadius: {
+            xs: 0,
+            lg: '16px'
+          }
+        }
+      }}
     >
       <FormProvider {...methods}>
         <form
-          className="py-[24px] px-[32px] w-[1340px]"
+          className="py-[24px] px-[32px]"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           <div className={cn(
-            'grid grid-cols-[45%_1fr] gap-[60px] pb-[24px] relative',
+            'grid md:grid-cols-[45%_1fr] gap-[20px] md:gap-[60px] pb-[24px] relative',
             'after:absolute after:left-0 after:right-0 after:bottom-0',
             'after:h-[1px] after:bg-[var(--darkGray)] after:rounded-[1px]',
           )}>
@@ -96,9 +111,9 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
               </IconButton>
             </div>
           </div>
-          <div className="mt-[24px] grid grid-cols-[45%_1fr] gap-[60px]">
+          <div className="mt-[24px] grid md:grid-cols-[45%_1fr] gap-[40px] md:gap-[60px]">
             <div>
-              <div className="grid grid-cols-2 gap-x-[20px] gap-y-[32px]">
+              <div className="grid sm:grid-cols-2 gap-x-[20px] gap-y-[32px]">
                 <FormUploadImageField
                   name="icon"
                   text={
@@ -132,7 +147,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
               </div>
               <FormFieldArraySection<TCoin>
                 className="mt-[50px]"
-                rowClassName="grid grid-cols-2 gap-[20px]"
+                rowClassName="grid sm:grid-cols-2 gap-[12px] sm:gap-[20px]"
                 name="listings"
                 label="Listings"
                 createDefault={() => ({ platform: '', link: '' })}
@@ -152,8 +167,8 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                 )}
               />
               <FormFieldArraySection<TCoin>
-                className="mt-[50px]"
-                rowClassName="grid grid-cols-[1fr_200px] gap-[20px]"
+                className="mt-[40px] md:mt-[50px]"
+                rowClassName="grid sm:grid-cols-[1fr_200px] gap-[12px] sm:gap-[20px]"
                 name="contracts"
                 label="Contract Address"
                 required
@@ -174,7 +189,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                 )}
               />
               <FormFieldArraySection<TCoin>
-                className="mt-[50px]"
+                className="mt-[40px] md:mt-[50px]"
                 name="otherLinks"
                 label="Other link"
                 createDefault={() => ({ link: '' })}
@@ -189,13 +204,13 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
             </div>
             <div>
               <FormTextarea
-                textareaClassName="h-[200px]"
+                textareaClassName="h-[120px] md:h-[200px]"
                 name="description"
                 label="Coin description"
                 placeholder="Short coin description"
                 fullWidth
               />
-              <div className="mt-[28px] grid grid-cols-2 gap-[40px]">
+              <div className="mt-[28px] grid sm:grid-cols-2 gap-[20px] md:gap-[40px]">
                 <FormTextField
                   name="telegram"
                   label="Telegram"

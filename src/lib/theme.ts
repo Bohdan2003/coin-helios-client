@@ -137,6 +137,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTable: {
+      styleOverrides: {
+        root: {
+          minWidth: 'max-content',
+        },
+      },
+    },
     MuiTableBody: {
       styleOverrides: {
         root: {
@@ -173,6 +180,14 @@ export const theme = createTheme({
     },
     MuiTableCell: {
       styleOverrides: {
+        root: ({ theme }) => ({
+          width: 'auto',
+          whiteSpace: 'nowrap',
+          padding: '10px',
+          [theme.breakpoints.up('lg')]: {
+            padding: '16px',
+          },
+        }),
         head: {
           fontSize: 14,
           borderBottom: 'none',
@@ -184,9 +199,8 @@ export const theme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
+          margin: 0,
           boxShadow: 'none',
-          width: 'auto',
-          maxWidth: 'none',
           borderRadius: '16px',
           backgroundColor: 'var(--palette-background-default)',
           backgroundImage: 'none',

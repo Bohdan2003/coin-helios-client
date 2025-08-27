@@ -28,12 +28,6 @@ export const SimpleTable: React.FC<TSimpleTableProps> = ({
         '& .MuiTableHead-root .MuiTableCell-root': {
           paddingBottom: '6px',
         },
-        '& .MuiTableCell-root': {
-          p: {
-            xs: '10px',
-            lg: '16px'
-          },
-        },
         '[data-dark] &': {
           border: '1px solid transparent',
           backgroundColor: 'var(--palette-background-paper)',

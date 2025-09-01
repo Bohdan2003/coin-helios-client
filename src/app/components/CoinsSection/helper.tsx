@@ -7,7 +7,7 @@ import SouthIcon from '@mui/icons-material/SouthOutlined';
 import BarChartIcon from '@mui/icons-material/BarChartOutlined';
 import StarBorderIcon from '@mui/icons-material/StarBorderOutlined';
 
-export const getCategories = () => [
+export const getFilters = () => [
   { value: 'all',     label: 'All',     icon: <CrownIcon /> },
   { value: 'top',     label: 'Top',     icon: <EmojiEventsOutlined /> },
   { value: 'popular', label: 'Popular', icon: <WhatshotIcon /> },

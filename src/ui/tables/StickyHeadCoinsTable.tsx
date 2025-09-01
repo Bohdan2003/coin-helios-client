@@ -13,6 +13,7 @@ import { BuyCell } from '@/ui/tables/cells/BuyCell';
 import { StatusCell } from '@/ui/tables/cells/StatusCell';
 import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //utils
+import { memo } from 'react';
 import { NumberFormatter } from '@/utils/NumberFormatter';
 //types
 import { TCoin, TSortDir, TSortKey } from '@/modules/coins/CoinsApi';
@@ -30,11 +31,15 @@ type TStickyHeadCoinsTableProps = {
 
 const firstColSx = {
   position: 'sticky',
+  maxWidth: {
+    xs: '80px',
+    sm: '300px',
+  },
   zIndex: 10,
   left: 0,
 };
 
-export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
+export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo(({
   sortKey,
   sortDir,
   isLoading,
@@ -160,4 +165,6 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = ({
       }
     />
   );
-};
+});
+
+StickyHeadCoinsTable.displayName = 'StickyHeadCoinsTable';

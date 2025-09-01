@@ -2,6 +2,7 @@
 import { apiGetRequest } from '@/utils/apiInstance';
 //types
 import { ResponseWithPagination } from '@/utils/types/api';
+import { TFilterOption } from '@/utils/types/filter';
 
 export type TSortDir = 'asc' | 'desc' | null;
 export type TSortKey = string | null;
@@ -27,12 +28,26 @@ export type TCoin = {
   saved: boolean
 }
 
+export type TCoinFiltersData = {
+  type: TFilterOption[],
+  category: TFilterOption[],
+  chain: TFilterOption[],
+}
 
 export const getCoins = async ( params: {
   page: number,
   sort_by: TSortKey,
+  category_ids?: string[],
+  chain_names?: string[],
+  coin_type_ids?: string[],
   order?: TSortDir,
   search: string,
   filter: string,
+  limit: number,
 } ) =>
   apiGetRequest<ResponseWithPagination<TCoin[]>>('/crypto/coins', { params });
+
+export const getCoinFilters = async () =>
+  apiGetRequest<{ data: TCoinFiltersData }>('/crypto/filters');
+
+

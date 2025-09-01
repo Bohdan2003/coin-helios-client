@@ -7,9 +7,15 @@ export const PercentChangeCell: React.FC<{ percent: number }> = ({ percent }) =>
 
   return (
     <TableCell>
-      <span
-        className={cn(isPositive ? 'text-green' : 'text-orange')}
-      >{text}</span>
+      {
+        percent
+          ?
+          <span
+            className={cn(isPositive ? 'text-green' : 'text-orange')}
+          >{text}</span>
+          :
+          <span className="text-green">+0</span>
+      }
     </TableCell>
   );
 };

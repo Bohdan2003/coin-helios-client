@@ -12,6 +12,10 @@ import { getMyCoinsData } from '@/app/profile/components/helper';
 const tableColsAmount = 8;
 const firstColSx = {
   position: 'sticky',
+  maxWidth: {
+    xs: '80px',
+    sm: '300px',
+  },
   zIndex: 10,
   left: 0,
 };

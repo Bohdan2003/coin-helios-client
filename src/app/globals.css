@@ -38,7 +38,7 @@
   --breakpoint-xl: 1600px;
 }
 
-html { scroll-behavior: smooth; }
+/*html { scroll-behavior: smooth; }*/
 
 .container {
   max-width: 1640px;
@@ -46,10 +46,6 @@ html { scroll-behavior: smooth; }
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.smooth-scroll{
-  scroll-behavior: smooth;
 }
 
 .keen-slider {

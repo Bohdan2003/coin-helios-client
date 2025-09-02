@@ -209,17 +209,7 @@ export const theme = createTheme({
     MuiPopover: {
       styleOverrides: {
         paper: {
-          margin: 0,
-          boxShadow: 'none',
           borderRadius: '16px',
-          backgroundImage: 'none',
-          backgroundColor: 'var(--palette-background-default)',
-          border: '1px solid var(--palette-primary-main)',
-
-          '[data-dark] &': {
-            backgroundColor: 'var(--palette-background-paper)',
-            borderColor: 'transparent',
-          },
         },
       },
     }

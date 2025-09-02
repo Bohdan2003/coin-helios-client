@@ -76,6 +76,21 @@ export const CoinFiltersPopover: React.FC<TCoinFiltersPopoverProps> = memo(({
       onClose={handleClose}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      slotProps={{
+        paper: {
+          sx: {
+            boxShadow: 'none',
+            backgroundImage: 'none',
+            backgroundColor: 'var(--palette-background-default)',
+            border: '1px solid var(--palette-primary-main)',
+
+            '[data-dark] &': {
+              backgroundColor: 'var(--palette-background-paper)',
+              borderColor: 'transparent',
+            },
+          },
+        },
+      }}
     >
       <div className="max-w-[420px] p-[16px]">
         <div className="grid gap-[16px]">

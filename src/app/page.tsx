@@ -5,23 +5,25 @@ import { CoinsSection } from '@/app/components/CoinsSection/CoinsSection';
 import { PartnerSection } from '@/app/components/PartnerSection/PartnerSection';
 import { QuestionsSection } from '@/app/components/QuestionsSection/QuestionsSection';
 //ui
-import { WelcomeImage } from '@/app/ui/WelcomeImage';
+import { GooBg } from '@/ui/bg/GooBg/GooBg';
 
 //TODO: need to add loading
 export default async function Home() {
   return (
     <>
-      <div className="container mt-[20px] xl:mt-[38px] sm:pt-[14px] sm:pb-[14px] xl:pb-[24px] relative">
-        <div className="relative z-10">
-          <WelcomeSection/>
-          <div className="mt-[80px] sm:mt-[40px] flex flex-col sm:grid grid-cols-2 gap-[80px] sm:gap-[20px]">
-            <TopCoinsSection/>
-            <TopCoinsSection/>
+      <div className="max-w-[1648px] px-[20px] sm:px-[10px] ml-auto mr-auto mt-[20px] xl:mt-[38px]">
+        <GooBg
+          className="rounded-[16px] overflow-hidden sm:pt-[14px] sm:pb-[14px] xl:pb-[24px] sm:px-[14px]"
+          bgClassName="hidden sm:block"
+        >
+          <div>
+            <WelcomeSection/>
+            <div className="mt-[80px] sm:mt-[40px] flex flex-col sm:grid grid-cols-2 gap-[80px] sm:gap-[20px]">
+              <TopCoinsSection/>
+              <TopCoinsSection/>
+            </div>
           </div>
-        </div>
-        <div className="hidden sm:block absolute top-0 bottom-0 left-[10px] xl:left-0 right-[10px] xl:right-0 rounded-[16px]">
-          <WelcomeImage/>
-        </div>
+        </GooBg>
       </div>
       <div
         className="mt-[80px]"

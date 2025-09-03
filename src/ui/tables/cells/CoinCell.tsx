@@ -27,7 +27,7 @@ export const CoinCell: React.FC<TCoinCellProps> = ({
     <TableCell sx={sx}>
       <div className="flex gap-[6px] items-center">
         {/*<Image*/}
-        {/*  className="rounded-full size-[32px] object-cover object-center"*/}
+        {/*  className="size-[32px] object-cover object-center"*/}
         {/*  src={`${apiUrl}/${icon}`}*/}
         {/*  alt={name}*/}
         {/*  width={32}*/}

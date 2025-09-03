@@ -38,7 +38,7 @@
   --breakpoint-xl: 1600px;
 }
 
-/*html { scroll-behavior: smooth; }*/
+html { scroll-behavior: smooth; }
 
 .container {
   max-width: 1640px;

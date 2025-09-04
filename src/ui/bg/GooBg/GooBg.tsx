@@ -1,44 +1,62 @@
 'use client';
 //hooks
-import { useEffect } from 'react';
+import {
+  useEffect,
+  useRef,
+} from 'react';
+import {
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 //utils
 import { cn } from '@/utils/cn';
 //styles
 import './style.css';
 
 export const GooBg: React.FC<{
+  breakpointOfHidden: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string,
-  bgClassName?: string,
   children: React.ReactNode,
 }> = ({
+  breakpointOfHidden,
   className,
-  bgClassName,
   children
 }) => {
+  const isHidden = useMediaQuery(useTheme().breakpoints.down(breakpointOfHidden));
+  const interBubbleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interBubble = document.querySelector<HTMLDivElement>('.interactive')!;
+    const interBubble = interBubbleRef.current;
+    if (!interBubble || isHidden) return;
+
     let curX = 0;
     let curY = 0;
     let tgX = 0;
     let tgY = 0;
+    let rafId = 0;
 
-    function move() {
+    const handleMouseMove = (event: MouseEvent) => {
+      tgX = event.clientX;
+      tgY = event.clientY;
+    };
+
+    function move(el: HTMLDivElement) {
       curX += (tgX - curX) / 20;
       curY += (tgY - curY) / 20;
-      interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-      requestAnimationFrame(() => {
-        move();
+      el.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+      rafId = requestAnimationFrame(() => {
+        move(el);
       });
     }
 
-    window.addEventListener('mousemove', (event) => {
-      tgX = event.clientX;
-      tgY = event.clientY;
-    });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    rafId = requestAnimationFrame(() => move(interBubble));
 
-    move();
-  }, []);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(rafId);
+    };
+  }, [isHidden]);
 
   return (
     <div className={cn(className, 'relative')}>
@@ -46,7 +64,7 @@ export const GooBg: React.FC<{
         { children }
       </div>
       <div className="absolute z-10 top-0 right-0 bottom-0 left-0">
-        <div className={cn(bgClassName, 'gradient-bg')}>
+        <div className={cn(isHidden && 'hidden', 'gradient-bg')}>
           <svg xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="goo">
@@ -59,12 +77,11 @@ export const GooBg: React.FC<{
           <div className="gradients">
             <div className="g1"></div>
             <div className="g2"></div>
-            <div className="interactive"></div>
-          </div>
-          <div className="gradients">
-            <div className="g1"></div>
-            <div className="g2"></div>
-            <div className="interactive"></div>
+            <div className="g3"></div>
+            <div
+              className="interactive"
+              ref={interBubbleRef}
+            ></div>
           </div>
         </div>
       </div>

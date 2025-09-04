@@ -1,9 +1,10 @@
 :root {
-    --color-bg1: rgb(255, 255, 255);
-    --color-bg2: rgb(238, 242, 251);
-    --color1: 169, 169, 227;
-    --color2: 147, 165, 251;
-    --color-interactive: 114, 177, 251;
+    --color-bg1: rgb(248, 250, 255);
+    --color-bg2: rgb(230, 236, 248);
+    --color1: 190, 218, 255;
+    --color2: 147, 192, 251;
+    --color3: 227, 244, 255;
+    --color-interactive: 178, 206, 246;
     --circle-size: 90%;
     --blending: screen;
 }
@@ -13,7 +14,8 @@
     --color-bg2: rgb(7, 14, 43);
     --color1: 122, 122, 188;
     --color2: 120, 140, 255;
-    --color-interactive: 60, 79, 232;
+    --color3: 39, 50, 99;
+    --color-interactive: 46, 54, 131;
     --circle-size: 90%;
     --blending: screen;
 }
@@ -101,8 +103,24 @@
         top: calc(50% - var(--circle-size) / 2);
         left: calc(50% - var(--circle-size) / 2);
 
-        transform-origin: calc(50% - 400px);
+        transform-origin: calc(50% + 400px);
         animation: moveInCircle 20s reverse infinite;
+
+        opacity: 1;
+    }
+
+    .g3 {
+        position: absolute;
+        background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+        mix-blend-mode: var(--blending);
+
+        width: var(--circle-size);
+        height: var(--circle-size);
+        top: calc(50% - var(--circle-size) / 2 + 200px);
+        left: calc(50% - var(--circle-size) / 2 - 500px);
+
+        transform-origin: calc(50% + 400px);
+        animation: moveInCircle 40s linear infinite;
 
         opacity: 1;
     }

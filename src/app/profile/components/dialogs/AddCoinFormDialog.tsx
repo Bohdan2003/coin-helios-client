@@ -1,6 +1,9 @@
 'use client';
 //hooks
-import { useMediaQuery, useTheme } from '@mui/material';
+import {
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { useForm } from 'react-hook-form';
 //ui
 import {
@@ -73,11 +76,13 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
       open={isOpen}
       onClose={onClose}
       fullScreen={isLgDown}
-      sx={{
-        '& .MuiDialog-paper': {
-          borderRadius: {
-            xs: 0,
-            lg: '16px'
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: {
+              xs: 0,
+              lg: '16px'
+            }
           }
         }
       }}

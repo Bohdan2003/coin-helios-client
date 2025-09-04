@@ -14,7 +14,7 @@ export default async function Home() {
       <div className="max-w-[1648px] px-[20px] sm:px-[10px] ml-auto mr-auto mt-[20px] xl:mt-[38px]">
         <GooBg
           className="rounded-[16px] overflow-hidden sm:pt-[14px] sm:pb-[14px] xl:pb-[24px] sm:px-[14px]"
-          bgClassName="hidden sm:block"
+          breakpointOfHidden="sm"
         >
           <div>
             <WelcomeSection/>

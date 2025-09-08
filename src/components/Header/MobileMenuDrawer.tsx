@@ -11,7 +11,7 @@ type TMobileMenuProps = {
   navItems: TNavItem[]
 }
 
-export const MobileMenu: React.FC<TMobileMenuProps> = ({
+export const MobileMenuDrawer: React.FC<TMobileMenuProps> = ({
   open,
   setOpen,
   navItems,

@@ -7,7 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 //utils
 import { cn } from '@/utils/cn';
-import { smallTitleCls } from '@/utils/consts/clsVariable';
+import { titleCls } from '@/utils/consts/clsVariable';
 
 
 export const Question: React.FC<{
@@ -21,7 +21,7 @@ export const Question: React.FC<{
   return (
     <div className={cn(
       'rounded-[12px] border',
-      'border-[var(--darkGray)]',
+      'border-[var(--lightGray)]',
       'dark:border-transparent dark:bg-[var(--darkBg2)]',
     )}>
       <Accordion
@@ -49,7 +49,7 @@ export const Question: React.FC<{
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <div className={smallTitleCls}>{question}</div>
+          <div className={titleCls}>{question}</div>
         </AccordionSummary>
         <AccordionDetails>
           <div className={cn(

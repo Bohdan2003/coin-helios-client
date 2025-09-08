@@ -2,7 +2,7 @@
 import { useState } from 'react';
 //ui
 import { IconButton } from '@mui/material';
-import { ConfirmationDialog } from '@/ui/dialogs/ConfirmationDialog';
+import { ConfirmationDialog } from '@/ui/modals/ConfirmationDialog';
 //icons
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 

@@ -1,4 +1,4 @@
-//sections
+//components
 import { WelcomeSection } from '@/app/components/WelcomeSection/WelcomeSection';
 import { TopCoinsSection } from '@/app/components/TopCoinsSection/TopCoinsSection';
 import { CoinsSection } from '@/app/components/CoinsSection/CoinsSection';

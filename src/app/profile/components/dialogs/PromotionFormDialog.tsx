@@ -18,7 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 //utils
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { smallTitleCls } from '@/utils/consts/clsVariable';
+import { titleCls } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 import {
   getStrSchemaWithMinWidth,
@@ -78,7 +78,7 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           <div className="flex justify-between items-start">
-            <p className={cn(smallTitleCls, 'max-w-[366px]')}>
+            <p className={cn(titleCls, 'max-w-[366px]')}>
               Leave a request, and our manager will contact you shortly
             </p>
             <IconButton

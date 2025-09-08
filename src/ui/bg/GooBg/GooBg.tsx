@@ -23,11 +23,11 @@ export const GooBg: React.FC<{
   children
 }) => {
   const isHidden = useMediaQuery(useTheme().breakpoints.down(breakpointOfHidden));
-  const interBubbleRef = useRef<HTMLDivElement>(null);
+  const interactiveBubbleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interBubble = interBubbleRef.current;
-    if (!interBubble || isHidden) return;
+    const interactiveBubble = interactiveBubbleRef.current;
+    if (!interactiveBubble || isHidden) return;
 
     let curX = 0;
     let curY = 0;
@@ -50,7 +50,7 @@ export const GooBg: React.FC<{
     }
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    rafId = requestAnimationFrame(() => move(interBubble));
+    rafId = requestAnimationFrame(() => move(interactiveBubble));
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -80,7 +80,7 @@ export const GooBg: React.FC<{
             <div className="g3"></div>
             <div
               className="interactive"
-              ref={interBubbleRef}
+              ref={interactiveBubbleRef}
             ></div>
           </div>
         </div>

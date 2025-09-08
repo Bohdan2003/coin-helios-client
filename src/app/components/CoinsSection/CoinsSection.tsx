@@ -64,6 +64,7 @@ export const CoinsSection: React.FC = () => {
     }),
     placeholderData: previous => previous,
   });
+  console.log('render');
 
   const handleSortChange = useCallback((key: TSortKey, dir: TSortDir) => {
     setSortKey(key);

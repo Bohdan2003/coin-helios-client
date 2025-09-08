@@ -14,7 +14,7 @@ import { AddCoinFormDialog } from '@/app/profile/components/dialogs/AddCoinFormD
 //icons
 import AddIcon from '@mui/icons-material/Add';
 //utils
-import { titleCls } from '@/utils/consts/clsVariable';
+import { bigTitleCls } from '@/utils/consts/clsVariable';
 import { ROUTES } from '@/utils/router';
 //helpers
 import { getProfileTabs } from '@/app/profile/helper';
@@ -49,7 +49,7 @@ export default function Profile() {
       <div className="px-[20px] mx-auto max-w-[1200px]">
         <div className="flex flex-wrap justify-between sm:items-center gap-[20px] sm:gap-[40px]">
           <div className="flex items-center gap-[4px] sm:gap-[16px]">
-            <span className={titleCls}>Hi Yaroslav</span>
+            <span className={bigTitleCls}>Hi Yaroslav</span>
             <ExitButton/>
           </div>
           <Button

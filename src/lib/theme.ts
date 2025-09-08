@@ -33,7 +33,7 @@ export const theme = createTheme({
           default: 'var(--lightBg)',
           paper: 'var(--lightBg2)',
         },
-        divider: 'var(--darkGray)',
+        divider: 'var(--lightGray)',
         text: {
           primary: 'var(--black)',
           secondary: 'var(--black)',
@@ -168,11 +168,6 @@ export const theme = createTheme({
               height: 1,
               backgroundColor: 'var(--palette-divider)',
               borderRadius: 0.5,
-            },
-            '[data-dark] &': {
-              '&:after': {
-                opacity: 0.2,
-              },
             },
           },
         },

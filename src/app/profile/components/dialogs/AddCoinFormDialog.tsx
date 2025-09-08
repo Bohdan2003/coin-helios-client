@@ -23,7 +23,7 @@ import IconButton from '@mui/material/IconButton';
 import { Resolver } from 'react-hook-form';
 //utils
 import { yupResolver } from '@hookform/resolvers/yup';
-import { smallTitleCls } from '@/utils/consts/clsVariable';
+import { titleCls } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 import { coinSchema } from '@/utils/validationSchemas';
 //types
@@ -95,10 +95,10 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
           <div className={cn(
             'grid md:grid-cols-[45%_1fr] gap-[20px] md:gap-[60px] pb-[24px] relative',
             'after:absolute after:left-0 after:right-0 after:bottom-0',
-            'after:h-[1px] after:bg-[var(--darkGray)] after:rounded-[1px]',
+            'after:h-[1px] after:bg-[var(--lightGray)] after:rounded-[1px]',
           )}>
             <div className="flex justify-between items-center gap-[40px]">
-              <p className={smallTitleCls}>Add coin</p>
+              <p className={titleCls}>Add coin</p>
               <p className="opacity-80 text-[14px] max-w-[100px]">
                 <span className="text-orange">*</span> lines marked as mandatory
               </p>

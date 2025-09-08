@@ -16,8 +16,8 @@ import { FormCheckbox } from '@/ui/fields/FormCheckbox';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
-  smallTitleCls,
-  titleCls
+  titleCls,
+  bigTitleCls
 } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 import {
@@ -66,7 +66,7 @@ export const PartnerSection: React.FC = () => {
           />
           <h3
             className={cn(
-              titleCls,
+              bigTitleCls,
               'absolute top-[60px] lg:top-[42px] left-[24px] text-white'
             )}
           >
@@ -89,7 +89,7 @@ export const PartnerSection: React.FC = () => {
             className="md:max-w-[655px] w-full"
             onSubmit={methods.handleSubmit(onSubmit)}
           >
-            <p className={cn(smallTitleCls, 'max-w-[540px]')}>
+            <p className={cn(titleCls, 'max-w-[540px]')}>
               Leave a request, and our manager will contact you shortly to answer all your questions
             </p>
             <div className="mt-[20px] sm:mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">

@@ -51,3 +51,7 @@ export const getCoinFilters = async () =>
   apiGetRequest<{ data: TCoinFiltersData }>('/crypto/filters');
 
 
+export const getCoinInfo = async ( params: { id: string, } ) =>
+  apiGetRequest<ResponseWithPagination<TCoin[]>>(`/crypto/coin/${params.id}/current`);
+
+

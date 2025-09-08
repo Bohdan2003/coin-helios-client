@@ -3,7 +3,7 @@
 import { useState } from 'react';
 // ui
 import { IconButton } from '@mui/material';
-import { MobileMenu } from '@/components/Header/MobileMenu';
+import { MobileMenuDrawer } from '@/components/Header/MobileMenuDrawer';
 //icons
 import MenuIcon from '@mui/icons-material/Menu';
 //helpers
@@ -23,7 +23,7 @@ export function BurgerMenu() {
         <MenuIcon/>
       </IconButton>
 
-      <MobileMenu
+      <MobileMenuDrawer
         open={open}
         setOpen={setOpen}
         navItems={navItems}

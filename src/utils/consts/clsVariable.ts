@@ -1,5 +1,6 @@
-export const titleCls = 'text-[26px] sm:text-[32px] font-medium leading-[1]';
-export const smallTitleCls = 'text-[18px] sm:text-[20px] lg:text-[24px]';
+export const bigTitleCls = 'text-[26px] sm:text-[32px] font-medium leading-[1]';
+export const titleCls = 'text-[18px] sm:text-[20px] lg:text-[24px]';
+export const smallTitleCls = 'text-[20px] font-inter font-medium';
 
 export const fieldLabelCls = 'text-[12px] font-semibold opacity-70';
 export const fieldBottomBorderCls =

@@ -1,5 +1,6 @@
 //components
 import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
+import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/ContactsSection';
 
 export default async function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   console.log(coinId);
@@ -11,7 +12,10 @@ export default async function Coin({ params: { coinId } }: { params: { coinId: s
 
         </div>
         <div>
-          <InfoSection/>
+          <div className="grid gap-[16px]">
+            <InfoSection/>
+            <ContactsSection/>
+          </div>
         </div>
       </div>
     </>

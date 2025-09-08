@@ -9,33 +9,33 @@ export const InfoSection: React.FC = () => {
       <h3 className={smallTitleCls}>Info</h3>
       <dl className="mt-[16px] grid gap-[16px]">
         <InfoItem
-          label="Price to USD"
-          value="$94,668.896"
+          title="Price to USD"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
         <InfoItem
-          label="24h volume"
-          value="$94,668.896"
+          title="24h volume"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
         <InfoItem
-          label="Market cap"
-          value="$94,668.896"
+          title="Market cap"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
         <InfoItem
-          label="Volume / Market cap"
-          value="$94,668.896"
+          title="Volume / Market cap"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
         <InfoItem
-          label="Fully diluted market cap"
-          value="$94,668.896"
+          title="Fully diluted market cap"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
         <InfoItem
-          label="All-time high"
-          value="$94,668.896"
+          title="All-time high"
+          text="$94,668.896"
           helpText="Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
         />
       </dl>

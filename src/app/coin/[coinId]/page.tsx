@@ -1,5 +1,5 @@
 //components
-import { CoinInfoSection } from '@/app/coin/[coinId]/components/CoinInfoSection/CoinInfoSection';
+import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
 
 export default async function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   console.log(coinId);
@@ -11,7 +11,7 @@ export default async function Coin({ params: { coinId } }: { params: { coinId: s
 
         </div>
         <div>
-          <CoinInfoSection/>
+          <InfoSection/>
         </div>
       </div>
     </>

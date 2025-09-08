@@ -1,9 +1,9 @@
 //ui
-import { InfoItem } from '@/app/coin/[coinId]/components/CoinInfoSection/InfoItem';
+import { InfoItem } from '@/app/coin/[coinId]/components/InfoSection/InfoItem';
 //utils
 import { smallTitleCls } from '@/utils/consts/clsVariable';
 
-export const CoinInfoSection: React.FC = () => {
+export const InfoSection: React.FC = () => {
   return (
     <section className="p-[16px] rounded-[16px] border-1 border-[var(--lightGray)] dark:border-[var(--darkGray)]">
       <h3 className={smallTitleCls}>Info</h3>

@@ -46,6 +46,7 @@ export const ContextHelp: React.FC<InfoPopoverProps> = ({ text, ariaLabel }) => 
         slotProps={{
           paper: {
             sx: {
+              boxShadow: 'none',
               backgroundColor: 'var(--lightGray-200, #E6EAEE)',
               '[data-dark] &': {
                 backgroundColor: 'var(--darkGray, #2B2F36)',

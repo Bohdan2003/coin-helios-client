@@ -1,11 +1,15 @@
 //ui
 import { InfoItem } from '@/app/coin/[coinId]/components/InfoSection/InfoItem';
 //utils
-import { smallTitleCls } from '@/utils/consts/clsVariable';
+import {
+  smallTitleCls,
+  sectionBorderCls
+} from '@/utils/consts/clsVariable';
+import { cn } from '@/utils/cn';
 
 export const InfoSection: React.FC = () => {
   return (
-    <section className="p-[16px] rounded-[16px] border-1 border-[var(--lightGray)] dark:border-[var(--darkGray)]">
+    <section className={cn('p-[16px] rounded-[16px]', sectionBorderCls)}>
       <h3 className={smallTitleCls}>Info</h3>
       <dl className="mt-[16px] grid gap-[16px]">
         <InfoItem

@@ -1,6 +1,7 @@
 //components
 import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
 import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/ContactsSection';
+import { CommunitySection } from '@/app/coin/[coinId]/components/CommunitySection/CommunitySection';
 
 export default async function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   console.log(coinId);
@@ -15,6 +16,7 @@ export default async function Coin({ params: { coinId } }: { params: { coinId: s
           <div className="grid gap-[16px]">
             <InfoSection/>
             <ContactsSection/>
+            <CommunitySection/>
           </div>
         </div>
       </div>

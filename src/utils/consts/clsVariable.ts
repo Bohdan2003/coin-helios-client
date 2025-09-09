@@ -7,3 +7,5 @@ export const fieldBottomBorderCls =
   'after:absolute after:left-0 after:right-0 after:bottom-[1px] after:h-[1px] after:bg-blue after:opacity-50' +
   ' hover:after:opacity-100 after:duration-200 focus-within:after:opacity-100';
 export const fieldErrorCls = 'text-[14px] text-orange ml-[4px] mt-[4px]';
+
+export const sectionBorderCls = 'border-1 border-[var(--lightGray)] dark:border-[var(--darkGray)]';

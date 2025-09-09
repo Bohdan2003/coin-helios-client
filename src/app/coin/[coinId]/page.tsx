@@ -2,6 +2,7 @@
 import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
 import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/ContactsSection';
 import { CommunitySection } from '@/app/coin/[coinId]/components/CommunitySection/CommunitySection';
+import { Category } from '@/app/coin/[coinId]/components/Category';
 
 export default async function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   console.log(coinId);
@@ -18,6 +19,7 @@ export default async function Coin({ params: { coinId } }: { params: { coinId: s
             <ContactsSection/>
             <CommunitySection/>
           </div>
+          <Category className="mt-[24px]"/>
         </div>
       </div>
     </>

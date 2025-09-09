@@ -40,9 +40,10 @@ export const CopyTextField: React.FC<TCopyTextFieldProps> = ({
       <span className={cn(textClassName)}>{text}</span>
       {
         copied
-          ? <CheckIcon/>
+          ? <div className="size-[34px] grid place-items-center"><CheckIcon/></div>
           :
           <IconButton
+            size="small"
             onClick={handleCopy}
           >
             <ContentCopyIcon/>

@@ -1,7 +1,10 @@
+//ui
+import { Chip } from '@mui/material';
+
 type TCommunityLinkProps = {
   text: string;
   href: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 }
 
 export const CommunityLink: React.FC<TCommunityLinkProps> = ({
@@ -10,12 +13,21 @@ export const CommunityLink: React.FC<TCommunityLinkProps> = ({
   icon,
 }) => {
   return (
-    <a
-      className="px-[6px] h-[32px] flex gap-[6px] items-center rounded-[8px] bg-blue/20 opacity-70 hover:opacity-90 duration-300"
+    <Chip
+      label={text}
+      icon={icon || undefined}
+      component="a"
       href={href}
-    >
-      { text }
-      { icon }
-    </a>
+      clickable
+      sx={{
+        backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 20%, transparent)',
+        '&:hover': {
+          backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 30%, transparent)',
+        },
+        '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+          backgroundColor: 'var(--palette-primary-main)',
+        },
+      }}
+    />
   );
 };

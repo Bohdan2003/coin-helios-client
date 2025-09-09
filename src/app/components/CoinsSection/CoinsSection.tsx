@@ -111,7 +111,7 @@ export const CoinsSection: React.FC = () => {
           />
           <div className="-order-1 sm:order-1 flex gap-[40px] sm:gap-[20px] justify-between items-center">
             <Button
-              startIcon={<FilterAltOutlinedIcon color="primary"/>}
+              startIcon={<FilterAltOutlinedIcon/>}
               onClick={handleOpenFilters}
             >
               Filter

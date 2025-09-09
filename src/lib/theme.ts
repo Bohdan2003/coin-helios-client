@@ -94,32 +94,44 @@ export const theme = createTheme({
             boxShadow: 'none',
           },
         },
-        text: {
-          color: 'var(--palette-text-primary)',
-          '& .MuiTouchRipple-root .MuiTouchRipple-child': {
-            backgroundColor: 'var(--palette-primary-main)',
-          },
-        },
-        outlined: {
-          color: 'var(--palette-text-primary)',
-          '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-            color: 'var(--palette-primary-main)',
-          },
-          '& .MuiTouchRipple-root .MuiTouchRipple-child': {
-            backgroundColor: 'var(--palette-primary-main)',
-          },
-        },
         sizeSmall: { padding: '6px 10px' },
         sizeMedium: { padding: '10px 16px' },
       },
       variants: [
         {
+          props: { variant: 'text' },
+          style: {
+            color: 'var(--palette-text-primary)',
+            '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+              color: 'var(--palette-primary-main)',
+            },
+            '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+              backgroundColor: 'var(--palette-primary-main)',
+            },
+          },
+        },
+        {
           props: { variant: 'contained', color: 'secondary' },
           style: {
             color: 'var(--palette-primary-main)',
             backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 30%, transparent)',
+            // '&:hover': {
+            //   backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 40%, transparent)',
+            // },
           },
         },
+        {
+          props: { variant: 'outlined' },
+          style: {
+            color: 'var(--palette-text-primary)',
+            '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+              color: 'var(--palette-primary-main)',
+            },
+            '& .MuiTouchRipple-root .MuiTouchRipple-child': {
+              backgroundColor: 'var(--palette-primary-main)',
+            },
+          }
+        }
       ],
     },
     MuiMenu: {
@@ -207,6 +219,19 @@ export const theme = createTheme({
           borderRadius: '16px',
         },
       },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          backgroundColor: 'var(--palette-background-paper)',
+        },
+        label: {
+          fontSize: 14,
+          opacity: 0.7,
+          fontFamily: 'Inter',
+        }
+      }
     }
   },
 });

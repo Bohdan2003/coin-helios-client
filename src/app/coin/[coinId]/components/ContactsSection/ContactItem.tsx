@@ -15,7 +15,7 @@ export const ContactItem: React.FC<ContactItemProps> = ({
       <dt className="font-inter flex items-center gap-[4px]">
         { title }
       </dt>
-      <dd className="font-inter mt-[6px]">
+      <dd className="font-inter">
         <CopyTextField
           className="justify-between"
           textClassName="break-all opacity-50"

@@ -14,7 +14,7 @@ export const ContactsSection: React.FC = () => {
       <dl className="mt-[16px] grid gap-[16px] max-w-[400px]">
         <ContactItem
           title="Ethereum"
-          text="0x2E10348eE563dEc5FE483DE558D1946b7A3372c2"
+          text="0x2E10348eE563dEc5FE483DE558D1946b7A3"
         />
         <ContactItem
           title="Ethereum"

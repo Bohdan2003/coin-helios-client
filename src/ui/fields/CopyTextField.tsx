@@ -1,6 +1,8 @@
 'use client';
 //hooks
 import { useState } from 'react';
+//ui
+import IconButton from '@mui/material/IconButton';
 //icons
 import CheckIcon from '@mui/icons-material/Check';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -40,12 +42,11 @@ export const CopyTextField: React.FC<TCopyTextFieldProps> = ({
         copied
           ? <CheckIcon/>
           :
-          <button
-            className="cursor-pointer"
+          <IconButton
             onClick={handleCopy}
           >
             <ContentCopyIcon/>
-          </button>
+          </IconButton>
       }
     </div>
   );

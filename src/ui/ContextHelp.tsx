@@ -3,9 +3,9 @@
 import { useState } from 'react';
 //ui
 import { Popover } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 //icons
 import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
-import IconButton from '@mui/material/IconButton';
 
 type InfoPopoverProps = {
   text: string;
@@ -33,7 +33,7 @@ export const ContextHelp: React.FC<InfoPopoverProps> = ({ text, ariaLabel }) => 
         size="small"
         onClick={handlePopoverOpen}
       >
-        <HelpOutlineRoundedIcon fontSize="small" />
+        <HelpOutlineRoundedIcon fontSize="small" className="opacity-60" />
       </IconButton>
 
       <Popover

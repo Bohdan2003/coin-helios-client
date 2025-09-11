@@ -18,7 +18,7 @@ export const ContactsSection: React.FC = () => {
         />
         <ContactItem
           title="Ethereum"
-          text="0x2E10348eE563dEc5FE483DE558D1946b7A3372c2E563dEc5FE483DE5"
+          text="0x2E10348eE563dEc5FE483DE558D1946b7A3"
         />
       </dl>
     </section>

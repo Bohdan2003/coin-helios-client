@@ -150,7 +150,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
                     {NumberFormatter.getReadablePrice(row.price)}
                   </TableCell>
                   <TableCell className="opacity-80">
-                    {NumberFormatter.getReadableCompactedPrice(row.price)}
+                    {NumberFormatter.getCompactedPrice(row.price)}
                   </TableCell>
                   <VotesCell
                     votes={row.votes}

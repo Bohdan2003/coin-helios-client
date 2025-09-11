@@ -15,7 +15,7 @@ type TCopyTextFieldProps = {
   className?: string;
 }
 
-export const CopyTextField: React.FC<TCopyTextFieldProps> = ({
+export const CopyableText: React.FC<TCopyTextFieldProps> = ({
   text,
   textClassName,
   className

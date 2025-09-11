@@ -9,7 +9,7 @@ export class NumberFormatter {
   }
 
   static getReadablePrice(num: number = 0) {
-    return `${CurrencySign.DOLLAR}${this.getReadableNum(num)}`;
+    return `${CurrencySign.DOLLAR}${this.getReadableNum(+num)}`;
   }
 
   static getCompactedNum(
@@ -36,7 +36,7 @@ export class NumberFormatter {
     return value;
   }
 
-  static getReadableCompactedPrice(num: number = 0) {
+  static getCompactedPrice(num: number = 0) {
     return `${CurrencySign.DOLLAR}${this.getCompactedNum(num)}`;
   }
 }

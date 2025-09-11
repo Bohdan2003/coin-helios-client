@@ -1,5 +1,5 @@
 //ui
-import { CopyTextField } from '@/ui/fields/CopyTextField';
+import { CopyableText } from '@/ui/CopyableText';
 
 type ContactItemProps = {
   title: string;
@@ -16,7 +16,7 @@ export const ContactItem: React.FC<ContactItemProps> = ({
         { title }
       </dt>
       <dd className="font-inter">
-        <CopyTextField
+        <CopyableText
           className="justify-between"
           textClassName="break-all opacity-50"
           text={text}

@@ -1,19 +1,14 @@
 'use client';
 //ui
-import { IconButton } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { FavoriteCoinButton } from '@/ui/buttons/FavoriteCoinButton';
 
 export const FavoriteCell: React.FC<{id: string}> = ({
   id,
 }) => {
   return (
     <TableCell>
-      <IconButton
-        onClick={() => { console.log(id); }}
-      >
-        <StarBorderOutlinedIcon/>
-      </IconButton>
+      <FavoriteCoinButton id={id}/>
     </TableCell>
   );
 };

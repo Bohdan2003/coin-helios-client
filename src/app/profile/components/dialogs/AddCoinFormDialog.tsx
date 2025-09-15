@@ -49,7 +49,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
       icon: null,
       symbol: '',
       chain: '',
-      listings: [{ platform: '', link: '' }],
+      // listings: [{ platform: '', link: '' }],
       contracts: [{ address: '', network: '' }],
       otherLinks: [{ link: '' }],
 
@@ -150,27 +150,27 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                   required
                 />
               </div>
-              <FormFieldArraySection<TCoin>
-                className="mt-[50px]"
-                rowClassName="grid sm:grid-cols-2 gap-[12px] sm:gap-[20px]"
-                name="listings"
-                label="Listings"
-                createDefault={() => ({ platform: '', link: '' })}
-                renderRow={(getFieldName) => (
-                  <>
-                    <FormSelect
-                      name={getFieldName('platform')}
-                      placeholder="Select platform"
-                      fullWidth
-                    />
-                    <FormTextField
-                      name={getFieldName('link')}
-                      placeholder="https://coins.com/your-coin"
-                      fullWidth
-                    />
-                  </>
-                )}
-              />
+              {/*<FormFieldArraySection<TCoin>*/}
+              {/*  className="mt-[50px]"*/}
+              {/*  rowClassName="grid sm:grid-cols-2 gap-[12px] sm:gap-[20px]"*/}
+              {/*  name="listings"*/}
+              {/*  label="Listings"*/}
+              {/*  createDefault={() => ({ platform: '', link: '' })}*/}
+              {/*  renderRow={(getFieldName) => (*/}
+              {/*    <>*/}
+              {/*      <FormSelect*/}
+              {/*        name={getFieldName('platform')}*/}
+              {/*        placeholder="Select platform"*/}
+              {/*        fullWidth*/}
+              {/*      />*/}
+              {/*      <FormTextField*/}
+              {/*        name={getFieldName('link')}*/}
+              {/*        placeholder="https://coins.com/your-coin"*/}
+              {/*        fullWidth*/}
+              {/*      />*/}
+              {/*    </>*/}
+              {/*  )}*/}
+              {/*/>*/}
               <FormFieldArraySection<TCoin>
                 className="mt-[40px] md:mt-[50px]"
                 rowClassName="grid sm:grid-cols-[1fr_200px] gap-[12px] sm:gap-[20px]"

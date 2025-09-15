@@ -6,6 +6,7 @@ import { TFilterOption } from '@/utils/types/filter';
 
 export type TSortDir = 'asc' | 'desc' | null;
 export type TSortKey = string | null;
+export type TCoinHistoryPeriod = '24h' | '7d' | '1m' | '3m' | '1y' | 'max';
 
 export type TCoin = {
   id: string,
@@ -51,7 +52,15 @@ export const getCoinFilters = async () =>
   apiGetRequest<{ data: TCoinFiltersData }>('/crypto/filters');
 
 
-export const getCoinInfo = async ( params: { id: string, } ) =>
+export const getCoinInfo = async ( params: {
+  id: string,
+} ) =>
   apiGetRequest<ResponseWithPagination<TCoin[]>>(`/crypto/coin/${params.id}/current`);
+
+export const getCoinPriseHistory = async ( params: {
+  id: string,
+  period: TCoinHistoryPeriod,
+} ) =>
+  apiGetRequest<ResponseWithPagination<TCoin[]>>(`/rice_router/coin/${params.id}`, { params });
 
 

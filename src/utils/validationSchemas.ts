@@ -35,10 +35,10 @@ export type TCoin = {
   icon: File | null;
   symbol: string;
   chain: string;
-  listings?: Array<{
-    platform: string;
-    link: string;
-  }>;
+  // listings?: Array<{
+  //   platform: string;
+  //   link: string;
+  // }>;
   contracts: Array<{
     address: string;
     network: string;
@@ -61,12 +61,12 @@ export const coinSchema = yup.object().shape({
   icon: imageFileSchema.required('Required'),
   symbol: getStrSchemaWithMinWidth(3).required('Required'),
   chain: yup.string().required('Required'),
-  listings: yup.array().of(
-    yup.object({
-      platform: yup.string(),
-      link: urlSchema,
-    })
-  ),
+  // listings: yup.array().of(
+  //   yup.object({
+  //     platform: yup.string(),
+  //     link: urlSchema,
+  //   })
+  // ),
   contracts: yup.array().of(
     yup.object({
       address: yup.string().required('Required'),

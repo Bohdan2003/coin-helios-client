@@ -1,4 +1,5 @@
 //components
+import { IntroSection } from '@/app/coin/[coinId]/components/IntroSection';
 import { Price } from '@/app/coin/[coinId]/components/Price';
 import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
 import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/ContactsSection';
@@ -13,6 +14,7 @@ export default async function Coin({ params: { coinId } }: { params: { coinId: s
     <>
       <div className="mt-[40px] mx-auto px-[20px] max-w-[1400px] grid grid-cols-[2fr_1fr] gap-[20px]">
         <div>
+          <IntroSection id={coinId}/>
         </div>
         <div>
           <Price/>

@@ -74,6 +74,21 @@ export const theme = createTheme({
     allVariants: { lineHeight: 1.2 },
   },
   components: {
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          '&:before': {
+            borderBottom: '1px solid var(--palette-divider)',
+          },
+          '&:hover:not(.Mui-disabled):before': {
+            borderBottom: '1px solid var(--palette-text-primary)',
+          },
+          '&.Mui-focused:after': {
+            borderBottom: '1px solid var(--palette-primary-main)',
+          },
+        },
+      },
+    },
     MuiDrawer: {
       styleOverrides: {
         paper: {

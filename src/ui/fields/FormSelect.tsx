@@ -18,6 +18,7 @@ export const FormSelect: React.FC<TFormSelectProps> = ({
       control={control}
       name={name}
       render={({ field, fieldState }) => (
+        //@ts-ignore
         <BaseSelect
           {...field}
           {...otherProps}

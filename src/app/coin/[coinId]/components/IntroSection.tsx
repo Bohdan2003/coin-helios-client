@@ -8,7 +8,7 @@ export const IntroSection: React.FC<{ id: string }> = ({ id }) => {
       <div className="flex">
         <div className="text-[32px]">
           <h1>Bitcoin</h1>
-          <h3 className="opacity-50">BTC</h3>
+          <h2 className="opacity-50">BTC</h2>
         </div>
         <FavoriteCoinButton
           className="ml-[12px]"

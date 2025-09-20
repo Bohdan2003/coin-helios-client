@@ -74,6 +74,46 @@ export const theme = createTheme({
     allVariants: { lineHeight: 1.2 },
   },
   components: {
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          backgroundColor: 'transparent',
+          backgroundImage: 'none',
+          '&.Mui-expanded': {
+            margin: 0,
+          },
+          '&::before': {
+            display: 'none'
+          },
+        }
+      }
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          minHeight: 0,
+          padding: 0,
+          '&.Mui-expanded': {
+            minHeight: 0
+          },
+        },
+        content: {
+          margin: 0,
+          padding: 0,
+          '&.Mui-expanded': {
+            margin: 0
+          },
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
     MuiInput: {
       styleOverrides: {
         root: {
@@ -100,6 +140,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          minWidth: 'auto',
           fontSize: 16,
           fontWeight: 400,
           textTransform: 'none',
@@ -130,9 +171,9 @@ export const theme = createTheme({
           style: {
             color: 'var(--palette-primary-main)',
             backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 30%, transparent)',
-            // '&:hover': {
-            //   backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 40%, transparent)',
-            // },
+            '&:hover': {
+              backgroundColor: 'color-mix(in srgb, var(--palette-primary-main) 40%, transparent)',
+            },
           },
         },
         {

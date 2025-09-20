@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Logo } from '@/ui/Logo';
 import { LanguageSwitcher } from '@/ui/switchers/LanguageSwitcher';
 import { ThemeSwitcher } from '@/ui/switchers/ThemeSwitcher';
-import { Socials } from '@/ui/Socials';
+import { Socials } from '@/components/Footer/Socials';
 //helpers
 import { getNavItems } from '@/components/Footer/helper';
 

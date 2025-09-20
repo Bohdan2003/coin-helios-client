@@ -18,7 +18,7 @@ import { Button } from '@mui/material';
 //icons
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-//helper
+//modules
 import { getFilters } from '@/app/components/CoinsSection/helper';
 //utils
 import { cn } from '@/utils/cn';
@@ -64,7 +64,6 @@ export const CoinsSection: React.FC = () => {
     }),
     placeholderData: previous => previous,
   });
-  console.log('render');
 
   const handleSortChange = useCallback((key: TSortKey, dir: TSortDir) => {
     setSortKey(key);

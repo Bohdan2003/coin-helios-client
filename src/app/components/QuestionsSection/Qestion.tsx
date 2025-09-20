@@ -9,7 +9,6 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { cn } from '@/utils/cn';
 import { titleCls } from '@/utils/consts/clsVariable';
 
-
 export const Question: React.FC<{
   question: string;
   answer: string;
@@ -24,34 +23,34 @@ export const Question: React.FC<{
       'border-[var(--lightGray)]',
       'dark:border-transparent dark:bg-[var(--darkBg2)]',
     )}>
-      <Accordion
-        elevation={0}
-        sx={{
-          boxShadow: 'none',
-          backgroundColor: 'transparent',
-          '&.Mui-expanded': { margin: 0 },
-          '&:before': { display: 'none' },
-          '& .MuiAccordionSummary-root': {
-            px: {
+      <Accordion elevation={0}>
+        <AccordionSummary
+          sx={{
+            gap: '10px',
+            p: {
               xs:'12px',
               md:'24px',
             },
-            py: {
-              xs:'6px',
-              md:'12px',
-            },
-          },
-        }}
-      >
-        <AccordionSummary
-          sx={{ gap: '10px', }}
+          }}
+          //TODO:change aria-controls
           expandIcon={<ArrowBackIosNewIcon className="-rotate-90" color="primary"/>}
           aria-controls="panel1-content"
           id="panel1-header"
         >
           <div className={titleCls}>{question}</div>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails
+          sx={{
+            px: {
+              xs:'12px',
+              md:'24px',
+            },
+            pb: {
+              xs:'12px',
+              md:'24px',
+            },
+          }}
+        >
           <div className={cn(
             'pl-[16px] relative',
             'before:absolute before:top-0 before:bottom-0 before:left-0',

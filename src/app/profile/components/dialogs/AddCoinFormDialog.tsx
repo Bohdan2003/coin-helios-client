@@ -149,6 +149,20 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                   fullWidth
                   required
                 />
+                <FormTextField
+                  name="email"
+                  label="Email for communication"
+                  required
+                  placeholder="name@company.com"
+                  fullWidth
+                />
+                <FormSelect
+                  name="category"
+                  label="Category"
+                  required
+                  placeholder="Select category"
+                  fullWidth
+                />
               </div>
               {/*<FormFieldArraySection<TCoin>*/}
               {/*  className="mt-[50px]"*/}
@@ -251,20 +265,6 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                   name="telegramUsername"
                   label="Telegram contact"
                   placeholder="@your_username"
-                  fullWidth
-                />
-                <FormTextField
-                  name="email"
-                  label="Email for communication"
-                  required
-                  placeholder="name@company.com"
-                  fullWidth
-                />
-                <FormSelect
-                  name="category"
-                  label="Category"
-                  required
-                  placeholder="Select category"
                   fullWidth
                 />
               </div>

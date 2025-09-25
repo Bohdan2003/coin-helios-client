@@ -1,6 +1,7 @@
 //ui
 import { Button } from '@mui/material';
 import { CoinFilterSectionSkeleton } from '@/app/components/CoinsSection/CoinFiltersPopover/CoinFilterSectionSkeleton';
+import { ErrorMessage } from '@/ui/messages/ErrorMessage';
 //types
 import { TFilterOption } from '@/utils/types/filter';
 import type { TCoinFiltersData } from '@/modules/coins/CoinsApi';
@@ -10,7 +11,6 @@ type TFilterSectionProps = {
   options?: TFilterOption[];
   selectedOptions: string[];
   isPending: boolean;
-  isError: boolean;
   filterKey: keyof TCoinFiltersData;
   optionKey: keyof TFilterOption;
   onChange: ( filterKey: keyof TCoinFiltersData, id: string) => void
@@ -21,13 +21,12 @@ export const CoinFilterSection: React.FC<TFilterSectionProps> = ({
   options,
   selectedOptions,
   isPending,
-  isError,
   filterKey,
   optionKey,
   onChange,
 }) => {
   if(isPending) return <CoinFilterSectionSkeleton/>;
-  if(isError || !options) return <div>Some thing went wrong</div>;
+  if(!options) return <ErrorMessage/>;
 
   return (
     <div>

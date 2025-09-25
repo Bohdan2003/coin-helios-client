@@ -229,7 +229,7 @@ export const theme = createTheme({
             '&:after': {
               content: '""',
               position: 'absolute',
-              zIndex: 20,
+              zIndex: 10,
               bottom: 0,
               left: '6px',
               right: '16px',

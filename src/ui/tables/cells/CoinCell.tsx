@@ -4,6 +4,7 @@ import TableCell from '@mui/material/TableCell';
 //types
 import type { SxProps, Theme } from '@mui/material/styles';
 //utils
+import { KEYS } from '@/utils/consts/keys';
 import { ROUTES } from '@/utils/router';
 
 type TCoinCellProps = {
@@ -13,8 +14,6 @@ type TCoinCellProps = {
   symbol: string;
   sx?: SxProps<Theme>;
 }
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const CoinCell: React.FC<TCoinCellProps> = ({
   icon,
@@ -28,7 +27,7 @@ export const CoinCell: React.FC<TCoinCellProps> = ({
       <div className="flex gap-[6px] items-center">
         {/*<Image*/}
         {/*  className="size-[32px] object-cover object-center"*/}
-        {/*  src={`${apiUrl}/${icon}`}*/}
+        {/*  src={`${KEYS.API_URL}/${icon}`}*/}
         {/*  alt={name}*/}
         {/*  width={32}*/}
         {/*  height={32}*/}

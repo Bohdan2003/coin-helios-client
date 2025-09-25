@@ -1,7 +1,7 @@
 export const ROUTES = {
   HOME: '/',
-  COIN: (coinId: string | number) => `/coin/${coinId}`,
+  COIN: (id: string | number) => `/coin/${id}`,
   NEWS: '/news',
-  NEW: (newId: string | number) => `/news/${newId}`,
+  NEW: (id: string | number) => `/news/${id}`,
   PROFILE: '/profile',
 } as const;

@@ -1,7 +1,7 @@
 //components
 import { IntroSection } from '@/app/coin/[coinId]/components/IntroSection';
 import { PriceHistorySection } from '@/app/coin/[coinId]/components/PriceHistorySection/PriceHistorySection';
-import { DescriptionSection } from '@/app/coin/[coinId]/components/DescriptionSection/DescriptionSection';
+import { Descriptions } from '@/app/coin/[coinId]/components/Descriptions/Descriptions';
 import { Price } from '@/app/coin/[coinId]/components/Price';
 import { InfoSection } from '@/app/coin/[coinId]/components/InfoSection/InfoSection';
 import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/ContactsSection';
@@ -9,17 +9,17 @@ import { CommunitySection } from '@/app/coin/[coinId]/components/CommunitySectio
 import { CalculatorSection } from '@/app/coin/[coinId]/components/CalculatorSection';
 import { Category } from '@/app/coin/[coinId]/components/Category';
 
-export default async function Coin({ params: { coinId } }: { params: { coinId: string } }) {
+export default function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   return (
     <>
       <div className="mt-[40px] mx-auto px-[20px] max-w-[1400px] grid grid-cols-[2fr_1fr] gap-[20px]">
         <div>
           <IntroSection id={coinId}/>
-          {/*<div className="mt-[20px]">*/}
-          {/*  <PriceHistorySection id={coinId}/>*/}
-          {/*</div>*/}
+          <div className="mt-[20px]">
+            <PriceHistorySection id={coinId}/>
+          </div>
           <div className="mt-[40px]">
-            <DescriptionSection id={coinId}/>
+            <Descriptions id={coinId}/>
           </div>
         </div>
         <div>

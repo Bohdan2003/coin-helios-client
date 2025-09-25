@@ -5,7 +5,7 @@ export const ErrorMessage: React.FC<{ message?: string, className?: string, }> =
   message,
   className
 }) => (
-  <p className={cn('text-center opacity-50 py-[10px]', className)}>
-    { message || 'Something went wrong' }
-  </p>
+  <span className={cn('block text-center opacity-50 py-[10px]', className)}>
+    { message || 'Oops! Something went wrong.' }
+  </span>
 );

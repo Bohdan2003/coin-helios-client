@@ -55,10 +55,12 @@ export const SortableHeaderCell: React.FC<TSortableHeaderCellProps> = ({
     <TableCell>
       <div className={cn(
         'opacity-60',
-        isLoading && 'pointer-events-none opacity-40',
         'flex items-center gap-1.5'
       )}>
-        <div className="grid gap-1.5">
+        <div className={cn(
+          'grid gap-1.5',
+          isLoading && 'pointer-events-none opacity-30',
+        )}>
           <ArrowButton
             dir="asc"
             active={isActive('asc')}

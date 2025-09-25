@@ -1,22 +1,17 @@
+//ui
 import TableCell from '@mui/material/TableCell';
+import { StatusMessage } from '@/ui/messages/StatusMessage';
 
 type TStatusCellProps = {
-  text: string;
+  message: string;
   colsAmount: number;
 }
 
 export const StatusCell: React.FC<TStatusCellProps> = ({
-  text,
+  message,
   colsAmount,
-}) => (
-  <TableCell
-    colSpan={colsAmount}
-    sx={{
-      textAlign: 'center',
-      py: 4,
-      opacity: 0.5
-    }}
-  >
-    { text }
+}) =>  (
+  <TableCell colSpan={colsAmount}>
+    <StatusMessage message={message}/>
   </TableCell>
 );

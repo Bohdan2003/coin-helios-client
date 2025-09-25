@@ -2,7 +2,10 @@
 //hooks
 import {
   useState,
-  useCallback
+  useMemo,
+  useCallback,
+  useEffect,
+  useRef
 } from 'react';
 import { useDebounceCallback } from 'usehooks-ts';
 import { useQuery } from '@tanstack/react-query';
@@ -31,23 +34,27 @@ const limit = 20;
 export const CoinsSection: React.FC = () => {
   //tabs
   const filters = getFilters();
-  //filters
+
+  //filter popover
   const [ isFiltersOpen, setIsFiltersOpen ] = useState(false);
   const [ anchorEl, setAnchorEl ] = useState<HTMLElement | null>(null);
-
+  //pagination
   const [ page, setPage ] = useState(1);
+  //filters
   const [ filter, setFilter ] = useState('all');
   const [ categories, setCategories ] = useState<string[]>([]);
   const [ types, setTypes ] = useState<string[]>([]);
   const [ chains, setChains ] = useState<string[]>([]);
+  //search
   const [ search, setSearch ] = useState('');
+  //sort
   const [ sortKey, setSortKey ] = useState<TSortKey>(null);
   const [ sortDir, setSortDir ] = useState<TSortDir>(null);
 
   const {
     data,
-    isPending,
     isLoading,
+    isFetching,
     isError
   } = useQuery({
     queryKey: [ 'coins', page, sortKey, sortDir, search, filter, categories, chains, types ],
@@ -63,14 +70,36 @@ export const CoinsSection: React.FC = () => {
       limit
     }),
     placeholderData: previous => previous,
+    refetchInterval: 60 * 1000,
+    refetchIntervalInBackground: true,
+    refetchOnWindowFocus: true
   });
 
+  //key change fetching
+  const [isKeyChangeFetching, setIsKeyChangeFetching] = useState(false);
+  const queryKeyStr = useMemo(() => JSON.stringify(
+    [page, sortKey, sortDir, search, filter, categories, chains, types]),
+  [page, sortKey, sortDir, search, filter, categories, chains, types]
+  );
+  const prevQueryKeyStr = useRef(queryKeyStr);
+
+  useEffect(() => {
+    if (prevQueryKeyStr.current !== queryKeyStr && isFetching) {
+      prevQueryKeyStr.current = queryKeyStr;
+      setIsKeyChangeFetching(true);
+    }
+  }, [queryKeyStr, isFetching]);
+
+  useEffect(() => {
+    if (!isFetching) setIsKeyChangeFetching(false);
+  }, [isFetching]);
+
+  //handlers
   const handleSortChange = useCallback((key: TSortKey, dir: TSortDir) => {
     setSortKey(key);
     setSortDir(dir);
     setPage(1);
-  },
-  [] );
+  }, [] );
 
   const handleSearchChangeDebounced = useDebounceCallback((search: string) => {
     setSearch(search);
@@ -97,8 +126,8 @@ export const CoinsSection: React.FC = () => {
       <div className="container pb-[60px] relative">
         <h3 className="hidden">Coins</h3>
         <div className={cn(
-          isLoading && 'opacity-50 position-relative',
-          'flex flex-col sm:flex-row gap-[40px] sm:gap-[60px] justify-between sm:items-end'
+          isLoading && 'opacity-50 position-relative pointer-events-none',
+          'flex flex-col md:flex-row gap-[20px] md:gap-[60px] justify-between md:items-end'
         )}>
           <BaseTabs
             activeTab={filter}
@@ -108,7 +137,7 @@ export const CoinsSection: React.FC = () => {
               setPage(1);
             }}
           />
-          <div className="-order-1 sm:order-1 flex gap-[40px] sm:gap-[20px] justify-between items-center">
+          <div className="-order-1 md:order-1 flex gap-[40px] md:gap-[20px] justify-between items-center">
             <Button
               startIcon={<FilterAltOutlinedIcon/>}
               onClick={handleOpenFilters}
@@ -122,7 +151,6 @@ export const CoinsSection: React.FC = () => {
               onApply={handleApplyFilters}
             />
             <BaseTextField
-              className="-order-1 sm:order-1"
               icon={<SearchIcon color="primary"/>}
               placeholder="Search crypto"
               onChange={(e) => {
@@ -138,7 +166,7 @@ export const CoinsSection: React.FC = () => {
             sortKey={sortKey}
             sortDir={sortDir}
             isLoading={isLoading}
-            isPending={isPending}
+            isFetching={isKeyChangeFetching}
             isError={isError}
             onSortChange={handleSortChange}
           />
@@ -148,6 +176,7 @@ export const CoinsSection: React.FC = () => {
           data.total_pages > 1 &&
           <div className="flex justify-center absolute bottom-0 left-0 right-0">
             <Pagination
+              disabled={isLoading}
               count={data.total_pages}
               page={page}
               onChange={(_, page) => setPage(page)}

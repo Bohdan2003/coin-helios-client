@@ -16,10 +16,7 @@ export function BurgerMenu() {
 
   return (
     <>
-      <IconButton
-        aria-label="menu"
-        onClick={() => setOpen(true)}
-      >
+      <IconButton onClick={() => setOpen(true)}>
         <MenuIcon/>
       </IconButton>
 

@@ -108,10 +108,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                 Get your project noticed — submit a request, and your coin will
                 appear on the site within 2 days after moderation
               </p>
-              <IconButton
-                aria-label="close"
-                onClick={onClose}
-              >
+              <IconButton onClick={onClose}>
                 <CloseIcon />
               </IconButton>
             </div>

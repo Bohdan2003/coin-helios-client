@@ -9,10 +9,9 @@ import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 
 type InfoPopoverProps = {
   text: string;
-  ariaLabel: string;
 };
 
-export const ContextHelp: React.FC<InfoPopoverProps> = ({ text, ariaLabel }) => {
+export const ContextHelp: React.FC<InfoPopoverProps> = ({ text }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isOpen = Boolean(anchorEl);
 
@@ -27,9 +26,6 @@ export const ContextHelp: React.FC<InfoPopoverProps> = ({ text, ariaLabel }) => 
   return (
     <>
       <IconButton
-        aria-label={ariaLabel}
-        aria-describedby={isOpen ? 'info-popover' : undefined}
-        aria-haspopup="true"
         size="small"
         onClick={handlePopoverOpen}
       >
@@ -37,7 +33,6 @@ export const ContextHelp: React.FC<InfoPopoverProps> = ({ text, ariaLabel }) => 
       </IconButton>
 
       <Popover
-        id="info-popover"
         open={isOpen}
         anchorEl={anchorEl}
         onClose={handlePopoverClose}

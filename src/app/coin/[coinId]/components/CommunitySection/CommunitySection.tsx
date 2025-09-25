@@ -1,5 +1,5 @@
 //ui
-import { CommunityLink } from '@/app/coin/[coinId]/components/CommunitySection/CommunityLink';
+import { CommunityItem } from '@/app/coin/[coinId]/components/CommunitySection/CommunityItem';
 //icons
 import RedditIcon from '@mui/icons-material/Reddit';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -16,27 +16,27 @@ export const CommunitySection: React.FC = () => {
   return (
     <section className={cn('p-[16px] rounded-[16px]', sectionBorderCls)}>
       <h3 className={smallTitleCls}>Community</h3>
-      <div className="mt-[16px] flex flex-wrap gap-[8px]">
-        <CommunityLink
+      <ul className="mt-[16px] flex flex-wrap gap-[8px]">
+        <CommunityItem
           text="Telegram"
           href="https://t.me/testcoin"
           icon={<TelegramIcon />}
         />
-        <CommunityLink
+        <CommunityItem
           text="Twitter"
           href="https://t.me/testcoin"
           icon={<XIcon />}
         />
-        <CommunityLink
+        <CommunityItem
           text="Reddit"
           href="https://t.me/testcoin"
           icon={<RedditIcon />}
         />
-        <CommunityLink
+        <CommunityItem
           text="https://twitter.com/testcoin"
           href="https://twitter.com/testcoin"
         />
-      </div>
+      </ul>
     </section>
   );
 };

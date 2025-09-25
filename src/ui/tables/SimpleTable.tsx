@@ -35,7 +35,7 @@ export const SimpleTable: React.FC<TSimpleTableProps> = ({
         ...sx
       }}
     >
-      <Table aria-label="simple table">
+      <Table>
         { children }
       </Table>
     </TableContainer>

@@ -17,7 +17,7 @@ export const InfoItem: React.FC<InfoItemProps> = ({
       <dt className=" font-medium flex items-center gap-[4px]">
         <span className="opacity-50">{title}</span>
         {helpText && (
-          <ContextHelp text={helpText} ariaLabel={`about ${title}`} />
+          <ContextHelp text={helpText}/>
         )}
       </dt>
       <dd>{ text }</dd>

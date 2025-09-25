@@ -9,6 +9,7 @@ import {
   Button,
   Divider,
 } from '@mui/material';
+import { ErrorMessage } from '@/ui/messages/ErrorMessage';
 import { CoinFilterSection } from '@/app/components/CoinsSection/CoinFiltersPopover/CoinFilterSection';
 //icons
 import CheckIcon from '@mui/icons-material/Check';
@@ -93,50 +94,55 @@ export const CoinFiltersPopover: React.FC<TCoinFiltersPopoverProps> = memo(({
       }}
     >
       <div className="max-w-[420px] p-[16px]">
-        <div className="grid gap-[16px]">
-          <CoinFilterSection
-            title="Category"
-            options={data?.data?.category}
-            selectedOptions={nextSelected.category}
-            isPending={isPending}
-            isError={isError}
-            filterKey="category"
-            optionKey="id"
-            onChange={handleToggle}
-          />
-          <Divider className="dark:opacity-20"/>
-          <CoinFilterSection
-            title="Chain"
-            options={data?.data?.chain}
-            selectedOptions={nextSelected.chain}
-            isPending={isPending}
-            isError={isError}
-            filterKey="chain"
-            optionKey="name"
-            onChange={handleToggle}
-          />
-          <Divider className="dark:opacity-20"/>
-          <CoinFilterSection
-            title="Type"
-            options={data?.data?.type}
-            selectedOptions={nextSelected.type}
-            isPending={isPending}
-            isError={isError}
-            filterKey="type"
-            optionKey="id"
-            onChange={handleToggle}
-          />
-        </div>
-        <div className="mt-[24px] flex justify-end">
-          <Button
-            onClick={handleApply}
-            variant="contained"
-            endIcon={<CheckIcon/>}
-            loading={isPending}
-          >
-            Apply
-          </Button>
-        </div>
+        {
+          isError
+            ?
+            <ErrorMessage/>
+            :
+            <>
+              <div className="grid gap-[16px]">
+                <CoinFilterSection
+                  title="Category"
+                  options={data?.data?.category}
+                  selectedOptions={nextSelected.category}
+                  isPending={isPending}
+                  filterKey="category"
+                  optionKey="id"
+                  onChange={handleToggle}
+                />
+                <Divider className="dark:opacity-20"/>
+                <CoinFilterSection
+                  title="Chain"
+                  options={data?.data?.chain}
+                  selectedOptions={nextSelected.chain}
+                  isPending={isPending}
+                  filterKey="chain"
+                  optionKey="name"
+                  onChange={handleToggle}
+                />
+                <Divider className="dark:opacity-20"/>
+                <CoinFilterSection
+                  title="Type"
+                  options={data?.data?.type}
+                  selectedOptions={nextSelected.type}
+                  isPending={isPending}
+                  filterKey="type"
+                  optionKey="id"
+                  onChange={handleToggle}
+                />
+              </div>
+              <div className="mt-[24px] flex justify-end">
+                <Button
+                  onClick={handleApply}
+                  variant="contained"
+                  endIcon={<CheckIcon/>}
+                  loading={isPending}
+                >
+                  Apply
+                </Button>
+              </div>
+            </>
+        }
       </div>
     </Popover>
   );

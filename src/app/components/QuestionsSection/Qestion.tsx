@@ -32,20 +32,13 @@ export const Question: React.FC<{
               md:'24px',
             },
           }}
-          //TODO:change aria-controls
           expandIcon={<ArrowBackIosNewIcon className="-rotate-90" color="primary"/>}
-          aria-controls="panel1-content"
-          id="panel1-header"
         >
           <div className={titleCls}>{question}</div>
         </AccordionSummary>
         <AccordionDetails
           sx={{
-            px: {
-              xs:'12px',
-              md:'24px',
-            },
-            pb: {
+            p: {
               xs:'12px',
               md:'24px',
             },

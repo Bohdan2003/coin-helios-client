@@ -10,7 +10,6 @@ import { VotesCell } from '@/ui/tables/cells/VotesCell';
 import { FavoriteCell } from '@/ui/tables/cells/FavoriteCell';
 import { SortableHeaderCell } from '@/ui/tables/cells/SortableHeaderCell';
 import { BuyCell } from '@/ui/tables/cells/BuyCell';
-import { StatusCell } from '@/ui/tables/cells/StatusCell';
 import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 //utils
 import { memo } from 'react';
@@ -22,7 +21,7 @@ type TStickyHeadCoinsTableProps = {
   sortKey: TSortKey;
   sortDir: TSortDir;
   isLoading: boolean;
-  isPending: boolean;
+  isFetching: boolean;
   isError: boolean;
   rowsAmount: number;
   onSortChange: (key: TSortKey, dir: TSortDir) => void;
@@ -39,11 +38,13 @@ const firstColSx = {
   left: 0,
 };
 
+const colsAmount = 11;
+
 export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo(({
   sortKey,
   sortDir,
   isLoading,
-  isPending,
+  isFetching,
   isError,
   rowsAmount,
   onSortChange,
@@ -52,9 +53,11 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
   return (
     <StickyHeedTable
       rowsAmount={rowsAmount}
-      colsAmount={11}
-      isPending={isPending}
+      colsAmount={colsAmount}
+      isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
+      isEmpty={!rows || rows?.length < 1}
       head={
         <TableRow>
           <HeaderCell
@@ -117,49 +120,40 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
       body={
         <>
           {
-            !rows || rows?.length < 1
-              ?
-              <TableRow>
-                <StatusCell
-                  text="No matched"
-                  colsAmount={11}
+            rows?.map(row => (
+              <TableRow key={row.id}>
+                <CoinCell
+                  sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
+                  id={row.id}
+                  icon={row.icon}
+                  name={row.name}
+                  symbol={row.symbol}
                 />
+                <TableCell>---</TableCell>
+                <TableCell>---</TableCell>
+                {/*<ChainCell*/}
+                {/*  icon={row.icon}*/}
+                {/*  name={row.chain.name}*/}
+                {/*/>*/}
+                <PercentChangeCell percent={row.percent_change_1h}/>
+                <PercentChangeCell percent={row.percent_change_24h}/>
+                <TableCell className="opacity-80">
+                  ---
+                </TableCell>
+                <TableCell className="opacity-80">
+                  {NumberFormatter.getReadablePrice(row.price)}
+                </TableCell>
+                <TableCell className="opacity-80">
+                  {NumberFormatter.getCompactedPrice(row.price)}
+                </TableCell>
+                <VotesCell
+                  votes={row.votes}
+                  id={row.id}
+                />
+                <BuyCell id={row.id}/>
+                <FavoriteCell id={row.id}/>
               </TableRow>
-              :
-              rows?.map(row => (
-                <TableRow key={row.id}>
-                  <CoinCell
-                    sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
-                    id={row.id}
-                    icon={row.icon}
-                    name={row.name}
-                    symbol={row.symbol}
-                  />
-                  <TableCell>---</TableCell>
-                  <TableCell>---</TableCell>
-                  {/*<ChainCell*/}
-                  {/*  icon={row.icon}*/}
-                  {/*  name={row.chain.name}*/}
-                  {/*/>*/}
-                  <PercentChangeCell percent={row.percent_change_1h}/>
-                  <PercentChangeCell percent={row.percent_change_24h}/>
-                  <TableCell className="opacity-80">
-                    ---
-                  </TableCell>
-                  <TableCell className="opacity-80">
-                    {NumberFormatter.getReadablePrice(row.price)}
-                  </TableCell>
-                  <TableCell className="opacity-80">
-                    {NumberFormatter.getCompactedPrice(row.price)}
-                  </TableCell>
-                  <VotesCell
-                    votes={row.votes}
-                    id={row.id}
-                  />
-                  <BuyCell id={row.id}/>
-                  <FavoriteCell id={row.id}/>
-                </TableRow>
-              ))
+            ))
           }
         </>
       }

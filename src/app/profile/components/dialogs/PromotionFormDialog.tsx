@@ -81,10 +81,7 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
             <p className={cn(titleCls, 'max-w-[366px]')}>
               Leave a request, and our manager will contact you shortly
             </p>
-            <IconButton
-              aria-label="close"
-              onClick={onClose}
-            >
+            <IconButton onClick={onClose}>
               <CloseIcon />
             </IconButton>
           </div>

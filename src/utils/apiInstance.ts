@@ -1,4 +1,4 @@
-export const apiUrl =  process.env.NEXT_PUBLIC_API_URL;
+import { KEYS } from './consts/keys';
 
 type QueryParams = Record<string, string | number | (string | number)[] | null | undefined>;
 
@@ -24,7 +24,7 @@ const buildQueryString = (params: QueryParams) => {
 
 
 export const apiGetRequest = async<T>(path: string, options?: { params?: QueryParams } & RequestInit) => {
-  const url = new URL(apiUrl + (path.startsWith('/') ? path : `/${path}`));
+  const url = new URL(KEYS.API_URL + (path.startsWith('/') ? path : `/${path}`));
 
   let searchParams = '';
   if(options?.params) {

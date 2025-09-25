@@ -50,7 +50,6 @@ export const CalculatorSection: React.FC = () => {
             onChange={(e) => handleBaseChange(+e.target.value)}
             fullWidth
             sx={textFieldSx}
-            aria-label="crypto amount"
           />
           <span className="opacity-70 text-[20px]">{ baseAsset }</span>
         </div>

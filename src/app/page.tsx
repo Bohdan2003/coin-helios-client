@@ -4,6 +4,7 @@ import { TopCoinsSection } from '@/app/components/TopCoinsSection/TopCoinsSectio
 import { CoinsSection } from '@/app/components/CoinsSection/CoinsSection';
 import { PartnerSection } from '@/app/components/PartnerSection/PartnerSection';
 import { QuestionsSection } from '@/app/components/QuestionsSection/QuestionsSection';
+import { LatestNewsSection } from '@/components/LatestNewsSection/LatestNewsSection';
 //ui
 import { GooBg } from '@/ui/bg/GooBg/GooBg';
 
@@ -36,6 +37,9 @@ export default async function Home() {
         id="partner"
       >
         <PartnerSection/>
+      </div>
+      <div className="mt-[80px] sm:mt-[140px]">
+        <LatestNewsSection/>
       </div>
       <div
         className="mt-[80px] sm:mt-[140px]"

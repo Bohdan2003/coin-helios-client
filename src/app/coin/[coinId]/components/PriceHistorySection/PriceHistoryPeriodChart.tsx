@@ -17,7 +17,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Skeleton from '@mui/material/Skeleton';
-import { ErrorMessage } from '@/ui/ErrorMessage';
+import { ErrorMessage } from '@/ui/messages/ErrorMessage';
 //modules
 import { getCoinPriseHistory } from '@/modules/coins/CoinsApi';
 //types

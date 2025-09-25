@@ -49,7 +49,14 @@ export const BaseTabs: React.FC<TTabsProps> = ({
         },
         '& .MuiSvgIcon-root, & .MuiTab-iconWrapper': {
           color: 'primary.main',
-        }
+        },
+        '& .MuiTabs-scrollButtons': {
+          display: 'flex',
+        },
+        '& .MuiTabs-scrollButtons.Mui-disabled': {
+          opacity: 0.38,
+          display: 'flex',
+        },
       }}
     >
       {tabs.map((tab) => (

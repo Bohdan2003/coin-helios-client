@@ -18,12 +18,17 @@ import {
 import { Line } from 'react-chartjs-2';
 import Skeleton from '@mui/material/Skeleton';
 import { ErrorMessage } from '@/ui/messages/ErrorMessage';
+import { StatusMessage } from '@/ui/messages/StatusMessage';
 //modules
 import { getCoinPriseHistory } from '@/modules/coins/CoinsApi';
 //utils
 import 'chartjs-adapter-date-fns';
 //helpers
-import { getCoinPriceHistoryChartData } from '@/app/coin/[coinId]/components/PriceHistorySection/helper';
+import {
+  getChartData,
+  getChartGridColor,
+  getChartTooltipOptions
+} from '@/app/coin/[coinId]/components/PriceHistorySection/helper';
 
 ChartJS.register(LineElement, PointElement, LinearScale, TimeScale, Filler, Tooltip, Legend);
 
@@ -31,7 +36,6 @@ export const AllPriceHistoryChart: React.FC<{ id: string }> = ({
   id,
 }) => {
   const { mode } = useColorScheme();
-  const gridColor = mode === 'light' ? '#D1D6DD' : '#474A56';
   const {
     data,
     isPending,
@@ -40,12 +44,19 @@ export const AllPriceHistoryChart: React.FC<{ id: string }> = ({
     queryKey: [ 'allPriceHistory', id ],
     queryFn: () => getCoinPriseHistory({ id, period: 'max' }),
     placeholderData: previous => previous,
+    // refetchInterval: 10 * 1000,
+    // refetchIntervalInBackground: true,
+    // refetchOnWindowFocus: true
   });
+
+  const gridColor = getChartGridColor(mode);
+  const tooltipOptions = getChartTooltipOptions(mode);
+
   const chartData = useMemo(() => {
-    if(data) return getCoinPriceHistoryChartData(data);
+    if(data) return getChartData(data);
   }, [data]);
 
-  if(isPending) return <Skeleton variant="rectangular" height={200} />;
+  if(isPending) return <Skeleton variant="rectangular" height={100} />;
   if(isError) return <ErrorMessage/>;
 
   return (
@@ -53,36 +64,58 @@ export const AllPriceHistoryChart: React.FC<{ id: string }> = ({
       {
         chartData && data?.points?.length
           ?
-          <div className="h-[200px]">
-            <Line data={chartData} options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: {
-                mode: 'index',
-                intersect: false,
-              },
-              scales: {
-                x: {
-                  type: 'time',
-                  time: {
-                    tooltipFormat: 'HH:mm dd.MM',
-                    unit: 'year',
-                  },
-                  grid: {
-                    color: gridColor,
-                  },
-                  ticks: {
-                    maxTicksLimit: 8,
-                  },
+          <div className="h-[100px]">
+            <Line
+              data={chartData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false,
                 },
-              },
-              plugins: {
-                legend: { display: false },
-              },
-            }} />
+                scales: {
+                  x: {
+                    type: 'time',
+                    time: {
+                      tooltipFormat: 'dd.MM',
+                      unit: 'year',
+                    },
+                    grid: {
+                      color: gridColor,
+                    },
+                    border: {
+                      color: gridColor,
+                    },
+                    ticks: {
+                      color: gridColor,
+                      maxTicksLimit: 8,
+                    },
+                  },
+                  y: {
+                    position: 'right',
+                    grid: {
+                      display: false,
+                    },
+                    border: {
+                      color: gridColor,
+                    },
+                    ticks: {
+                      color: gridColor,
+                    },
+                  }
+                },
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: tooltipOptions
+                }
+              }}
+            />
           </div>
           :
-          <div className="h-[200px] text-center text-sm text-muted">No data</div>
+          <StatusMessage message="No data."/>
       }
     </>
   );

@@ -22,24 +22,26 @@ export const NewsItem: React.FC<TNewsItemProps> = ({
   img
 }) => {
   return (<li className={cn(
-    'flex',
+    'flex flex-col sm:flex-row',
     size === 'small'
-      ? 'flex-col sm:flex-row gap-[24px]'
-      : 'flex-col sm:flex-row md:flex-col gap-[16px]',
+      ? 'gap-[24px]'
+      : 'md:flex-col gap-[16px]',
     className
   )}>
-    <Image
-      className={cn(
-        'rounded-[16px] object-cover',
-        size === 'small'
-          ? 'h-[250px] sm:h-[200px] w-full sm:w-[250px]'
-          : 'h-[250px] sm:h-[200px] md:h-full max-h-[524px] w-full sm:w-[250px] md:w-full',
-      )}
-      src={img}
-      alt={title}
-      height={size === 'small' ? 200 : 500}
-      width={size === 'small' ? 250 : 925}
-    />
+    <div className={cn(
+      'rounded-[16px] overflow-hidden',
+      'h-[250px] sm:h-[200px] md:h-full',
+      'w-full sm:min-w-[250px] sm:max-w-[250px]',
+      size === 'large' && 'md:max-w-[none]'
+    )}>
+      <Image
+        className="object-cover w-full h-full"
+        src={img}
+        alt={title}
+        height={size === 'small' ? 200 : 500}
+        width={size === 'small' ? 250 : 925}
+      />
+    </div>
     <div className="flex flex-col justify-between gap-[20px]">
       <div>
         <h4 className={cn(titleCls, 'line-clamp-2')}>{title}</h4>

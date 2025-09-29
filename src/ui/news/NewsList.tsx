@@ -7,7 +7,7 @@ import { getNews } from '@/ui/news/helper';
 export const NewsList: React.FC = () => {
   const data = getNews();
 
-  return (<ul className="grid md:grid-cols-2 lg:grid-cols-[60%_1fr] gap-x-[20px] gap-y-[40px]">
+  return (<ul className="grid md:grid-cols-2 lg:grid-cols-[60%_1fr] md:grid-rows-[repeat(3,200px)] gap-x-[20px] gap-y-[40px]">
     {data.map((item, i) => (
       <NewsItem
         className={i === 0 && 'row-span-3'}

@@ -1,7 +1,8 @@
 //types
-import { ChartOptions } from 'chart.js';
 import { TCoinPriceHistoryPeriod } from '@/modules/coins/CoinsApi';
 import { TCoinPriceHistoryData } from '@/modules/coins/CoinsApi';
+
+type TThemeMode = 'light' | 'dark' | 'system' | undefined;
 
 export const getCoinPriceHistoryPeriods = (): TCoinPriceHistoryPeriod[] => ([
   '24h',
@@ -12,48 +13,9 @@ export const getCoinPriceHistoryPeriods = (): TCoinPriceHistoryPeriod[] => ([
   'max'
 ]);
 
-export const getCoinPriceHistoryChartOptions = (period: TCoinPriceHistoryPeriod, mode: "light" | "dark" | "system" | undefined ): ChartOptions<'line'> => {
-  const gridColor = mode === 'light' ? '#D1D6DD' : '#474A56';
-
-  return {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    scales: {
-      x: {
-        type: 'time',
-        time: {
-          tooltipFormat: 'HH:mm dd.MM',
-          unit: period === '24h' ? 'hour' : 'day',
-        },
-        grid: {
-          color: gridColor,
-        },
-        ticks: {
-          maxTicksLimit: 8,
-        },
-      },
-      y: {
-        beginAtZero: false,
-        position: 'right',
-        grid: {
-          color: gridColor,
-        },
-        ticks: {
-          callback: (value) => Number(value).toLocaleString(),
-        },
-      },
-    },
-    plugins: {
-      legend: { display: false },
-    },
-  };
-};
-
-export const getCoinPriceHistoryChartData = (data: TCoinPriceHistoryData) => {
+export const getChartData = (
+  data: TCoinPriceHistoryData
+) => {
   const labels = data?.points?.map(p => new Date(p.timestamp));
   const prices = data?.points?.map(p => p.price);
 
@@ -71,4 +33,21 @@ export const getCoinPriceHistoryChartData = (data: TCoinPriceHistoryData) => {
       },
     ],
   };
+};
+
+export const getChartGridColor = (mode: TThemeMode) =>
+  mode === 'light' ? '#9a9ea5' : '#6d6d73';
+
+export const getChartTooltipOptions = (mode: TThemeMode) => {
+  const tooltipBgColor = mode === 'light' ? '#FFFFFF' : '#1F1D2B';
+  const tooltipTextColor = mode === 'light' ? '#14151A' : '#FFFFFF';
+
+  return ({
+    backgroundColor: tooltipBgColor,
+    titleColor: tooltipTextColor,
+    bodyColor: tooltipTextColor,
+    borderColor: '#1E74FE',
+    borderWidth: 1,
+    displayColors: false,
+  });
 };

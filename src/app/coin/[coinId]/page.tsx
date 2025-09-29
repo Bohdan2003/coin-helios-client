@@ -8,6 +8,7 @@ import { ContactsSection } from '@/app/coin/[coinId]/components/ContactsSection/
 import { CommunitySection } from '@/app/coin/[coinId]/components/CommunitySection/CommunitySection';
 import { CalculatorSection } from '@/app/coin/[coinId]/components/CalculatorSection';
 import { Category } from '@/app/coin/[coinId]/components/Category';
+import { LatestNewsSection } from '@/components/LatestNewsSection/LatestNewsSection';
 
 export default function Coin({ params: { coinId } }: { params: { coinId: string } }) {
   return (
@@ -34,6 +35,9 @@ export default function Coin({ params: { coinId } }: { params: { coinId: string 
             <Category/>
           </div>
         </div>
+      </div>
+      <div className="mt-[140px]">
+        <LatestNewsSection/>
       </div>
     </>
   );

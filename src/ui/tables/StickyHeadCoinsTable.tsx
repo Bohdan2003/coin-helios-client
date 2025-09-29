@@ -34,7 +34,7 @@ const firstColSx = {
     xs: '80px',
     sm: '300px',
   },
-  zIndex: 10,
+  zIndex: 5,
   left: 0,
 };
 

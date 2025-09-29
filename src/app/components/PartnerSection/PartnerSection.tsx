@@ -86,7 +86,7 @@ export const PartnerSection: React.FC = () => {
       <div className="flex justify-end">
         <FormProvider {...methods}>
           <form
-            className="md:max-w-[655px] w-full"
+            className="lg:max-w-[655px] w-full"
             onSubmit={methods.handleSubmit(onSubmit)}
           >
             <p className={cn(titleCls, 'max-w-[540px]')}>

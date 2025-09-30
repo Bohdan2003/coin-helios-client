@@ -4,9 +4,8 @@ import {
   useState,
   useMemo,
   useCallback,
-  useEffect,
-  useRef
 } from 'react';
+import { useKeyChangeFetching } from '@/utils/useKeyChangeFetching';
 import { useDebounceCallback } from 'usehooks-ts';
 import { useQuery } from '@tanstack/react-query';
 //modules
@@ -23,11 +22,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 //modules
 import { getFilters } from '@/app/components/CoinsSection/helper';
-//utils
-import { cn } from '@/utils/cn';
 //types
 import type { TSortDir, TSortKey } from '@/modules/coins/CoinsApi';
 import type { TSelectedState } from '@/app/components/CoinsSection/CoinFiltersPopover/CoinFiltersPopover';
+//utils
+import { cn } from '@/utils/cn';
 
 const limit = 20;
 
@@ -76,23 +75,11 @@ export const CoinsSection: React.FC = () => {
   });
 
   //key change fetching
-  const [isKeyChangeFetching, setIsKeyChangeFetching] = useState(false);
   const queryKeyStr = useMemo(() => JSON.stringify(
     [page, sortKey, sortDir, search, filter, categories, chains, types]),
   [page, sortKey, sortDir, search, filter, categories, chains, types]
   );
-  const prevQueryKeyStr = useRef(queryKeyStr);
-
-  useEffect(() => {
-    if (prevQueryKeyStr.current !== queryKeyStr && isFetching) {
-      prevQueryKeyStr.current = queryKeyStr;
-      setIsKeyChangeFetching(true);
-    }
-  }, [queryKeyStr, isFetching]);
-
-  useEffect(() => {
-    if (!isFetching) setIsKeyChangeFetching(false);
-  }, [isFetching]);
+  const isKeyChangeFetching = useKeyChangeFetching(isFetching, queryKeyStr);
 
   //handlers
   const handleSortChange = useCallback((key: TSortKey, dir: TSortDir) => {

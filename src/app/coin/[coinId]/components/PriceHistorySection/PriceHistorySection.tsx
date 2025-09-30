@@ -19,7 +19,7 @@ export const PriceHistorySection: React.FC<{ id: string }> = ({ id }) => {
     <section>
       <div className="flex justify-between items-center gap-[40px]">
         <h3 className={cn(smallTitleCls, 'opacity-50')}>Price history</h3>
-        <nav className="p-[4px] bg-blue/3 rounded-[8px]">
+        <nav>
           <ul className="flex gap-[2px]">
             {
               periods.map((period, index) => (

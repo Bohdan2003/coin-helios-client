@@ -15,7 +15,11 @@ import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
 import { memo } from 'react';
 import { NumberFormatter } from '@/utils/NumberFormatter';
 //types
-import { TCoin, TSortDir, TSortKey } from '@/modules/coins/CoinsApi';
+import {
+  TCoin,
+  TSortDir,
+  TSortKey
+} from '@/modules/coins/CoinsApi';
 
 type TStickyHeadCoinsTableProps = {
   sortKey: TSortKey;
@@ -58,6 +62,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
       isFetching={isFetching}
       isError={isError}
       isEmpty={!rows || rows?.length < 1}
+      skeletonHeight={40}
       head={
         <TableRow>
           <HeaderCell
@@ -108,7 +113,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
             isLoading={isLoading}
           />
           <HeaderCell
-            text="Category"
+            text="Buy"
             hidden
           />
           <HeaderCell

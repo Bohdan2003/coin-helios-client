@@ -5,8 +5,8 @@ import { useColorScheme } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import Button from '@mui/material/Button';
 
-export const BuyCell: React.FC<{ id: string }> = ({
-  id,
+export const BuyCell: React.FC<{ onClick: () => void }> = ({
+  onClick
 }) => {
   const { mode } = useColorScheme();
 
@@ -16,7 +16,7 @@ export const BuyCell: React.FC<{ id: string }> = ({
         variant="contained"
         color={mode === 'light' ? 'secondary' : 'primary'}
         size="small"
-        onClick={() => { console.log(id); }}
+        onClick={onClick}
       >
         Buy
       </Button>

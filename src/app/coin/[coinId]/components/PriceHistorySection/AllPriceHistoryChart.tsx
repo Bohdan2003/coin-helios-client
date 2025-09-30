@@ -78,7 +78,7 @@ export const AllPriceHistoryChart: React.FC<{ id: string }> = ({
                   x: {
                     type: 'time',
                     time: {
-                      tooltipFormat: 'dd.MM',
+                      tooltipFormat: 'dd.MM.yy',
                       unit: 'year',
                     },
                     grid: {

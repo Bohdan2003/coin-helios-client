@@ -19,10 +19,13 @@ import { Line } from 'react-chartjs-2';
 import Skeleton from '@mui/material/Skeleton';
 import { ErrorMessage } from '@/ui/messages/ErrorMessage';
 import { StatusMessage } from '@/ui/messages/StatusMessage';
+//icons
+import CircularProgress from '@mui/material/CircularProgress';
 //modules
 import { getCoinPriseHistory } from '@/modules/coins/CoinsApi';
 //types
 import { TCoinPriceHistoryPeriod } from '@/modules/coins/CoinsApi';
+import { cn } from '@/utils/cn';
 //utils
 import 'chartjs-adapter-date-fns';
 //helpers
@@ -47,6 +50,7 @@ export const PriceHistoryPeriodChart: React.FC<TPriceHistoryPeriodChartProps> = 
   const {
     data,
     isPending,
+    isFetching,
     isError
   } = useQuery({
     queryKey: [ 'priceHistoryPeriod', id, period ],
@@ -72,8 +76,16 @@ export const PriceHistoryPeriodChart: React.FC<TPriceHistoryPeriodChartProps> = 
       {
         chartData && data?.points?.length
           ?
-          <div className="h-[500px]">
+          <div className="h-[500px] relative">
+            {
+              !isPending &&
+              isFetching &&
+              <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2">
+                <CircularProgress/>
+              </div>
+            }
             <Line
+              className={cn(!isPending && isFetching && 'opacity-50 pointer-events-none')}
               data={chartData}
               options={{
                 responsive: true,
@@ -86,7 +98,7 @@ export const PriceHistoryPeriodChart: React.FC<TPriceHistoryPeriodChartProps> = 
                   x: {
                     type: 'time',
                     time: {
-                      tooltipFormat: 'HH:mm dd.MM',
+                      tooltipFormat: 'HH:mm dd.MM.yy',
                       unit: period === '24h' ? 'hour' : 'day',
                     },
                     grid: {

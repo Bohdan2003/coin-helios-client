@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 //modules
-import { getCoinFilters } from '@/modules/coins/CoinsApi';
+import { getCoinsFilters } from '@/modules/coins/CoinsApi';
 //ui
 import {
   Popover,
@@ -51,7 +51,7 @@ export const CoinFiltersPopover: React.FC<TCoinFiltersPopoverProps> = memo(({
     isError
   } = useQuery({
     queryKey: [ 'coinFilters' ],
-    queryFn: () => getCoinFilters()
+    queryFn: () => getCoinsFilters()
   });
 
   const handleToggle = (key: keyof TSelectedState, id: string) =>

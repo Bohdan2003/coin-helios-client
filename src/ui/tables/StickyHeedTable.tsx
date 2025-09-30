@@ -22,6 +22,7 @@ type TStickyHeedTableProps = {
   isError: boolean;
   isEmpty: boolean;
   sx?: SxProps<Theme>;
+  skeletonHeight: number;
 }
 
 export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
@@ -33,7 +34,8 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
   isFetching,
   isError,
   isEmpty,
-  sx
+  sx,
+  skeletonHeight,
 }) => {
   const skeletonRows = Array.from({ length: rowsAmount });
   const skeletonCols = Array.from({ length: colsAmount });
@@ -90,7 +92,9 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
                 skeletonRows.map((_, i) => (
                   <TableRow key={i}>
                     { skeletonCols.map((_, j) => (
-                      <TableCell key={`${i}${j}`}><Skeleton height={40}/></TableCell>
+                      <TableCell key={`${i}${j}`}>
+                        <Skeleton height={skeletonHeight}/>
+                      </TableCell>
                     )) }
                   </TableRow>
                 ))

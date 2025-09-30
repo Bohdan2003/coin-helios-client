@@ -29,6 +29,14 @@ export type TCoin = {
   saved: boolean
 }
 
+export type TCoinMarket = {
+  exchange_name: string,
+  exchange_uuid: string,
+  price: string,
+  volume_24h: string,
+  url: string
+}
+
 export type TCoinFiltersData = {
   type: TFilterOption[],
   category: TFilterOption[],
@@ -57,14 +65,24 @@ export const getCoins = async ( params: {
 } ) =>
   apiGetRequest<ResponseWithPagination<TCoin[]>>('/crypto/coins', { params });
 
-export const getCoinFilters = async () =>
+export const getCoinsFilters = async () =>
   apiGetRequest<{ data: TCoinFiltersData }>('/crypto/filters');
-
 
 export const getCoinInfo = async ( params: {
   id: string,
 } ) =>
   apiGetRequest<ResponseWithPagination<TCoin[]>>(`/crypto/coin/${params.id}/current`);
+
+export const getCoinMarkets = async ( params: {
+  id: string,
+} ) =>
+  apiGetRequest<{
+    page: number,
+    limit: number,
+    total_pages: number,
+    total_items: number,
+    markets: TCoinMarket[];
+  }>(`/crypto/coin/${params.id}/markets`);
 
 export const getCoinPriseHistory = async ( params: {
   id: string,

@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import type { SxProps, Theme } from '@mui/material/styles';
 //utils
 import { KEYS } from '@/utils/consts/keys';
-import { ROUTES } from '@/utils/router';
+import { ROUTES } from '@/utils/routes';
 
 type TCoinCellProps = {
   icon: string;

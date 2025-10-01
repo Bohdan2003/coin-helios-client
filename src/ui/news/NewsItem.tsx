@@ -4,7 +4,7 @@ import { BaseLink } from '@/ui/BaseLink';
 //types
 import { TNew } from '@/ui/news/helper';
 //utils
-import { ROUTES } from '@/utils/router';
+import { ROUTES } from '@/utils/routes';
 import { titleCls } from '@/utils/consts/clsVariable';
 import { cn } from '@/utils/cn';
 

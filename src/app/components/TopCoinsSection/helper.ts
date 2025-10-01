@@ -1,4 +1,6 @@
-export const getTopCoinsData = () => ([
+import type { TCoin } from '@/modules/coins/CoinsApi';
+
+export const getTopCoinsData = (): TCoin[] => ([
   {
     'id': '3ee00a8a-0ee1-4e49-85e8-c2d6cac14752',
     'name': 'Bitcoin',
@@ -9,7 +11,7 @@ export const getTopCoinsData = () => ([
     'percent_change_24h': 4.03,
     'percent_change_7d': 0,
     'price': 118013.57,
-    'popular_24h_filters_volume': 0,
+    'price_chart_points': [],
     'chain': {
       name: 'SolanaSolana',
       icon: 'https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg'
@@ -29,7 +31,7 @@ export const getTopCoinsData = () => ([
     'percent_change_24h': 6.56,
     'percent_change_7d': 0,
     'price': 3004.72,
-    'popular_24h_filters_volume': 0,
+    'price_chart_points': [],
     'chain': {
       name: 'SolanaSolana',
       icon: 'https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg'
@@ -49,7 +51,7 @@ export const getTopCoinsData = () => ([
     'percent_change_24h': 13.34,
     'percent_change_7d': -0.02,
     'price': 2.84,
-    'popular_24h_filters_volume': 0,
+    'price_chart_points': [],
     'chain': {
       name: 'SolanaSolana',
       icon: 'https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg'
@@ -69,7 +71,7 @@ export const getTopCoinsData = () => ([
     'percent_change_24h': -0.02,
     'percent_change_7d': -0.02,
     'price': 1.00,
-    'popular_24h_filters_volume': 0,
+    'price_chart_points': [],
     'chain': {
       name: 'SolanaSolana',
       icon: 'https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg'
@@ -89,7 +91,7 @@ export const getTopCoinsData = () => ([
     'percent_change_24h': 2.61,
     'percent_change_7d': 0,
     'price': 694.31,
-    'popular_24h_filters_volume': 0,
+    'price_chart_points': [],
     'chain': {
       name: 'SolanaSolana',
       icon: 'https://www.un.org/sites/un2.un.org/files/field/image/2024/06/ocean-2.jpg'

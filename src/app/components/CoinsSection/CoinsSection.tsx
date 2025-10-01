@@ -33,7 +33,6 @@ const limit = 20;
 export const CoinsSection: React.FC = () => {
   //tabs
   const filters = getFilters();
-
   //filter popover
   const [ isFiltersOpen, setIsFiltersOpen ] = useState(false);
   const [ anchorEl, setAnchorEl ] = useState<HTMLElement | null>(null);

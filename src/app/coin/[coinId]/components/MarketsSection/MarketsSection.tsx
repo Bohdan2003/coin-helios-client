@@ -52,7 +52,7 @@ export const MarketsSection: React.FC<{ id: string }> = ({ id }) => {
   }, [] );
 
   return (
-    <section className="pb-[60px] relative">
+    <section className="pb-[60px] relative" id="markets">
       <h3 className={smallTitleCls}>Markets</h3>
       <div className="mt-[16px]">
         <MarketsTable

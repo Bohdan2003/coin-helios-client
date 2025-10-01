@@ -15,7 +15,7 @@ import { AddCoinFormDialog } from '@/app/profile/components/dialogs/AddCoinFormD
 import AddIcon from '@mui/icons-material/Add';
 //utils
 import { bigTitleCls } from '@/utils/consts/clsVariable';
-import { ROUTES } from '@/utils/router';
+import { ROUTES } from '@/utils/routes';
 //helpers
 import { getProfileTabs } from '@/app/profile/helper';
 import { MyCoinsTable } from '@/app/profile/components/tables/MyCoinsTable';

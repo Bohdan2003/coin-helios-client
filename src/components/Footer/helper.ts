@@ -1,4 +1,4 @@
-import { ROUTES } from '@/utils/router';
+import { ROUTES } from '@/utils/routes';
 
 type TMenuItem = {
   text: string;

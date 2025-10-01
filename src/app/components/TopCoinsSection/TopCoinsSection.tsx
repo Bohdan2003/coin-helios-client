@@ -15,10 +15,8 @@ import type { TCoin } from '@/modules/coins/CoinsApi';
 //helper
 import { getTopCoinsData } from '@/app/components/TopCoinsSection/helper';
 
-type TTopCoin = TCoin;
-
 export const TopCoinsSection: React.FC = () => {
-  const rows: TTopCoin[] = getTopCoinsData();
+  const rows: TCoin[] = getTopCoinsData();
 
   const stickyColSx = {
     position: 'sticky',
@@ -48,7 +46,7 @@ export const TopCoinsSection: React.FC = () => {
             <HeaderCell
               text="#Coin"
               sx={{
-                left: '28px',
+                left: '40px',
                 ...stickyColSx
               }}
             />
@@ -79,7 +77,7 @@ export const TopCoinsSection: React.FC = () => {
               >{i + 1}</TableCell>
               <CoinCell
                 sx={{
-                  left: '28px',
+                  left: '40px',
                   ...stickyColSx
                 }}
                 id={row.id}

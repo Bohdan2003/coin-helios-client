@@ -243,13 +243,9 @@ export const theme = createTheme({
     },
     MuiTableCell: {
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: {
           width: 'auto',
-          padding: '10px',
-          [theme.breakpoints.up('lg')]: {
-            padding: '16px',
-          },
-        }),
+        },
         head: {
           fontSize: 14,
           borderBottom: 'none',

@@ -101,7 +101,7 @@ export const MarketsTable: React.FC<TMarketsTableProps> = memo(({
                 <TableCell className="opacity-80">
                   {NumberFormatter.getReadablePrice(+row.volume_24h)}
                 </TableCell>
-                <BuyCell onClick={() => { handleBuy(row.url) }}/>
+                <BuyCell onClick={() => { handleBuy(row.url); }}/>
               </TableRow>
             ))
           }

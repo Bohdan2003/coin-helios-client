@@ -11,9 +11,12 @@ import { FavoriteCell } from '@/ui/tables/cells/FavoriteCell';
 import { SortableHeaderCell } from '@/ui/tables/cells/SortableHeaderCell';
 import { BuyCell } from '@/ui/tables/cells/BuyCell';
 import { HeaderCell } from '@/ui/tables/cells/HeaderCell';
+import { ChartCell } from '@/ui/tables/cells/ChartCell';
 //utils
-import { memo } from 'react';
+import { redirect } from 'next/navigation';
+import { ROUTES } from '@/utils/routes';
 import { NumberFormatter } from '@/utils/NumberFormatter';
+import { memo } from 'react';
 //types
 import {
   TCoin,
@@ -35,7 +38,7 @@ type TStickyHeadCoinsTableProps = {
 const firstColSx = {
   position: 'sticky',
   maxWidth: {
-    xs: '80px',
+    xs: '100px',
     sm: '300px',
   },
   zIndex: 5,
@@ -54,6 +57,10 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
   onSortChange,
   rows,
 }) => {
+  const handleBuy = (id: string) => {
+    redirect(ROUTES.MARKETS(id));
+  };
+
   return (
     <StickyHeedTable
       rowsAmount={rowsAmount}
@@ -126,7 +133,14 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
         <>
           {
             rows?.map(row => (
-              <TableRow key={row.id}>
+              <TableRow
+                key={row.id}
+                sx={{
+                  '& .MuiTableCell-root': {
+                    paddingY: '6px',
+                  },
+                }}
+              >
                 <CoinCell
                   sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}
                   id={row.id}
@@ -142,9 +156,10 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
                 {/*/>*/}
                 <PercentChangeCell percent={row.percent_change_1h}/>
                 <PercentChangeCell percent={row.percent_change_24h}/>
-                <TableCell className="opacity-80">
-                  ---
-                </TableCell>
+                <ChartCell
+                  percent={row.percent_change_7d}
+                  chartPoints={row.price_chart_points}
+                />
                 <TableCell className="opacity-80">
                   {NumberFormatter.getReadablePrice(row.price)}
                 </TableCell>
@@ -155,7 +170,7 @@ export const StickyHeadCoinsTable: React.FC<TStickyHeadCoinsTableProps> = memo((
                   votes={row.votes}
                   id={row.id}
                 />
-                <BuyCell id={row.id}/>
+                <BuyCell onClick={() => { handleBuy(row.id); }}/>
                 <FavoriteCell id={row.id}/>
               </TableRow>
             ))

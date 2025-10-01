@@ -1,6 +1,8 @@
 //types
 import { TCoinPriceHistoryPeriod } from '@/modules/coins/CoinsApi';
 import { TCoinPriceHistoryData } from '@/modules/coins/CoinsApi';
+//utils
+import { NumberFormatter } from '@/utils/NumberFormatter';
 
 type TThemeMode = 'light' | 'dark' | 'system' | undefined;
 
@@ -49,5 +51,10 @@ export const getChartTooltipOptions = (mode: TThemeMode) => {
     borderColor: '#1E74FE',
     borderWidth: 1,
     displayColors: false,
+    callbacks: {
+      label: (context: { raw: number }) => {
+        return 'Price: ' + NumberFormatter.getReadablePrice(+context.raw);
+      },
+    }
   });
 };

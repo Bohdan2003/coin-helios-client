@@ -7,6 +7,10 @@ import { TFilterOption } from '@/utils/types/filter';
 export type TSortDir = 'asc' | 'desc' | null;
 export type TSortKey = string | null;
 export type TCoinPriceHistoryPeriod = '24h' | '7d' | '1m' | '3m' | '1y' | 'max';
+export type TCoinChartPoint = {
+  timestamp: string,
+  price: number
+}
 
 export type TCoin = {
   id: string,
@@ -18,7 +22,7 @@ export type TCoin = {
   percent_change_24h: number,
   percent_change_7d: number,
   price: number,
-  popular_24h_filters_volume: number,
+  price_chart_points: TCoinChartPoint[],
   chain: {
     name: string,
     icon: string
@@ -46,10 +50,7 @@ export type TCoinFiltersData = {
 export type TCoinPriceHistoryData = {
   coin_id: string,
   period: TCoinPriceHistoryPeriod,
-  points: {
-    timestamp: string,
-    price: number
-  }[]
+  points: TCoinChartPoint[]
 }
 
 export const getCoins = async ( params: {

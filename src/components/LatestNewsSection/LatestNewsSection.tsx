@@ -2,7 +2,7 @@
 import { BaseLink } from '@/ui/BaseLink';
 import { NewsList } from '@/ui/news/NewsList';
 //utils
-import { ROUTES } from '@/utils/router';
+import { ROUTES } from '@/utils/routes';
 import { bigTitleCls } from '@/utils/consts/clsVariable';
 
 export const LatestNewsSection: React.FC = () => {

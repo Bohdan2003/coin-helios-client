@@ -13,7 +13,7 @@ export const PercentChange: React.FC<{ className?: string, percent: number }> = 
             className={cn(className, isPositive ? 'text-green' : 'text-orange')}
           >{text}</span>
           :
-          <span className={cn(className, 'text-green')}>+0</span>
+          <span className={cn('text-green', className)}>0%</span>
       }
     </>
   );

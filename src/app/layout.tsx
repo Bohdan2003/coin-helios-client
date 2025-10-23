@@ -1,13 +1,14 @@
-//components
-import Providers from '@/components/providers';
-import { Header } from '@/components/Header/Header';
-import { Footer } from '@/components/Footer/Footer';
+//гш
+import Providers from '@/shared/providers';
+import { Header } from '@/widgets/Header/Header';
+import { Footer } from '@/widgets/Footer/Footer';
 //types
 import type { Metadata } from 'next';
 //fonts
-import { roboto } from '@/assets/fonts/roboto';
-import { inter } from '@/assets/fonts/inter';
+import { roboto } from '@/shared/assets/fonts/roboto';
+import { inter } from '@/shared/assets/fonts/inter';
 //styles
+import 'keen-slider/keen-slider.min.css';
 import './globals.css';
 
 export const metadata: Metadata = {

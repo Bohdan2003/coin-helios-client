@@ -6,19 +6,19 @@ import {
 } from 'next/navigation';
 //ui
 import Button from '@mui/material/Button';
-import { LinkTabs } from '@/ui/tabs/LinkTabs';
-import { AlertsList } from '@/app/profile/components/AlertsList';
-import { PromotionsTable } from '@/app/profile/components/tables/PromotionsTable';
-import { ExitButton } from '@/ui/buttons/ExtiButton';
-import { AddCoinFormDialog } from '@/app/profile/components/dialogs/AddCoinFormDialog';
+import { LinkTabs } from '@/shared/ui/tabs/LinkTabs';
+import { AlertsList } from '@/app/profile/ui/AlertsList';
+import { PromotionsTable } from '@/app/profile/ui/tables/PromotionsTable';
+import { ExitButton } from '@/shared/ui/buttons/ExtiButton';
+import { AddCoinFormDialog } from '@/app/profile/ui/dialogs/AddCoinFormDialog';
 //icons
 import AddIcon from '@mui/icons-material/Add';
 //utils
-import { bigTitleCls } from '@/utils/consts/clsVariable';
-import { ROUTES } from '@/utils/routes';
+import { bigTitleCls } from '@/shared/lib/classNames';
+import { ROUTES } from '@/shared/const/routes';
 //helpers
 import { getProfileTabs } from '@/app/profile/helper';
-import { MyCoinsTable } from '@/app/profile/components/tables/MyCoinsTable';
+import { MyCoinsTable } from '@/app/profile/ui/tables/MyCoinsTable';
 
 export default function Profile() {
   const router = useRouter();

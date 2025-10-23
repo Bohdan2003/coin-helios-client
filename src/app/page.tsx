@@ -1,12 +1,12 @@
 //components
-import { WelcomeSection } from '@/app/components/WelcomeSection/WelcomeSection';
-import { TopCoinsSection } from '@/app/components/TopCoinsSection/TopCoinsSection';
-import { CoinsSection } from '@/app/components/CoinsSection/CoinsSection';
-import { PartnerSection } from '@/app/components/PartnerSection/PartnerSection';
-import { QuestionsSection } from '@/app/components/QuestionsSection/QuestionsSection';
-import { LatestNewsSection } from '@/components/LatestNewsSection/LatestNewsSection';
+import { WelcomeSection } from '@/app/ui/WelcomeSection/WelcomeSection';
+import { TopCoinsSection } from '@/app/ui/TopCoinsSection/TopCoinsSection';
+import { CoinsSection } from '@/app/ui/CoinsSection/CoinsSection';
+import { PartnerSection } from '@/app/ui/PartnerSection/PartnerSection';
+import { QuestionsSection } from '@/app/ui/QuestionsSection/QuestionsSection';
+import { LatestNewsSection } from '@/features/news/ui/LatestNewsSection/LatestNewsSection';
 //ui
-import { GooBg } from '@/ui/bg/GooBg/GooBg';
+import { GooBg } from '@/shared/ui/bg/GooBg/GooBg';
 
 //TODO: need to add loading
 export default async function Home() {

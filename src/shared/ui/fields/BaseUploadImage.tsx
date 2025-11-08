@@ -12,7 +12,7 @@ import { Avatar } from '@mui/material';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { fieldErrorCls } from '@/shared/lib/classNames';
+import { fieldErrorCls } from '@/shared/classNames/classNames';
 
 export type TBaseUploadImageProps = {
   className?: string;

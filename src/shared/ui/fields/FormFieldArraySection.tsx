@@ -14,7 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { fieldLabelCls } from '@/shared/lib/classNames';
+import { fieldLabelCls } from '@/shared/classNames/classNames';
 
 type ArrayItemType<T> = T extends readonly (infer U)[] ? U : never;
 

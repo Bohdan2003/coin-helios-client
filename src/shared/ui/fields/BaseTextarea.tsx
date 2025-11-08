@@ -4,7 +4,7 @@ import { FieldWrapper } from '@/shared/ui/fields/FieldWrapper';
 import { TFieldWrapperPropsWithoutChildren } from '@/shared/ui/fields/FieldWrapper';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { fieldCls } from '@/shared/lib/classNames';
+import { fieldCls } from '@/shared/classNames/classNames';
 
 export type TBaseTextareaProps = {
   textareaClassName?: string;

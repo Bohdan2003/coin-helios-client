@@ -1,11 +1,11 @@
 // import Image from 'next/image';
-import Link from 'next/link';
+import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 import TableCell from '@mui/material/TableCell';
 //types
 import type { SxProps, Theme } from '@mui/material/styles';
 //utils
-import { KEYS } from '@/shared/const/keys';
-import { ROUTES } from '@/shared/const/routes';
+import { KEYS } from '@/shared/config/keys';
+import { ROUTES } from '@/shared/routes/routes';
 
 type TCoinCellProps = {
   icon: string;
@@ -33,7 +33,7 @@ export const CoinCell: React.FC<TCoinCellProps> = ({
         {/*  height={32}*/}
         {/*/>*/}
         <div className="grid">
-          <Link href={ROUTES.COIN(id)}>{name}</Link>
+          <LocalizedLink href={ROUTES.COIN(id)}>{name}</LocalizedLink>
           <span className="opacity-60">{symbol}</span>
         </div>
       </div>

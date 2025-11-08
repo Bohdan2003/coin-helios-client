@@ -4,7 +4,7 @@ import {
   fieldBottomBorderCls,
   fieldErrorCls,
   fieldLabelCls,
-} from '@/shared/lib/classNames';
+} from '@/shared/classNames/classNames';
 
 type TFieldWrapperProps = {
   children: React.ReactNode;

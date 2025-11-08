@@ -17,7 +17,7 @@ import { Line } from 'react-chartjs-2';
 import { StatusMessage } from '@/shared/ui/messages/StatusMessage';
 import { PercentChange } from '@/shared/ui/PercentChange';
 //types
-import { TCoinChartPoint } from '@/features/coins/api';
+import { TCoinChartPoint } from '@/modules/coins/api/coinPriceHistory/getCoinPriceHistory';
 //utils
 import { cn } from '@/shared/lib/cn';
 import 'chartjs-adapter-date-fns';

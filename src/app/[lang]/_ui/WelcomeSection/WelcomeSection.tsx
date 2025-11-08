@@ -1,0 +1,39 @@
+//components
+import { PartnerSlider } from '@/app/[lang]/_ui/WelcomeSection/PartnerSlider';
+//ui
+import { Button } from '@mui/material';
+//utils
+import { getDictionary } from '@/shared/i18n/dictionaries';
+
+export const WelcomeSection: React.FC<{ lang: 'en' | 'ru' }> = async ({ lang }) => {
+  const { main: { welcome: d } } = await getDictionary(lang);
+
+  return (
+    <section>
+      <div className="grid sm:grid-cols-2 gap-[20px]">
+        <div className="mt-[20px] sm:mt-0 flex xl:block flex-col justify-center gap-[20px] sm:gap-[30px]">
+          <h1 className="sm:max-w-[450px] lg:max-w-[568px] font-inter font-medium text-[26px] sm:text-[32px] md:text-[38px] lg:text-[48px] xl:text-[55px] leading-[110%]">
+            { d.title }
+          </h1>
+          <p className="sm:max-w-[426px] xl:mt-[24px]">
+            { d.text }
+          </p>
+          <div className="xl:mt-[40px] flex gap-[16px]">
+            <Button
+              className="w-full sm:w-auto"
+              variant="contained"
+            >Add coin</Button>
+            <Button
+              className="w-full sm:w-auto"
+              variant="outlined"
+            >Become a Partner</Button>
+          </div>
+        </div>
+
+        <div className="-order-1 sm:order-1">
+          <PartnerSlider/>
+        </div>
+      </div>
+    </section>
+  );
+};

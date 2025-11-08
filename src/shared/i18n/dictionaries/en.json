@@ -1,0 +1,12 @@
+{
+  "links": {
+    "add-coin": "Add coin",
+    "become-a-partner": "Become a Partner"
+  },
+  "main": {
+    "welcome": {
+      "title": "Ratings and analytics of cryptocurrencies in real-time",
+      "text": "Stay updated with real-time cryptocurrency data, ratings, and market insights to make informed investment decisions"
+    }
+  }
+}

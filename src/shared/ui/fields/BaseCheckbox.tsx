@@ -2,7 +2,7 @@
 import { Checkbox } from '@mui/material';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { fieldErrorCls } from '@/shared/lib/classNames';
+import { fieldErrorCls } from '@/shared/classNames/classNames';
 
 export type TBaseCheckboxProps = {
   label?: React.ReactNode;

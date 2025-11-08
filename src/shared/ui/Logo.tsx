@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 
 export const Logo: React.FC = () => {
   return (
-    <Link href="/public">CoinHelios</Link>
+    <LocalizedLink href="/">CoinHelios</LocalizedLink>
   );
 };

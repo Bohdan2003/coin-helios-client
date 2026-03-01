@@ -1,59 +1,24 @@
-'use client';
-//hooks
-import { useForm } from 'react-hook-form';
 //ui
 import Image from 'next/image';
-import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
-import { Button } from '@mui/material';
-import {
-  FormProvider,
-  Resolver
-} from 'react-hook-form';
-import { FormTextField } from '@/shared/ui/fields/FormTextField';
-import { FormTextarea } from '@/shared/ui/fields/FormTextarea';
-import { FormCheckbox } from '@/shared/ui/fields/FormCheckbox';
+import { PartnerForm } from '@/app/[lang]/_ui/PartnerSection/PartnerForm';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  titleCls,
-  bigTitleCls
-} from '@/shared/classNames/classNames';
+import { bigTitleCls } from '@/shared/classNames';
+import { getDictionary } from '@/shared/i18n/dictionaries';
 import { cn } from '@/shared/lib/cn';
-import {
-  strSchemaWithMinWidth,
-  emailSchema,
-  termsSchema
-} from '@/shared/model/validationSchemas';
 //img
-import imgUrl from '@/assets/images/partner.jpg';
+import imgUrl from '@/shared/assets/images/partner.jpg';
 
-//TODO: move TYPE to API
-type TPartner = {
-  name: string;
-  email: string;
-  description: string;
-  terms: boolean;
-};
-
-const schema = yup.object().shape({
-  name: strSchemaWithMinWidth(3).required('Required'),
-  email: emailSchema.required('Required'),
-  description: strSchemaWithMinWidth(30).required('Required'),
-  terms: termsSchema,
-});
-
-export const PartnerSection: React.FC = () => {
-  const methods = useForm({
-    mode: 'onBlur',
-    reValidateMode: 'onChange',
-    resolver: yupResolver(schema) as Resolver<TPartner>,
-    defaultValues: { name:'', email: '', description:'', terms: true, },
-  });
-
-  const onSubmit = (data: TPartner) => {
-    console.log(data);
-  };
+export const PartnerSection: React.FC<{
+  lang: TLocale
+}> = async ({ lang }) => {
+  const {
+    main: { partner: d },
+    forms: { contact: form, errors },
+    buttons: { send: button },
+    links: { 'privacyPolicy': link }
+  } = await getDictionary(lang);
 
   return (<section>
     <div className="container grid sm:grid-cols-2 gap-[60px] sm:gap-[20px]">
@@ -67,69 +32,22 @@ export const PartnerSection: React.FC = () => {
           <h3
             className={cn(
               bigTitleCls,
+              'whitespace-pre-line',
               'absolute top-[60px] lg:top-[42px] left-[24px] text-white'
             )}
           >
-            Become<br/>
-            a partner
+            { d.title }
           </h3>
         </div>
         <p className="opacity-80 md:max-w-[275px]">
-          List your project on CoinHelios —
-          a global platform for investors, traders, and crypto enthusiasts
+          { d.text[0] }
         </p>
         <p className="opacity-80 md:max-w-[314px]">
-          We’ll help you not only showcase your coin to a wide audience,
-          but also promote it with our tools and marketing support
+          { d.text[1] }
         </p>
       </div>
       <div className="flex justify-end">
-        <FormProvider {...methods}>
-          <form
-            className="lg:max-w-[655px] w-full"
-            onSubmit={methods.handleSubmit(onSubmit)}
-          >
-            <p className={cn(titleCls, 'max-w-[540px]')}>
-              Leave a request, and our manager will contact you shortly to answer all your questions
-            </p>
-            <div className="mt-[20px] sm:mt-[24px] flex flex-col md:flex-row gap-[24px] md:gap-[16px]">
-              <FormTextField
-                fullWidth
-                name="name"
-                placeholder="Name"
-              />
-              <FormTextField
-                fullWidth
-                name="email"
-                placeholder="Email"
-              />
-            </div>
-            <FormTextarea
-              className="mt-[20px] sm:mt-[24px]"
-              textareaClassName="h-[120px]"
-              fullWidth
-              name="description"
-              placeholder="Text"
-            />
-            <FormCheckbox
-              className="mt-[20px] sm:mt-[24px]"
-              name="terms"
-              label={<>
-                Confirm with&nbsp;
-                <LocalizedLink
-                  className="text-blue"
-                  href="#"
-                >Privacy policy</LocalizedLink>
-              </>}
-            />
-            <div className="mt-[20px] sm:mt-[54px]">
-              <Button
-                variant="contained"
-                type="submit"
-              >Send</Button>
-            </div>
-          </form>
-        </FormProvider>
+        <PartnerForm dictionary={{ form, errors, button, link }} />
       </div>
     </div>
   </section>);

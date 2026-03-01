@@ -6,29 +6,32 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import { Skeleton } from '@mui/material';
-import { ErrorCell } from '@/shared/ui/tables/cells/ErrorCell';
 import { StatusCell } from '@/shared/ui/tables/cells/StatusCell';
+//icons
 import CircularProgress from '@mui/material/CircularProgress';
 //types
+import { TDictionary } from '@/shared/i18n/dictionaries';
 import type { SxProps, Theme } from '@mui/material/styles';
 //utils
 import { cn } from '@/shared/lib/cn';
 
 type TStickyHeedTableProps = {
+  dictionary: TDictionary['errors'];
   className?: string;
   head: React.ReactNode;
   body: React.ReactNode;
-  rowsAmount: number;
+  rowsAmount: number | undefined;
   colsAmount: number;
   isLoading: boolean;
   isFetching: boolean;
   isError: boolean;
-  isEmpty: boolean;
+  limit?: number;
   sx?: SxProps<Theme>;
   skeletonHeight: number;
 }
 
 export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
+  dictionary: d,
   className,
   head,
   body,
@@ -37,18 +40,18 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
   isLoading,
   isFetching,
   isError,
-  isEmpty,
+  limit,
   sx,
   skeletonHeight,
 }) => {
-  const skeletonRows = Array.from({ length: rowsAmount });
+  const isSecondFetching = !isLoading && isFetching;
+  const skeletonRows = Array.from({ length: limit || 1 });
   const skeletonCols = Array.from({ length: colsAmount });
 
   return (
     <div className={cn('relative', className)}>
       {
-        !isLoading &&
-        isFetching &&
+        isSecondFetching &&
         <div className="absolute z-20 top-[75px] bottom-[20px] left-1/2 -translate-x-1/2">
           <span className="-mt-[40px] sticky top-[45%]">
             <CircularProgress/>
@@ -88,7 +91,10 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
             isError
               ?
               <TableRow>
-                <ErrorCell colsAmount={11}/>
+                <StatusCell
+                  message={ d.error }
+                  colsAmount={colsAmount}
+                />
               </TableRow>
               :
               isLoading
@@ -102,16 +108,16 @@ export const StickyHeedTable: React.FC<TStickyHeedTableProps> = ({
                     )) }
                   </TableRow>
                 ))
-                : isEmpty
+                : rowsAmount
                   ?
+                  body
+                  :
                   <TableRow>
                     <StatusCell
-                      message="No matched."
+                      message={ d['noData'] }
                       colsAmount={colsAmount}
                     />
                   </TableRow>
-                  :
-                  body
           }
         </TableBody>
       </Table>

@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import { CoinsFilterSectionSkeleton } from '@/app/[lang]/_ui/CoinsSection/CoinsFiltersPopover/CoinsFilterSectionSkeleton';
 import { ErrorMessage } from '@/shared/ui/messages/ErrorMessage';
 //types
-import { TFilterOption } from '@/modules/coins/api/coinsFilters/getCoinsFilters';
-import type { TCoinFilters } from '@/modules/coins/api/coinsFilters/getCoinsFilters';
+import { TFilterOption } from '@/features/coins/api/coinsFilters/getCoinsFilters';
+import type { TCoinFilters } from '@/features/coins/api/coinsFilters/getCoinsFilters';
 
 type TFilterSectionProps = {
   title: string;

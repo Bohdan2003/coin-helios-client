@@ -10,7 +10,7 @@ import type {
   KeenSliderOptions
 } from 'keen-slider';
 //classNames
-import { titleCls } from '@/shared/classNames/classNames';
+import { titleCls } from '@/shared/classNames';
 //helpers
 import { getSlidesData } from '@/app/[lang]/_ui/WelcomeSection/helper';
 

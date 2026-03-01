@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useCoinsFiltersQuery } from '@/modules/coins/api/coinsFilters/useCoinsFiltersQuery';
+import { useCoinsFiltersQuery } from '@/features/coins/api/coinsFilters/useCoinsFiltersQuery';
 //ui
 import {
   Popover,
@@ -14,7 +14,7 @@ import CheckIcon from '@mui/icons-material/Check';
 //utils
 import { memo } from 'react';
 //types
-import type { TCoinFilters } from '@/modules/coins/api/coinsFilters/getCoinsFilters';
+import type { TCoinFilters } from '@/features/coins/api/coinsFilters/getCoinsFilters';
 
 export type TSelectedState = { [key in keyof TCoinFilters]: string[] };
 

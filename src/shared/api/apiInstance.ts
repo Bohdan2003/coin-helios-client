@@ -23,21 +23,43 @@ const buildQueryString = (params: QueryParams) => {
 };
 
 
-export const apiGetRequest = async<T>(path: string, options?: { params?: QueryParams } & RequestInit) => {
+export const apiGetRequest = async<T>(path: string, options?: { params?: QueryParams } & RequestInit): Promise<T> => {
   const url = new URL(KEYS.API_URL + (path.startsWith('/') ? path : `/${path}`));
 
   let searchParams = '';
   if(options?.params) {
     searchParams = buildQueryString(options.params);
   }
- 
-  const response = await fetch(`${url}?${searchParams}`, {
+
+  const makeRequest = async () => await fetch(`${url}?${searchParams}`, {
     method: 'GET',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
     ...options
   });
 
-  return response.json() as Promise<T>;
+  let response = await makeRequest();
+
+  if (response.status === 401) {
+    const refreshResponse = await fetch(
+      `${KEYS.API_URL}/auth_jwt/token/refresh/`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (!refreshResponse.ok) {
+      throw new Error('Session expired');
+    }
+
+    response = await makeRequest();
+  }
+
+  return response.json();
 };

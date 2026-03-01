@@ -15,49 +15,40 @@ import { FormTextarea } from '@/shared/ui/fields/FormTextarea';
 import { FormCheckbox } from '@/shared/ui/fields/FormCheckbox';
 //icons
 import CloseIcon from '@mui/icons-material/Close';
+//types
+import { TContactSchema } from '@/shared/model/contactFormValidation';
+import { TDictionary } from '@/shared/i18n/dictionaries';
 //utils
-import * as yup from 'yup';
+import { ROUTES } from '@/shared/routes';
+import { getContactSchema } from '@/shared/model/contactFormValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { titleCls } from '@/shared/classNames/classNames';
+import { titleCls } from '@/shared/classNames';
 import { cn } from '@/shared/lib/cn';
-import {
-  strSchemaWithMinWidth,
-  emailSchema,
-  termsSchema
-} from '@/shared/model/validationSchemas';
 
-type TPromotionFormDialogProps = {
+export const PromotionFormDialog: React.FC<{
   id: string;
   isOpen: boolean;
   onClose: () => void;
-}
-
-type TPromotion = {
-  name: string;
-  email: string;
-  description: string;
-  terms: boolean;
-};
-
-const schema = yup.object().shape({
-  name: strSchemaWithMinWidth(3).required('Required'),
-  email: emailSchema.required('Required'),
-  description: strSchemaWithMinWidth(30).required('Required'),
-  terms: termsSchema,
-});
-
-export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
+  dictionary: {
+    form: TDictionary['forms']['contact'];
+    link: TDictionary['links']['privacyPolicy'];
+    buttons: TDictionary['buttons'];
+    errors: TDictionary['forms']['errors'];
+  };
+}> = ({
   isOpen,
   onClose,
+  dictionary: d
 }) => {
+  const contactSchema = getContactSchema(d.errors);
   const methods = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
-    resolver: yupResolver(schema) as Resolver<TPromotion>,
-    defaultValues: { name:'', email: '', description:'', terms: true, },
+    resolver: yupResolver(contactSchema) as Resolver<TContactSchema>,
+    defaultValues: { name:'', email: '', text: '', terms: true, },
   });
 
-  const onSubmit = (data: TPromotion) => {
+  const onSubmit = (data: TContactSchema) => {
     console.log(data);
   };
 
@@ -78,8 +69,8 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           <div className="flex justify-between items-start">
-            <p className={cn(titleCls, 'max-w-[366px]')}>
-              Leave a request, and our manager will contact you shortly
+            <p className={cn(titleCls, 'max-w-[600px]')}>
+              { d.form.title }
             </p>
             <IconButton onClick={onClose}>
               <CloseIcon />
@@ -89,30 +80,30 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
             <FormTextField
               fullWidth
               name="name"
-              placeholder="Name"
+              placeholder={ d.form.fields.name }
             />
             <FormTextField
               fullWidth
               name="email"
-              placeholder="Email"
+              placeholder={ d.form.fields.email }
             />
           </div>
           <FormTextarea
             className="mt-[20px] sm:mt-[24px]"
             textareaClassName="h-[120px]"
-            name="description"
-            placeholder="Text"
+            name="text"
+            placeholder={ d.form.fields.text }
             fullWidth
           />
           <div className="mt-[20px] sm:mt-[54px] sm:flex justify-between items-center gap-[20px]">
             <FormCheckbox
               name="terms"
               label={<>
-                Confirm with&nbsp;
+                { d.form.fields.terms }&nbsp;
                 <LocalizedLink
                   className="text-blue"
-                  href="#"
-                >Privacy policy</LocalizedLink>
+                  href={ ROUTES.PRIVACY_POLICY }
+                >{ d.link }</LocalizedLink>
               </>}
             />
             <div className="mt-[54px] sm:mt-0 flex gap-[20px]">
@@ -120,13 +111,13 @@ export const PromotionFormDialog: React.FC<TPromotionFormDialogProps> = ({
                 className="w-full sm:w-auto"
                 onClick={onClose}
               >
-                Cancel
+                { d.buttons.cancel }
               </Button>
               <Button
                 className="w-full sm:w-auto"
                 variant="contained"
                 type="submit"
-              >Send</Button>
+              >{ d.buttons.send }</Button>
             </div>
           </div>
         </form>

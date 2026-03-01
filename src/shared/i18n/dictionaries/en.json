@@ -1,12 +1,280 @@
 {
   "links": {
-    "add-coin": "Add coin",
-    "become-a-partner": "Become a Partner"
+    "coins": "Coins",
+    "becomePartner": "Become a Partner",
+    "news": "News",
+    "faq": "FAQ",
+    "addCoin": "Add coin",
+    "privacyPolicy": "Privacy policy",
+    "termsOfUse": "Terms of Use",
+    "profile": "Profile"
+  },
+  "buttons": {
+    "yes": "Yes",
+    "no": "No",
+    "buy": "Buy",
+    "send": "Send",
+    "promote": "Promote",
+    "cancel": "Cancel",
+    "addMore": "add more"
+  },
+  "errors": {
+    "noData": "No data.",
+    "error": "Oops! Something went wrong."
+  },
+  "tables": {
+    "filterButton": "Filter",
+    "searchInput": "Search crypto",
+    "tabs": {
+      "all": "All",
+      "top": "Top",
+      "popular": "Popular",
+      "new": "New",
+      "gainers": "Gainers",
+      "saved": "Saved"
+    },
+    "th": {
+      "coin": "Coin",
+      "type": "Type",
+      "status": "Status",
+      "linkUsage": "Link usage",
+      "category": "Category",
+      "chain": "Chain",
+      "1H": "1H",
+      "24H": "24H",
+      "24HTradingVolume": "24H trading volume",
+      "7Days": "7Days",
+      "price": "Price",
+      "marketCap": "Market cap",
+      "votes": "Votes",
+      "buy": "Buy",
+      "favorite": "Favorite",
+      "exchanges": "Exchanges",
+      "allTimeViews": "Views (all time)",
+      "7DaysViews": "Views (7days)",
+      "promotion": "Promotion",
+      "start": "Start",
+      "finish": "Finish",
+      "promote": "Promote"
+    }
+  },
+  "dialogs": {
+    "exit": {
+      "title": "Are you sure you want to exit?"
+    }
+  },
+  "forms": {
+    "contact": {
+      "title": "Leave a request, and our manager will contact you shortly to answer all your questions",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "text": "Text",
+        "terms": "Confirm with"
+      }
+    },
+    "addCoin": {
+      "title": "Add coin",
+      "text": "Get your project noticed — submit a request, and your coin will appear on the site within 2 days after moderation",
+      "rule": "lines marked\n as mandatory",
+      "fields": {
+        "icon": "Upload Coin image",
+        "coinName": {
+          "label": "Coin name",
+          "placeholder": "Bitcoin"
+        },
+        "symbol": {
+          "label": "Coin symbol",
+          "placeholder": "BTC"
+        },
+        "chain": {
+          "label": "Network/Chain",
+          "placeholder": "Select network"
+        },
+        "email": {
+          "label": "Email for communication",
+          "placeholder": "name@company.com"
+        },
+        "category": {
+          "label": "Category",
+          "placeholder": "Select category"
+        },
+        "contracts": {
+          "label": "Contract Address",
+          "placeholders": {
+            "address": "0xA0b86s",
+            "network": "Select network"
+          }
+        },
+        "otherLinks": {
+          "label": "Other link",
+          "placeholder": "https://..."
+        },
+        "description": {
+          "label": "Coin description",
+          "placeholder": "Short coin description"
+        },
+        "telegram": {
+          "label": "Telegram",
+          "placeholder": "https://t.me/your_channel"
+        },
+        "reddit": {
+          "label": "Reddit",
+          "placeholder": "https://reddit.com/r/yourSubreddit"
+        },
+        "discord": {
+          "label": "Discord",
+          "placeholder": "https://discord.gg/your-invite"
+        },
+        "twitter": {
+          "label": "Twitter",
+          "placeholder": "https://twitter.com/your_handle"
+        },
+        "website": {
+          "label": "Website link",
+          "placeholder": "https://yourdomain.com"
+        },
+        "telegramUsername": {
+          "label": "Telegram contact",
+          "placeholder": "@your_username"
+        }
+      }
+    },
+    "errors": {
+      "required": "This field is required",
+      "stringTooShort": "charts is minimum",
+      "stringTooLong": "charts is maximum",
+      "emailInvalid": "Invalid email address",
+      "urlInvalid": "Invalid URL",
+      "fileTypeInvalid": "Only image files are allowed",
+      "fileSizeInvalid": "Max file size is",
+      "startsWith@": "Must start with \"@\"",
+      "privacyPolicy": "You must accept the privacy policy"
+    }
+  },
+  "latest-news": {
+    "title": "Latest News from the world of cryptocurrency",
+    "seeMoreNews": "See more news",
+    "readInFull": "Read in full"
+  },
+  "footer": {
+    "text": "Content on our website, related platforms, forums, apps, social media, and blogs (\"Site\") is sourced from third parties and provided for informational purposes only. We do not guarantee its relevance. This information is not financial or legal advice.",
+    "rights" : "© 2024 All rights reserved",
+    "socials": "Socials"
   },
   "main": {
     "welcome": {
-      "title": "Ratings and analytics of cryptocurrencies in real-time",
+      "title": "Ratings and analytics\n of cryptocurrencies\n in real-time",
       "text": "Stay updated with real-time cryptocurrency data, ratings, and market insights to make informed investment decisions"
+    },
+    "top-coins": {
+      "title": "Top Coins"
+    },
+    "new-coins": {
+      "title": "New Coins"
+    },
+    "partner": {
+      "title": "Become\na partner",
+      "text": [
+        "List your project on CoinHelios — a global platform for investors, traders, and crypto enthusiasts",
+        "We’ll help you not only showcase your coin to a wide audience,but also promote it with our tools and marketing support"
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "What is Cryptocurrency and How Does It Work?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "What types of crypto marketing services do you offer?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "What makes a cryptocurrency successful?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "How important is community in cryptocurrency marketing?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "Why does my cryptocurrency need marketing?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "Is crypto marketing compliant with regulations?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "How can marketing increase my crypto’s visibility?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        },{
+          "question": "What results can I expect from a crypto marketing campaign?",
+          "answer": "Cryptocurrency is a digital currency based on blockchain technology. It is decentralized, meaning there is no central authority, such as banks, controlling it. Transactions are recorded on the blockchain, making them transparent and secure."
+        }
+      ]
+    }
+  },
+  "coin": {
+    "price": {
+      "range": "Range in 24hr."
+    },
+    "priceHistory": {
+      "title": "Price history",
+      "periods": {
+        "24h":  "24h",
+        "7d": "7d",
+        "1m":  "1m",
+        "3m": "3m",
+        "1y":  "1y",
+        "max": "max"
+      }
+    },
+    "info": {
+      "title": "Info",
+      "price": {
+        "title": "Price to USD",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      },
+      "24h-volume": {
+        "title": "24h volume",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      },
+      "marketCap": {
+        "title": "Market cap",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      },
+      "volume-marketCap": {
+        "title": "Volume / Market cap",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      },
+      "fully-diluted-marketCap": {
+        "title": "Fully diluted market cap",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      },
+      "all-time-high": {
+        "title": "All-time high",
+        "helpText": "Bitcoin is a decentralized digital currency that was introduced in 2009 by an anonymous person or group of people using the pseudonym Satoshi Nakamoto. It allows peer-to-peer transactions with"
+      }
+    },
+    "contacts": {
+      "title": "Contract adress"
+    },
+    "community": {
+      "title": "Community"
+    },
+    "calculator": {
+      "title": "Calculator",
+      "description" : "Exchange rate"
+    },
+    "category": {
+      "title" : "Category"
+    },
+    "markets": {
+      "title" : "Markets"
+    }
+  },
+  "profile": {
+    "tabs": {
+      "promotions": "Promotions",
+      "myCoins": "My coins",
+      "alerts": "Alerts"
     }
   }
 }

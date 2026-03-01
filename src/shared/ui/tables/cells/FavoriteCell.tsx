@@ -1,14 +1,14 @@
 'use client';
 //ui
 import TableCell from '@mui/material/TableCell';
-import { FavoriteCoinButton } from '@/shared/ui/buttons/FavoriteCoinButton';
+import { FavoriteButton } from '@/features/coins/ui/FavoriteButton';
 
 export const FavoriteCell: React.FC<{id: string}> = ({
   id,
 }) => {
   return (
     <TableCell>
-      <FavoriteCoinButton id={id}/>
+      <FavoriteButton id={id}/>
     </TableCell>
   );
 };

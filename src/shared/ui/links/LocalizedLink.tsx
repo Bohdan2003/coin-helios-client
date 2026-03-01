@@ -1,10 +1,10 @@
 'use client';
 
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { useLocaleStore } from '@/shared/model/localeStore';
+import { useLocaleStore } from '@/shared/i18n/localeStore';
 import React from 'react';
 
-interface LocalizedLinkProps extends NextLinkProps {
+export interface LocalizedLinkProps extends NextLinkProps {
   className?: string;
   children: React.ReactNode;
 }

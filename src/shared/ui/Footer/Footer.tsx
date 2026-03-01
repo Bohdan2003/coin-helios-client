@@ -1,18 +1,25 @@
-'use client';
-
 //ui
 import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 import { Logo } from '@/shared/ui/Logo';
 import { LanguageSwitcher } from '@/shared/ui/switchers/LanguageSwitcher';
 import { ThemeSwitcher } from '@/shared/ui/switchers/ThemeSwitcher';
 import { Socials } from '@/shared/ui/Footer/Socials';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
+//utils
+import { getDictionary } from '@/shared/i18n/dictionaries';
+import { ROUTES } from '@/shared/routes';
 //helpers
 import { getNavItems } from '@/shared/ui/Footer/helper';
 
 const listCls = 'grid gap-[8px] sm:gap-[16px]';
 
-export const Footer = () => {
-  const navItems = getNavItems();
+export const Footer: React.FC<{ lang: TLocale }> = async ({ lang }) => {
+  const {
+    links: l,
+    footer: f
+  } = await getDictionary(lang);
+  const navItems = await getNavItems(lang);
 
   return (
     <footer className="bg-purple py-[20px] text-white">
@@ -21,11 +28,7 @@ export const Footer = () => {
           <div className="grid gap-[16px] col-span-2 lg:col-span-1">
             <Logo/>
             <p className="max-w-[520px] md:max-w-[740px] lg:max-w-[520px]">
-              Content on our website, related platforms, forums,
-              apps, social media, and blogs (&#34;Site&#34;) is sourced
-              from third parties and provided for informational
-              purposes only. We do not guarantee its relevance.
-              This information is not financial or legal advice.
+              { f.text }
             </p>
           </div>
           <nav>
@@ -47,7 +50,7 @@ export const Footer = () => {
             </ul>
           </nav>
           <div>
-            <p className="opacity-70">Socials</p>
+            <p className="opacity-70">{ f.socials }</p>
             <a
               className="block mt-[8px] sm:mt-[16px]"
               href="mailto:mukanovskiyyy@gmail.com"
@@ -63,9 +66,13 @@ export const Footer = () => {
             />
             <ThemeSwitcher sx={{ color: 'var(--white)' }}/>
           </div>
-          <p className="row-start-6 sm:row-start-auto -mt-[24px] sm:mt-0">© 2024 All rights reserved</p>
-          <a className="row-start-5 sm:row-start-auto" href="#">Terms of Use</a>
-          <a className="row-start-5 sm:row-start-auto" href="#">Privacy policy</a>
+          <p className="row-start-6 sm:row-start-auto -mt-[24px] sm:mt-0">{ f.rights }</p>
+          <a className="row-start-5 sm:row-start-auto" href={ROUTES.PRIVACY_POLICY}>
+            { l['termsOfUse'] }
+          </a>
+          <a className="row-start-5 sm:row-start-auto" href={ROUTES.TERMS_OF_USE}>
+            { l['privacyPolicy'] }
+          </a>
         </div>
       </div>
     </footer>

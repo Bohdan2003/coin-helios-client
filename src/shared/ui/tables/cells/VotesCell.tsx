@@ -2,7 +2,7 @@
 //ui
 import TableCell from '@mui/material/TableCell';
 //utils
-import { LikeCoinButton } from '@/shared/ui/buttons/LikeCoinButton';
+import { LikeButton } from '@/features/coins/ui/LikeButton';
 
 type TVotesCellProps = {
   className?: string;
@@ -17,7 +17,7 @@ export const VotesCell: React.FC<TVotesCellProps> = ({
 }) => {
   return (
     <TableCell className={className}>
-      <LikeCoinButton votes={votes} id={id} />
+      <LikeButton votes={votes} id={id} />
     </TableCell>
   );
 };

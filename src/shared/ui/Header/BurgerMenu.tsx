@@ -1,4 +1,5 @@
 'use client';
+
 //hooks
 import { useState } from 'react';
 // ui
@@ -6,12 +7,10 @@ import { IconButton } from '@mui/material';
 import { MobileMenuDrawer } from '@/shared/ui/Header/MobileMenuDrawer';
 //icons
 import MenuIcon from '@mui/icons-material/Menu';
-//helpers
-import { getNavItems } from '@/shared/ui/Header/helper';
+//types
+import { TNavItem } from '@/shared/ui/Header/helper';
 
-
-export function BurgerMenu() {
-  const navItems = getNavItems();
+export const BurgerMenu: React.FC<{ navItems: TNavItem[] }> = ({ navItems }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,9 +20,9 @@ export function BurgerMenu() {
       </IconButton>
 
       <MobileMenuDrawer
+        navItems={navItems}
         open={open}
         setOpen={setOpen}
-        navItems={navItems}
       />
     </>
   );

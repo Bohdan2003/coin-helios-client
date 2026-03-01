@@ -7,7 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { titleCls } from '@/shared/classNames/classNames';
+import { titleCls } from '@/shared/classNames';
 
 export const Question: React.FC<{
   question: string;

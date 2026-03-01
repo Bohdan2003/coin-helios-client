@@ -2,12 +2,14 @@ import Providers from '@/app/[lang]/_providers';
 //ui
 import { Header } from '@/shared/ui/Header/Header';
 import { Footer } from '@/shared/ui/Footer/Footer';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
 import type { Metadata } from 'next';
-import { LocaleInitializer } from '@/shared/model/LocaleInitializer';
+import { LocaleInitializer } from '@/shared/i18n/LocaleInitializer';
 //fonts
-import { roboto } from '@/assets/fonts/roboto';
-import { inter } from '@/assets/fonts/inter';
+import { roboto } from '@/shared/assets/fonts/roboto';
+import { inter } from '@/shared/assets/fonts/inter';
 //styles
 import 'keen-slider/keen-slider.min.css';
 import './globals.css';
@@ -25,7 +27,7 @@ export default async function RootLayout({
   params,
   children,
 }: Readonly<{
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: TLocale }>;
   children: React.ReactNode;
 }>) {
   const { lang } = await params;
@@ -34,15 +36,15 @@ export default async function RootLayout({
     <html lang={lang} suppressHydrationWarning>
       <LocaleInitializer/>
       <body
-        className={`${roboto.variable} ${inter.variable} min-h-[100vh] flex flex-col `}
+        className={`${roboto.variable} ${inter.variable} min-h-screen flex flex-col `}
       >
         <Providers>
-          <Header/>
+          <Header lang={lang}/>
           <main className="grow">
             {children}
           </main>
           <div className="mt-[32px]">
-            <Footer/>
+            <Footer lang={lang}/>
           </div>
         </Providers>
       </body>

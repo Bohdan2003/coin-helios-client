@@ -1,5 +1,10 @@
 'use client';
+
 //hooks
+import {
+  useRouter,
+  useSearchParams
+} from 'next/navigation';
 import {
   useMediaQuery,
   useTheme
@@ -21,24 +26,27 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 //types
 import { Resolver } from 'react-hook-form';
+import { TCoinSchema } from '@/features/coins/model/addCoinFormValidation';
+import { TDictionary } from '@/shared/i18n/dictionaries';
 //utils
 import { yupResolver } from '@hookform/resolvers/yup';
-import { titleCls } from '@/shared/classNames/classNames';
+import { titleCls } from '@/shared/classNames';
 import { cn } from '@/shared/lib/cn';
-import { coinSchema } from '@/modules/coins/model/validationSchemas';
-//types
-import { TCoinSchema } from '@/modules/coins/model/validationSchemas';
+import { getCoinSchema } from '@/features/coins/model/addCoinFormValidation';
 
-type TAddCoinFormDialogProps = {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const AddCoinFormDialog: React.FC<{
+  dictionary: {
+    buttons: TDictionary['buttons'];
+    errors: TDictionary['forms']['errors'];
+    form: TDictionary['forms']['addCoin'];
+    link: TDictionary['links']['privacyPolicy'];
+  };
+}> = ({ dictionary: d }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isOpen = searchParams.get('addCoin') === 'visible';
   const isLgDown = useMediaQuery(useTheme().breakpoints.down('lg'));
+  const coinSchema = getCoinSchema(d.errors);
 
   const methods = useForm({
     mode: 'onBlur',
@@ -65,7 +73,13 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
     },
   });
 
-  const onSubmit = (data: TCoinSchema) => {
+  const handleDialogClose = (): void => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('addCoin', 'hidden');
+    router.push(`?${params.toString()}`);
+  };
+
+  const handleSubmit = (data: TCoinSchema) => {
     console.log(data);
   };
 
@@ -74,7 +88,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
       fullWidth
       maxWidth="lg"
       open={isOpen}
-      onClose={onClose}
+      onClose={handleDialogClose}
       fullScreen={isLgDown}
       slotProps={{
         paper: {
@@ -90,7 +104,7 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
       <FormProvider {...methods}>
         <form
           className="py-[24px] px-[32px]"
-          onSubmit={methods.handleSubmit(onSubmit)}
+          onSubmit={methods.handleSubmit(handleSubmit)}
         >
           <div className={cn(
             'grid md:grid-cols-[45%_1fr] gap-[20px] md:gap-[60px] pb-[24px] relative',
@@ -98,17 +112,16 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
             'after:h-[1px] after:bg-[var(--lightGray)] after:rounded-[1px]',
           )}>
             <div className="flex justify-between items-center gap-[40px]">
-              <p className={titleCls}>Add coin</p>
-              <p className="opacity-80 text-[14px] max-w-[100px]">
-                <span className="text-orange">*</span> lines marked as mandatory
+              <p className={titleCls}>{ d.form.title }</p>
+              <p className="opacity-80 text-[14px] whitespace-pre-line">
+                <span className="text-orange">*</span> { d.form.rule }
               </p>
             </div>
             <div className="flex justify-between items-center gap-[40px]">
               <p className="opacity-80 text-[14px] max-w-[400px]">
-                Get your project noticed — submit a request, and your coin will
-                appear on the site within 2 days after moderation
+                { d.form.text }
               </p>
-              <IconButton onClick={onClose}>
+              <IconButton onClick={handleDialogClose}>
                 <CloseIcon />
               </IconButton>
             </div>
@@ -120,45 +133,45 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                   name="icon"
                   text={
                     <div className="font-inter text-[12px] opacity-70 font-medium text-left">
-                      <p>Upload Coin image</p>
+                      <p>{ d.form.fields.icon }</p>
                       <p>(400x400px)</p>
                     </div>
                   }
                 />
                 <FormTextField
-                  label="Coin name"
-                  placeholder="Bitcoin"
                   name="name"
+                  label={ d.form.fields.coinName.label }
+                  placeholder={ d.form.fields.coinName.placeholder }
                   fullWidth
                   required
                 />
                 <FormTextField
                   name="symbol"
-                  label="Coin symbol"
-                  placeholder="BTC"
+                  label={ d.form.fields.symbol.label }
+                  placeholder={ d.form.fields.symbol.placeholder }
                   fullWidth
                   required
                 />
                 <FormSelect
                   name="chain"
-                  label="Network/Chain"
-                  placeholder="Select network"
+                  label={ d.form.fields.chain.label }
+                  placeholder={ d.form.fields.chain.placeholder }
                   fullWidth
                   required
                 />
                 <FormTextField
                   name="email"
-                  label="Email for communication"
-                  required
-                  placeholder="name@company.com"
+                  label={ d.form.fields.email.label }
+                  placeholder={ d.form.fields.email.placeholder }
                   fullWidth
+                  required
                 />
                 <FormSelect
                   name="category"
-                  label="Category"
-                  required
-                  placeholder="Select category"
+                  label={ d.form.fields.category.label }
+                  placeholder={ d.form.fields.category.placeholder }
                   fullWidth
+                  required
                 />
               </div>
               {/*<FormFieldArraySection<TCoin>*/}
@@ -186,19 +199,20 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
                 className="mt-[40px] md:mt-[50px]"
                 rowClassName="grid sm:grid-cols-[1fr_200px] gap-[12px] sm:gap-[20px]"
                 name="contracts"
-                label="Contract Address"
+                label={ d.form.fields.contracts.label }
+                addMoreText={ d.buttons.addMore }
                 required
                 createDefault={() => ({ address: '', network: '' })}
                 renderRow={(getFieldName) => (
                   <>
                     <FormTextField
                       name={getFieldName('address')}
-                      placeholder="0xA0b86"
+                      placeholder={ d.form.fields.contracts.placeholders.address }
                       fullWidth
                     />
                     <FormSelect
                       name={getFieldName('network')}
-                      placeholder="Select network"
+                      placeholder={ d.form.fields.contracts.placeholders.network }
                       fullWidth
                     />
                   </>
@@ -207,12 +221,13 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
               <FormFieldArraySection<TCoinSchema>
                 className="mt-[40px] md:mt-[50px]"
                 name="otherLinks"
-                label="Other link"
+                label={ d.form.fields.otherLinks.label }
+                addMoreText={ d.buttons.addMore }
                 createDefault={() => ({ link: '' })}
                 renderRow={(getFieldName) => (
                   <FormTextField
                     name={getFieldName('link')}
-                    placeholder="https://..."
+                    placeholder={ d.form.fields.otherLinks.placeholder }
                     fullWidth
                   />
                 )}
@@ -222,59 +237,59 @@ export const AddCoinFormDialog: React.FC<TAddCoinFormDialogProps> = ({
               <FormTextarea
                 textareaClassName="h-[120px] md:h-[200px]"
                 name="description"
-                label="Coin description"
-                placeholder="Short coin description"
+                label={ d.form.fields.description.label }
+                placeholder={ d.form.fields.description.placeholder }
                 fullWidth
               />
               <div className="mt-[28px] grid sm:grid-cols-2 gap-[20px] md:gap-[40px]">
                 <FormTextField
                   name="telegram"
-                  label="Telegram"
-                  placeholder="https://t.me/your_channel"
+                  label={ d.form.fields.telegram.label }
+                  placeholder={ d.form.fields.telegram.placeholder }
                   fullWidth
                 />
                 <FormTextField
                   name="reddit"
-                  label="Reddit"
-                  placeholder="https://reddit.com/r/yourSubreddit"
+                  label={ d.form.fields.reddit.label }
+                  placeholder={ d.form.fields.reddit.placeholder }
                   fullWidth
                 />
                 <FormTextField
                   name="discord"
-                  label="Discord"
-                  placeholder="https://discord.gg/your-invite"
+                  label={ d.form.fields.discord.label }
+                  placeholder={ d.form.fields.discord.placeholder }
                   fullWidth
                 />
                 <FormTextField
                   name="twitter"
-                  label="Twitter"
-                  placeholder="https://twitter.com/your_handle"
+                  label={ d.form.fields.twitter.label }
+                  placeholder={ d.form.fields.twitter.placeholder }
                   fullWidth
                 />
                 <FormTextField
                   name="website"
-                  label="Website link"
+                  label={ d.form.fields.website.label }
+                  placeholder={ d.form.fields.website.placeholder }
                   required
-                  placeholder="https://yourdomain.com"
                   fullWidth
                 />
                 <FormTextField
                   name="telegramUsername"
-                  label="Telegram contact"
-                  placeholder="@your_username"
+                  label={ d.form.fields.telegramUsername.label }
+                  placeholder={ d.form.fields.telegramUsername.placeholder }
                   fullWidth
                 />
               </div>
             </div>
           </div>
           <div className="mt-[40px] flex justify-end gap-[20px]">
-            <Button onClick={onClose}>
-              Cancel
+            <Button onClick={handleDialogClose}>
+              { d.buttons.cancel }
             </Button>
             <Button
               variant="contained"
               type="submit"
-            >Send</Button>
+            >{ d.buttons.send }</Button>
           </div>
         </form>
       </FormProvider>

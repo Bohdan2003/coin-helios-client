@@ -3,17 +3,22 @@ import {
   Button,
   Dialog,
 } from '@mui/material';
+//types
+import { TDictionary } from '@/shared/i18n/dictionaries';
 
-type TConfirmationDialogProps = {
+export const ConfirmationDialog: React.FC<{
+  dictionary: {
+    buttons: TDictionary['buttons'];
+    error: TDictionary['errors']['error'];
+  }
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   isLoading?: boolean;
   isError?: boolean;
   title: string;
-}
-
-export const ConfirmationDialog: React.FC<TConfirmationDialogProps> = ({
+}> = ({
+  dictionary: d,
   isOpen,
   onClose,
   onConfirm,
@@ -32,18 +37,18 @@ export const ConfirmationDialog: React.FC<TConfirmationDialogProps> = ({
           <Button
             variant="contained"
             onClick={onClose}
-          >No</Button>
+          >{ d.buttons.no }</Button>
           <Button
             variant="outlined"
             onClick={onConfirm}
             loading={isLoading}
             disabled={isLoading}
-          >Yes</Button>
+          >{ d.buttons.yes }</Button>
         </div>
         {
           isError &&
           <p className="mt-[16px] text-orange text-center">
-            Something went wrong!
+            { d.error }
           </p>
         }
       </div>

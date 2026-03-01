@@ -1,4 +1,4 @@
-import { TNew } from '@/modules/news/api/types';
+import { TNew } from '@/features/news/api/types';
 
 export const getNews = (): TNew[] => ([
   {

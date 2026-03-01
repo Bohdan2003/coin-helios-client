@@ -1,0 +1,15 @@
+export const ROUTES = {
+  HOME: '/',
+  AUTH: '/auth',
+  COIN: (id: string | number) => `/coins/${id}`,
+  COINS: '/#coins',
+  NEWS: '/news',
+  NEW: (id: string | number) => `/news/${id}`,
+  MARKETS: (id: string | number) => `/coin/${id}#markets`,
+  PROFILE: '/profile',
+  BECOME_A_PARTNER: '/#partner',
+  ADD_COIN: '/profile?addCoin=visible',
+  FAQ: '/faq',
+  PRIVACY_POLICY: '/privacy-policy',
+  TERMS_OF_USE: '/terms-of-use',
+} as const;

@@ -3,7 +3,7 @@ import { FieldWrapper } from '@/shared/ui/fields/FieldWrapper';
 //types
 import { TFieldWrapperPropsWithoutChildren } from '@/shared/ui/fields/FieldWrapper';
 //utils
-import { fieldCls } from '@/shared/classNames/classNames';
+import { fieldCls } from '@/shared/classNames';
 
 export type TBaseTextFieldProps = {
   value?: string;

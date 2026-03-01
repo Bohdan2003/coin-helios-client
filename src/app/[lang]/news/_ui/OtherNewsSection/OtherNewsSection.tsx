@@ -13,12 +13,12 @@ import { cn } from '@/shared/lib/cn';
 //types
 import type { KeenSliderOptions } from 'keen-slider';
 //const
-import { ROUTES } from '@/shared/routes/routes';
+import { ROUTES } from '@/shared/routes';
 //classNames
 import {
   bigTitleCls,
   titleCls
-} from '@/shared/classNames/classNames';
+} from '@/shared/classNames';
 //helpers
 import { getNews } from '@/app/[lang]/news/_ui/OtherNewsSection/helper';
 

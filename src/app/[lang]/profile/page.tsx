@@ -1,47 +1,27 @@
-'use client';
-//hooks
-import {
-  useRouter,
-  useSearchParams
-} from 'next/navigation';
 //ui
-import Button from '@mui/material/Button';
-import { LinkTabs } from '@/shared/ui/tabs/LinkTabs';
-import { AlertsList } from '@/app/[lang]/profile/_ui/AlertsList';
-import { PromotionsTable } from '@/app/[lang]/profile/_ui/tables/PromotionsTable';
+import { ProfileContent } from '@/app/[lang]/profile/_ui/ProfileContent';
+import { LinkAsButton } from '@/shared/ui/links/LinkAsButton';
 import { ExitButton } from '@/shared/ui/buttons/ExtiButton';
 import { AddCoinFormDialog } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog';
 //icons
 import AddIcon from '@mui/icons-material/Add';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import { bigTitleCls } from '@/shared/classNames/classNames';
-import { ROUTES } from '@/shared/routes/routes';
-//helpers
+import { bigTitleCls } from '@/shared/classNames';
+import { ROUTES } from '@/shared/routes';
+import { getDictionary } from '@/shared/i18n/dictionaries';
 import { getProfileTabs } from '@/app/[lang]/profile/helper';
-import { MyCoinsTable } from '@/app/[lang]/profile/_ui/tables/MyCoinsTable';
 
-export default function Profile() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const tabs = getProfileTabs();
 
-  const getCurrentTab = () =>  {
-    for (const tab of tabs) {
-      if(searchParams.get('tab') === tab.value) return tab.value;
-    }
-    return tabs[0].value;
-  };
-
-  const handleAddCoinToggle = () => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if(params.get('add-coin') === 'visible') params.set('add-coin', 'hidden');
-    else params.set('add-coin', 'visible');
-
-    router.push(`?${params.toString()}`);
-  };
-
-  const currentTab = getCurrentTab();
+export default async function Profile({
+  params,
+}: {
+  params: Promise<{ lang: TLocale }>
+}) {
+  const { lang } = await params;
+  const d = await getDictionary(lang);
+  const tabs = await getProfileTabs(lang);
 
   return (
     <section className="mt-[60px]">
@@ -50,30 +30,42 @@ export default function Profile() {
         <div className="flex flex-wrap justify-between sm:items-center gap-[20px] sm:gap-[40px]">
           <div className="flex items-center gap-[4px] sm:gap-[16px]">
             <span className={bigTitleCls}>Hi Yaroslav</span>
-            <ExitButton/>
+            <ExitButton
+              dictionary={{
+                title: d.dialogs.exit.title,
+                buttons: d.buttons,
+                error: d.errors.error,
+              }}
+            />
           </div>
-          <Button
+          <LinkAsButton
+            href={ROUTES.ADD_COIN}
             variant="outlined"
             startIcon={<AddIcon/>}
-            onClick={handleAddCoinToggle}
-          >Add coin</Button>
+          >
+            { d.links.addCoin }
+          </LinkAsButton>
           <AddCoinFormDialog
-            isOpen={searchParams.get('add-coin') === 'visible'}
-            onClose={handleAddCoinToggle}
+            dictionary={{
+              buttons: d.buttons,
+              link: d.links.privacyPolicy,
+              form: d.forms.addCoin,
+              errors: d.forms.errors,
+            }}
           />
         </div>
-        <div className="mt-[32px]">
-          <LinkTabs
-            activeTab={currentTab}
-            tabs={tabs}
-            currentPagePath={ROUTES.PROFILE}
-          />
-          <div className="mt-[24px]">
-            { currentTab === tabs[0].value && <PromotionsTable/> }
-            { currentTab === tabs[1].value && <MyCoinsTable/> }
-            { currentTab === tabs[2].value && <AlertsList/> }
-          </div>
-        </div>
+        <ProfileContent
+          className="mt-[32px]"
+          tabs={tabs}
+          dictionary={{
+            th: d.tables.th,
+            errors: d.errors,
+            formErrors: d.forms.errors,
+            buttons: d.buttons,
+            link: d.links.privacyPolicy,
+            form: d.forms.contact
+          }}
+        />
       </div>
     </section>
   );

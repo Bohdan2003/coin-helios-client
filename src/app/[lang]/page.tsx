@@ -1,19 +1,25 @@
 //ui
 import { WelcomeSection } from '@/app/[lang]/_ui/WelcomeSection/WelcomeSection';
 import { TopCoinsSection } from '@/app/[lang]/_ui/TopCoinsSection/TopCoinsSection';
+import { NewCoinsSection } from '@/app/[lang]/_ui/NewCoinsSection/NewCoinsSection';
 import { CoinsSection } from '@/app/[lang]/_ui/CoinsSection/CoinsSection';
 import { PartnerSection } from '@/app/[lang]/_ui/PartnerSection/PartnerSection';
 import { QuestionsSection } from '@/app/[lang]/_ui/QuestionsSection/QuestionsSection';
-import { LatestNewsSection } from '@/modules/news/ui/LatestNewsSection';
+import { LatestNewsSection } from '@/features/news/ui/LatestNewsSection';
 import { GooBg } from '@/shared/ui/bg/GooBg/GooBg';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
+//utils
+import { getDictionary } from '@/shared/i18n/dictionaries';
 
 //TODO: need to add loading
 export default async function Home({
   params,
 }: {
-  params: Promise<{ lang: 'en' | 'ru' }>
+  params: Promise<{ lang: TLocale }>
 }) {
   const { lang } = await params;
+  const d = await getDictionary(lang);
 
   return (
     <>
@@ -25,8 +31,8 @@ export default async function Home({
           <div>
             <WelcomeSection lang={lang}/>
             <div className="mt-[80px] sm:mt-[40px] flex flex-col sm:grid grid-cols-2 gap-[80px] sm:gap-[20px]">
-              <TopCoinsSection/>
-              <TopCoinsSection/>
+              <TopCoinsSection lang={lang}/>
+              <NewCoinsSection lang={lang}/>
             </div>
           </div>
         </GooBg>
@@ -35,22 +41,22 @@ export default async function Home({
         className="mt-[80px]"
         id="coins"
       >
-        <CoinsSection/>
+        <CoinsSection lang={lang}/>
       </div>
       <div
         className="mt-[80px]"
         id="partner"
       >
-        <PartnerSection/>
+        <PartnerSection lang={lang}/>
       </div>
       <div className="mt-[80px] sm:mt-[140px]">
-        <LatestNewsSection/>
+        <LatestNewsSection lang={lang}/>
       </div>
       <div
         className="mt-[80px] sm:mt-[140px]"
         id="faq"
       >
-        <QuestionsSection/>
+        <QuestionsSection dictionary={d['main']['faq']} />
       </div>
     </>
   );

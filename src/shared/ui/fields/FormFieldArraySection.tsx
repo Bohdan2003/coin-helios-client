@@ -12,13 +12,16 @@ import {
 //icons
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
+//types
+import { TDictionary } from '@/shared/i18n/dictionaries';
 //utils
 import { cn } from '@/shared/lib/cn';
-import { fieldLabelCls } from '@/shared/classNames/classNames';
+import { fieldLabelCls } from '@/shared/classNames';
 
 type ArrayItemType<T> = T extends readonly (infer U)[] ? U : never;
 
 type TFieldArraySectionProps<TFormValues> = {
+  addMoreText: TDictionary['buttons']['addMore']
   name: keyof TFormValues & string;
   createDefault: () => ArrayItemType<TFormValues[keyof TFormValues & string]>;
   renderRow: (getFieldName: (subName: string) => string) => React.ReactNode;
@@ -32,6 +35,7 @@ type TFieldArraySectionProps<TFormValues> = {
 };
 
 export function FormFieldArraySection<TFormValues>({
+  addMoreText,
   name,
   createDefault,
   renderRow,
@@ -106,7 +110,7 @@ export function FormFieldArraySection<TFormValues>({
           textTransform: 'none'
         }}
       >
-        <span className="text-blue">add more</span>
+        <span className="text-blue">{ addMoreText }</span>
       </Button>
     </div>
   );

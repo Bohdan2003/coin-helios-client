@@ -3,7 +3,7 @@
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-type TTab = {
+export type TTab = {
   value: string;
   label: string;
   icon: React.ReactElement;

@@ -1,6 +1,7 @@
 'use client';
+
 // ui
-import NextLink from 'next/link';
+import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
@@ -10,17 +11,11 @@ type TTab = {
   icon: React.ReactElement;
 };
 
-type TTabsProps = {
+export const LinkTabs: React.FC<{
   activeTab: string;
   tabs: TTab[];
   currentPagePath: string;
-};
-
-export const LinkTabs: React.FC<TTabsProps> = ({
-  activeTab,
-  tabs,
-  currentPagePath
-}) => {
+}> = ({ activeTab, tabs, currentPagePath }) => {
   return (
     <Tabs
       variant="scrollable"
@@ -59,7 +54,7 @@ export const LinkTabs: React.FC<TTabsProps> = ({
       {tabs.map(tab => (
         <Tab
           key={tab.value}
-          component={NextLink}
+          component={LocalizedLink}
           href={`${currentPagePath}?tab=${tab.value}`}
           icon={tab.icon}
           value={tab.value}

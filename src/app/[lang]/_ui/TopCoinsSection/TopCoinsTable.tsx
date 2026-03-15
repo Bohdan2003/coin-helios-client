@@ -1,6 +1,6 @@
 'use client';
 //hooks
-import { useCoinsQuery } from '@/features/coins/api/coins/useCoinsQuery';
+import { useCoinsListQuery } from '@/features/coins/api/coinsList/useCoinsListQuery';
 //ui
 import { SimpleTable } from '@/shared/ui/tables/SimpleTable';
 import TableRow from '@mui/material/TableRow';
@@ -8,13 +8,13 @@ import TableCell from '@mui/material/TableCell';
 import { ChainCell } from '@/shared/ui/tables/cells/ChainCell';
 import { CoinCell } from '@/shared/ui/tables/cells/CoinCell';
 import { PercentChangeCell } from '@/shared/ui/tables/cells/PercentChangeCell';
-import { VotesCell } from '@/shared/ui/tables/cells/VotesCell';
-import { FavoriteCell } from '@/shared/ui/tables/cells/FavoriteCell';
+import { LikeCell } from '@/features/coins/ui/LikeCell';
+import { SaveCell } from '@/features/coins/ui/SaveCell';
 import { HeaderCell } from '@/shared/ui/tables/cells/HeaderCell';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
 
-const rowsAmount = 5;
+const limit = 5;
 const colsAmount = 7;
 const stickyColSx = {
   position: 'sticky',
@@ -39,7 +39,7 @@ export const TopCoinsTable: React.FC<{
     isLoading,
     isFetching,
     isError
-  } = useCoinsQuery({ page: 1, categories: ['top'], limit: rowsAmount });
+  } = useCoinsListQuery({ page: 1, filter: 'top', limit });
 
   return (
     <SimpleTable
@@ -51,10 +51,10 @@ export const TopCoinsTable: React.FC<{
       }}
       isLoading={isLoading}
       isFetching={isFetching}
-      isEmpty={data?.data.length}
       isError={isError}
-      rowsAmount={rowsAmount}
+      rowsAmount={data?.data.length}
       colsAmount={colsAmount}
+      limit={limit}
       skeletonHeight={34}
       head={
         <TableRow>
@@ -107,18 +107,24 @@ export const TopCoinsTable: React.FC<{
             <PercentChangeCell
               percent={row.percent_change_24h}
             />
-            <ChainCell
-              className="col-chain"
-              icon={row.icon}
-              name={row.chain.name}
-            />
+            {/*<ChainCell*/}
+            {/*  className="col-chain"*/}
+            {/*  icon={row.icon}*/}
+            {/*  name={row.chain.name}*/}
+            {/*/>*/}
             <TableCell className="opacity-80">${row.price}</TableCell>
-            <VotesCell
+            <LikeCell
               className="col-votes"
               votes={row.votes}
+              liked={row.liked}
               id={row.id}
+              dictionary={errors}
             />
-            <FavoriteCell id={row.id}/>
+            <SaveCell
+              id={row.id}
+              saved={row.saved}
+              dictionary={errors}
+            />
           </TableRow>
         ))
       }

@@ -26,8 +26,8 @@ type TSimpleTableProps = {
   isLoading: boolean;
   isFetching: boolean;
   isError: boolean;
-  isEmpty: number | undefined | boolean;
-  rowsAmount: number;
+  limit: number | undefined;
+  rowsAmount: number | undefined;
   colsAmount: number;
   skeletonHeight: number;
 }
@@ -41,13 +41,13 @@ export const SimpleTable: React.FC<TSimpleTableProps> = ({
   isLoading,
   isFetching,
   isError,
-  isEmpty,
   rowsAmount,
+  limit,
   colsAmount,
   skeletonHeight
 }) => {
   const isSecondFetching = !isLoading && isFetching;
-  const skeletonRows = Array.from({ length: rowsAmount });
+  const skeletonRows = Array.from({ length: limit || 1 });
   const skeletonCols = Array.from({ length: colsAmount });
 
   return (
@@ -107,16 +107,16 @@ export const SimpleTable: React.FC<TSimpleTableProps> = ({
                     )) }
                   </TableRow>
                 ))
-                : isEmpty
+                : rowsAmount
                   ?
+                  body
+                  :
                   <TableRow>
                     <StatusCell
                       message={ d['noData'] }
                       colsAmount={colsAmount}
                     />
                   </TableRow>
-                  :
-                  body
           }
         </TableBody>
       </Table>

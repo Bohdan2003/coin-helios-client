@@ -6,8 +6,8 @@ import TableCell from '@mui/material/TableCell';
 import { CoinCell } from '@/shared/ui/tables/cells/CoinCell';
 // import { ChainCell } from "@/ui/table/cells/ChainCell";
 import { PercentChangeCell } from '@/shared/ui/tables/cells/PercentChangeCell';
-import { VotesCell } from '@/shared/ui/tables/cells/VotesCell';
-import { FavoriteCell } from '@/shared/ui/tables/cells/FavoriteCell';
+import { LikeCell } from '@/features/coins/ui/LikeCell';
+import { SaveCell } from '@/features/coins/ui/SaveCell';
 import { SortableHeaderCell } from '@/shared/ui/tables/cells/SortableHeaderCell';
 import { BuyCell } from '@/shared/ui/tables/cells/BuyCell';
 import { HeaderCell } from '@/shared/ui/tables/cells/HeaderCell';
@@ -19,7 +19,7 @@ import { NumberFormatter } from '@/shared/lib/NumberFormatter';
 import { memo } from 'react';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
-import { TCoin } from '@/features/coins/api/coins/getCoins';
+import { TCoin } from '@/features/coins/api/coinsList/getCoinsList';
 import {
   TSortDir,
   TSortKey
@@ -162,22 +162,29 @@ export const CoinsStickyHeadTable: React.FC<{
             {/*/>*/}
             <PercentChangeCell percent={row.percent_change_1h}/>
             <PercentChangeCell percent={row.percent_change_24h}/>
-            <ChartCell
-              percent={row.percent_change_7d}
-              chartPoints={row.price_chart_points}
-            />
+            <PercentChangeCell percent={row.percent_change_7d}/>
+            {/*<ChartCell*/}
+            {/*  percent={row.percent_change_7d}*/}
+            {/*  chartPoints={row.price_chart_points}*/}
+            {/*/>*/}
             <TableCell className="opacity-80">
               {NumberFormatter.getReadablePrice(row.price)}
             </TableCell>
             <TableCell className="opacity-80">
               {NumberFormatter.getCompactedPrice(row.price)}
             </TableCell>
-            <VotesCell
+            <LikeCell
+              dictionary={errors}
+              liked={row.liked}
               votes={row.votes}
               id={row.id}
             />
             <BuyCell onClick={() => { handleBuy(row.id); }}/>
-            <FavoriteCell id={row.id}/>
+            <SaveCell
+              dictionary={errors}
+              saved={row.saved}
+              id={row.id}
+            />
           </TableRow>
         ))
       }

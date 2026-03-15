@@ -3,7 +3,7 @@ import { Logo } from '@/shared/ui/Logo';
 import { LanguageSwitcher } from '@/shared/ui/switchers/LanguageSwitcher';
 import { ThemeSwitcher } from '@/shared/ui/switchers/ThemeSwitcher';
 import { DesktopMenu } from '@/shared/ui/Header/DesktopMenu';
-import { AuthButton } from '@/shared/ui/buttons/AuthButton';
+import { AccountBar } from '@/features/auth/ui/AccountBar';
 //types
 import { TNavItem } from '@/shared/ui/Header/helper';
 
@@ -21,7 +21,7 @@ export const DesktopHeader:React.FC<{ navItems: TNavItem[] }> = ({ navItems }) =
           <LanguageSwitcher/>
           <ThemeSwitcher/>
         </div>
-        <AuthButton/>
+        <AccountBar/>
       </div>
     </header>
   );

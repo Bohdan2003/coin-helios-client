@@ -1,4 +1,4 @@
-import { apiGetRequest } from '@/shared/api/apiInstance';
+import { apiClientGet } from '@/shared/api/apiClientGet';
 
 export type TFilterOption = {
   id: string,
@@ -12,4 +12,4 @@ export type TCoinFilters = {
 }
 
 export const getCoinsFilters = async () =>
-  apiGetRequest<{ data: TCoinFilters }>('/crypto/filters');
+  apiClientGet<{ data: TCoinFilters }>('/crypto/filters');

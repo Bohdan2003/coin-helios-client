@@ -5,7 +5,7 @@ import {
   useCallback,
 } from 'react';
 import { useDebounceCallback } from 'usehooks-ts';
-import { useCoinsQuery } from '@/features/coins/api/coins/useCoinsQuery';
+import { useCoinsListQuery } from '@/features/coins/api/coinsList/useCoinsListQuery';
 //ui
 import { CoinsFiltersPopover } from '@/app/[lang]/_ui/CoinsSection/CoinsFiltersPopover/CoinsFiltersPopover';
 import Pagination from '@mui/material/Pagination';
@@ -21,7 +21,8 @@ import { TTab } from '@/shared/ui/tabs/BaseTabs';
 import { TDictionary } from '@/shared/i18n/dictionaries';
 import type {
   TSortDir,
-  TSortKey
+  TSortKey,
+  TCoinsCategory
 } from '@/features/coins/api/types';
 import type { TSelectedState } from '@/app/[lang]/_ui/CoinsSection/CoinsFiltersPopover/CoinsFiltersPopover';
 //utils
@@ -42,7 +43,7 @@ export const CoinsTable: React.FC<{
   //pagination
   const [ page, setPage ] = useState(1);
   //filters
-  const [ filter, setFilter ] = useState('all');
+  const [ filter, setFilter ] = useState<TCoinsCategory>('all');
   const [ categories, setCategories ] = useState<string[]>([]);
   const [ types, setTypes ] = useState<string[]>([]);
   const [ chains, setChains ] = useState<string[]>([]);
@@ -58,7 +59,7 @@ export const CoinsTable: React.FC<{
     isLoading,
     isError,
     isKeyChangeFetching
-  } = useCoinsQuery({ page, sortKey, sortDir, search, filter, categories, chains, types, limit });
+  } = useCoinsListQuery({ page, sortKey, sortDir, search, filter, categories, chains, types, limit });
 
   //handlers
   const handleSortChange = useCallback((key: TSortKey, dir: TSortDir) => {

@@ -1,3 +1,5 @@
+//hooks
+import { useMyCoinsQuery } from '@/features/profile/api/myCoins/useMyCoinsQuery';
 //ui
 import { StickyHeedTable } from '@/shared/ui/tables/StickyHeedTable';
 import TableRow from '@mui/material/TableRow';
@@ -7,8 +9,6 @@ import TableCell from '@mui/material/TableCell';
 import { PromotionCell } from '@/app/[lang]/profile/_ui/tables/cells/PromotionCell';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
-//helpers
-import { getMyCoinsData } from '@/app/[lang]/profile/_ui/helper';
 
 const tableColsAmount = 8;
 const firstColSx = {
@@ -31,7 +31,12 @@ export const MyCoinsTable: React.FC<{
     errors: TDictionary['errors'];
   }
 }> = ({ dictionary: { th: d, errors, formErrors, buttons, form, link } }) => {
-  const rows = getMyCoinsData();
+  const {
+    data,
+    isLoading,
+    isFetching,
+    isError
+  } = useMyCoinsQuery();
 
   return (
     <div className="max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
@@ -39,10 +44,10 @@ export const MyCoinsTable: React.FC<{
         dictionary={errors}
         rowsAmount={20}
         colsAmount={tableColsAmount}
-        isLoading={false}
-        isFetching={false}
-        isError={false}
-        isEmpty={!rows || rows?.length < 1}
+        isLoading={isLoading}
+        isFetching={isFetching}
+        isError={isError}
+        limit={5}
         skeletonHeight={34}
         sx={{
           '& thead th:last-child, & tbody td:last-child': {
@@ -80,7 +85,7 @@ export const MyCoinsTable: React.FC<{
           </TableRow>
         }
         body={
-          rows?.map(row => (
+          data?.map(row => (
             <TableRow key={row.id}>
               <CoinCell
                 sx={{ ...firstColSx, backgroundColor: 'var(--palette-background-default)' }}

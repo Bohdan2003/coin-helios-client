@@ -20,7 +20,8 @@
   },
   "errors": {
     "noData": "No data.",
-    "error": "Oops! Something went wrong."
+    "error": "Oops! Something went wrong.",
+    "authRequired": "You need to authorize!"
   },
   "tables": {
     "filterButton": "Filter",
@@ -271,10 +272,14 @@
     }
   },
   "profile": {
+    "greeting": "Hi",
     "tabs": {
       "promotions": "Promotions",
       "myCoins": "My coins",
       "alerts": "Alerts"
     }
+  },
+  "auth": {
+    "googleButton": "Continue with Google"
   }
 }

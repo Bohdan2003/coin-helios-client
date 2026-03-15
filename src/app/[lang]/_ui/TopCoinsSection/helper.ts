@@ -1,4 +1,4 @@
-import type { TCoin } from '@/features/coins/api/coins/getCoins';
+import type { TCoin } from '@/features/coins/api/coinsList/getCoinsList';
 
 export const getTopCoinsData = (): TCoin[] => ([
   {

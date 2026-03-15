@@ -1,11 +1,20 @@
 'use client';
 //hooks
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import {
+  useSearchParams,
+  useRouter
+} from 'next/navigation';
+//icons
+import CircularProgress from '@mui/material/CircularProgress';
 //utils
+import { toast } from 'react-hot-toast';
+import { ROUTES } from '@/shared/routes';
 import { getGoogleAuthTokens } from '@/features/auth/api/google/getGoogleAuthTokens';
 
 export default function GoogleCallbackPage() {
+  const queryClient = useQueryClient();
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -13,16 +22,15 @@ export default function GoogleCallbackPage() {
     const code = searchParams.get('code');
 
     if (!code) {
-      // router.replace('/login?error=no_google_code');
-      console.log('error');
-      return;
+      toast.error('Ошибка авторизации через Google');
+      return router.replace(ROUTES.AUTH);
     }
 
     getGoogleAuthTokens(code)
       .then((data) => {
         localStorage.setItem('access', data.access);
         localStorage.setItem('refresh', data.refresh);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        queryClient.invalidateQueries();
 
         router.replace(localStorage.getItem('returnTo') || '/');
       })
@@ -30,7 +38,10 @@ export default function GoogleCallbackPage() {
         console.error(error);
       });
 
-  }, [router, searchParams]);
+  }, [router, searchParams, queryClient]);
 
-  return <></>;
+  return <CircularProgress
+    className="absolute top-1/3 left-1/2 -translate-1/2"
+    size={40}
+  />;;
 }

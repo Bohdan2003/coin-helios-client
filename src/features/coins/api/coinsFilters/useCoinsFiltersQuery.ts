@@ -1,11 +1,10 @@
-//hooks
 import { useQuery } from '@tanstack/react-query';
-//api
 import { getCoinsFilters } from '@/features/coins/api/coinsFilters/getCoinsFilters';
+import { coinsQueryKeys } from '@/features/coins/api/coinsQueryKeys';
 
 export const useCoinsFiltersQuery = () => {
   return useQuery({
-    queryKey: [ 'coinsFilters' ],
+    queryKey: coinsQueryKeys.filters(),
     queryFn: () => getCoinsFilters()
   });
 

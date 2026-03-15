@@ -1,18 +1,24 @@
 //ui
-import { FavoriteButton } from '@/features/coins/ui/FavoriteButton';
+import { SaveButton } from '@/features/coins/ui/SaveButton';
 import { LikeButton } from '@/features/coins/ui/LikeButton';
+//types
+import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import { getCoinInfo } from '@/features/coins/api/coin/getCoinInfo';
+import { getDictionary } from '@/shared/i18n/dictionaries';
+import { getCoin } from '@/features/coins/api/coin/getCoin';
 import { cn } from '@/shared/lib/cn';
 
 export const IntroSection: React.FC<{
+  lang: TLocale,
   id: string,
   className?: string
 }> = async ({
+  lang,
   id,
   className
 }) => {
-  const data = await getCoinInfo({ id });
+  const { errors } = await getDictionary(lang);
+  const data = await getCoin({ id });
 
   return (
     <section className={cn(
@@ -24,12 +30,16 @@ export const IntroSection: React.FC<{
           <h1>{ data.name }</h1>
           <h2 className="opacity-50">{ data.symbol }</h2>
         </div>
-        <FavoriteButton
+        <SaveButton
+          dictionary={errors}
           className="ml-[12px]"
           id={id}
         />
       </div>
-      <LikeButton id={id} votes={0}/>
+      <LikeButton
+        dictionary={errors}
+        id={id}
+      />
     </section>
   );
 };

@@ -1,9 +1,5 @@
 //api
-import { apiGetRequest } from '@/shared/api/apiInstance';
-
-export type TCoinInfoParams = {
-  id: string;
-}
+import { apiServerGet } from '@/shared/api/apiServerGet';
 
 export type TCoinInfo = {
   id: string;
@@ -30,5 +26,9 @@ export type TCoinInfo = {
   }
 }
 
-export const getCoinInfo = async ( params: TCoinInfoParams ) =>
-  apiGetRequest<TCoinInfo>(`/crypto/coin/${params.id}/current`);
+export type TCoinInfoParams = {
+  id: string;
+}
+
+export const getCoin = async (params: TCoinInfoParams ) =>
+  apiServerGet<TCoinInfo>(`/crypto/coin/${params.id}/current`);

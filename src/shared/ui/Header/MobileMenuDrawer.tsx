@@ -4,7 +4,7 @@ import {
   List,
   ListItem
 } from '@mui/material';
-import { AuthButton } from '@/shared/ui/buttons/AuthButton';
+import { AccountBar } from '@/features/auth/ui/AccountBar';
 import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 //types
 import { TNavItem } from '@/shared/ui/Header/helper';
@@ -29,7 +29,7 @@ export const MobileMenuDrawer: React.FC<TMobileMenuProps> = ({
     >
       <List sx={{ width: 260 }}>
         <ListItem onClick={() => setOpen(false)}>
-          <AuthButton className="w-full"/>
+          <AccountBar/>
         </ListItem>
         {
           navItems.map(({ text, href }, i) => (

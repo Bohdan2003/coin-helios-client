@@ -1,4 +1,4 @@
-import { KEYS } from '@/shared/config/keys';
+import { apiPostRequest } from '@/shared/api/apiClientPost';
 
 export type TGoogleAuthTokens = {
   access: string;
@@ -11,14 +11,5 @@ export type TGoogleAuthTokens = {
   };
 }
 
-export const getGoogleAuthTokens = async (code: string): Promise<TGoogleAuthTokens> => {
-  const response = await fetch(`${KEYS.API_URL}/auth/google/exchange/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ code }),
-  });
-
-  return response.json();
-};
+export const getGoogleAuthTokens = async (code: string) =>
+  apiPostRequest<TGoogleAuthTokens>('/auth/google/exchange/', { code });

@@ -1,5 +1,4 @@
 'use client';
-
 //hooks
 import { useSearchParams } from 'next/navigation';
 //ui

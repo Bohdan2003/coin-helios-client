@@ -1,6 +1,6 @@
 'use client';
-
 //hooks
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 //ui
 import { IconButton } from '@mui/material';
@@ -17,7 +17,17 @@ export const ExitButton: React.FC<{
     error: TDictionary['errors']['error'];
   }
 }> = ({ dictionary: d }) => {
+  const queryClient = useQueryClient();
   const [ isOpen, setIsOpen ] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+
+    queryClient.resetQueries();
+
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -29,7 +39,7 @@ export const ExitButton: React.FC<{
         title={ d.title }
         isOpen={ isOpen }
         onClose={() => setIsOpen(false)}
-        onConfirm={() => setIsOpen(false)}
+        onConfirm={handleLogout}
       />
     </>
   );

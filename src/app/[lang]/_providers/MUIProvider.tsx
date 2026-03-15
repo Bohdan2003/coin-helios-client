@@ -1,7 +1,10 @@
 //ui
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline, InitColorSchemeScript } from '@mui/material';
+import {
+  CssBaseline,
+  InitColorSchemeScript
+} from '@mui/material';
 //themes
 import { theme } from '@/shared/mui/theme';
 //types

@@ -1,9 +1,12 @@
 //api
-import { apiGetRequest } from '@/shared/api/apiInstance';
-//types
-import { TCoinChartPoint } from '@/features/coins/api/types';
+import { apiClientGet } from '@/shared/api/apiClientGet';
 
 export type TCoinPriceHistoryPeriod = '24h' | '7d' | '1m' | '3m' | '1y' | 'max';
+
+export type TCoinChartPoint = {
+  timestamp: string,
+  price: number
+}
 
 export type TCoinPriceHistory = {
   coin_id: string,
@@ -11,10 +14,13 @@ export type TCoinPriceHistory = {
   points: TCoinChartPoint[]
 }
 
-export const getCoinPriceHistory = async (params: {
-  id: string,
-  period: TCoinPriceHistoryPeriod,
-} ) =>
-  apiGetRequest<TCoinPriceHistory>(`/price_router/coin/${params.id}/price-history`, { params: { period: params.period } });
+export type TPriceHistoryPeriodParams = {
+  id: string;
+  period: TCoinPriceHistoryPeriod;
+}
+
+
+export const getCoinPriceHistory = async (params: TPriceHistoryPeriodParams ) =>
+  apiClientGet<TCoinPriceHistory>(`/price_router/coin/${params.id}/price-history`, params);
 
 

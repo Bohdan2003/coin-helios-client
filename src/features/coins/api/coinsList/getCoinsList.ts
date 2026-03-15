@@ -1,8 +1,8 @@
 //api
-import { apiGetRequest } from '@/shared/api/apiInstance';
+import { apiClientGet } from '@/shared/api/apiClientGet';
 //types
 import { ResponseWithPagination } from '@/shared/api/types';
-import { TCoinChartPoint } from '@/features/coins/api/types';
+import { TCoinChartPoint } from '@/features/coins/api/coinPriceHistory/getCoinPriceHistory';
 import {
   TSortDir,
   TSortKey
@@ -29,7 +29,7 @@ export type TCoin = {
   saved: boolean
 }
 
-export const getCoins = async ( params: {
+export const getCoinsList = async (params: {
   page: number,
   sort_by?: TSortKey,
   category_ids?: string[],
@@ -37,7 +37,7 @@ export const getCoins = async ( params: {
   coin_type_ids?: string[],
   order?: TSortDir,
   search?: string,
-  filter?: string,
+  filter?: 'all' | 'top' | 'gainers' | 'popular' | 'saved',
   limit: number,
 } ) =>
-  apiGetRequest<ResponseWithPagination<TCoin[]>>('/crypto/coins', { params });
+  apiClientGet<ResponseWithPagination<TCoin[]>>('/crypto/coins', params);

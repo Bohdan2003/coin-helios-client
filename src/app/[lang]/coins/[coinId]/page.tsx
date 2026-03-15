@@ -22,38 +22,41 @@ export default async function Coin({ params }: { params: {
   return (
     <>
       <div className="mt-[40px] mx-auto px-[20px] max-w-[1400px] md:grid grid-cols-[2fr_1fr] gap-[20px]">
-        <IntroSection id={coinId}/>
-        <Price
-          className="mt-[24px] md:mt-0 md:col-start-2"
+        <IntroSection
           id={coinId}
           lang={lang}
         />
-        <PriceHistorySection
-          className="mt-[40px] md:mt-[20px] min-w-0"
-          id={coinId}
-          lang={lang}
-        />
-        <div className="col-start-2 row-span-2">
-          <div className="mt-[24px] grid gap-[16px]">
-            <InfoSection lang={lang}/>
-            <ContactsSection
-              id={coinId}
-              lang={lang}
-            />
-            <CommunitySection lang={lang}/>
-            <CalculatorSection lang={lang}/>
-          </div>
-          <Category
-            className="mt-[24px]"
-            id={coinId}
-            lang={lang}
-          />
-        </div>
+        {/*<Price*/}
+        {/*  className="mt-[24px] md:mt-0 md:col-start-2"*/}
+        {/*  id={coinId}*/}
+        {/*  lang={lang}*/}
+        {/*/>*/}
+        {/*<PriceHistorySection*/}
+        {/*  className="mt-[40px] md:mt-[20px] min-w-0"*/}
+        {/*  id={coinId}*/}
+        {/*  lang={lang}*/}
+        {/*/>*/}
+        {/*<div className="col-start-2 row-span-2">*/}
+        {/*  <div className="mt-[24px] grid gap-[16px]">*/}
+        {/*    <InfoSection lang={lang}/>*/}
+        {/*    <ContactsSection*/}
+        {/*      id={coinId}*/}
+        {/*      lang={lang}*/}
+        {/*    />*/}
+        {/*    <CommunitySection lang={lang}/>*/}
+        {/*    <CalculatorSection lang={lang}/>*/}
+        {/*  </div>*/}
+        {/*  <Category*/}
+        {/*    className="mt-[24px]"*/}
+        {/*    id={coinId}*/}
+        {/*    lang={lang}*/}
+        {/*  />*/}
+        {/*</div>*/}
         <div>
-          <Descriptions
-            className="mt-[24px] sm:mt-[40px]"
-            id={coinId}
-          />
+          {/*<Descriptions*/}
+          {/*  className="mt-[24px] sm:mt-[40px]"*/}
+          {/*  id={coinId}*/}
+          {/*/>*/}
           {/*<MarketsSection*/}
           {/*  className="mt-[80px]"*/}
           {/*  id={coinId}*/}

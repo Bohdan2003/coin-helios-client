@@ -20,7 +20,8 @@
   },
   "errors": {
     "noData": "Нет данных.",
-    "error": "Упс! Что-то пошло не так."
+    "error": "Упс! Что-то пошло не так.",
+    "authRequired": "Вам необходимо авторизоваться!"
   },
   "tables": {
     "filterButton": "Фильтр",
@@ -278,10 +279,14 @@
     }
   },
   "profile": {
+    "greeting": "Привет",
     "tabs": {
       "promotions": "Промо",
       "myCoins": "Мои монеты",
       "alerts": "Оповещения"
     }
+  },
+  "auth": {
+    "googleButton": "Продолжить с Google"
   }
 }

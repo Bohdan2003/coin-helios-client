@@ -3,20 +3,15 @@ import { useQuery } from '@tanstack/react-query';
 import { useKeyChangeFetching } from '@/shared/api/useKeyChangeFetching';
 //api
 import { getMarkets } from '@/features/coins/api/coinMarkets/getMarkets';
+import { coinsQueryKeys } from '@/features/coins/api/coinsQueryKeys';
 //types
-import type { TSortDir, TSortKey } from '@/features/coins/api/types';
+import { TMarketsParams } from '@/features/coins/api/coinMarkets/getMarkets';
 
-type TMarketsParams = {
-  id: string;
-  page: number;
-  sortKey: TSortKey;
-  sortDir: TSortDir;
-}
 
 export const useMarketsQuery = (params: TMarketsParams) => {
   const query = useQuery({
-    queryKey: ['markets', params],
-    queryFn: () => getMarkets({ id: params.id }),
+    queryKey: coinsQueryKeys.markets.list(params),
+    queryFn: () => getMarkets(params),
     placeholderData: previous => previous,
     refetchInterval: 60 * 1000,
     refetchIntervalInBackground: true,

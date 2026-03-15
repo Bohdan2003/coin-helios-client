@@ -3,7 +3,7 @@ import { ContactItem } from '@/app/[lang]/coins/[coinId]/_ui/ContactsSection/Con
 //types
 import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import { getCoinInfo } from '@/features/coins/api/coin/getCoinInfo';
+import { getCoin } from '@/features/coins/api/coin/getCoin';
 import {
   smallTitleCls,
   sectionBorderCls,
@@ -16,8 +16,7 @@ export const ContactsSection: React.FC<{
   id: string
 }> = async ({ lang, id }) => {
   const { coin: { contacts: d } } = await getDictionary(lang);
-  const data = await getCoinInfo({ id });
-  console.log(data);
+  const data = await getCoin({ id });
 
   return (
     <section className={cn('p-[16px] rounded-[16px]', sectionBorderCls)}>

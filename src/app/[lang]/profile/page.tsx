@@ -1,18 +1,17 @@
 //ui
 import { ProfileContent } from '@/app/[lang]/profile/_ui/ProfileContent';
 import { LinkAsButton } from '@/shared/ui/links/LinkAsButton';
-import { ExitButton } from '@/shared/ui/buttons/ExtiButton';
+import { ExitButton } from '@/features/auth/ui/LogoutButton';
 import { AddCoinFormDialog } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog';
+import { Greeting } from '@/app/[lang]/profile/_ui/Greeting';
 //icons
 import AddIcon from '@mui/icons-material/Add';
 //types
 import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import { bigTitleCls } from '@/shared/classNames';
 import { ROUTES } from '@/shared/routes';
 import { getDictionary } from '@/shared/i18n/dictionaries';
 import { getProfileTabs } from '@/app/[lang]/profile/helper';
-
 
 export default async function Profile({
   params,
@@ -29,7 +28,7 @@ export default async function Profile({
       <div className="px-[20px] mx-auto max-w-[1200px]">
         <div className="flex flex-wrap justify-between sm:items-center gap-[20px] sm:gap-[40px]">
           <div className="flex items-center gap-[4px] sm:gap-[16px]">
-            <span className={bigTitleCls}>Hi Yaroslav</span>
+            <Greeting dictionary={d.profile.greeting}/>
             <ExitButton
               dictionary={{
                 title: d.dialogs.exit.title,

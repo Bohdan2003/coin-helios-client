@@ -1,3 +1,5 @@
+//hooks
+import { usePromotionsQuery } from '@/features/profile/api/promotions/usePromotionsQuery';
 //ui
 import { StickyHeedTable } from '@/shared/ui/tables/StickyHeedTable';
 import TableRow from '@mui/material/TableRow';
@@ -6,10 +8,8 @@ import { CoinCell } from '@/shared/ui/tables/cells/CoinCell';
 import TableCell from '@mui/material/TableCell';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
-//helpers
-import { getPromotionsData } from '@/app/[lang]/profile/_ui/helper';
 
-const tableColsAmount = 8;
+const tableColsAmount = 6;
 const firstColSx = {
   position: 'sticky',
   zIndex: 10,
@@ -22,7 +22,12 @@ export const PromotionsTable: React.FC<{
     errors: TDictionary['errors'];
   }
 }> = ({ dictionary: { th: d, errors } }) => {
-  const rows = getPromotionsData();
+  const {
+    data,
+    isLoading,
+    isFetching,
+    isError
+  } = usePromotionsQuery();
 
   return (
     <div className="max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
@@ -30,10 +35,10 @@ export const PromotionsTable: React.FC<{
         dictionary={errors}
         rowsAmount={20}
         colsAmount={tableColsAmount}
-        isLoading={false}
-        isFetching={false}
-        isError={false}
-        isEmpty={!rows || rows?.length < 1}
+        isLoading={isLoading}
+        isFetching={isFetching}
+        isError={isError}
+        limit={5}
         skeletonHeight={34}
         head={
           <TableRow>
@@ -55,7 +60,7 @@ export const PromotionsTable: React.FC<{
           </TableRow>
         }
         body={
-          rows?.map(row => (
+          data?.map(row => (
             <TableRow key={row.id}>
               <TableCell>{row.type}</TableCell>
               <CoinCell

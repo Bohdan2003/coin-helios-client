@@ -2,6 +2,8 @@
 //ui
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+//types
+import { TCoinsCategory } from '@/features/coins/api/types';
 
 export type TTab = {
   value: string;
@@ -12,7 +14,7 @@ export type TTab = {
 type TTabsProps = {
   activeTab: string;
   tabs: TTab[];
-  onTabChange: (tab: string) => void;
+  onTabChange: (tab: TCoinsCategory) => void;
 }
 
 export const BaseTabs: React.FC<TTabsProps> = ({
@@ -26,7 +28,7 @@ export const BaseTabs: React.FC<TTabsProps> = ({
       scrollButtons="auto"
       allowScrollButtonsMobile
       value={activeTab}
-      onChange={(_: React.SyntheticEvent, value: string) => onTabChange(value)}
+      onChange={(_: React.SyntheticEvent, value: TCoinsCategory) => onTabChange(value)}
       slotProps={{
         indicator: { sx: { borderRadius: 4 } },
       }}

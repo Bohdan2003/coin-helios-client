@@ -12,7 +12,6 @@ import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
 import { getDictionary } from '@/shared/i18n/dictionaries';
 
-//TODO: need to add loading
 export default async function Home({
   params,
 }: {

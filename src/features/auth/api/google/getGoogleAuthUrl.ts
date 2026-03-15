@@ -1,9 +1,9 @@
 //api
-import { apiGetRequest } from '@/shared/api/apiInstance';
+import { apiClientGet } from '@/shared/api/apiClientGet';
 
 export type TAuthUrl = {
   auth_url: string
 }
 
 export const getGoogleAuthUrl = async () =>
-  apiGetRequest<TAuthUrl>('auth/google/login-url/');
+  apiClientGet<TAuthUrl>('auth/google/login-url/');

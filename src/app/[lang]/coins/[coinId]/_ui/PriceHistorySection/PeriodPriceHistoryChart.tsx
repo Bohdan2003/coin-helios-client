@@ -1,11 +1,10 @@
 'use client';
-
 //hooks
 import {
   useMemo, useState
 } from 'react';
 import { useColorScheme } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
+import { usePriceHistoryPeriodQuery } from '@/features/coins/api/coinPriceHistory/useCoinPriceHistoryQuery';
 //ui
 import {
   Chart as ChartJS,
@@ -23,11 +22,11 @@ import { StatusMessage } from '@/shared/ui/messages/StatusMessage';
 import { Button } from '@mui/material';
 //icons
 import CircularProgress from '@mui/material/CircularProgress';
-//modules
-import { getCoinPriceHistory } from '@/features/coins/api/coinPriceHistory/getCoinPriceHistory';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
 //utils
+import { smallTitleCls } from '@/shared/classNames';
+import { cn } from '@/shared/lib/cn';
 import 'chartjs-adapter-date-fns';
 //helpers
 import {
@@ -36,8 +35,6 @@ import {
   getChartTooltipOptions,
   getCoinPriceHistoryPeriods
 } from '@/app/[lang]/coins/[coinId]/_ui/PriceHistorySection/helper';
-import { smallTitleCls } from '@/shared/classNames';
-import { cn } from '@/shared/lib/cn';
 
 ChartJS.register(LineElement, PointElement, LinearScale, TimeScale, Filler, Tooltip, Legend);
 
@@ -56,14 +53,7 @@ export const PeriodPriceHistoryChart: React.FC<{
     isPending,
     isFetching,
     isError
-  } = useQuery({
-    queryKey: [ 'priceHistoryPeriod', id, selectedPeriod ],
-    queryFn: () => getCoinPriceHistory({ id, period: selectedPeriod }),
-    placeholderData: previous => previous,
-    // refetchInterval: 60 * 1000,
-    // refetchIntervalInBackground: true,
-    // refetchOnWindowFocus: true
-  });
+  } = usePriceHistoryPeriodQuery({ id, period: selectedPeriod });
   const isNotFirstFetching = !isPending && isFetching;
 
   const gridColor = getChartGridColor(mode);

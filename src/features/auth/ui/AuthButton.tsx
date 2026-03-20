@@ -1,6 +1,4 @@
 'use client';
-//hooks
-import { usePathname } from 'next/navigation';
 //ui
 import { LinkAsButton } from '@/shared/ui/links/LinkAsButton';
 //icons
@@ -9,19 +7,20 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import { cn } from '@/shared/lib/cn';
 import { ROUTES } from '@/shared/routes';
 
-export const AuthButton: React.FC<{ className?: string }> = ({ className }) => {
-  const pathname = usePathname();
-
-  const handleClick = () =>
-    localStorage.setItem('returnTo', pathname);
-
+export const AuthButton: React.FC<{
+  className?: string;
+  onClick?: () => void;
+}> = ({
+  className,
+  onClick
+}) => {
   return (
     <LinkAsButton
       className={cn(className)}
       href={ROUTES.AUTH}
       variant="outlined"
       startIcon={<PersonOutlineOutlinedIcon/>}
-      onClick={handleClick}
+      onClick={onClick}
     >Join</LinkAsButton>
   );
 };

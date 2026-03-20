@@ -7,10 +7,16 @@ import { ROUTES } from '@/shared/routes';
 export const CurrentAccount: React.FC<{
   name: string;
   img: string;
-}> = ({ name, img }) => {
+  onClick?: () => void;
+}> = ({
+  name,
+  img,
+  onClick
+}) => {
   return (
     <LocalizedLink
       href={ROUTES.PROFILE}
+      onClick={onClick}
     >
       <Avatar
         alt={name}

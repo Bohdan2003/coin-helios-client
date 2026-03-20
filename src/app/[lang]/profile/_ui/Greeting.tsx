@@ -1,8 +1,8 @@
 'use client';
 //hooks
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { useMeQuery } from '@/features/auth/api/me/useMeQuery';
+import { useLocalizedReplace } from '@/shared/i18n/useLocalizedReplace';
 //icons
 import CircularProgress from '@mui/material/CircularProgress';
 //types
@@ -14,7 +14,7 @@ import { ROUTES } from '@/shared/routes';
 export const Greeting: React.FC<{ dictionary: TDictionary['profile']['greeting'] }> = ({
   dictionary: d
 }) => {
-  const router = useRouter();
+  const localizedReplace = useLocalizedReplace();
   const {
     data,
     isLoading
@@ -22,9 +22,9 @@ export const Greeting: React.FC<{ dictionary: TDictionary['profile']['greeting']
 
   useEffect(() => {
     if (!isLoading && !data) {
-      router.replace(ROUTES.AUTH);
+      localizedReplace(ROUTES.AUTH);
     }
-  }, [data, isLoading, router]);
+  }, [data, isLoading, localizedReplace]);
 
   if(isLoading) return <CircularProgress />;
 

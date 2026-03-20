@@ -1,47 +1,19 @@
-'use client';
-//hooks
-import { useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import {
-  useSearchParams,
-  useRouter
-} from 'next/navigation';
-//icons
-import CircularProgress from '@mui/material/CircularProgress';
-//utils
-import { toast } from 'react-hot-toast';
-import { ROUTES } from '@/shared/routes';
-import { getGoogleAuthTokens } from '@/features/auth/api/google/getGoogleAuthTokens';
+import { getDictionary } from '@/shared/i18n/dictionaries';
+import { TLocale } from '@/shared/i18n/dictionaries';
+import { GoogleCallbackClient } from '@/app/[lang]/auth/google/callback/_ui/GoogleCallbackClient';
 
-export default function GoogleCallbackPage() {
-  const queryClient = useQueryClient();
-  const searchParams = useSearchParams();
-  const router = useRouter();
+export default async function GoogleCallbackPage({
+  params
+}: {
+  params: Promise<{ lang: TLocale }>;
+}) {
+  const { lang } = await params;
+  const { errors } = await getDictionary(lang);
 
-  useEffect(() => {
-    const code = searchParams.get('code');
-
-    if (!code) {
-      toast.error('Ошибка авторизации через Google');
-      return router.replace(ROUTES.AUTH);
-    }
-
-    getGoogleAuthTokens(code)
-      .then((data) => {
-        localStorage.setItem('access', data.access);
-        localStorage.setItem('refresh', data.refresh);
-        queryClient.invalidateQueries();
-
-        router.replace(localStorage.getItem('returnTo') || '/');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-  }, [router, searchParams, queryClient]);
-
-  return <CircularProgress
-    className="absolute top-1/3 left-1/2 -translate-1/2"
-    size={40}
-  />;;
+  return (
+    <GoogleCallbackClient
+      authRequiredText={errors.authRequired}
+      errorText={errors.error}
+    />
+  );
 }

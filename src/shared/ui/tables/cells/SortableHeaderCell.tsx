@@ -4,7 +4,7 @@ import TableCell from '@mui/material/TableCell';
 //icons
 import { ArrowIcon } from '@/shared/ui/icons/ArrowIcon';
 //types
-import type { TSortDir, TSortKey } from '@/features/coins/api/coinPriceHistory/getCoinPriceHistory';
+import type { TSortDir, TSortKey } from '@/features/coins/api/types';
 //utils
 import { cn } from '@/shared/lib/cn';
 

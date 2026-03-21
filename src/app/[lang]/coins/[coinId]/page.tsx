@@ -13,10 +13,14 @@ import { MarketsSection } from '@/app/[lang]/coins/[coinId]/_ui/MarketsSection/M
 //types
 import { TLocale } from '@/shared/i18n/dictionaries';
 
-export default async function Coin({ params }: { params: {
-  coinId: string,
-  lang: TLocale
-} }) {
+export default async function Coin({ 
+  params 
+}: { 
+  params: Promise<{
+    coinId: string,
+    lang: TLocale
+  }> 
+}) {
   const { coinId, lang } = await params;
 
   return (

@@ -32,15 +32,12 @@ const firstColSx = {
   backgroundColor: 'var(--palette-background-default)'
 };
 const colsAmount = 4;
-const rowsAmount = 6;
+const limit = 6;
 
 export const MarketsTable: React.FC<{
   id: string;
   dictionary: {
-    errors: {
-      'noData': string;
-      error: string;
-    },
+    errors: TDictionary['errors'],
     th: TDictionary['tables']['th']
   }
 }> = memo(({ id, dictionary: d }) => {
@@ -77,12 +74,12 @@ export const MarketsTable: React.FC<{
       <div className="overflow-scroll md:overflow-visible">
         <StickyHeedTable
           dictionary={ d.errors }
-          rowsAmount={rowsAmount}
+          rowsAmount={data?.data?.length}
           colsAmount={colsAmount}
           isLoading={isLoading}
           isFetching={isKeyChangeFetching}
           isError={isError}
-          isEmpty={!data?.data || data?.data?.length < 1}
+          limit={limit}
           skeletonHeight={31.17}
           head={
             <TableRow>

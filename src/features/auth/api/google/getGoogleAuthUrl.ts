@@ -6,4 +6,4 @@ export type TAuthUrl = {
 }
 
 export const getGoogleAuthUrl = async () =>
-  apiClientGet<TAuthUrl>('auth/google/login-url/');
+  apiClientGet<TAuthUrl>('user_api/auth/google/login-url/');

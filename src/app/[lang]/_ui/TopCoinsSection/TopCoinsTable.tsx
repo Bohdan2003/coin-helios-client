@@ -40,6 +40,7 @@ export const TopCoinsTable: React.FC<{
     isFetching,
     isError
   } = useCoinsListQuery({ page: 1, filter: 'top', limit });
+  console.log(data);
 
   return (
     <SimpleTable
@@ -52,7 +53,7 @@ export const TopCoinsTable: React.FC<{
       isLoading={isLoading}
       isFetching={isFetching}
       isError={isError}
-      rowsAmount={data?.data.length}
+      rowsAmount={data?.data.coin_list.length}
       colsAmount={colsAmount}
       limit={limit}
       skeletonHeight={34}
@@ -86,7 +87,7 @@ export const TopCoinsTable: React.FC<{
         </TableRow>
       }
       body={
-        data?.data.map((row, i) => (
+        data?.data.coin_list.map((row, i) => (
           <TableRow key={row.id}>
             <TableCell
               sx={{

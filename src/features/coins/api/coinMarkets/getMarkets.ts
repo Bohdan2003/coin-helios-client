@@ -20,4 +20,4 @@ export type TMarket = {
 }
 
 export const getMarkets = async (params: TMarketsParams ) =>
-  apiClientGet<ResponseWithPagination<TMarket[]>>(`/crypto/coin/${params.id}/markets`, params);
+  apiClientGet<ResponseWithPagination<TMarket[]>>(`coin_api/crypto/coin/${params.id}/markets`, params);

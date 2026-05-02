@@ -52,7 +52,7 @@ export const NewCoinsTable: React.FC<{
       isLoading={isLoading}
       isFetching={isFetching}
       isError={isError}
-      rowsAmount={data?.data.length}
+      rowsAmount={data?.data.coin_list.length}
       limit={limit}
       colsAmount={colsAmount}
       skeletonHeight={34}
@@ -86,7 +86,7 @@ export const NewCoinsTable: React.FC<{
         </TableRow>
       }
       body={
-        data?.data.map((row, i) => (
+        data?.data.coin_list.map((row, i) => (
           <TableRow key={row.id}>
             <TableCell
               sx={{

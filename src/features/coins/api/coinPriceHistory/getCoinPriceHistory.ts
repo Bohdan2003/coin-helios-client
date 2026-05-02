@@ -21,6 +21,6 @@ export type TPriceHistoryPeriodParams = {
 
 
 export const getCoinPriceHistory = async (params: TPriceHistoryPeriodParams ) =>
-  apiClientGet<TCoinPriceHistory>(`/price_router/coin/${params.id}/price-history`, params);
+  apiClientGet<TCoinPriceHistory>(`coin_api/price_router/coin/${params.id}/price-history`, params);
 
 

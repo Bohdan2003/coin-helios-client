@@ -8,4 +8,4 @@ export type TCoinStatus = {
 }
 
 export const getCoinStatus = async (id: string) =>
-  apiClientGet<TCoinStatus>('/auth/coinstatus/', { coin_uuid: id });
+  apiClientGet<TCoinStatus>('coin_api/auth/coinstatus/', { coin_uuid: id });

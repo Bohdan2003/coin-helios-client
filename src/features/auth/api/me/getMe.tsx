@@ -9,4 +9,4 @@ type TUser = {
 }
 
 export const getMe = async () =>
-  apiClientGet<{ user: TUser }>('auth/me/');
+  apiClientGet<{ user: TUser }>('user_api/auth/me/');

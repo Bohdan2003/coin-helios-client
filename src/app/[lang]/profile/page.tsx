@@ -2,7 +2,7 @@
 import { ProfileContent } from '@/app/[lang]/profile/_ui/ProfileContent';
 import { LinkAsButton } from '@/shared/ui/links/LinkAsButton';
 import { ExitButton } from '@/features/auth/ui/LogoutButton';
-import { AddCoinFormDialog } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog';
+import { AddCoinFormDialog } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog/AddCoinFormDialog';
 import { Greeting } from '@/app/[lang]/profile/_ui/Greeting';
 //icons
 import AddIcon from '@mui/icons-material/Add';

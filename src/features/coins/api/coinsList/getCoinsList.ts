@@ -40,4 +40,4 @@ export const getCoinsList = async (params: {
   filter?: 'all' | 'top' | 'gainers' | 'popular' | 'saved',
   limit: number,
 } ) =>
-  apiClientGet<ResponseWithPagination<TCoin[]>>('/crypto/coins', params);
+  apiClientGet<ResponseWithPagination<{coin_list: TCoin[]}>>('coin_api/crypto/coins', params);

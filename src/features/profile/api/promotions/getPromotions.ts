@@ -14,4 +14,4 @@ export type TPromotion = {
 }
 
 export const getPromotions = async () =>
-  apiClientGet<TPromotion[]>('/api/promotions/');
+  apiClientGet<TPromotion[]>('user_api/api/userpanel/promotions/');

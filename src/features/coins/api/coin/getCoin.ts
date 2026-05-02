@@ -31,4 +31,4 @@ export type TCoinInfoParams = {
 }
 
 export const getCoin = async (params: TCoinInfoParams ) =>
-  apiServerGet<TCoinInfo>(`/crypto/coin/${params.id}/current`);
+  apiServerGet<TCoinInfo>(`coin_api/crypto/coin/${params.id}/current`);

@@ -12,4 +12,4 @@ export type TCoinFilters = {
 }
 
 export const getCoinsFilters = async () =>
-  apiClientGet<{ data: TCoinFilters }>('/crypto/filters');
+  apiClientGet<{ data: TCoinFilters }>('coin_api/crypto/filters');

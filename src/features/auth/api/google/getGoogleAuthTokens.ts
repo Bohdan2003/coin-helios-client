@@ -12,4 +12,4 @@ export type TGoogleAuthTokens = {
 }
 
 export const getGoogleAuthTokens = async (code: string) =>
-  apiPostRequest<TGoogleAuthTokens>('/auth/google/exchange/', { code });
+  apiPostRequest<TGoogleAuthTokens>('user_api/auth/google/exchange/', { code });

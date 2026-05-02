@@ -15,4 +15,4 @@ export type TMyCoin= {
 }
 
 export const getMyCoins = async () =>
-  apiClientGet<TMyCoin[]>('/api/userpanel/my-coins/');
+  apiClientGet<TMyCoin[]>('user_api/api/userpanel/my-coins/');

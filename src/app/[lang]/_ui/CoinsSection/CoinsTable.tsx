@@ -127,7 +127,7 @@ export const CoinsTable: React.FC<{
       <CoinsStickyHeadTable
         className="mt-[16px] max-h-[60vh] md:max-h-none overflow-scroll"
         dictionary={{ th: d['th'], errors }}
-        rows={data?.data}
+        rows={data?.data.coin_list}
         sortKey={sortKey}
         sortDir={sortDir}
         isLoading={isLoading}

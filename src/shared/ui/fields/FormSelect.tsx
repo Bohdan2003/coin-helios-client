@@ -1,11 +1,11 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { BaseSelect } from '@/shared/ui/fields/BaseSelect';
 //types
-import { TBaseTextFieldProps } from '@/shared/ui/fields/BaseTextField';
+import { TBaseSelectProps } from '@/shared/ui/fields/BaseSelect';
 
 type TFormSelectProps = {
   name: string;
-} & TBaseTextFieldProps;
+} & Omit<TBaseSelectProps, 'onChange'>;
 
 export const FormSelect: React.FC<TFormSelectProps> = ({
   name,
@@ -18,7 +18,6 @@ export const FormSelect: React.FC<TFormSelectProps> = ({
       control={control}
       name={name}
       render={({ field, fieldState }) => (
-        //@ts-ignore
         <BaseSelect
           {...field}
           {...otherProps}

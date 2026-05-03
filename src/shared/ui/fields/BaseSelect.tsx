@@ -3,7 +3,7 @@
 import { FieldWrapper } from '@/shared/ui/fields/FieldWrapper';
 import {
   Select,
-  MenuItem
+  MenuItem,
 } from '@mui/material';
 //icons
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -27,10 +27,11 @@ export const BaseSelect: React.FC<TBaseSelectProps> = ({
   required,
   placeholder,
   onChange,
-  options = ['USDT', 'EUR'],
+  isLoading,
+  isError,
+  options,
   ...otherProps
 }) => {
-
   return (
     <FieldWrapper
       className={className}
@@ -40,6 +41,8 @@ export const BaseSelect: React.FC<TBaseSelectProps> = ({
       label={label}
       required={required}
       icon={icon}
+      isLoading={isLoading}
+      isError={isError || !options}
     >
       <Select
         IconComponent={ExpandMoreIcon}
@@ -65,7 +68,7 @@ export const BaseSelect: React.FC<TBaseSelectProps> = ({
         {...otherProps}
       >
         {
-          options.map((option, index) => (
+          options?.map((option, index) => (
             <MenuItem
               value={option}
               key={index}

@@ -5,6 +5,7 @@ import {
   fieldErrorCls,
   fieldLabelCls,
 } from '@/shared/classNames';
+import {Skeleton} from "@mui/material";
 
 type TFieldWrapperProps = {
   children: React.ReactNode;
@@ -16,6 +17,8 @@ type TFieldWrapperProps = {
   fullWidth?: boolean;
   variant?: 'standard' | 'text';
   error?: string | null;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 export type TFieldWrapperPropsWithoutChildren = Omit<TFieldWrapperProps, 'children'>
@@ -29,6 +32,8 @@ export const FieldWrapper: React.FC<TFieldWrapperProps> = ({
   fieldWrapperClassName,
   fullWidth,
   variant = 'standard',
+  isLoading,
+  isError,
   error,
 }) => {
   return (
@@ -44,18 +49,24 @@ export const FieldWrapper: React.FC<TFieldWrapperProps> = ({
             {label}{required && <span className="text-orange">*</span>}
           </span>
         }
-        <div className={cn(
-          'mt-[6px] relative h-[40px] px-[12px] py-[10px]',
-          variant === 'standard' && fieldBottomBorderCls,
-          fullWidth ? 'flex' : 'inline-flex',
-          'items-center gap-[6px]',
-          error && 'after:bg-orange',
-          fieldWrapperClassName
-        )}
-        >
-          { icon }
-          { children }
-        </div>
+        {
+          isLoading
+            ? <Skeleton className="mt-[6px]" variant="rectangular" height={40} />
+            :
+            <div className={cn(
+              isError && 'opacity-50 pointer-events-none',
+              'mt-[6px] relative h-[40px] px-[12px] py-[10px]',
+              variant === 'standard' && !isError && fieldBottomBorderCls,
+              fullWidth ? 'flex' : 'inline-flex',
+              'items-center gap-[6px]',
+              error && 'after:bg-orange',
+              fieldWrapperClassName
+            )}
+            >
+              { icon }
+              { children }
+            </div>
+        }
       </label>
       {
         error && <p className={fieldErrorCls}>{error}</p>

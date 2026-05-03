@@ -18,9 +18,11 @@ import {
 import { FormProvider } from 'react-hook-form';
 import { FormTextField } from '@/shared/ui/fields/FormTextField';
 import { FormTextarea } from '@/shared/ui/fields/FormTextarea';
-import { FormSelect } from '@/shared/ui/fields/FormSelect';
 import { FormFieldArraySection } from '@/shared/ui/fields/FormFieldArraySection';
 import { FormUploadImageField } from '@/shared/ui/fields/FormUploadImage';
+import { ChainSelect } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog/ChainSelect';
+import { NetworkSelect } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog/NetworkSelect';
+import { CategorySelect } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog/CategorySelect';
 //icons
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -152,12 +154,10 @@ export const AddCoinFormDialog: React.FC<{
                   fullWidth
                   required
                 />
-                <FormSelect
+                <ChainSelect
                   name="chain"
                   label={ d.form.fields.chain.label }
                   placeholder={ d.form.fields.chain.placeholder }
-                  fullWidth
-                  required
                 />
                 <FormTextField
                   name="email"
@@ -166,12 +166,10 @@ export const AddCoinFormDialog: React.FC<{
                   fullWidth
                   required
                 />
-                <FormSelect
+                <CategorySelect
                   name="category"
                   label={ d.form.fields.category.label }
                   placeholder={ d.form.fields.category.placeholder }
-                  fullWidth
-                  required
                 />
               </div>
               {/*<FormFieldArraySection<TCoin>*/}
@@ -210,10 +208,9 @@ export const AddCoinFormDialog: React.FC<{
                       placeholder={ d.form.fields.contracts.placeholders.address }
                       fullWidth
                     />
-                    <FormSelect
+                    <NetworkSelect
                       name={getFieldName('network')}
                       placeholder={ d.form.fields.contracts.placeholders.network }
-                      fullWidth
                     />
                   </>
                 )}

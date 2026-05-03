@@ -14,6 +14,8 @@ export const coinsQueryKeys = {
   status: (id: string) =>
     [...coinsQueryKeys.all, 'status', id] as const,
 
+  options: () => [...coinsQueryKeys.all, 'options'],
+
   markets: {
     all: () => [...coinsQueryKeys.all, 'markets'] as const,
     list: (params: TMarketsParams) =>

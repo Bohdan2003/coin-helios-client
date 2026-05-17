@@ -1,5 +1,5 @@
 //ui
-import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 import TableCell from '@mui/material/TableCell';
 //utils
 import { cn } from '@/shared/lib/cn';
@@ -18,12 +18,10 @@ export const ChainCell: React.FC<TChainCellProps> = ({
   return (
     <TableCell className={cn(className)}>
       <div className="flex gap-[6px] items-center">
-        <Image
-          className="rounded-full size-[20px] object-cover object-center"
+        <Avatar
           src={icon}
           alt={name}
-          width={20}
-          height={20}
+          sx={{ width: 20, height: 20 }}
         />
         <span>{name}</span>
       </div>

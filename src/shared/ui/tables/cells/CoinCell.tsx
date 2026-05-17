@@ -1,4 +1,4 @@
-// import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 import { LocalizedLink } from '@/shared/ui/links/LocalizedLink';
 import TableCell from '@mui/material/TableCell';
 //types
@@ -25,13 +25,11 @@ export const CoinCell: React.FC<TCoinCellProps> = ({
   return (
     <TableCell sx={sx}>
       <div className="flex gap-[6px] items-center">
-        {/*<Image*/}
-        {/*  className="size-[32px] object-cover object-center"*/}
-        {/*  src={`${KEYS.API_URL}/${icon}`}*/}
-        {/*  alt={name}*/}
-        {/*  width={32}*/}
-        {/*  height={32}*/}
-        {/*/>*/}
+        <Avatar
+          src={`${KEYS.BASE_URL}/minio/${icon}`}
+          alt={name}
+          sx={{ width: 32, height: 32 }}
+        />
         <div className="grid">
           <LocalizedLink href={ROUTES.COIN(id)}>{name}</LocalizedLink>
           <span className="opacity-60">{symbol}</span>

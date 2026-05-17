@@ -22,7 +22,7 @@ const buildQueryString = (params: QueryParams) => {
   return query.toString();
 };
 
-export const getUrl = (path: string) => new URL(KEYS.API_URL + (path.startsWith('/') ? path : `/${path}`));
+export const getUrl = (path: string) => new URL(KEYS.BASE_URL + (path.startsWith('/') ? path : `/${path}`));
 
 type TGetRequestParams = {
   path: string;

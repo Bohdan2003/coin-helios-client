@@ -11,7 +11,7 @@ import { Category } from '@/app/[lang]/coins/[coinId]/_ui/Category';
 import { LatestNewsSection } from '@/features/news/ui/LatestNewsSection';
 import { MarketsSection } from '@/app/[lang]/coins/[coinId]/_ui/MarketsSection/MarketsSection';
 //types
-import { TLocale } from '@/shared/i18n/dictionaries';
+import { TLocale, getDictionary } from '@/shared/i18n/dictionaries';
 
 export default async function Coin({ 
   params 
@@ -22,6 +22,7 @@ export default async function Coin({
   }> 
 }) {
   const { coinId, lang } = await params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
@@ -30,42 +31,45 @@ export default async function Coin({
           id={coinId}
           lang={lang}
         />
-        {/*<Price*/}
-        {/*  className="mt-[24px] md:mt-0 md:col-start-2"*/}
-        {/*  id={coinId}*/}
-        {/*  lang={lang}*/}
-        {/*/>*/}
-        {/*<PriceHistorySection*/}
-        {/*  className="mt-[40px] md:mt-[20px] min-w-0"*/}
-        {/*  id={coinId}*/}
-        {/*  lang={lang}*/}
-        {/*/>*/}
-        {/*<div className="col-start-2 row-span-2">*/}
-        {/*  <div className="mt-[24px] grid gap-[16px]">*/}
-        {/*    <InfoSection lang={lang}/>*/}
-        {/*    <ContactsSection*/}
-        {/*      id={coinId}*/}
-        {/*      lang={lang}*/}
-        {/*    />*/}
-        {/*    <CommunitySection lang={lang}/>*/}
-        {/*    <CalculatorSection lang={lang}/>*/}
-        {/*  </div>*/}
-        {/*  <Category*/}
-        {/*    className="mt-[24px]"*/}
-        {/*    id={coinId}*/}
-        {/*    lang={lang}*/}
-        {/*  />*/}
-        {/*</div>*/}
+        <Price
+          className="mt-[24px] md:mt-0 md:col-start-2"
+          id={coinId}
+          dictionary={{
+            coin: { price: dict.coin.price },
+            errors: dict.errors,
+          }}
+        />
+        <PriceHistorySection
+          className="mt-[40px] md:mt-[20px] min-w-0"
+          id={coinId}
+          lang={lang}
+        />
+        <div className="col-start-2 row-span-2">
+          <div className="mt-[24px] grid gap-[16px]">
+            <InfoSection lang={lang}/>
+            <ContactsSection
+              id={coinId}
+              lang={lang}
+            />
+            <CommunitySection lang={lang}/>
+            <CalculatorSection lang={lang}/>
+          </div>
+          <Category
+            className="mt-[24px]"
+            id={coinId}
+            lang={lang}
+          />
+        </div>
         <div>
-          {/*<Descriptions*/}
-          {/*  className="mt-[24px] sm:mt-[40px]"*/}
-          {/*  id={coinId}*/}
-          {/*/>*/}
-          {/*<MarketsSection*/}
-          {/*  className="mt-[80px]"*/}
-          {/*  id={coinId}*/}
-          {/*  lang={lang}*/}
-          {/*/>*/}
+          <Descriptions
+            className="mt-[24px] sm:mt-[40px]"
+            id={coinId}
+          />
+          {/* <MarketsSection
+            className="mt-[80px]"
+            id={coinId}
+            lang={lang}
+          /> */}
         </div>
       </div>
       <div className="mt-[80px]">

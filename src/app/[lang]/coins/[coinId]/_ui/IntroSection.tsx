@@ -19,6 +19,7 @@ export const IntroSection: React.FC<{
 }) => {
   const { errors } = await getDictionary(lang);
   const data = await getCoin({ id });
+  console.log(data);
 
   return (
     <section className={cn(

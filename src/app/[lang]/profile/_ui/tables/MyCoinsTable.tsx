@@ -42,7 +42,7 @@ export const MyCoinsTable: React.FC<{
     <div className="max-h-[60vh] md:max-h-none overflow-scroll md:overflow-visible">
       <StickyHeedTable
         dictionary={errors}
-        rowsAmount={20}
+        rowsAmount={data?.length}
         colsAmount={tableColsAmount}
         isLoading={isLoading}
         isFetching={isFetching}

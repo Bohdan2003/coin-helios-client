@@ -20,9 +20,8 @@ import { cn } from '@/shared/lib/cn';
 import { getDictionary } from '@/shared/i18n/dictionaries';
 
 export const CommunitySection: React.FC<{ id: string; lang: TLocale }> = async ({ id, lang }) => {
-  const { coin: { community: d } } = await getDictionary(lang);
-  const coin = await getCoin({ id });
-  const { community } = coin;
+  const { coin: { community: d }, errors } = await getDictionary(lang);
+  const { community } = await getCoin({ id });
 
   const links = [
     { href: community.telegram,                  text: 'Telegram',         icon: <TelegramIcon /> },
@@ -45,14 +44,17 @@ export const CommunitySection: React.FC<{ id: string; lang: TLocale }> = async (
     <section className={cn('p-[16px] rounded-[16px]', sectionBorderCls)}>
       <h3 className={smallTitleCls}>{ d.title }</h3>
       <ul className="mt-[16px] flex flex-wrap gap-[8px]">
-        {links.map(({ href, text, icon }) => (
-          <CommunityItem
-            key={href}
-            text={text}
-            href={href}
-            icon={icon}
-          />
-        ))}
+        {links.length > 0
+          ? links.map(({ href, text, icon }) => (
+              <CommunityItem
+                key={href}
+                text={text}
+                href={href}
+                icon={icon}
+              />
+            ))
+          : <span className="opacity-70">{errors.noData}</span>
+        }
       </ul>
     </section>
   );

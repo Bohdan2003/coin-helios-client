@@ -10,7 +10,7 @@ export type TCoinInfo = {
 		title: string;
 		text: string;
 	}[];
-	contracts: {
+	contract_data: {
 		network: string;
 		address: string;
 	}[];

@@ -56,7 +56,7 @@ export const AllPriceHistoryChart: React.FC<{
   });
 
   const gridColor = getChartGridColor(mode);
-  const tooltipOptions = getChartTooltipOptions(mode);
+  const tooltipOptions = getChartTooltipOptions(mode, d.errors.noData);
 
   const chartData = useMemo(() => {
     if(data) return getChartData(data);

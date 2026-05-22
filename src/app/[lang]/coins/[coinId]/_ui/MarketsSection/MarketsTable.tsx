@@ -113,10 +113,10 @@ export const MarketsTable: React.FC<{
                   <TableRow key={row.exchange_uuid}>
                     <TableCell sx={firstColSx}>{ row.exchange_name }</TableCell>
                     <TableCell className="opacity-80">
-                      {NumberFormatter.getReadablePrice(+row.price)}
+                      {NumberFormatter.getReadablePrice(+row.price, d.errors.noData)}
                     </TableCell>
                     <TableCell className="opacity-80">
-                      {NumberFormatter.getReadablePrice(+row.volume_24h)}
+                      {NumberFormatter.getReadablePrice(+row.volume_24h, d.errors.noData)}
                     </TableCell>
                     <BuyCell onClick={() => { handleBuy(row.url); }}/>
                   </TableRow>

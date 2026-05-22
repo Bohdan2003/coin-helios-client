@@ -57,7 +57,7 @@ export const PeriodPriceHistoryChart: React.FC<{
   const isNotFirstFetching = !isPending && isFetching;
 
   const gridColor = getChartGridColor(mode);
-  const tooltipOptions = getChartTooltipOptions(mode);
+  const tooltipOptions = getChartTooltipOptions(mode, d.errors.noData);
 
   const chartData = useMemo(() => {
     if(data) return getChartData(data);

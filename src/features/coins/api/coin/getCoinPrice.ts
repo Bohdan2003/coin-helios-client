@@ -2,9 +2,15 @@
 import { apiClientGet } from '@/shared/api/apiClientGet';
 
 export type TCoinPrice = {
-	current_price: number;
-	min_price_24h: number;
-	max_price_24h: number;
+	market_cap: number | null;
+	volume_24: number | null;
+	current_price: number | null;
+	price_24h_ago: number | null;
+	percent_change_24h: number | null;
+	min_price_24h: number | null;
+	max_price_24h: number | null;
+	fdm: number | null;
+	volume_to_mcap: number | null;
 };
 
-export const getCoinPrice = (id: string) => apiClientGet<TCoinPrice>(`coin_api/price_router/coin/${id}/price-stats`);
+export const getCoinPrice = (id: string) => apiClientGet<TCoinPrice>(`coin_api/crypto/coin/${id}/info_price`);

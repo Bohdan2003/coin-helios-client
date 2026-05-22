@@ -46,7 +46,13 @@ export default async function Coin({
         />
         <div className="col-start-2 row-span-2">
           <div className="mt-[24px] grid gap-[16px]">
-            <InfoSection lang={lang}/>
+            <InfoSection
+              id={coinId}
+              dictionary={{
+                coin: { info: dict.coin.info },
+                errors: dict.errors,
+              }}
+            />
             <ContactsSection
               id={coinId}
               lang={lang}

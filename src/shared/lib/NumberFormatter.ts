@@ -1,22 +1,24 @@
 export class NumberFormatter {
-  static getReadableDate(num: string) {
+  static getReadableDate(num: string | null | undefined, error: string): string {
+    if (typeof num !== 'string') return error;
     const date = new Date(num);
+    if (isNaN(date.getTime())) return error;
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
-  static getReadableNum(num: number ) {
-    return new Intl.NumberFormat('en').format(+num);
+  static getReadableNum(num: number | null | undefined, error: string): string {
+    if (typeof num !== 'number') return error;
+    return new Intl.NumberFormat('en').format(num);
   }
 
-  static getReadablePrice(num: number = 0) {
-    return `${CurrencySign.DOLLAR}${this.getReadableNum(+num)}`;
+  static getReadablePrice(num: number | null | undefined, error: string): string {
+    if (typeof num !== 'number') return error;
+    return `${CurrencySign.DOLLAR}${this.getReadableNum(num, error)}`;
   }
 
-  static getCompactedNum(
-    value: number,
-    fractionDigits = 1
-  ): string | number {
-    if(value < 1e3) return this.getReadableNum(value);
+  static getCompactedNum(value: number | null | undefined, error: string, fractionDigits = 1): string | number {
+    if (typeof value !== 'number') return error;
+    if (value < 1e3) return this.getReadableNum(value, error);
 
     const UNITS = [
       { treshold: 1e12, label: 'Trillion' },
@@ -36,8 +38,9 @@ export class NumberFormatter {
     return value;
   }
 
-  static getCompactedPrice(num: number = 0) {
-    return `${CurrencySign.DOLLAR}${this.getCompactedNum(num)}`;
+  static getCompactedPrice(num: number | null | undefined, error: string): string {
+    if (typeof num !== 'number') return error;
+    return `${CurrencySign.DOLLAR}${this.getCompactedNum(num, error)}`;
   }
 }
 

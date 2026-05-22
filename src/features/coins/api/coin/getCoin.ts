@@ -30,4 +30,4 @@ export type TCoinInfoParams = {
 	id: string;
 };
 
-export const getCoin = (params: TCoinInfoParams) => apiServerGet<TCoinInfo>(`coin_api/crypto/coin/${params.id}/current`);
+export const getCoin = (params: TCoinInfoParams) => apiServerGet<TCoinInfo>(`coin_api/crypto/coin/${params.id}/info_deteil`);

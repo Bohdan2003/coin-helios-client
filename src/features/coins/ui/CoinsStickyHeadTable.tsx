@@ -168,10 +168,10 @@ export const CoinsStickyHeadTable: React.FC<{
             {/*  chartPoints={row.price_chart_points}*/}
             {/*/>*/}
             <TableCell className="opacity-80">
-              {NumberFormatter.getReadablePrice(row.price)}
+              {NumberFormatter.getReadablePrice(row.price, errors.noData)}
             </TableCell>
             <TableCell className="opacity-80">
-              {NumberFormatter.getCompactedPrice(row.price)}
+              {NumberFormatter.getCompactedPrice(row.price, errors.noData)}
             </TableCell>
             <LikeCell
               dictionary={errors}

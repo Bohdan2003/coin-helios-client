@@ -47,7 +47,7 @@ export const getChartData = (
 export const getChartGridColor = (mode: TThemeMode) =>
   mode === 'light' ? '#9a9ea5' : '#6d6d73';
 
-export const getChartTooltipOptions = (mode: TThemeMode) => {
+export const getChartTooltipOptions = (mode: TThemeMode, noData: string) => {
   const tooltipBgColor = mode === 'light' ? '#FFFFFF' : '#1F1D2B';
   const tooltipTextColor = mode === 'light' ? '#14151A' : '#FFFFFF';
 
@@ -60,7 +60,7 @@ export const getChartTooltipOptions = (mode: TThemeMode) => {
     displayColors: false,
     callbacks: {
       label: (ctx: TooltipItem<'line'>) =>
-        'Price: ' + NumberFormatter.getReadablePrice(ctx.parsed.y as number),
+        'Price: ' + NumberFormatter.getReadablePrice(ctx.parsed.y as number, noData),
     },
   });
 };

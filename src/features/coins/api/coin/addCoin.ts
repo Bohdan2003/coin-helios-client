@@ -46,4 +46,4 @@ const toFormData = (data: TCoinSchema): FormData => {
 	return fd;
 };
 
-export const addCoin = (data: TCoinSchema) => apiPostRequest<TCreateCoinRequestResponse>('coin_api/auth/coin-request', toFormData(data));
+export const addCoin = (data: TCoinSchema) => apiPostRequest<TCreateCoinRequestResponse>('user_api/auth/coin-request', toFormData(data));

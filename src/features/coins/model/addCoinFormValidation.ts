@@ -52,23 +52,23 @@ export const getCoinSchema = (d: TDictionary['forms']['errors']) => {
 			.nullable()
 			.test('fileType', d.fileTypeInvalid, (f) => (f ? f.type.startsWith('image/') : false))
 			.test('fileSize', `${d.fileSizeInvalid} 5MB`, (f) => (f ? f.size <= 5 * 1024 * 1024 : false))
-			.test('fileDimension', d.fileDimensionInvalid, (f) => {
-				if (!f) return false;
-				return new Promise((resolve) => {
-					const url = URL.createObjectURL(f);
-					const img = new Image();
+			// .test('fileDimension', d.fileDimensionInvalid, (f) => {
+			// 	if (!f) return false;
+			// 	return new Promise((resolve) => {
+			// 		const url = URL.createObjectURL(f);
+			// 		const img = new Image();
 
-					img.onload = () => {
-						URL.revokeObjectURL(url);
-						resolve(img.width === 400 && img.height === 400);
-					};
-					img.onerror = () => {
-						URL.revokeObjectURL(url);
-						resolve(false);
-					};
-					img.src = url;
-				});
-			})
+			// 		img.onload = () => {
+			// 			URL.revokeObjectURL(url);
+			// 			resolve(img.width === 400 && img.height === 400);
+			// 		};
+			// 		img.onerror = () => {
+			// 			URL.revokeObjectURL(url);
+			// 			resolve(false);
+			// 		};
+			// 		img.src = url;
+			// 	});
+			// })
 			.required(d.required),
 		symbol: strWithMinWidthSchema(3, '').required(d.required),
 		chain: yup.string().required(d.required),

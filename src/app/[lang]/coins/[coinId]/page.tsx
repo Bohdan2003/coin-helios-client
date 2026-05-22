@@ -56,7 +56,7 @@ export default async function Coin({
               lang={lang}
             />
             <CommunitySection id={coinId} lang={lang}/>
-            <CalculatorSection lang={lang}/>
+            <CalculatorSection id={coinId} lang={lang}/>
           </div>
         </div>
         <div>

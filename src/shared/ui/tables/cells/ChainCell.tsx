@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import TableCell from '@mui/material/TableCell';
 //utils
 import { cn } from '@/shared/lib/cn';
+import { KEYS } from '@/shared/config/keys';
 
 type TChainCellProps = {
   icon: string;
@@ -19,7 +20,7 @@ export const ChainCell: React.FC<TChainCellProps> = ({
     <TableCell className={cn(className)}>
       <div className="flex gap-[6px] items-center">
         <Avatar
-          src={icon}
+          src={`${KEYS.BASE_URL}/minio/${icon}`}
           alt={name}
           sx={{ width: 20, height: 20 }}
         />

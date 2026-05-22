@@ -47,9 +47,9 @@ export default async function Profile({
           <AddCoinFormDialog
             dictionary={{
               buttons: d.buttons,
-              link: d.links.privacyPolicy,
               form: d.forms.addCoin,
               errors: d.forms.errors,
+              globalErrors: d.errors,
             }}
           />
         </div>

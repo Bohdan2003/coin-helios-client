@@ -139,7 +139,8 @@
           "label": "Telegram contact",
           "placeholder": "@your_username"
         }
-      }
+      },
+      "applicationId": "Application ID"
     },
     "errors": {
       "required": "This field is required",
@@ -149,6 +150,7 @@
       "urlInvalid": "Invalid URL",
       "fileTypeInvalid": "Only image files are allowed",
       "fileSizeInvalid": "Max file size is",
+      "fileDimensionInvalid": "Image must be exactly 400×400px",
       "startsWith@": "Must start with \"@\"",
       "privacyPolicy": "You must accept the privacy policy"
     }

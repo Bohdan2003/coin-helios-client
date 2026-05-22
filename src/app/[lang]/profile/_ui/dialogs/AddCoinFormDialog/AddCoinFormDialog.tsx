@@ -10,6 +10,9 @@ import {
   useTheme
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useAddCoinMutation } from '@/features/coins/api/coin/useAddCoinMutation';
+//utils
+import { toast } from 'react-hot-toast';
 //ui
 import {
   Button,
@@ -28,7 +31,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 //types
 import { Resolver } from 'react-hook-form';
-import { TCoinSchema } from '@/features/coins/model/addCoinFormValidation';
+import { TCoinSchema, coinDefaultValues } from '@/features/coins/model/addCoinFormValidation';
 import { TDictionary } from '@/shared/i18n/dictionaries';
 //utils
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -40,49 +43,45 @@ export const AddCoinFormDialog: React.FC<{
   dictionary: {
     buttons: TDictionary['buttons'];
     errors: TDictionary['forms']['errors'];
+    globalErrors: TDictionary['errors'];
     form: TDictionary['forms']['addCoin'];
-    link: TDictionary['links']['privacyPolicy'];
   };
 }> = ({ dictionary: d }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isOpen = searchParams.get('addCoin') === 'visible';
-  const isLgDown = useMediaQuery(useTheme().breakpoints.down('lg'));
+  const theme = useTheme();
+  const isLgDown = useMediaQuery(theme.breakpoints.down('lg'));
   const coinSchema = getCoinSchema(d.errors);
+  const { mutate, isPending } = useAddCoinMutation();
 
   const methods = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(coinSchema) as Resolver<TCoinSchema>,
-    defaultValues: {
-      name: '',
-      icon: null,
-      symbol: '',
-      chain: '',
-      // listings: [{ platform: '', link: '' }],
-      contracts: [{ address: '', network: '' }],
-      otherLinks: [{ link: '' }],
-
-      description: '',
-      telegram: '',
-      telegramUsername: '',
-      reddit: '',
-      discord: '',
-      twitter: '',
-      website: '',
-      email: '',
-      category: '',
-    },
+    defaultValues: coinDefaultValues,
   });
 
   const handleDialogClose = (): void => {
     const params = new URLSearchParams(searchParams.toString());
     params.set('addCoin', 'hidden');
-    router.push(`?${params.toString()}`);
+    router.replace(`?${params.toString()}`);
   };
 
   const handleSubmit = (data: TCoinSchema) => {
-    console.log(data);
+    mutate(data, {
+      onSuccess: ({ application_id }) => {
+        toast.success(`${d.form.applicationId}: ${application_id}`);
+        handleDialogClose();
+      },
+      onError: (error: Error) => {
+        if (error.message === 'authRequired') {
+          toast.error(d.globalErrors.authRequired);
+        } else {
+          toast.error(d.globalErrors.error);
+        }
+      },
+    });
   };
 
   return (
@@ -172,27 +171,6 @@ export const AddCoinFormDialog: React.FC<{
                   placeholder={ d.form.fields.category.placeholder }
                 />
               </div>
-              {/*<FormFieldArraySection<TCoin>*/}
-              {/*  className="mt-[50px]"*/}
-              {/*  rowClassName="grid sm:grid-cols-2 gap-[12px] sm:gap-[20px]"*/}
-              {/*  name="listings"*/}
-              {/*  label="Listings"*/}
-              {/*  createDefault={() => ({ platform: '', link: '' })}*/}
-              {/*  renderRow={(getFieldName) => (*/}
-              {/*    <>*/}
-              {/*      <FormSelect*/}
-              {/*        name={getFieldName('platform')}*/}
-              {/*        placeholder="Select platform"*/}
-              {/*        fullWidth*/}
-              {/*      />*/}
-              {/*      <FormTextField*/}
-              {/*        name={getFieldName('link')}*/}
-              {/*        placeholder="https://coins.com/your-coin"*/}
-              {/*        fullWidth*/}
-              {/*      />*/}
-              {/*    </>*/}
-              {/*  )}*/}
-              {/*/>*/}
               <FormFieldArraySection<TCoinSchema>
                 className="mt-[40px] md:mt-[50px]"
                 rowClassName="grid sm:grid-cols-[1fr_200px] gap-[12px] sm:gap-[20px]"
@@ -286,6 +264,7 @@ export const AddCoinFormDialog: React.FC<{
             <Button
               variant="contained"
               type="submit"
+              loading={isPending}
             >{ d.buttons.send }</Button>
           </div>
         </form>

@@ -7,4 +7,4 @@ export type TCoinPrice = {
 	max_price_24h: number;
 };
 
-export const getCoinPrice = async (id: string) => apiClientGet<TCoinPrice>(`coin_api/price_router/coin/${id}/price-stats`);
+export const getCoinPrice = (id: string) => apiClientGet<TCoinPrice>(`coin_api/price_router/coin/${id}/price-stats`);

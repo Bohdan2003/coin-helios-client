@@ -1,47 +1,19 @@
-import {
-  makePostRequest,
-  QueryParams
-} from '@/shared/api/utils';
+import { makePostRequest, QueryParams } from '@/shared/api/utils';
+import { refreshTokens } from '@/shared/api/refreshToken';
 
-export const apiPostRequest = async<T>(
-  path: string,
-  body?: unknown,
-  params?: QueryParams ,
-): Promise<T> => {
-  const accessToken = localStorage.getItem('access');
-  const refreshToken = localStorage.getItem('refresh');
+export const apiPostRequest = async <T>(path: string, body?: unknown, params?: QueryParams): Promise<T> => {
+	let accessToken = localStorage.getItem('access');
 
-  let response = await makePostRequest({
-    path,
-    token: accessToken,
-    params,
-    body
-  });
+	let response = await makePostRequest({ path, token: accessToken, params, body });
 
-  if (response.status === 401 && refreshToken) {
-    const refreshResponse = await makePostRequest({
-      path: '/auth_jwt/token/refresh/',
-      body: { refresh: refreshToken }
-    });
+	if (response.status === 401) {
+		accessToken = await refreshTokens();
+		response = await makePostRequest({ path, token: accessToken, params, body });
+	}
 
-    if (!refreshResponse.ok) {
-      //TODO: uncomment this
-      // localStorage.removeItem('access');
-      // localStorage.removeItem('refresh');
-      throw new Error('authRequired');
-    }
+	if (!response.ok) {
+		throw new Error('error');
+	}
 
-    response = await makePostRequest({
-      path,
-      token: accessToken,
-      params,
-      body
-    });
-  }
-
-  if (!response.ok) {
-    throw new Error('error');
-  }
-
-  return response.json();
+	return response.json();
 };

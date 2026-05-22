@@ -139,7 +139,8 @@
           "label": "Контакт в Telegram",
           "placeholder": "@your_username"
         }
-      }
+      },
+      "applicationId": "ID заявки"
     },
     "errors": {
       "required": "Это поле обязательно",
@@ -149,6 +150,7 @@
       "urlInvalid": "Некорректный URL",
       "fileTypeInvalid": "Разрешены только файлы изображений",
       "fileSizeInvalid": "Максимальный размер файла —",
+      "fileDimensionInvalid": "Изображение должно быть 400×400px",
       "startsWith@": "Должно начинаться с «@»",
       "privacyPolicy": "Необходимо принять политику конфиденциальности"
     }

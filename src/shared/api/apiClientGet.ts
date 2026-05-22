@@ -1,25 +1,13 @@
-import { makeGetRequest, makePostRequest } from '@/shared/api/utils';
-
-type QueryParams = Record<string, string | number | (string | number)[] | null | undefined>;
+import { makeGetRequest, QueryParams } from '@/shared/api/utils';
+import { refreshTokens } from '@/shared/api/refreshToken';
 
 export const apiClientGet = async <T>(path: string, params?: QueryParams): Promise<T> => {
-	const accessToken = localStorage.getItem('access');
-	const refreshToken = localStorage.getItem('refresh');
+	let accessToken = localStorage.getItem('access');
 
 	let response = await makeGetRequest({ path, token: accessToken, params });
 
-	if (response.status === 401 && refreshToken) {
-		const refreshResponse = await makePostRequest({
-			path: '/auth_jwt/token/refresh/',
-			body: { refresh: refreshToken },
-		});
-
-		if (!refreshResponse.ok) {
-			localStorage.removeItem('access');
-			localStorage.removeItem('refresh');
-			throw new Error('authRequired');
-		}
-
+	if (response.status === 401) {
+		accessToken = await refreshTokens();
 		response = await makeGetRequest({ path, token: accessToken, params });
 	}
 

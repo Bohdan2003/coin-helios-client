@@ -7,7 +7,6 @@ import { InfoSection } from '@/app/[lang]/coins/[coinId]/_ui/InfoSection/InfoSec
 import { ContactsSection } from '@/app/[lang]/coins/[coinId]/_ui/ContactsSection/ContactsSection';
 import { CommunitySection } from '@/app/[lang]/coins/[coinId]/_ui/CommunitySection/CommunitySection';
 import { CalculatorSection } from '@/app/[lang]/coins/[coinId]/_ui/CalculatorSection/CalculatorSection';
-import { Category } from '@/app/[lang]/coins/[coinId]/_ui/Category';
 import { LatestNewsSection } from '@/features/news/ui/LatestNewsSection';
 //types
 import { TLocale, getDictionary } from '@/shared/i18n/dictionaries';
@@ -59,11 +58,6 @@ export default async function Coin({
             <CommunitySection id={coinId} lang={lang}/>
             <CalculatorSection lang={lang}/>
           </div>
-          <Category
-            className="mt-[24px]"
-            id={coinId}
-            lang={lang}
-          />
         </div>
         <div>
           <Descriptions

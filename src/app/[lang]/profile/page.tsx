@@ -1,15 +1,12 @@
 //ui
 import { ProfileContent } from '@/app/[lang]/profile/_ui/ProfileContent';
-import { LinkAsButton } from '@/shared/ui/links/LinkAsButton';
+import { AddCoinButton } from '@/app/[lang]/profile/_ui/AddCoinButton';
 import { ExitButton } from '@/features/auth/ui/LogoutButton';
 import { AddCoinFormDialog } from '@/app/[lang]/profile/_ui/dialogs/AddCoinFormDialog/AddCoinFormDialog';
 import { Greeting } from '@/app/[lang]/profile/_ui/Greeting';
-//icons
-import AddIcon from '@mui/icons-material/Add';
 //types
 import { TLocale } from '@/shared/i18n/dictionaries';
 //utils
-import { ROUTES } from '@/shared/routes';
 import { getDictionary } from '@/shared/i18n/dictionaries';
 import { getProfileTabs } from '@/app/[lang]/profile/helper';
 
@@ -37,13 +34,7 @@ export default async function Profile({
               }}
             />
           </div>
-          <LinkAsButton
-            href={ROUTES.ADD_COIN}
-            variant="outlined"
-            startIcon={<AddIcon/>}
-          >
-            { d.links.addCoin }
-          </LinkAsButton>
+          <AddCoinButton label={d.links.addCoin} />
           <AddCoinFormDialog
             dictionary={{
               buttons: d.buttons,

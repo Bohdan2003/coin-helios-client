@@ -36,7 +36,7 @@ export const LikeButton: React.FC<{
         Icon={ data?.liked ? ThumbUpIcon : ThumbUpOutlinedIcon}
         dictionary={dictionary}
       />
-      <span>{0}</span>
+      <span>{ data?.likes_count }</span>
     </div>
   );
 };

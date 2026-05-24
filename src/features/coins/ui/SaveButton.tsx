@@ -5,7 +5,7 @@ import { useCoinStatusQuery } from '@/features/coins/api/coin/useCoinStatusQuery
 //ui
 import { BaseCoinButton } from '@/features/coins/ui/BaseCoinButton';
 //icons
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorderOutlined';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
@@ -37,7 +37,7 @@ export const SaveButton: React.FC<{
         mutate={mutate}
         disabled={isError}
         loading={isMutationPending || isQueryPending}
-        Icon={ data?.saved ? StarBorderIcon : StarBorderOutlinedIcon}
+        Icon={ data?.saved ? StarIcon : StarBorderIcon}
         dictionary={dictionary}
       />
     </div>

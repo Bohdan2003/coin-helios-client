@@ -5,12 +5,10 @@ import { useSaveCoinMutation } from '@/features/coins/api/coin/useSaveCoinMutati
 import TableCell from '@mui/material/TableCell';
 import { BaseCoinButton } from '@/features/coins/ui/BaseCoinButton';
 //icons
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorderOutlined';
 //types
 import { TDictionary } from '@/shared/i18n/dictionaries';
-//utils
-import { toast } from 'react-hot-toast';
 
 export const SaveCell: React.FC<{
   id: string;
@@ -31,7 +29,7 @@ export const SaveCell: React.FC<{
       <BaseCoinButton
         mutate={mutate}
         loading={isPending}
-        Icon={ saved ? StarBorderIcon : StarBorderOutlinedIcon}
+        Icon={ saved ? StarIcon : StarBorderIcon}
         dictionary={dictionary}
       />
     </TableCell>

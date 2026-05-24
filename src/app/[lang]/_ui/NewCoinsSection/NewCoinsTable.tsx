@@ -37,7 +37,7 @@ export const NewCoinsTable: React.FC<{
   const {
     data,
     isLoading,
-    isFetching,
+    isKeyChangeFetching,
     isError
   } = useCoinsListQuery({ page: 1, filter: 'top', limit });
 
@@ -50,7 +50,7 @@ export const NewCoinsTable: React.FC<{
         '& .col-votes': { display: { xs: 'table-cell', sm: 'none', md: 'table-cell' } },
       }}
       isLoading={isLoading}
-      isFetching={isFetching}
+      isFetching={isKeyChangeFetching}
       isError={isError}
       rowsAmount={data?.data.coin_list.length}
       limit={limit}

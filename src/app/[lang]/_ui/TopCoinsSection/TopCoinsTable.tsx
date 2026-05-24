@@ -40,7 +40,6 @@ export const TopCoinsTable: React.FC<{
     isFetching,
     isError
   } = useCoinsListQuery({ page: 1, filter: 'top', limit });
-  console.log(data);
 
   return (
     <SimpleTable

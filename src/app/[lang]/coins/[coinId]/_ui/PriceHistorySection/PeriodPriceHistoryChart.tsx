@@ -51,10 +51,10 @@ export const PeriodPriceHistoryChart: React.FC<{
   const {
     data,
     isPending,
-    isFetching,
+    isKeyChangeFetching,
     isError
   } = usePriceHistoryPeriodQuery({ id, period: selectedPeriod });
-  const isNotFirstFetching = !isPending && isFetching;
+  const isNotFirstFetching = !isPending && isKeyChangeFetching;
 
   const gridColor = getChartGridColor(mode);
   const tooltipOptions = getChartTooltipOptions(mode, d.errors.noData);
